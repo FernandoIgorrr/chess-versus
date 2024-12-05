@@ -15,9 +15,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: HomeBody(),
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.tournaments)),
+        body: HomeBody(viewModel: widget.viewModel),
       ),
     );
   }

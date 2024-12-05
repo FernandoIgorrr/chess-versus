@@ -1,4 +1,3 @@
-import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 import 'package:logging/logging.dart';
 
 import '../../../data/repositories/tournament/tournament_repository.dart';

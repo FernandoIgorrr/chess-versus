@@ -9,25 +9,26 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required TournamentRepository tournamentRepository})
       : _tournamentRepository = tournamentRepository;
 
-  HomeState _state = EmptyHomeState();
+  HomeState _state = EmptyTournamentsState();
   final TournamentRepository _tournamentRepository;
 
   final _log = Logger('HomeViewModel');
 
+  HomeState get state => _state;
+
   void emit(HomeState state) {
     _state = state;
+    notifyListeners();
   }
 
   Future<void> getTournaments() async {
-    emit(LoadingHomeState());
+    emit(LoadingTournamentsState());
 
     final result = await _tournamentRepository
         .fetchAll() //
         .map(SucessGetTournamentsState.new)
         .mapError((error) => error.message)
-        .mapError(FailedGetTournamentsState.new);
-
-    result //
+        .mapError(FailedGetTournamentsState.new)
         .fold(emit, emit);
   }
 }

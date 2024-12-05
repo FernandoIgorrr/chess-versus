@@ -2,9 +2,9 @@ import '../../../domain/models/tournament/tournament.dart';
 
 sealed class HomeState {}
 
-class EmptyHomeState extends HomeState {}
+class EmptyTournamentsState extends HomeState {}
 
-class LoadingHomeState extends HomeState {}
+class LoadingTournamentsState extends HomeState {}
 
 class SucessGetTournamentsState extends HomeState {
   final List<Tournament> tournaments;

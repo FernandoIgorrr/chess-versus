@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../themes/colors.dart';
 import '../themes/texts.dart';
-import '../themes/widgets/app_bar.dart';
-import '../themes/widgets/list_tile.dart';
-import '../themes/widgets/switch.dart';
+import 'widget_themes/app_bar.dart';
+import 'widget_themes/list_tile.dart';
+import 'widget_themes/switch.dart';
 
 ThemeData get lightTheme => ThemeHelper().lightThemeData;
 
