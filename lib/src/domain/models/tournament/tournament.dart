@@ -16,6 +16,9 @@ class Tournament {
   /// Tournament type
   final TournamentType _type;
 
+  /// Maximum number of rounds
+  int _maximumNumberOfRounds; // number of rounds
+
   /// Tournament status. Represents the progress of the tournament.
   /// if it's executing or if it's finished, if can add more players...
   TournamentStatus _status;
@@ -37,6 +40,7 @@ class Tournament {
     double? byeScore,
   })  : _byeScore = byeScore,
         _type = type,
+        _maximumNumberOfRounds = 0,
         _startedAt = startedAt,
         _description = description,
         _name = name,
