@@ -1,35 +1,33 @@
-import 'package:chess_versus/src/utils/result.dart';
+import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../../data/repositories/tournament/tournament_repository.dart';
-import '../../../domain/models/tournament/tournament.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required TournamentRepository tournamentRepository})
       : _tournamentRepository = tournamentRepository;
 
+  HomeState _state = EmptyHomeState();
   final TournamentRepository _tournamentRepository;
+
   final _log = Logger('HomeViewModel');
 
-  List<Tournament> _tournaments = [];
+  void emit(HomeState state) {
+    _state = state;
+  }
 
-  Future<Result> getAllTournaments() async {
-    try {
-      final result = await _tournamentRepository.fetchAll();
+  Future<void> getTournaments() async {
+    emit(LoadingHomeState());
 
-      switch (result) {
-        case Ok<List<Tournament>>():
-          _tournaments = result.value;
-          _log.fine('Loaded tournaments');
-        case Error<List<Tournament>>():
-          _log.warning('Failed to load tournaments', result.error);
-          return result;
-      }
+    final result = await _tournamentRepository
+        .fetchAll() //
+        .map(SucessGetTournamentsState.new)
+        .mapError((error) => error.message)
+        .mapError(FailedGetTournamentsState.new);
 
-      return result;
-    } finally {
-      notifyListeners();
-    }
+    result //
+        .fold(emit, emit);
   }
 }
