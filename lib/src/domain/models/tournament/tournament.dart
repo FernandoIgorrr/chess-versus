@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class Tournament {
   /// Tournament identifier
   final String _id;
@@ -27,7 +29,7 @@ class Tournament {
   double? _byeScore;
 
   Tournament({
-    required String id,
+    String? id,
     required String name,
     String? description,
     required DateTime startedAt,
@@ -38,7 +40,7 @@ class Tournament {
         _startedAt = startedAt,
         _description = description,
         _name = name,
-        _id = id,
+        _id = id ?? const Uuid().v4(),
         _haveBye = false,
         _status = TournamentStatus.created;
 
