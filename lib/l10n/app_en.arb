@@ -1,0 +1,30 @@
+{   
+    "tournaments": "Tournaments",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "registerTournament":"Register tournament",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    }, 
+    "emptyTournaments":"There are no registered tournaments",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament":"Error when trying to delete the tournament",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament":"Tournament deleted successfully!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "somethingWentWrong": "Something went wrong!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "switchTheme": "Switch theme",
+    "@switchTheme": {
+        "description": "Switch theme"
+    }
+}

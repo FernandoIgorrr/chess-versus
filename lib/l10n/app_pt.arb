@@ -1,0 +1,30 @@
+{
+    "tournaments": "Torneios",
+    "@tournaments": {
+        "description": "Título para page onde se mostram os torneios"
+    },
+    "registerTournament":"Cadastrar torneio",
+    "@registerTournament": {
+        "description": "Título para botão/formulário de registrar torneio"
+    },
+    "emptyTournaments":"Não há torneios cadastrados",
+    "@emptyTournaments": {
+        "description": "Mensagem para quando não houver torneios cadastrados."
+    },
+    "errorWhileDeletingATournament":"Erro ao tentar deletar o torneio",
+    "@errorWhileDeletingATournament": {
+        "description": "Mensagem de erro ao tentar deletar um torneio."
+    },
+    "successWhileDeletingATournament":"Torneio excluído com sucesso!",
+    "@successWhileDeletingATournament": {
+        "description": "Mensagem de sucesso para exclusão de um torneio."
+    },
+    "somethingWentWrong": "Algo deu errado!",
+    "@somethingWentWrong": {
+        "description": "Título para erros genéricos."
+    },
+    "switchTheme": "Trocar o tema",
+    "@switchTheme": {
+        "description": "Trocar o tema"
+    }
+}
