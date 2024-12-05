@@ -55,15 +55,17 @@ class Tournament {
   DateTime get getStartedAt => _startedAt;
   TournamentType get getType => _type;
   TournamentStatus get getStatus => _status;
+  int get getMaximumNumberOfRounds => _maximumNumberOfRounds;
   bool get getHaveBye => _haveBye;
   double? get getByeScore => _byeScore;
 
   ///Set methods of the properties of the tournament
-  ///
   void setName(String name) => _name = name;
   void setDescription(String? description) => _description = description;
   void setStartedAt(DateTime startedAt) => _startedAt = startedAt;
   void setStatus(TournamentStatus status) => _status = status;
+  void setMaximumNumberOfRounds(int maximumNumberOfRounds) =>
+      _maximumNumberOfRounds = maximumNumberOfRounds;
   void setHaveBye(bool haveBye) => _haveBye = haveBye;
   void setByeScore(double? byeScore) => _byeScore = byeScore;
 }
