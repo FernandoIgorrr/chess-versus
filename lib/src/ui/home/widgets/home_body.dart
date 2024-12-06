@@ -27,7 +27,7 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 16),
+        //   const SizedBox(height: 16),
         Expanded(
           child: ListenableBuilder(
               listenable: widget.viewModel,
@@ -68,7 +68,7 @@ class _HomeBodyState extends State<HomeBody> {
                                           side: BorderSide(
                                             color: Theme.of(context)
                                                 .colorScheme
-                                                .primary,
+                                                .onPrimary,
                                           )),
                                       title: Text(
                                         state.tournaments[index].getName,

@@ -7,6 +7,10 @@
     "@registerTournament": {
         "description": "Título para botão/formulário de registrar torneio"
     },
+    "name":"Nome",
+    "@name": {
+        "description": "Label/hint para o nome"
+    },
     "tournamentNullDescription":"Sem descrição",
     "@tournamentNullDescription": {
         "description": "Descrição padrão de um torneio sem descrição"

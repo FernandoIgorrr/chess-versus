@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/ui/core/themes/widget_themes/input_decoration.dart';
 import 'package:flutter/material.dart';
 
 import '../themes/colors.dart';
@@ -23,10 +24,12 @@ class ThemeHelper {
     ColorScheme colorScheme =
         _supportedColors[theme] ?? AppColors.lightCodeScheme;
     return ThemeData(
-        colorScheme: _supportedColors[theme],
-        textTheme: TextThemes.textTheme(colorScheme),
-        appBarTheme: appBarTheme(colorScheme),
-        listTileTheme: listTileTheme(colorScheme),
-        switchTheme: switchTheme(colorScheme));
+      colorScheme: _supportedColors[theme],
+      textTheme: TextThemes.textTheme(colorScheme),
+      appBarTheme: appBarTheme(colorScheme),
+      listTileTheme: listTileTheme(colorScheme),
+      switchTheme: switchTheme(colorScheme),
+      inputDecorationTheme: inputDecorationTheme(colorScheme),
+    );
   }
 }

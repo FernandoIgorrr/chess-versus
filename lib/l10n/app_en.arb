@@ -6,6 +6,10 @@
     "registerTournament":"Register tournament",
     "@registerTournament": {
         "description": "Title for tournament registration button/form"
+    },
+    "name":"Name",
+    "@name": {
+        "description": "Label/hint for name"
     }, 
      "tournamentNullDescription":"No description",
     "@tournamentNullDescription": {

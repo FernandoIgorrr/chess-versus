@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/image_constants.dart';
 import '../../core/ui/custom_image_view.dart';
+import 'home_create_tournament.dart';
 
 class HomeScreen extends StatefulWidget {
   final HomeViewModel viewModel;
@@ -31,9 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 56,
           width: 56,
         ),
-        onPressed: () => {
-          //_buildRegisterTournamentDialog(context)
-        },
+        onPressed: () => {_buildRegisterTournamentDialog(context)},
       ),
       mainScreenWidget: Scaffold(
         appBar: CustomAppBar(
@@ -42,5 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
         body: HomeBody(viewModel: widget.viewModel),
       ),
     );
+  }
+
+  Future<void> _buildRegisterTournamentDialog(BuildContext context) {
+    return showDialog<void>(
+        useRootNavigator: true,
+        context: context,
+        builder: (BuildContext context) {
+          return const CreateTournamentWidget();
+        });
   }
 }

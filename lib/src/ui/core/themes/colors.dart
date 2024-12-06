@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const Color blueGray700 = Color(0xFF2E3B3D);
   static const Color lightBlue = Color(0XFFD7E3FF);
   static const Color blue = Color(0XFF055AB2);
   static const Color white = Color(0XFFFFFFFF);
@@ -24,6 +25,7 @@ class AppColors {
   // Esquema de cores escuro
   static const darkCodeScheme = ColorScheme.dark(
     brightness: Brightness.dark,
+    surface: blueGray700,
     primary: purple,
     onPrimary: pink,
     secondary: lightPurple,

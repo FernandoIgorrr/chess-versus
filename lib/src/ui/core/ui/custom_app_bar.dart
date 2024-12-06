@@ -42,11 +42,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: BorderSide(
+                    color: Theme.of(context).colorScheme.onPrimary, width: 2)),
             title: Text(AppLocalizations.of(context)!.settings,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge),
             content: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(Icons.dark_mode_sharp,
                       size: 30, color: Theme.of(context).colorScheme.onPrimary),
