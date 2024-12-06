@@ -54,6 +54,7 @@ class Tournament {
   String? get getDescription => _description;
   DateTime get getStartedAt => _startedAt;
   TournamentType get getType => _type;
+  String get getTypeName => _type.name;
   TournamentStatus get getStatus => _status;
   int get getMaximumNumberOfRounds => _maximumNumberOfRounds;
   bool get getHaveBye => _haveBye;

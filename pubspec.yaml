@@ -18,6 +18,9 @@ dependencies:
   shared_preferences: ^2.3.3
   result_dart: ^1.1.1
   go_router: ^14.6.2
+  floating_draggable_widget: ^2.3.0
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.0.16
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +29,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/
+    - assets/icons/
+
+  fonts:
+    - family: Scaatliches
+      fonts:
+        - asset: assets/fonts/ScaatlichesRegular.ttf
+          weight: 400
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400

@@ -7,6 +7,10 @@
     "@registerTournament": {
         "description": "Title for tournament registration button/form"
     }, 
+     "tournamentNullDescription":"No description",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
     "emptyTournaments":"There are no registered tournaments",
     "@emptyTournaments": {
         "description": "Message for when there are no tournaments registered."
@@ -22,9 +26,17 @@
     "somethingWentWrong": "Something went wrong!",
     "@somethingWentWrong": {
         "description": "Title for generic errors."
+    }, 
+    "settings" : "Settings",
+    "@settings": {
+        "description": "Title for settings button/icon"
     },
     "switchTheme": "Switch theme",
     "@switchTheme": {
         "description": "Switch theme"
+    },
+    "darkMode": "Dark mode",
+    "@darkMode": {
+        "description": "Dark mode"
     }
 }

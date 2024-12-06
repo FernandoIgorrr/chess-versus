@@ -5,5 +5,5 @@ import 'src/app_widget.dart';
 import 'src/config/dependencies.dart';
 
 void main() {
-  runApp(MultiProvider(providers: providersLocal, child: const AppWidget()));
+  runApp(MultiProvider(providers: providersLocal, child: AppWidget()));
 }

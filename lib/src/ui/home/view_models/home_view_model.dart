@@ -23,12 +23,12 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> getTournaments() async {
     emit(LoadingTournamentsState());
-
-    final result = await _tournamentRepository
+    await _tournamentRepository
         .fetchAll() //
         .map(SucessGetTournamentsState.new)
         .mapError((error) => error.message)
         .mapError(FailedGetTournamentsState.new)
         .fold(emit, emit);
+    _log.fine('Loaded tournaments');
   }
 }

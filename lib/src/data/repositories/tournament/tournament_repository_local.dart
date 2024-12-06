@@ -10,7 +10,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
   @override
   AsyncResult<List<Tournament>, TournamentFetchException> fetchAll() async {
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 0));
       var list = [
         Tournament(
             name: 'teste 1',
@@ -56,7 +56,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
 
       return Success(list);
     } on TournamentFetchException catch (e) {
-      return Failure(TournamentFetchException(message:e.message));
+      return Failure(TournamentFetchException(message: e.message));
     }
   }
 }

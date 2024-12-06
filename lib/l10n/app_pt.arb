@@ -7,6 +7,10 @@
     "@registerTournament": {
         "description": "Título para botão/formulário de registrar torneio"
     },
+    "tournamentNullDescription":"Sem descrição",
+    "@tournamentNullDescription": {
+        "description": "Descrição padrão de um torneio sem descrição"
+    },
     "emptyTournaments":"Não há torneios cadastrados",
     "@emptyTournaments": {
         "description": "Mensagem para quando não houver torneios cadastrados."
@@ -23,8 +27,16 @@
     "@somethingWentWrong": {
         "description": "Título para erros genéricos."
     },
+    "settings" : "Configurações",
+    "@settings": {
+        "description": "Título para botão/ícone de configurações"
+    },
     "switchTheme": "Trocar o tema",
     "@switchTheme": {
         "description": "Trocar o tema"
+    },
+    "darkMode": "Modo escuro",
+    "@darkMode": {
+        "description": "Modo escuro"
     }
 }

@@ -3,6 +3,7 @@ import 'package:chess_versus/src/ui/core/ui/card_error.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../view_models/home_view_model.dart';
 
@@ -50,25 +51,52 @@ class _HomeBodyState extends State<HomeBody> {
                               return Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin: Dimens.of(context)
-                                      .edgeInsetsScreenHorizontal,
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 8,
+                                      horizontal: Dimens.of(context)
+                                          .paddingScreenHorizontal),
                                   child: ListTile(
-                                    tileColor:
-                                        Theme.of(context).colorScheme.surface,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                        side: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        )),
-                                    title: Text(
-                                      state.tournaments[index].getName,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium,
-                                    ),
-                                  ),
+                                      horizontalTitleGap: Dimens.of(context)
+                                          .paddingScreenHorizontal,
+                                      minVerticalPadding: Dimens.of(context)
+                                          .paddingScreenVertical,
+                                      tileColor:
+                                          Theme.of(context).colorScheme.surface,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          side: BorderSide(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          )),
+                                      title: Text(
+                                        state.tournaments[index].getName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                      subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              state.tournaments[index]
+                                                      .getDescription ??
+                                                  AppLocalizations.of(context)!
+                                                      .tournamentNullDescription,
+                                            ),
+                                            Text(
+                                              state.tournaments[index]
+                                                  .getTypeName
+                                                  .toString(),
+                                            ),
+                                            Text(
+                                              DateFormat('dd/MM/yyyy').format(
+                                                  state.tournaments[index]
+                                                      .getStartedAt),
+                                            )
+                                          ])),
                                 ),
                               );
                             },
