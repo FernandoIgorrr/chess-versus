@@ -1,13 +1,16 @@
+import 'package:chess_versus/src/data/repositories/repository.dart';
 import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 import 'package:chess_versus/src/exceptions/tournament_fetch_exception.dart';
 import 'package:result_dart/result_dart.dart';
 
-abstract class TournamentRepository {
-  /// Creates a new [Booking].
-  //Future<Result<void>> createBooking(Tournament tournament);
+abstract class TournamentRepository implements Repository<Tournament> {
+  /// Creates a new [Tournament].
+  @override
+  Future<void> create(Tournament tournament);
 
   /// Returns the list of [Tournament] for the application.
-  AsyncResult<List<Tournament>, TournamentFetchException> fetchAll();
+  @override
+  AsyncResult<List<Tournament>, TournamentFetchException> findAll();
 
   /// Returns the [Tournament] with the given [id].
   //Future<Result<Tournament>> fetchById(String id);

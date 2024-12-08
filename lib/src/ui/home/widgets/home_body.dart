@@ -1,10 +1,12 @@
 import 'package:chess_versus/src/ui/core/themes/dimends.dart';
 import 'package:chess_versus/src/ui/core/ui/card_error.dart';
+import 'package:chess_versus/src/ui/core/ui/custom_image_view.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../utils/image_constants.dart';
 import '../view_models/home_view_model.dart';
 
 class HomeBody extends StatefulWidget {
@@ -45,61 +47,65 @@ class _HomeBodyState extends State<HomeBody> {
                   body = Center(
                     child: state.tournaments.isEmpty
                         ? Text(AppLocalizations.of(context)!.emptyTournaments)
-                        : ListView.builder(
-                            itemCount: state.tournaments.length,
-                            itemBuilder: (context, index) {
+                        : ListView(
+                            children: state.tournaments.map((tournament) {
                               return Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      vertical: 8,
-                                      horizontal: Dimens.of(context)
-                                          .paddingScreenHorizontal),
+                                  margin: EdgeInsets.only(
+                                      top: tournament == state.tournaments.first
+                                          ? 16
+                                          : 8,
+                                      bottom:
+                                          tournament == state.tournaments.last
+                                              ? 16
+                                              : 8,
+                                      left: 16,
+                                      right: 16),
                                   child: ListTile(
+                                      leading: SizedBox(
+                                        height: 48,
+                                        width: 48,
+                                        child: CustomImageView(
+                                            imagePath:
+                                                ImageConstants.iconTrophyLight),
+                                      ),
+                                      trailing: const Icon(Icons.chevron_right),
                                       horizontalTitleGap: Dimens.of(context)
                                           .paddingScreenHorizontal,
                                       minVerticalPadding: Dimens.of(context)
                                           .paddingScreenVertical,
-                                      tileColor:
-                                          Theme.of(context).colorScheme.surface,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          side: BorderSide(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimary,
-                                          )),
+                                      tileColor: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                       title: Text(
-                                        state.tournaments[index].getName,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
+                                        tournament.getName,
                                       ),
                                       subtitle: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            Divider(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .surface,
+                                            ),
                                             Text(
-                                              state.tournaments[index]
-                                                      .getDescription ??
+                                              tournament.getDescription ??
                                                   AppLocalizations.of(context)!
                                                       .tournamentNullDescription,
                                             ),
                                             Text(
-                                              state.tournaments[index]
-                                                  .getTypeName
-                                                  .toString(),
+                                              tournament.getTypeName.toString(),
                                             ),
                                             Text(
                                               DateFormat('dd/MM/yyyy').format(
-                                                  state.tournaments[index]
-                                                      .getStartedAt),
+                                                  tournament.getStartedAt),
                                             )
                                           ])),
                                 ),
                               );
-                            },
+                            }).toList(),
                           ),
                   );
                 }

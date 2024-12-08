@@ -1,4 +1,4 @@
-import 'package:chess_versus/src/ui/core/themes/view_models/theme_view_model.dart';
+import 'package:chess_versus/src/ui/core/themes/provider/theme_provider.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_app_bar.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
 import 'package:chess_versus/src/ui/home/widgets/home_body.dart';
@@ -12,7 +12,7 @@ import 'home_create_tournament.dart';
 
 class HomeScreen extends StatefulWidget {
   final HomeViewModel viewModel;
-  final themeViewModel = ThemeViewModel.getInstance();
+  final themeViewModel = ThemeProvider.getInstance();
   HomeScreen({super.key, required this.viewModel});
 
   @override
@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingWidgetHeight: 64,
       floatingWidgetWidth: 64,
       floatingWidget: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         child: CustomImageView(
           imagePath: ImageConstants.iconTrophyLight,
           height: 56,

@@ -1,4 +1,4 @@
-{
+{"@@locale": "pt",
     "tournaments": "Torneios",
     "@tournaments": {
         "description": "Título para page onde se mostram os torneios"
@@ -10,6 +10,14 @@
     "name":"Nome",
     "@name": {
         "description": "Label/hint para o nome"
+    },
+    "tournamentName":"Nome do torneio",
+    "@tournamentName": {
+        "description": "Label/hint para o nome do torneio"
+    },
+    "tournamentDescription":"Descrição do torneio",
+    "@tournamentDescription": {
+        "description": "Label/hint para a descrição do torneio"
     },
     "tournamentNullDescription":"Sem descrição",
     "@tournamentNullDescription": {
@@ -34,6 +42,10 @@
     "settings" : "Configurações",
     "@settings": {
         "description": "Título para botão/ícone de configurações"
+    },
+    "language":"Idioma",
+    "@language": {
+        "description": "Label/hint para idioma"
     },
     "switchTheme": "Trocar o tema",
     "@switchTheme": {

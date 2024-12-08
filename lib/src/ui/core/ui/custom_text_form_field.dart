@@ -29,7 +29,8 @@ class CustomTextFormField extends StatelessWidget {
       this.fillColor,
       this.filled = true,
       this.validator,
-      this.onChange});
+      this.onChange,
+      this.label});
 
   final Alignment? alignment;
   final Function(String)? onChange;
@@ -48,6 +49,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? textInputType;
   final int? maxLines;
   final String? hintText;
+  final Widget? label;
   final TextStyle? hintStyle;
   final Widget? prefix;
   final BoxConstraints? prefixConstraints;
@@ -86,7 +88,6 @@ class CustomTextFormField extends StatelessWidget {
         },
         textAlign: textAlign ?? TextAlign.center,
         autofocus: autofocus!,
-        // style: textStyle ?? theme.textTheme.titleMedium,
         obscureText: obscureText!,
         readOnly: readonly!,
         onTap: () {
@@ -100,6 +101,7 @@ class CustomTextFormField extends StatelessWidget {
       ));
 
   InputDecoration get decoration => InputDecoration(
+        label: label,
         hintText: hintText ?? "",
         // hintStyle: hintStyle ?? theme.textTheme.titleLarge,
         prefixIcon: prefix,

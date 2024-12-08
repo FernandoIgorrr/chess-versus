@@ -24,7 +24,7 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> getTournaments() async {
     emit(LoadingTournamentsState());
     await _tournamentRepository
-        .fetchAll() //
+        .findAll() //
         .map(SucessGetTournamentsState.new)
         .mapError((error) => error.message)
         .mapError(FailedGetTournamentsState.new)

@@ -1,4 +1,4 @@
-{   
+{   "@@locale": "en",
     "tournaments": "Tournaments",
     "@tournaments": {
         "description": "Title for page showing tournaments"
@@ -11,6 +11,14 @@
     "@name": {
         "description": "Label/hint for name"
     }, 
+    "tournamentName":"Tournament name",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription":"Tournament description",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
      "tournamentNullDescription":"No description",
     "@tournamentNullDescription": {
         "description": "Default description of a tournament without description"
@@ -34,6 +42,10 @@
     "settings" : "Settings",
     "@settings": {
         "description": "Title for settings button/icon"
+    },
+    "language":"Language",
+    "@language": {
+        "description": "Label/hint for language"
     },
     "switchTheme": "Switch theme",
     "@switchTheme": {
