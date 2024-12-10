@@ -1,3 +1,5 @@
+import 'package:chess_versus/src/domain/value_objects/score.dart';
+
 sealed class TournamentType {
   static TournamentType fromJson(dynamic data) {
     switch (data['type']['name'].toString().toLowerCase()) {
@@ -23,10 +25,7 @@ sealed class TournamentType {
       };
     } else if (type is Swiss) {
       return {
-        'type': <String, dynamic>{
-          'name': 'Swiss',
-          if (type._byeScore != null) 'byeScore': type._byeScore
-        }
+        'type': <String, dynamic>{'name': 'Swiss', 'byeScore': type._byeScore}
       };
     }
     return {
@@ -47,11 +46,11 @@ class RoundRobin extends TournamentType {
 
 class Swiss extends TournamentType {
   /// Represents the score each player will earn when "facing" the bye
-  final double? _byeScore;
+  final Score _byeScore;
 
-  Swiss(this._byeScore);
+  Swiss(double byScore) : _byeScore = Score(byScore);
 
-  double? get getByeScore => _byeScore;
+  Score get getByeScore => _byeScore;
 
   @override
   String toString() => 'Swiss';

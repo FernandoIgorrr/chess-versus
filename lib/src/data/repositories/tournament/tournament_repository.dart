@@ -6,7 +6,7 @@ import 'package:result_dart/result_dart.dart';
 abstract class TournamentRepository implements Repository<Tournament> {
   /// Creates a new [Tournament].
   @override
-  Future<void> create(Tournament tournament);
+  AsyncResult<void, Exception> create(Tournament tournament);
 
   /// Returns the list of [Tournament] for the application.
   @override

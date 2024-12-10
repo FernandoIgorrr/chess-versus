@@ -1,4 +1,4 @@
-import 'package:chess_versus/src/ui/core/themes/dimends.dart';
+import 'package:chess_versus/src/ui/core/theme_config/dimends.dart';
 import 'package:chess_versus/src/ui/core/ui/card_error.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_image_view.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
@@ -46,7 +46,14 @@ class _HomeBodyState extends State<HomeBody> {
                 } else if (state is SucessGetTournamentsState) {
                   body = Center(
                     child: state.tournaments.isEmpty
-                        ? Text(AppLocalizations.of(context)!.emptyTournaments)
+                        ? Text(
+                            AppLocalizations.of(context)!.emptyTournaments,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                            ),
+                          )
                         : ListView(
                             children: state.tournaments.map((tournament) {
                               return Align(
@@ -79,7 +86,7 @@ class _HomeBodyState extends State<HomeBody> {
                                           .colorScheme
                                           .secondary,
                                       title: Text(
-                                        tournament.getName,
+                                        tournament.getName.toString(),
                                       ),
                                       subtitle: Column(
                                           crossAxisAlignment:

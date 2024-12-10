@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class CustomRadioButton<T> extends StatefulWidget {
   final List<T> items;
+  final List<String>? labels;
   final void Function(T) onChanged;
+  final bool? fullWidth;
 
   CustomRadioButton({
     super.key,
     required this.items,
     required this.onChanged,
+    this.fullWidth,
+    this.labels,
   }) {
-    // Validando o tipo no construtor
-    if (!(T == int || T == double || T == bool || T == String)) {
-      throw ArgumentError(
-          'CustomRadioButton only supports types: int, double, bool, and String');
-    }
+    if (labels != null) assert(items.length == labels!.length);
   }
 
   @override
@@ -21,42 +21,55 @@ class CustomRadioButton<T> extends StatefulWidget {
 }
 
 class _CustomRadioButtonState<T> extends State<CustomRadioButton<T>> {
+  late bool fullWidth;
   late T selectedValue;
   late final List<T> items;
+  late final List<String>? labels;
   @override
   void initState() {
     super.initState();
     selectedValue = widget.items.first;
+    fullWidth = widget.fullWidth ?? false;
+    items = widget.items;
+    labels = widget.labels;
   }
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       double maxWidth = constraints.maxWidth;
-      var choices = widget.items;
       double spacing = 8;
-      double chipWidth =
-          (maxWidth - (spacing * (choices.length - 1))) / choices.length;
-      return Wrap(
-        spacing: spacing,
+
+      double? chipWidth = fullWidth
+          ? (maxWidth - (spacing * (items.length - 1))) / items.length
+          : null;
+      return Row(
+        //spacing: spacing,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: widget.items.map((item) {
           return SizedBox(
             width: chipWidth,
+            // height: 40,
             child: ChoiceChip(
-              showCheckmark: false,
+              showCheckmark: true,
               selected: selectedValue == item,
               selectedColor: Theme.of(context).colorScheme.primary,
-
+              checkmarkColor: Colors.white,
               //backgroundColor: Colors.amber,
               side: BorderSide(color: Theme.of(context).colorScheme.secondary),
-              labelStyle:
-                  TextStyle(color: Theme.of(context).colorScheme.secondary),
+              labelStyle: TextStyle(
+                color: selectedValue == item
+                    ? Colors.white
+                    : Theme.of(context).colorScheme.secondary,
+              ),
               label: Container(
                 alignment: AlignmentDirectional.center,
                 //width: chipWidth,
-                // height: 40,
+                height: 36,
                 child: Text(
-                  item.toString(),
+                  labels == null
+                      ? item.toString()
+                      : labels![items.indexOf(item)],
                 ),
               ),
               onSelected: (selected) {

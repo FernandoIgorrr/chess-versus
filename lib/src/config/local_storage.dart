@@ -1,6 +1,6 @@
-class LocalStorageKey {
-  static const String tournaments = 'tournaments';
-  static const String players = 'players';
+class LocalStorageKeys {
+  static const String kTournaments = 'tournaments';
+  static const String kPlayers = 'players';
 
-  static const String theme = 'theme';
+  static const String kDarkMode = 'dark_theme';
 }

@@ -1,10 +1,11 @@
-import 'package:chess_versus/src/ui/core/themes/widget_themes/dialog.dart';
-import 'package:chess_versus/src/ui/core/themes/widget_themes/icons.dart';
-import 'package:chess_versus/src/ui/core/themes/widget_themes/input_decoration.dart';
+import 'package:chess_versus/src/ui/core/theme_config/widget_themes/card.dart';
+import 'package:chess_versus/src/ui/core/theme_config/widget_themes/dialog.dart';
+import 'package:chess_versus/src/ui/core/theme_config/widget_themes/icons.dart';
+import 'package:chess_versus/src/ui/core/theme_config/widget_themes/input_decoration.dart';
 import 'package:flutter/material.dart';
 
-import '../themes/colors.dart';
-import '../themes/texts.dart';
+import 'colors.dart';
+import 'texts.dart';
 import 'widget_themes/app_bar.dart';
 import 'widget_themes/list_tile.dart';
 import 'widget_themes/switch.dart';
@@ -34,6 +35,7 @@ class ThemeHelper {
       listTileTheme: listTileTheme(colorScheme),
       switchTheme: switchTheme(colorScheme),
       inputDecorationTheme: inputDecorationTheme(colorScheme),
+      cardTheme: cardTheme(colorScheme),
     );
   }
 }

@@ -38,7 +38,7 @@ class AppColors {
     surface: drakGray,
     primary: blueGray,
     onPrimary: white,
-    secondary: gray,
+    secondary: lightGray200,
     error: redOrange,
     onError: white,
   );

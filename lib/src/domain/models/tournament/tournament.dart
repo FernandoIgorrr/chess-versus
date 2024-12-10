@@ -1,7 +1,7 @@
 import 'package:uuid/uuid.dart';
 
 import '../../value_objects/name.dart';
-import '../../value_objects/total_number_of_rounds.dart';
+import '../../value_objects/score.dart';
 import 'tournament_type.dart';
 
 class Tournament {
@@ -32,26 +32,26 @@ class Tournament {
   /// (only legs in Swiss tournaments)
   bool? _haveBye;
 
-  ///Case the tournamente the be deleted
-  bool _deleted;
+  ///If the tournament was arquived
+  bool _arquived;
 
   Tournament(
       {String? id,
-      required Name name,
+      required String name,
       String? description,
       required DateTime startedAt,
       required TournamentType type})
       : _id = id ?? const Uuid().v4(),
-        _name = name,
+        _name = Name(name),
         _description = description,
         _startedAt = startedAt,
         _type = type,
         _status = TournamentStatus.created,
-        _deleted = false;
+        _arquived = false;
 
   ///Get methods of the properties of the tournament
   String get getId => _id;
-  String get getName => _name.toString();
+  Name get getName => _name;
   String? get getDescription => _description;
   DateTime get getStartedAt => _startedAt;
   TournamentType get getType => _type;
@@ -59,21 +59,23 @@ class Tournament {
   TournamentStatus get getStatus => _status;
   int? get getTotalNumberOfRounds => _totalNumberOfRounds;
   bool? get getHaveBye => _haveBye;
-  double? get getByeScore => _type is Swiss ? _type.getByeScore : null;
+  Score? get getByeScore => _type is Swiss ? _type.getByeScore : null;
 
   ///Set methods of the properties of the tournament
-  void setName(String name) => _name = Name(name);
-  void setDescription(String description) => _description = description;
-  void setStartedAt(DateTime startedAt) => _startedAt = startedAt;
-  void setStatus(TournamentStatus status) => _status = status;
-  void setTotalNumberOfRounds(int totalNumberOfRounds) =>
+  setName(String name) => _name = Name(name);
+  setDescription(String description) => _description = description;
+  setStartedAt(DateTime startedAt) => _startedAt = startedAt;
+  setStatus(TournamentStatus status) => _status = status;
+  setTotalNumberOfRounds(int totalNumberOfRounds) =>
       _totalNumberOfRounds = totalNumberOfRounds;
-  void setHaveBye(bool haveBye) => _haveBye = haveBye;
+  setHaveBye(bool haveBye) => _haveBye = haveBye;
+  setArquived(bool arquived) => _arquived = arquived;
+  setByScore(Score score) => Swiss.new;
 
   static Tournament fromJson(dynamic data) {
     return Tournament(
       id: data['id'],
-      name: Name(data['name']),
+      name: data['name'],
       description: data['description'],
       startedAt: DateTime.parse(data['started_at']),
       type: TournamentType.fromJson(data['type']),
@@ -81,7 +83,7 @@ class Tournament {
       .._status = _$StatusEnumMap[data['status']] ?? TournamentStatus.created
       .._totalNumberOfRounds = data['total_number_of_rounds']
       .._haveBye = data['have_bye']
-      .._deleted = data['deleted'];
+      .._arquived = data['deleted'];
   }
 
   Map<String, dynamic> toJson(Tournament tournament) {
@@ -94,8 +96,13 @@ class Tournament {
       'status': tournament._status.name,
       'total_number_of_rounds': tournament._totalNumberOfRounds,
       'have_bye': tournament._haveBye,
-      'delted': tournament._deleted
+      'delted': tournament._arquived
     };
+  }
+
+  @override
+  String toString() {
+    return 'Tournament(id: $_id, name: $_name, description: $_description, startedAt: $_startedAt, type: $_type, status: $_status, totalNumberOfRounds: $_totalNumberOfRounds, haveBye: $_haveBye)';
   }
 }
 

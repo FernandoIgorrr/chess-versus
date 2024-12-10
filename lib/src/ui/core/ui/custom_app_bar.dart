@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../themes/provider/theme_state.dart';
-import '../themes/provider/theme_provider.dart';
+import '../theme_config/view_models/theme_state.dart';
+import '../theme_config/view_models/theme_switch_view_model.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  CustomAppBar({super.key, this.title});
-
-  final themeViewModel = ThemeProvider.getInstance();
+  final ThemeSwitchViewModel themeViewModel;
+  CustomAppBar({super.key, this.title, required this.themeViewModel});
 
   Widget? title;
   @override
@@ -60,10 +59,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       Text(
                         AppLocalizations.of(context)!.darkMode,
                       ),
-                      Switch(
-                          value: widget.themeViewModel.state is DarkThemeState,
-                          onChanged: (value) {
-                            widget.themeViewModel.switchTheme();
+                      ListenableBuilder(
+                          listenable: widget.themeViewModel,
+                          builder: (context, child) {
+                            return Switch(
+                                value: widget.themeViewModel.state
+                                    is DarkThemeState,
+                                onChanged: (value) {
+                                  widget.themeViewModel.toggle;
+                                });
                           }),
                     ]),
                 const SizedBox(
@@ -79,7 +83,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     Text(
                       AppLocalizations.of(context)!.language,
                     ),
-                    Icon(Icons.account_box_outlined)
+                    const Icon(Icons.account_box_outlined)
                   ],
                 )
               ],

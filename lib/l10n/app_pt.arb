@@ -1,4 +1,6 @@
-{"@@locale": "pt",
+{
+    "@@locale": "pt",
+
     "tournaments": "Torneios",
     "@tournaments": {
         "description": "Título para page onde se mostram os torneios"
@@ -23,6 +25,14 @@
     "@tournamentNullDescription": {
         "description": "Descrição padrão de um torneio sem descrição"
     },
+    "tournamentType":"Tipo de torneio",
+    "@tournamentType": {
+        "description": "Label/hint para o tipo de torneio"
+    },
+    "scorePerBye":"Pontuação por bye",
+    "@scorePerBye": {
+        "description": "Label/hint para a pontuação por bye"
+    }, 
     "emptyTournaments":"Não há torneios cadastrados",
     "@emptyTournaments": {
         "description": "Mensagem para quando não houver torneios cadastrados."
@@ -34,6 +44,18 @@
     "successWhileDeletingATournament":"Torneio excluído com sucesso!",
     "@successWhileDeletingATournament": {
         "description": "Mensagem de sucesso para exclusão de um torneio."
+    },
+    "score":"Escore",
+    "@score": {
+        "description": "Título para escore/pontuação de algo"
+    },
+    "scoreNegativeException": "O escore não pode ser negativo!",
+    "@scoreNegativeException": {
+        "description": "Mensagem de exceção para quando o escore for negativo."
+    },
+    "player":"Jogador",
+    "@player": {
+        "description": "Título para jogador"
     },
     "somethingWentWrong": "Algo deu errado!",
     "@somethingWentWrong": {

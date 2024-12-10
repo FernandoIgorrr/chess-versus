@@ -22,6 +22,14 @@
      "tournamentNullDescription":"No description",
     "@tournamentNullDescription": {
         "description": "Default description of a tournament without description"
+    },  
+     "tournamentType":"Tournament type",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    }, 
+    "scorePerBye":"Score per bye",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
     },
     "emptyTournaments":"There are no registered tournaments",
     "@emptyTournaments": {
@@ -34,6 +42,18 @@
     "successWhileDeletingATournament":"Tournament deleted successfully!",
     "@successWhileDeletingATournament": {
         "description": "Success message for deleting a tournament."
+    },
+    "score":"Score",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Score can't be negative!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "player":"Player",
+    "@player": {
+        "description": "Title for player"
     },
     "somethingWentWrong": "Something went wrong!",
     "@somethingWentWrong": {

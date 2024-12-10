@@ -3,7 +3,7 @@ import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../ui/home/widgets/home_screen.dart';
+import '../ui/home/widgets/home_page.dart';
 
 GoRouter router() =>
     GoRouter(initialLocation: Routes.home, debugLogDiagnostics: true, routes: [
@@ -13,7 +13,7 @@ GoRouter router() =>
           final viewModel = HomeViewModel(
             tournamentRepository: context.read(),
           );
-          return HomeScreen(viewModel: viewModel);
+          return HomePage(viewModel: viewModel);
         },
       ),
     ]);

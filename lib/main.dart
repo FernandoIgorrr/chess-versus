@@ -1,12 +1,9 @@
+import 'package:chess_versus/src/data/repositories/theme/theme_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:provider/provider.dart';
-
 import 'src/app_widget.dart';
-import 'src/config/dependencies.dart';
+import 'src/data/services/theme_service.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await initLocalStorage();
-  runApp(MultiProvider(providers: providersLocal, child: AppWidget()));
+  runApp(AppWidget(themeRepository: ThemeRepository(ThemeService())));
 }

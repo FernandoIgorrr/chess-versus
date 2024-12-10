@@ -1,5 +1,3 @@
-import 'package:logging/logging.dart';
-
 import '../../../data/repositories/tournament/tournament_repository.dart';
 
 class TournamentCreateUseCase {
@@ -8,5 +6,5 @@ class TournamentCreateUseCase {
   }) : _tournamentRepository = tournamentRepository;
 
   final TournamentRepository _tournamentRepository;
-  final _log = Logger('TournamentCreateUseCase');
+  //final _log = Logger('TournamentCreateUseCase');
 }

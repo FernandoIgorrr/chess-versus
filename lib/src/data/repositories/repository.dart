@@ -1,11 +1,11 @@
 import 'package:result_dart/result_dart.dart';
 
 abstract interface class Repository<T> {
-  Future<String?> getItems();
+  Future<List<String>?> getItems();
 
-  Future<void> setItems(String value);
+  Future<bool> setItems(List<String> values);
 
-  Future<void> create(T t);
+  AsyncResult<void, Exception> create(T t);
 
   AsyncResult<List<T>, Exception> findAll();
 }

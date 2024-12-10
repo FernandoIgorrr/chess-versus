@@ -30,10 +30,14 @@ class CustomTextFormField extends StatelessWidget {
       this.filled = true,
       this.validator,
       this.onChange,
-      this.label});
+      this.label,
+      this.value,
+      this.onSaved});
 
+  final String? value;
   final Alignment? alignment;
-  final Function(String)? onChange;
+  final void Function(String)? onChange;
+  final void Function(String?)? onSaved;
   final double? width;
   final BoxDecoration? boxDecoration;
   final TextEditingController? scrollPadding;
@@ -74,7 +78,9 @@ class CustomTextFormField extends StatelessWidget {
       width: width ?? double.maxFinite,
       decoration: boxDecoration,
       child: TextFormField(
+        onSaved: onSaved,
         onChanged: onChange,
+        initialValue: value,
         scrollPadding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         controller: controller,
