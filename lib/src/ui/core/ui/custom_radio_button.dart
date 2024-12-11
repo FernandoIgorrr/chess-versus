@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomRadioButton<T> extends StatefulWidget {
+class RadioButtonChip<T> extends StatefulWidget {
   final List<T> items;
   final List<String>? labels;
   final void Function(T) onChanged;
   final bool? fullWidth;
 
-  CustomRadioButton({
+  RadioButtonChip({
     super.key,
     required this.items,
     required this.onChanged,
@@ -17,10 +17,10 @@ class CustomRadioButton<T> extends StatefulWidget {
   }
 
   @override
-  State<CustomRadioButton<T>> createState() => _CustomRadioButtonState<T>();
+  State<RadioButtonChip<T>> createState() => _RadioButtonChipState<T>();
 }
 
-class _CustomRadioButtonState<T> extends State<CustomRadioButton<T>> {
+class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
   late bool fullWidth;
   late T selectedValue;
   late final List<T> items;

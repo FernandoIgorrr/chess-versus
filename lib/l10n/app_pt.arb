@@ -33,6 +33,14 @@
     "@scorePerBye": {
         "description": "Label/hint para a pontuação por bye"
     }, 
+    "tournamentRegisteredSuccessfully":"Torneio cadastrado com sucesso!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData":"Dados inválidos",
+    "@invalidData": {
+        "description": "Invalid data message" 
+    },
     "emptyTournaments":"Não há torneios cadastrados",
     "@emptyTournaments": {
         "description": "Mensagem para quando não houver torneios cadastrados."

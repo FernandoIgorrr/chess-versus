@@ -6,12 +6,18 @@ class TextThemes {
         color: colorScheme.onPrimary,
         //fontFamily: 'Scaatliches',
         fontWeight: FontWeight.w700,
+        fontSize: 20,
       ),
       titleMedium: TextStyle(
         color: colorScheme.onPrimary,
         //fontFamily: 'Scaatliches',
         fontWeight: FontWeight.w400,
+        fontSize: 18,
       ),
+
+      // para tútulos fora de lugares on o background seja da cor principal
+      bodyLarge:
+          TextStyle(color: colorScheme.primary, fontWeight: FontWeight.w700),
 
       /// Para o título de erro
       headlineSmall: TextStyle(

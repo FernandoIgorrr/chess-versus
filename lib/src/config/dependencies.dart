@@ -3,8 +3,6 @@ import 'package:chess_versus/src/data/repositories/theme/theme_repository.dart';
 import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
 import 'package:chess_versus/src/data/services/theme_service.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament.dart/tournament_create_use_case.dart';
-import 'package:chess_versus/src/ui/core/theme_config/view_models/theme_switch_view_model.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:provider/provider.dart';
 

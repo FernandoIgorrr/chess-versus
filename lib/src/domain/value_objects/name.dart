@@ -9,6 +9,8 @@ class Name implements ValueObject {
   String? validator([Object? obj]) {
     if (_value.isEmpty) {
       return 'Name can\'t be empty';
+    } else if (_value == 'bye') {
+      return 'Name can\'t be bye';
     }
     return null;
   }

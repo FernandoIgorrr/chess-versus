@@ -18,6 +18,7 @@ class AppColors {
   static const Color lightRedPink = Color(0XFFFFB4AB);
 
   static const Color redOrange = Color(0XFFC44133);
+  static const Color green = Color(0XFF00bc8c);
   static const Color lightPurple = Color(0XFFEBDCFF);
 
   // Esquema de cores claro
@@ -30,6 +31,7 @@ class AppColors {
     secondary: lightGray200,
     error: redOrange,
     onError: white,
+    scrim: green,
   );
 
   // Esquema de cores escuro
@@ -41,5 +43,6 @@ class AppColors {
     secondary: lightGray200,
     error: redOrange,
     onError: white,
+    scrim: green,
   );
 }

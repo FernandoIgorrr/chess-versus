@@ -1,5 +1,6 @@
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/card.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/dialog.dart';
+import 'package:chess_versus/src/ui/core/theme_config/widget_themes/elevated_button.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/icons.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/input_decoration.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class ThemeHelper {
       switchTheme: switchTheme(colorScheme),
       inputDecorationTheme: inputDecorationTheme(colorScheme),
       cardTheme: cardTheme(colorScheme),
+      elevatedButtonTheme: elevatedButtonTheme(colorScheme),
     );
   }
 }

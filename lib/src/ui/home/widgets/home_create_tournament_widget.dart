@@ -1,6 +1,7 @@
 import 'package:chess_versus/src/domain/models/tournament/tournament_create_dto.dart';
 import 'package:chess_versus/src/domain/models/tournament/tournament_type.dart';
 import 'package:chess_versus/src/ui/core/theme_config/dimends.dart';
+import 'package:chess_versus/src/ui/core/ui/custom_elevated_button.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_radio_button.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_text_form_field.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,8 @@ class HomeCreateTournamentWidget extends StatefulWidget {
 
 class _HomeCreateTournamentWidgetState
     extends State<HomeCreateTournamentWidget> {
+  final formKey = GlobalKey<FormState>();
+
   List<TournamentType> tournamentTypes = <TournamentType>[
     Swiss(0.0),
     Elimination(),
@@ -40,41 +43,63 @@ class _HomeCreateTournamentWidgetState
     tournamentCreateDTO = TournamentCreateDTO.empty();
   }
 
+  FormState get form => formKey.currentState!;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      //width: double.maxFinite,
-      padding: Dimens.of(context).edgeInsetsScreenHorizontal,
-      child: Form(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Column(
-          //mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              AppLocalizations.of(context)!.registerTournament,
-              textAlign: TextAlign.center,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          //width: double.maxFinite,
+          padding: Dimens.of(context).edgeInsetsScreenHorizontal,
+          child: Form(
+            key: formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: ListView(
+              shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
+              //mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(AppLocalizations.of(context)!.registerTournament,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge),
+                const SizedBox(height: 16),
+                _buildNameTextFormField(),
+                const SizedBox(height: 16),
+                _buildDescriptionTextFormField(),
+                const SizedBox(height: 16),
+                _buildTournamentTypeSection(),
+                const SizedBox(height: 16),
+                tournamentCreateDTO.getType is Swiss
+                    ? _buildByeScoreSection()
+                    : Container(),
+                const SizedBox(height: 16),
+                CustomElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
+                    if (kDebugMode) {
+                      print(tournamentCreateDTO);
+                    }
+                    final valid = form.validate();
+                    if (valid) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          _buildSnackBarFeedback(
+                              AppLocalizations.of(context)!
+                                  .tournamentRegisteredSuccessfully,
+                              Theme.of(context).colorScheme.scrim));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          _buildSnackBarFeedback(
+                              AppLocalizations.of(context)!.invalidData,
+                              Theme.of(context).colorScheme.error));
+                    }
+                  },
+                  text: AppLocalizations.of(context)!.registerTournament,
+                ),
+                const SizedBox(height: 16),
+              ],
             ),
-            const SizedBox(height: 16),
-            _buildNameTextFormField(),
-            const SizedBox(height: 16),
-            _buildDescriptionTextFormField(),
-            const SizedBox(height: 16),
-            _buildTournamentTypeSection(),
-            const SizedBox(height: 16),
-            tournamentCreateDTO.getType is Swiss
-                ? _buildByeScoreSection()
-                : Container(),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                if (kDebugMode) {
-                  print(tournamentCreateDTO);
-                }
-              },
-              child: const Text("CADASTRAR TORNEIO"),
-            ),
-            const SizedBox(height: 16),
-          ],
+          ),
         ),
       ),
     );
@@ -141,17 +166,30 @@ class _HomeCreateTournamentWidgetState
   }
 
   _buildRadioButtonTournamentType() {
-    return CustomRadioButton<TournamentType>(
+    return RadioButtonChip<TournamentType>(
       items: tournamentTypes,
-      onChanged: tournamentCreateDTO.setType,
+      onChanged: (value) {
+        setState(() {
+          tournamentTypeController = value;
+          tournamentCreateDTO.setType(value);
+        });
+      },
     );
   }
 
   _buildRadioButtonByeScore() {
-    return CustomRadioButton<double>(
+    return RadioButtonChip<double>(
       fullWidth: true,
       items: byeScores,
       onChanged: tournamentCreateDTO.setByScore,
+    );
+  }
+
+  _buildSnackBarFeedback(String messege, Color color) {
+    return SnackBar(
+      content: Text(messege, textAlign: TextAlign.center),
+      backgroundColor: color,
+      duration: const Duration(seconds: 1),
     );
   }
 }
