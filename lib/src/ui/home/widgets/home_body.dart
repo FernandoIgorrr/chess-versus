@@ -2,11 +2,16 @@ import 'package:chess_versus/src/ui/core/theme_config/dimends.dart';
 import 'package:chess_versus/src/ui/core/ui/card_error.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_image_view.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
+import 'package:chess_versus/src/ui/home/widgets/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:logging/logging.dart';
 
+import '../../../routing/routes.dart';
 import '../../../utils/image_constants.dart';
+import '../../tournament_form/view_models/form_state.dart';
 import '../view_models/home_view_model.dart';
 
 class HomeBody extends StatefulWidget {
@@ -19,9 +24,18 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  final _log = Logger('_HomeBodyState');
   @override
   void initState() {
     super.initState();
+    widget.viewModel.getTournaments();
+    _log.fine('initState and getTournaments');
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeBody oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    //oldWidget.viewModel.getTournaments();
     widget.viewModel.getTournaments();
   }
 
@@ -55,21 +69,25 @@ class _HomeBodyState extends State<HomeBody> {
                             ),
                           )
                         : ListView(
-                            children: state.tournaments.map((tournament) {
+                            children:
+                                state.tournaments.reversed.map((tournament) {
                               return Align(
                                 alignment: Alignment.center,
                                 child: Container(
                                   margin: EdgeInsets.only(
-                                      top: tournament == state.tournaments.first
+                                      top: tournament == state.tournaments.last
                                           ? 16
                                           : 8,
                                       bottom:
-                                          tournament == state.tournaments.last
+                                          tournament == state.tournaments.first
                                               ? 16
                                               : 8,
                                       left: 16,
                                       right: 16),
                                   child: ListTile(
+                                      onTap: () => context.push(
+                                          Routes.tournamentWithId(
+                                              tournament.getId)),
                                       leading: SizedBox(
                                         height: 48,
                                         width: 48,

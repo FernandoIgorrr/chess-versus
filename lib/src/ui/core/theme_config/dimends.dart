@@ -11,7 +11,7 @@ sealed class Dimens {
   static const paddingHorizontal = 20.0;
 
   /// General vertical padding used to separate UI items
-  static const paddingVertical = 24.0;
+  static const paddingVertical = 16.0;
 
   /// Horizontal padding for screen edges
   abstract final double paddingScreenHorizontal;
@@ -22,6 +22,9 @@ sealed class Dimens {
   /// Horizontal symmetric padding for screen edges
   EdgeInsets get edgeInsetsScreenHorizontal =>
       EdgeInsets.symmetric(horizontal: paddingScreenHorizontal);
+
+  EdgeInsets get edgeInsetsScreenVertical =>
+      EdgeInsets.symmetric(vertical: paddingScreenVertical);
 
   /// Symmetric padding for screen edges
   EdgeInsets get edgeInsetsScreenSymmetric => EdgeInsets.symmetric(

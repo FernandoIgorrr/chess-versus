@@ -1,14 +1,17 @@
 import 'package:chess_versus/src/ui/core/ui/custom_app_bar.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
 import 'package:chess_versus/src/ui/home/widgets/home_body.dart';
+import 'package:chess_versus/src/ui/tournament_form/view_models/form_state.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/image_constants.dart';
 import '../../core/ui/custom_image_view.dart';
-import 'home_create_tournament_widget.dart';
+import '../../tournament_form/view_models/tournament_form_view_model.dart';
+import '../../tournament_form/widgets/tournament_form.dart';
 
 class HomePage extends StatefulWidget {
   final HomeViewModel viewModel;
@@ -19,6 +22,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final Logger _log;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _log = Logger('HomePage');
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingDraggableWidget(
@@ -31,7 +42,9 @@ class _HomePageState extends State<HomePage> {
           height: 56,
           width: 56,
         ),
-        onPressed: () => {_buildRegisterTournamentDialog(context)},
+        onPressed: () async {
+          await _buildRegisterTournamentDialog(context);
+        },
       ),
       mainScreenWidget: Scaffold(
         appBar: CustomAppBar(
@@ -44,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _buildRegisterTournamentDialog(BuildContext context) async {
-    showModalBottomSheet(
+    await showModalBottomSheet(
         isScrollControlled: true,
         showDragHandle: true,
         useSafeArea: true,
@@ -54,7 +67,11 @@ class _HomePageState extends State<HomePage> {
         ),
         context: context,
         builder: (_) {
-          return const HomeCreateTournamentWidget();
+          return TournamentForm(
+              viewModel: TournamentFormViewModel(
+            context.read(),
+          ));
         });
+    widget.viewModel.getTournaments();
   }
 }

@@ -21,7 +21,7 @@ class TextThemes {
 
       /// Para o título de erro
       headlineSmall: TextStyle(
-        color: colorScheme.onError,
+        color: colorScheme.error,
         fontSize: 22,
         // fontFamily: 'Scaatliches',
         fontWeight: FontWeight.w500,

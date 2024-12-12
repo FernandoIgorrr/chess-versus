@@ -1,9 +1,9 @@
-import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../data/repositories/tournament/tournament_repository.dart';
+import 'home_state.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required TournamentRepository tournamentRepository})

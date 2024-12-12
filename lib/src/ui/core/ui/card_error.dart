@@ -16,9 +16,9 @@ class CardError extends StatelessWidget {
         onTap: onTap,
         child: Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.error,
+              color: Theme.of(context).colorScheme.onError,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Theme.of(context).colorScheme.onError),
+              border: Border.all(color: Theme.of(context).colorScheme.error),
             ),
             margin: const EdgeInsets.symmetric(horizontal: 24),
             padding: const EdgeInsets.all(16),
@@ -29,7 +29,7 @@ class CardError extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.error,
-                        color: Theme.of(context).colorScheme.onError),
+                        color: Theme.of(context).colorScheme.error),
                     const SizedBox(width: 8),
                     Text(
                       AppLocalizations.of(context)!.somethingWentWrong,

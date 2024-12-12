@@ -81,22 +81,22 @@ class Tournament {
       type: TournamentType.fromJson(data['type']),
     )
       .._status = _$StatusEnumMap[data['status']] ?? TournamentStatus.created
-      .._totalNumberOfRounds = data['total_number_of_rounds']
-      .._haveBye = data['have_bye']
-      .._arquived = data['deleted'];
+      .._totalNumberOfRounds = data['total_number_of_rounds'] as int?
+      .._haveBye = data['have_bye'] as bool?
+      .._arquived = data['arquived'] as bool;
   }
 
-  Map<String, dynamic> toJson(Tournament tournament) {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'id': tournament._id,
-      'name': tournament._name,
-      'description': tournament._description,
-      'started_at': tournament._startedAt,
-      'type': TournamentType.toJson(tournament._type),
-      'status': tournament._status.name,
-      'total_number_of_rounds': tournament._totalNumberOfRounds,
-      'have_bye': tournament._haveBye,
-      'delted': tournament._arquived
+      'id': _id,
+      'name': _name.toString(),
+      'description': _description,
+      'started_at': _startedAt.toIso8601String(),
+      'type': TournamentType.toJson(_type),
+      'status': _status.name,
+      'total_number_of_rounds': _totalNumberOfRounds,
+      'have_bye': _haveBye,
+      'arquived': _arquived
     };
   }
 

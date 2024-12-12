@@ -15,4 +15,6 @@ class Score extends ValueObject {
 
   @override
   String toString() => _value.toString();
+
+  double get toDouble => _value;
 }

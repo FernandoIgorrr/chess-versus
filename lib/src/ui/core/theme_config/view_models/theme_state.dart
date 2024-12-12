@@ -4,6 +4,8 @@ sealed class ThemeState {
   late final ThemeMode themeMode;
 }
 
+class IdleThemeState extends ThemeState {}
+
 class LightThemeState extends ThemeState {
   @override
   // ignore: overridden_fields

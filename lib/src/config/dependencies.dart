@@ -24,8 +24,6 @@ List<SingleChildWidget> _sharedProviders = [
 List<SingleChildWidget> get providersLocal {
   return [
     Provider(create: (_) => ThemeRepository(ThemeService())),
-    // ChangeNotifierProvider(
-    // create: (_) => ThemeSwitchViewModel(ThemeRepository(ThemeService()))),
     Provider(
         create: (context) =>
             TournamentRepositoryLocal(LocalStorageKeys.kTournaments)

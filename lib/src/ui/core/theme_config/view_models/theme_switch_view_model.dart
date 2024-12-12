@@ -5,7 +5,7 @@ import 'theme_state.dart';
 
 class ThemeSwitchViewModel extends ChangeNotifier {
   final ThemeRepository _themeRepository;
-  ThemeState _state = DarkThemeState();
+  ThemeState _state = IdleThemeState();
 
   ThemeSwitchViewModel(this._themeRepository) {
     _load();
