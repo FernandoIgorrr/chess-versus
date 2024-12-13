@@ -18,7 +18,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
 
   @override
   Future<List<String>?> getItems() async {
-    await Future.delayed(const Duration(seconds: 1));
+    //await Future.delayed(const Duration(seconds: 1));
     final prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(_kTournaments);
   }

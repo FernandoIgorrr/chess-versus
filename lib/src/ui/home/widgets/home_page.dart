@@ -1,7 +1,3 @@
-import 'package:chess_versus/src/ui/core/ui/custom_app_bar.dart';
-import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
-import 'package:chess_versus/src/ui/home/widgets/home_body.dart';
-import 'package:chess_versus/src/ui/tournament_form/view_models/form_state.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +5,12 @@ import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/image_constants.dart';
+import '../../core/ui/custom_app_bar.dart';
 import '../../core/ui/custom_image_view.dart';
 import '../../tournament_form/view_models/tournament_form_view_model.dart';
 import '../../tournament_form/widgets/tournament_form.dart';
+import '../view_models/home_view_model.dart';
+import 'home_body.dart';
 
 class HomePage extends StatefulWidget {
   final HomeViewModel viewModel;
@@ -22,13 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final Logger _log;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _log = Logger('HomePage');
-  }
+  final Logger _log = Logger('HomePage');
 
   @override
   Widget build(BuildContext context) {

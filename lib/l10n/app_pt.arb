@@ -61,9 +61,29 @@
     "@scoreNegativeException": {
         "description": "Mensagem de exceção para quando o escore for negativo."
     },
+    "classification":"Classificação",
+    "@classification": {
+        "description": "Título para classificação"
+    },   
+    "rounds":"Rodadas",
+    "@rounds":{
+        "description": "Título para rodadas"
+    },
+    "round":"Rodada",
+    "@round": {
+        "description": "Título para rodada"
+    },
     "player":"Jogador",
     "@player": {
         "description": "Título para jogador"
+    },
+    "players":"Jogadores",
+    "@players": {
+        "description": "Título para jogadores"
+    }, 
+    "informations":"Informações",
+    "@informations": {
+        "description": "Título para informações"
     },
     "somethingWentWrong": "Algo deu errado!",
     "@somethingWentWrong": {

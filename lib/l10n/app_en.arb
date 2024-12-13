@@ -59,9 +59,29 @@
     "@scoreNegativeException": {
         "description": "Exception message for when score is negative."
     },
+    "classification":"Classification",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds":"Rounds",
+    "@rounds":{
+        "description": "Title for rounds"
+    },
+    "round":"Round",
+    "@round": {
+        "description": "Title for round"
+    },
     "player":"Player",
     "@player": {
         "description": "Title for player"
+    },
+    "players":"Players",
+    "@players": {
+        "description": "Title for players"
+    },
+    "informations":"Informations",
+    "@informations": {
+        "description": "Title for informations"
     },
     "somethingWentWrong": "Something went wrong!",
     "@somethingWentWrong": {

@@ -1,7 +1,9 @@
 import 'package:chess_versus/src/routing/routes.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/tournament_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -24,8 +26,11 @@ GoRouter router() =>
               final viewModel = TournamentViewModel(
                 tournamentRepository: context.read(),
               );
-
-              return TournamentPage(viewModel: viewModel);
+              final pageViewViewModel = PageViewViewModel(PageController());
+              return TournamentPage(
+                viewModel: viewModel,
+                pageViewViewModel: pageViewViewModel,
+              );
             },
             routes: [
               GoRoute(
@@ -34,9 +39,13 @@ GoRouter router() =>
                   final id = state.pathParameters['id']!;
                   final viewModel =
                       TournamentViewModel(tournamentRepository: context.read());
+                  final pageViewViewModel = PageViewViewModel(PageController());
 
                   viewModel.getTournament(id);
-                  return TournamentPage(viewModel: viewModel);
+                  return TournamentPage(
+                    viewModel: viewModel,
+                    pageViewViewModel: pageViewViewModel,
+                  );
                 },
               ),
             ],
