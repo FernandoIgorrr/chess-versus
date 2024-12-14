@@ -1,6 +1,6 @@
 import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
 import 'package:chess_versus/src/domain/models/tournament/tournament_create_dto.dart';
-import 'package:chess_versus/src/domain/use_cases/tournament.dart/tournament_create_use_case.dart';
+import 'package:chess_versus/src/domain/use_cases/tournament/tournament_create_use_case.dart';
 import 'package:chess_versus/src/ui/tournament_form/view_models/form_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';

@@ -12,8 +12,8 @@ class FailurePlayersState extends PlayersState {
   FailurePlayersState(this.message);
 }
 
-class SuccessPlayerState extends PlayersState {
+class SuccessPlayersState extends PlayersState {
   final List<Player> players;
 
-  SuccessPlayerState(this.players);
+  SuccessPlayersState(this.players);
 }

@@ -17,10 +17,10 @@ class TournamentRepositoryLocal implements TournamentRepository {
   TournamentRepositoryLocal(this._kTournaments);
 
   @override
-  Future<List<String>?> getItems() async {
+  Future<List<String>> getItems() async {
     //await Future.delayed(const Duration(seconds: 1));
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(_kTournaments);
+    return prefs.getStringList(_kTournaments) ?? [];
   }
 
   @override
@@ -57,8 +57,8 @@ class TournamentRepositoryLocal implements TournamentRepository {
     try {
       final response = await getItems();
 
-      if (response == null) {
-        throw TournamentFetchException('Não há torneios cadastrados');
+      if (response.isEmpty) {
+        throw TournamentFetchExcpetion('Não há torneios cadastrados');
       }
 
       dynamic dynamicTournament =
@@ -66,24 +66,24 @@ class TournamentRepositoryLocal implements TournamentRepository {
 
       return Success(Tournament.fromJson(dynamicTournament));
     } on StateError catch (e) {
-      return Failure(ErroException(e));
-    } on TournamentFetchException catch (e) {
+      return Failure(ErroException(e, 'Tournament not found'));
+    } on TournamentFetchExcpetion catch (e) {
       return Failure(e);
     }
   }
 
   @override
-  AsyncResult<List<Tournament>, TournamentFetchException> findAll() async {
+  AsyncResult<List<Tournament>, TournamentFetchExcpetion> findAll() async {
     try {
       final response = await getItems();
 
-      if (response == null) return const Success(<Tournament>[]);
+      if (response.isEmpty) return const Success(<Tournament>[]);
 
       List<dynamic> dynamicTournamentList = response.map(jsonDecode).toList();
 
       return Success(dynamicTournamentList.map(Tournament.fromJson).toList());
     } catch (e) {
-      return Failure(TournamentFetchException(e.toString()));
+      return Failure(TournamentFetchExcpetion(e.toString()));
     }
   }
 }

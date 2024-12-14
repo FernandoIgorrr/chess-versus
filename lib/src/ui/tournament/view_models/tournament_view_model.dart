@@ -1,14 +1,24 @@
+import 'package:chess_versus/src/data/repositories/player/player_raw_dto_repository.dart';
 import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
+import '../../../domain/models/tournament/tournament.dart';
+
 class TournamentViewModel extends ChangeNotifier {
   final TournamentRepository _repository;
+  final PlayerRawDtoRepository _playerRepository;
+
   TournamentState _state = TournamentIdleState();
+
   final _log = Logger('TourmanetViewModel');
-  TournamentViewModel({required TournamentRepository tournamentRepository})
-      : _repository = tournamentRepository;
+
+  TournamentViewModel(
+      {required TournamentRepository tournamentRepository,
+      required PlayerRawDtoRepository playerRepository})
+      : _playerRepository = playerRepository,
+        _repository = tournamentRepository;
 
   TournamentState get state => _state;
 

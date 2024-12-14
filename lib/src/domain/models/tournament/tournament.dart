@@ -2,6 +2,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../value_objects/name.dart';
 import '../../value_objects/score.dart';
+import '../player/player.dart';
 import 'tournament_type.dart';
 
 class Tournament {
@@ -19,6 +20,9 @@ class Tournament {
 
   /// Tournament type
   final TournamentType _type;
+
+  ///list of players from the tournament
+  List<Player> _players;
 
   /// Maximum number of rounds
   int? _totalNumberOfRounds; // number of rounds
@@ -40,13 +44,15 @@ class Tournament {
       required String name,
       String? description,
       required DateTime startedAt,
-      required TournamentType type})
+      required TournamentType type,
+      List<Player>? players})
       : _id = id ?? const Uuid().v4(),
         _name = Name(name),
         _description = description,
         _startedAt = startedAt,
         _type = type,
         _status = TournamentStatus.created,
+        _players = players ?? <Player>[],
         _arquived = false;
 
   ///Get methods of the properties of the tournament
@@ -57,6 +63,7 @@ class Tournament {
   TournamentType get getType => _type;
   String get getTypeName => _type.toString();
   TournamentStatus get getStatus => _status;
+  List<Player> get getPlayers => _players;
   int? get getTotalNumberOfRounds => _totalNumberOfRounds;
   bool? get getHaveBye => _haveBye;
   Score? get getByeScore => _type is Swiss ? _type.getByeScore : null;
@@ -66,6 +73,7 @@ class Tournament {
   setDescription(String description) => _description = description;
   setStartedAt(DateTime startedAt) => _startedAt = startedAt;
   setStatus(TournamentStatus status) => _status = status;
+  setPlayers(List<Player> players) => _players = players;
   setTotalNumberOfRounds(int totalNumberOfRounds) =>
       _totalNumberOfRounds = totalNumberOfRounds;
   setHaveBye(bool haveBye) => _haveBye = haveBye;

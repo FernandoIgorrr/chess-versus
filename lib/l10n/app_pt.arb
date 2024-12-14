@@ -81,6 +81,22 @@
     "@players": {
         "description": "Título para jogadores"
     }, 
+    "playerAddeddSuccessfully":"Jogador adicionado com sucesso!",
+    "@playerAddeddSuccessfully": {
+        "description": "Mensagem de sucesso para quando um jogador for adicionado."
+    },
+    "addPlayer":"Adicionar jogador",
+    "@addPlayer": {
+        "description": "Título para botão/formulário de adicionar jogador"
+    },
+    "add":"Adicionar",
+    "@add": {
+        "description": "Título para botão/formulário de adicionar"
+    },
+    "playerNmae":"Nome do jogador",
+    "@playerNmae": {
+        "description": "Label/hint para o nome do jogador"
+    },
     "informations":"Informações",
     "@informations": {
         "description": "Título para informações"

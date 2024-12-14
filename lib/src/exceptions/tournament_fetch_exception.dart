@@ -1,7 +1,7 @@
-class TournamentFetchException implements Exception {
+class TournamentFetchExcpetion implements Exception {
   final String message;
 
-  TournamentFetchException(this.message);
+  TournamentFetchExcpetion(this.message);
 
   @override
   String toString() => 'TournamentFetchException: $message';

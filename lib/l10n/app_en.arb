@@ -79,6 +79,22 @@
     "@players": {
         "description": "Title for players"
     },
+    "playerAddeddSuccessfully":"Player added successfully!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae":"Player name",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer":"Add player",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add":"Add",
+    "@add": {
+        "description": "Title for add button/form"
+    },
     "informations":"Informations",
     "@informations": {
         "description": "Title for informations"

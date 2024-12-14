@@ -1,19 +1,18 @@
-import 'package:chess_versus/src/config/assets.dart';
-import 'package:chess_versus/src/domain/models/tournament/tournament_create_dto.dart';
-import 'package:chess_versus/src/domain/models/tournament/tournament_type.dart';
-import 'package:chess_versus/src/ui/core/theme_config/dimends.dart';
-import 'package:chess_versus/src/ui/core/ui/custom_elevated_button.dart';
-import 'package:chess_versus/src/ui/core/ui/custom_radio_button.dart';
-import 'package:chess_versus/src/ui/core/ui/custom_text_form_field.dart';
-import 'package:chess_versus/src/ui/tournament_form/view_models/form_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
+import '../../../config/assets.dart';
 import '../../../domain/models/tournament/tournament.dart';
+import '../../../domain/models/tournament/tournament_create_dto.dart';
+import '../../../domain/models/tournament/tournament_type.dart';
+import '../../core/theme_config/dimends.dart';
+import '../../core/ui/custom_elevated_button.dart';
 import '../../core/ui/custom_image_view.dart';
-import '../../home/view_models/home_state.dart';
+import '../../core/ui/custom_radio_button.dart';
+import '../../core/ui/custom_text_form_field.dart';
+import '../view_models/form_state.dart';
 import '../view_models/tournament_form_view_model.dart';
 
 class TournamentForm extends StatefulWidget {

@@ -19,14 +19,17 @@ import 'content/players_content/widgets/tournament_players_content.dart';
 import 'content/tournament_rounds_content.dart';
 
 class TournamentPage extends StatefulWidget {
-  final TournamentViewModel _viewModel;
+  final TournamentViewModel _tournamentViewModel;
   final PageViewViewModel _pageViewViewModel;
+  final PlayersViewModel _playersViewModel;
   const TournamentPage(
       {super.key,
-      required TournamentViewModel viewModel,
-      required PageViewViewModel pageViewViewModel})
-      : _viewModel = viewModel,
-        _pageViewViewModel = pageViewViewModel;
+      required TournamentViewModel tournamentViewModel,
+      required PageViewViewModel pageViewViewModel,
+      required PlayersViewModel playersViewModel})
+      : _tournamentViewModel = tournamentViewModel,
+        _pageViewViewModel = pageViewViewModel,
+        _playersViewModel = playersViewModel;
 
   @override
   State<TournamentPage> createState() => _TournamentPageState();
@@ -51,9 +54,9 @@ class _TournamentPageState extends State<TournamentPage> {
         if (!didPop) context.go(Routes.home);
       },
       child: ListenableBuilder(
-          listenable: widget._viewModel,
+          listenable: widget._tournamentViewModel,
           builder: (context, child) {
-            var state = widget._viewModel.state;
+            var state = widget._tournamentViewModel.state;
             Widget body = Container();
 
             if (state is TournamentSuccessState) {
@@ -67,9 +70,8 @@ class _TournamentPageState extends State<TournamentPage> {
                         const TournamentClassificationContent(),
                         const TournamentRoundsContent(),
                         TournamentPlayersContent(
-                          viewModel: PlayersViewModel(
-                            playerRepository: context.read(),
-                          ),
+                          tournamentViewModel: widget._tournamentViewModel,
+                          playersViewModel: widget._playersViewModel,
                         ),
                         const TournamentInformationsContent(),
                       ],

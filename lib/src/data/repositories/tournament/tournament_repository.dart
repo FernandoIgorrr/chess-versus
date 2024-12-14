@@ -10,7 +10,7 @@ abstract class TournamentRepository implements Repository<Tournament> {
 
   /// Returns the list of [Tournament] for the application.
   @override
-  AsyncResult<List<Tournament>, TournamentFetchException> findAll();
+  AsyncResult<List<Tournament>, TournamentFetchExcpetion> findAll();
 
   /// Returns the [Tournament] with the given [id].
   //Future<Result<Tournament>> fetchById(String id);

@@ -1,21 +1,22 @@
-import 'package:chess_versus/src/data/repositories/nested_repository.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/models/player/player.dart';
+import '../../../domain/models/player/player_raw_dto.dart';
 import '../../../exceptions/player_fetch_exception.dart';
+import '../repository.dart';
 
-abstract class PlayerRepository implements NestedRepository<Player, String> {
+abstract class PlayerRawDtoRepository implements Repository<PlayerRawDto> {
   /// Creates a new [Player].
   @override
-  AsyncResult<void, Exception> create(Player player, String tournamentId);
+  AsyncResult<void, Exception> create(PlayerRawDto player);
 
   /// Returns the list of [Players] for the application.
   @override
-  AsyncResult<List<Player>, PlayerFetchException> findAll();
+  AsyncResult<List<PlayerRawDto>, Exception> findAll();
 
   /// Returns the list of [Players] of a determined tournament
-  @override
-  AsyncResult<List<Player>, Exception> findBySuperclassId(String tournamentId);
+  AsyncResult<List<PlayerRawDto>, Exception> findByTournament(
+      String tournamentId);
 
   /// Updates the [Player] with the given [id].
   // Future<Result<void>> update(Tournament tournament);

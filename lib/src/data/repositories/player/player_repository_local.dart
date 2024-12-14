@@ -1,53 +1,96 @@
+import 'package:chess_versus/src/data/repositories/player/player_raw_dto_repository.dart';
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
+import 'package:chess_versus/src/domain/models/player/player.dart';
+import 'package:chess_versus/src/domain/models/player/player_raw_dto.dart';
 
 import 'package:chess_versus/src/exceptions/tournament_fetch_exception.dart';
 import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../domain/models/player/player.dart';
+import '../../../exceptions/player_fetch_exception.dart';
 
-class PlayerRepositoryLocal implements PlayerRepository {
-  final String _kPlayers;
+class PlayerRepositoryLocal extends PlayerRepository {
+  final PlayerRawDtoRepository _repository;
+
   final _log = Logger('PlayerRepositoryLocal');
-  PlayerRepositoryLocal(this._kPlayers);
+
+  PlayerRepositoryLocal(this._repository);
 
   @override
-  Future<List<String>?> getItems() async {
-    //await Future.delayed(const Duration(seconds: 1));
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(_kPlayers);
+  Future<List<String>> getItems() async => await _repository.getItems();
+
+  @override
+  Future<bool> setItems(List<String> values) async =>
+      _repository.setItems(values);
+
+  @override
+  AsyncResult<void, Exception> create(
+      Player player, String tournamentId) async {
+    _log.fine('crate');
+    // final _logg = Logger('create');
+    // var reponse = await getItems();
+    // reponse.add(
+    //     jsonEncode(PlayerRawDto.fromPlayer(player, tournamentId).toJson()));
+
+    // setItems(reponse);
+
+    (await _repository.create(PlayerRawDto.fromPlayer(player, tournamentId)))
+        .getOrThrow();
+    _log.fine('crate done');
+    return const Success(unit);
   }
 
   @override
-  Future<bool> setItems(List<String> values) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.setStringList(_kPlayers, values);
+  AsyncResult<List<Player>, PlayerFetchException> findAll() async {
+    try {
+      // final response = await getItems();
+      // if (response.isEmpty) {
+      //   return const Success(<Player>[]);
+      // }
+      // final list = response
+      //     .map(jsonDecode)
+      //     .map(PlayerRawDto.fromJson)
+      //     .map(PlayerRawDto.toPlayer)
+      //     .toList();
+      final list = (await _repository.findAll()).getOrThrow();
+
+      return Success(list.map(PlayerRawDto.toPlayer).toList());
+    } on TournamentFetchExcpetion catch (e) {
+      return Failure(PlayerFetchException(e.message));
+    } catch (e) {
+      return Failure(PlayerFetchException(e.toString()));
+    }
   }
 
   @override
-  AsyncResult<void, Exception> create(Player player) async {
-    final _logg = Logger('create');
-    // TODO: implement fetchByTournamentId
-    throw UnimplementedError();
-  }
+  AsyncResult<List<Player>, Exception> findBySuperclassId(
+      String tournamentId) async {
+    _log.fine('findByTournamentId: $tournamentId');
+    try {
+      // final response = await getItems();
 
-  @override
-  AsyncResult<List<Player>, TournamentFetchException> findAll() async {
-    // TODO: implement fetchByTournamentId
-    throw UnimplementedError();
-  }
+      // if (response.isEmpty) {
+      //   return const Success(<Player>[]);
+      // }
 
-  @override
-  AsyncResult<List<Player>, Exception> fetchByTournamentId(String id) {
-    // TODO: implement fetchByTournamentId
-    throw UnimplementedError();
+      // List<dynamic> dynamicPlayers = response
+      //     .map(jsonDecode)
+      //     .where((d) => d['tournament_id'] == tournamentId)
+      //     .toList();
+      final response =
+          await _repository.findByTournament(tournamentId).getOrElse((failure) {
+        throw failure;
+      });
+
+      return Success(response.map(PlayerRawDto.toPlayer).toList());
+    } catch (e) {
+      return Failure(TournamentFetchExcpetion(e.toString()));
+    }
   }
 
   @override
   AsyncResult<Player, Exception> findById(String id) {
-    // TODO: implement findById
     throw UnimplementedError();
   }
 }
