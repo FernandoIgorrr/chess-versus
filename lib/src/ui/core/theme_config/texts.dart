@@ -54,6 +54,11 @@ class TextThemes {
         // fontFamily: 'Scaatliches',
         //fontWeight: FontWeight.w500,
       ),
+      titleSmall: TextStyle(
+        color: colorScheme.onPrimary,
+        fontFamily: 'Scaatliches',
+        fontSize: 16,
+      ),
 
       /// Para a mensagem de erro
       bodySmall: const TextStyle(color: Colors.white, fontSize: 16));

@@ -112,7 +112,7 @@ class _TournamentInformationsContentState
                           ),
                           child: Center(
                             child: Text(entry.key,
-                                style: Theme.of(context).textTheme.labelSmall),
+                                style: Theme.of(context).textTheme.titleSmall),
                           ),
                         ),
                         ListTile(

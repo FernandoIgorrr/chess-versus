@@ -76,7 +76,7 @@ class _TournamentClassificationContentState
                     child: Container(
                       //  width: 352.h,
                       margin: EdgeInsets.only(
-                          top: 16, bottom: players.last == player ? 16 : 0),
+                          top: 8, bottom: players.last == player ? 8 : 0),
                       child: ExpansionTile(
                         backgroundColor: tileColor,
                         shape: RoundedRectangleBorder(
@@ -144,7 +144,7 @@ class _TournamentClassificationContentState
           ? Text(
               '${index + 1}º  ',
               //textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleSmall,
+              style: Theme.of(context).textTheme.displaySmall,
             )
           : CustomImageView(
               imagePath: index == 0

@@ -75,7 +75,7 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
                   child: Container(
                     //  width: 352.h,
                     margin: EdgeInsets.only(
-                        top: 16, bottom: players.last == player ? 16 : 0),
+                        top: 8, bottom: players.last == player ? 8 : 0),
                     child: ListTile(
                       tileColor: tileColor,
                       shape: RoundedRectangleBorder(
