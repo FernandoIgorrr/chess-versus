@@ -27,4 +27,5 @@ class IconAssets {
 
   static String iconSwordsRounded =
       '$iconPath/material-symbols-light--swords-rounded.svg';
+  static String iconInfo = '$iconPath/info.svg';
 }

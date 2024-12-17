@@ -17,6 +17,8 @@ class AppColors {
   static const Color pink = Color(0XFFFDAFF2);
   static const Color lightRedPink = Color(0XFFFFB4AB);
 
+  static const Color blueGray700 = Color(0xFF2E3B3D);
+
   static const Color redOrange = Color(0XFFC44133);
   static const Color green = Color(0XFF00bc8c);
   static const Color lightPurple = Color(0XFFEBDCFF);
@@ -24,22 +26,24 @@ class AppColors {
   // Esquema de cores claro
   static const lightCodeScheme = ColorScheme.light(
     brightness: Brightness.light,
-    primary: darkBlueGray,
-    onPrimary: white,
-    //surface: lightGray,
-    //secondary: lightGray,
-    secondary: lightGray200,
-    error: redOrange,
-    onError: white,
-    scrim: green,
+    primary: Color(0xff4d5c92),
+    primaryContainer: Color(0xffdce1ff),
+    onPrimary: Color(0xffffffff),
+    onPrimaryContainer: Color(0xff03174b),
+    secondary: Color(0xff595d72),
+    onSecondary: Color(0xffffffff),
+    tertiary: Color(0xff75546f),
+    onTertiary: Color(0xffffffff),
   );
 
   // Esquema de cores escuro
   static const darkCodeScheme = ColorScheme.dark(
     brightness: Brightness.dark,
     surface: drakGray,
-    primary: blueGray,
-    onPrimary: white,
+    primary: blueGray700,
+    primaryContainer: Color(0xff4a6366),
+    onPrimaryContainer: lightGray,
+    onPrimary: lightGray,
     secondary: lightGray200,
     error: redOrange,
     onError: white,

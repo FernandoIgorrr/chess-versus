@@ -11,7 +11,7 @@ class SucessGetTournamentsState extends HomeState {
   SucessGetTournamentsState(this.tournaments);
 }
 
-class FailedGetTournamentsState extends HomeState {
+class FailureGetTournamentsState extends HomeState {
   final String message;
-  FailedGetTournamentsState(this.message);
+  FailureGetTournamentsState(this.message);
 }

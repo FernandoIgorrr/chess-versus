@@ -1,8 +1,3 @@
-import 'package:chess_versus/src/ui/core/theme_config/dimends.dart';
-import 'package:chess_versus/src/ui/core/ui/card_error.dart';
-import 'package:chess_versus/src/ui/core/ui/custom_image_view.dart';
-import 'package:chess_versus/src/ui/home/view_models/home_state.dart';
-import 'package:chess_versus/src/ui/home/widgets/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +6,10 @@ import 'package:logging/logging.dart';
 
 import '../../../routing/routes.dart';
 import '../../../utils/image_constants.dart';
-import '../../tournament_form/view_models/form_state.dart';
+import '../../core/theme_config/dimends.dart';
+import '../../core/ui/card_error.dart';
+import '../../core/ui/custom_image_view.dart';
+import '../view_models/home_state.dart';
 import '../view_models/home_view_model.dart';
 
 class HomeBody extends StatefulWidget {
@@ -24,12 +22,12 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  final _log = Logger('_HomeBodyState');
+  final _log = Logger('HomeBody');
   @override
   void initState() {
     super.initState();
     widget.viewModel.getTournaments();
-    _log.fine('initState and getTournaments');
+    //_log.fine('initState and getTournaments');
   }
 
   @override
@@ -37,6 +35,7 @@ class _HomeBodyState extends State<HomeBody> {
     super.didUpdateWidget(oldWidget);
     //oldWidget.viewModel.getTournaments();
     widget.viewModel.getTournaments();
+    // _log.fine('didUpdateWidget and getTournaments');
   }
 
   @override
@@ -53,7 +52,7 @@ class _HomeBodyState extends State<HomeBody> {
 
                 if (state is LoadingTournamentsState) {
                   body = const Center(child: CircularProgressIndicator());
-                } else if (state is FailedGetTournamentsState) {
+                } else if (state is FailureGetTournamentsState) {
                   body = CardError(
                       message: state.message,
                       onTap: widget.viewModel.getTournaments);
@@ -62,8 +61,8 @@ class _HomeBodyState extends State<HomeBody> {
                     child: state.tournaments.isEmpty
                         ? Text(
                             AppLocalizations.of(context)!.emptyTournaments,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
+                            style: const TextStyle(
+                              //color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.w400,
                               fontSize: 18,
                             ),
@@ -92,6 +91,9 @@ class _HomeBodyState extends State<HomeBody> {
                                         height: 48,
                                         width: 48,
                                         child: CustomImageView(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimaryContainer,
                                             imagePath:
                                                 ImageConstants.iconTrophyLight),
                                       ),
@@ -100,9 +102,7 @@ class _HomeBodyState extends State<HomeBody> {
                                           .paddingScreenHorizontal,
                                       minVerticalPadding: Dimens.of(context)
                                           .paddingScreenVertical,
-                                      tileColor: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
+                                      // tileColor: Theme.of(context).colorScheme.secondary,
                                       title: Text(
                                         tournament.getName.toString(),
                                       ),
@@ -113,7 +113,7 @@ class _HomeBodyState extends State<HomeBody> {
                                             Divider(
                                               color: Theme.of(context)
                                                   .colorScheme
-                                                  .surface,
+                                                  .onPrimaryContainer,
                                             ),
                                             Text(
                                               tournament.getDescription ??

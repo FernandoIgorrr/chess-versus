@@ -13,12 +13,12 @@ import 'tournament_repository.dart';
 
 class TournamentRepositoryLocal implements TournamentRepository {
   final String _kTournaments;
-  final _log = Logger('TournamentRepositoryLocal');
+  //final _log = Logger('TournamentRepositoryLocal');
   TournamentRepositoryLocal(this._kTournaments);
 
   @override
   Future<List<String>> getItems() async {
-    //await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 100));
     final prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(_kTournaments) ?? [];
   }
@@ -31,7 +31,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
 
   @override
   AsyncResult<void, Exception> create(Tournament tournament) async {
-    final _logg = Logger('create');
+    //final _log = Logger('create');
     try {
       await findAll().fold((success) {
         var list = [...success];
@@ -46,14 +46,14 @@ class TournamentRepositoryLocal implements TournamentRepository {
       });
       return const Success(unit);
     } catch (e) {
-      _logg.warning(e.toString());
+      //_log.warning(e.toString());
       return Failure(TournamentCreateException(e.toString()));
     }
   }
 
   @override
   AsyncResult<Tournament, Exception> findById(String id) async {
-    _log.fine('findById: $id');
+    //_log.fine('findById: $id');
     try {
       final response = await getItems();
 

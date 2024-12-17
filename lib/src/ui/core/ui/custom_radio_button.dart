@@ -44,7 +44,6 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
           ? (maxWidth - (spacing * (items.length - 1))) / items.length
           : null;
       return Row(
-        //spacing: spacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: widget.items.map((item) {
           return SizedBox(
@@ -54,14 +53,13 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
               showCheckmark: true,
               selected: selectedValue == item,
               selectedColor: Theme.of(context).colorScheme.primary,
-              checkmarkColor: Colors.white,
+              //checkmarkColor: Theme.of(context).colorScheme.secondary,
               //backgroundColor: Colors.amber,
               side: BorderSide(color: Theme.of(context).colorScheme.secondary),
-              labelStyle: TextStyle(
-                color: selectedValue == item
-                    ? Colors.white
-                    : Theme.of(context).colorScheme.secondary,
-              ),
+              labelStyle: selectedValue == item
+                  ? Theme.of(context).textTheme.displayMedium
+                  : Theme.of(context).textTheme.bodyMedium,
+
               label: Container(
                 alignment: AlignmentDirectional.center,
                 //width: chipWidth,
@@ -70,6 +68,7 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
                   labels == null
                       ? item.toString()
                       : labels![items.indexOf(item)],
+                  // style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
               onSelected: (selected) {

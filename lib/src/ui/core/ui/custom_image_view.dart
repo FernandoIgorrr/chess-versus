@@ -118,8 +118,7 @@ class CustomImageView extends StatelessWidget {
               colorFilter: color != null
                   ? ColorFilter.mode(
                       color ?? Colors.transparent, BlendMode.srcIn)
-                  : ColorFilter.mode(
-                      Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
+                  : null,
             ),
           );
 

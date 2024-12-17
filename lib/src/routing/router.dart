@@ -2,7 +2,7 @@ import 'package:chess_versus/src/routing/routes.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
-import 'package:chess_versus/src/ui/tournament/widgets/content/players_content/view_models/players_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/players/players_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/tournament_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +30,8 @@ GoRouter router() =>
               );
               final playersViewModel =
                   PlayersViewModel(playerRepository: context.read());
-              final pageViewViewModel = PageViewViewModel(PageController());
+              final pageViewViewModel =
+                  PageViewViewModel(PageController(initialPage: 3));
               return TournamentPage(
                 tournamentViewModel: tournamentViewModel,
                 pageViewViewModel: pageViewViewModel,
@@ -45,7 +46,9 @@ GoRouter router() =>
                   final tournamentViewModel = TournamentViewModel(
                       tournamentRepository: context.read(),
                       playerRepository: context.read());
-                  final pageViewViewModel = PageViewViewModel(PageController());
+
+                  final pageViewViewModel =
+                      PageViewViewModel(PageController(initialPage: 3));
                   final playersViewModel =
                       PlayersViewModel(playerRepository: context.read());
                   tournamentViewModel.getTournament(id);

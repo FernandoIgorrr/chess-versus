@@ -51,6 +51,7 @@ class _AppWidgetState extends State<AppWidget> {
         listenable: _viewModel,
         builder: (context, child) {
           return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             title: 'Chess versus',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,

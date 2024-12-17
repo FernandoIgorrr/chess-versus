@@ -27,7 +27,7 @@ class HomeViewModel extends ChangeNotifier {
         .findAll() //
         .map(SucessGetTournamentsState.new)
         .mapError((error) => error.message)
-        .mapError(FailedGetTournamentsState.new)
+        .mapError(FailureGetTournamentsState.new)
         .fold(emit, emit);
     _log.fine('Loaded tournaments');
   }

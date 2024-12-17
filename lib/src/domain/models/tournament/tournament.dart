@@ -68,6 +68,8 @@ class Tournament {
   bool? get getHaveBye => _haveBye;
   Score? get getByeScore => _type is Swiss ? _type.getByeScore : null;
 
+  int get getNumberOfPlayers => _players.length;
+
   ///Set methods of the properties of the tournament
   setName(String name) => _name = Name(name);
   setDescription(String description) => _description = description;

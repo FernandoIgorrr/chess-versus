@@ -13,7 +13,7 @@ import '../../../exceptions/player_fetch_exception.dart';
 class PlayerRepositoryLocal extends PlayerRepository {
   final PlayerRawDtoRepository _repository;
 
-  final _log = Logger('PlayerRepositoryLocal');
+  //final _log = Logger('PlayerRepositoryLocal');
 
   PlayerRepositoryLocal(this._repository);
 
@@ -27,7 +27,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   @override
   AsyncResult<void, Exception> create(
       Player player, String tournamentId) async {
-    _log.fine('crate');
+    //_log.fine('crate');
     // final _logg = Logger('create');
     // var reponse = await getItems();
     // reponse.add(
@@ -37,7 +37,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
 
     (await _repository.create(PlayerRawDto.fromPlayer(player, tournamentId)))
         .getOrThrow();
-    _log.fine('crate done');
+    //_log.fine('crate done');
     return const Success(unit);
   }
 
@@ -66,7 +66,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   @override
   AsyncResult<List<Player>, Exception> findBySuperclassId(
       String tournamentId) async {
-    _log.fine('findByTournamentId: $tournamentId');
+    //_log.fine('findByTournamentId: $tournamentId');
     try {
       // final response = await getItems();
 

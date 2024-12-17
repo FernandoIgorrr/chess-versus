@@ -10,7 +10,7 @@ class TournamentViewModel extends ChangeNotifier {
   final TournamentRepository _repository;
   final PlayerRawDtoRepository _playerRepository;
 
-  TournamentState _state = TournamentIdleState();
+  TournamentState _state = IdleTournamentState();
 
   final _log = Logger('TourmanetViewModel');
 
@@ -24,19 +24,19 @@ class TournamentViewModel extends ChangeNotifier {
 
   emit(TournamentState state) {
     _state = state;
-    _log.fine('Notifying listeners: $state');
-    if (state is TournamentFailureState) {
-      _log.warning('erro: ${state.message}');
+    //  _log.fine('Notifying listeners: $state');
+    if (state is FailureTournamentState) {
+      // _log.warning('erro: ${state.message}');
     }
     notifyListeners();
   }
 
   Future<void> getTournament(String id) async {
-    _log.fine('getTournament');
+    // _log.fine('getTournament');
     (await _repository.findById(id))
-        .map(TournamentSuccessState.new)
+        .map(SuccessTournamentState.new)
         .mapError((failure) => failure.toString())
-        .mapError(TournamentFailureState.new)
+        .mapError(FailureTournamentState.new)
         .fold(emit, emit);
   }
 }

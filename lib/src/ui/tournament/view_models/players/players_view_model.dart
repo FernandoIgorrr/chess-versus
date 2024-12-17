@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
-import '../../../../../../data/repositories/player/player_repository.dart';
-import '../../../../../../domain/models/player/player.dart';
+import '../../../../data/repositories/player/player_repository.dart';
+import '../../../../domain/models/player/player.dart';
 import 'player_state_tap.dart';
 import 'players_state.dart';
 

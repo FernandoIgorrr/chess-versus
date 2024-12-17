@@ -1,9 +1,9 @@
 import 'package:chess_versus/src/domain/models/player/player.dart';
-import 'package:chess_versus/src/ui/tournament/widgets/content/players_content/view_models/player_state.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/players/player_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
-import '../../../../../../domain/use_cases/tournament/player_create_use_case.dart';
+import '../../../../domain/use_cases/tournament/player_create_use_case.dart';
 
 class PlayerViewModel extends ChangeNotifier {
   final PlayerCreateUseCase _playerCreateUseCase;
@@ -17,6 +17,7 @@ class PlayerViewModel extends ChangeNotifier {
 
   emit(PlayerState state) {
     _state = state;
+    // if (state is SuccessPlayerState) player = Player.empty();
     notifyListeners();
   }
 
@@ -29,5 +30,10 @@ class PlayerViewModel extends ChangeNotifier {
         .mapError((failure) => failure.toString())
         .mapError(FailurePlayerState.new)
         .fold(emit, emit);
+  }
+
+  emptyPlayer() {
+    player = Player.empty();
+    emit(IdlePlayerState());
   }
 }

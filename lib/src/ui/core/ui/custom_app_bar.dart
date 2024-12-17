@@ -41,11 +41,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
-              AppLocalizations.of(context)!.settings,
-              textAlign: TextAlign.center,
-              //style: Theme.of(context).textTheme.titleLarge
-            ),
+            title: Text(AppLocalizations.of(context)!.settings,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineLarge),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -58,6 +56,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       ),
                       Text(
                         AppLocalizations.of(context)!.darkMode,
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                       ListenableBuilder(
                           listenable: widget.themeViewModel,
@@ -82,6 +81,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.language,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     const Icon(Icons.account_box_outlined)
                   ],

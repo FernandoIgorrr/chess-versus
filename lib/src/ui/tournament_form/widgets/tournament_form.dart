@@ -75,7 +75,7 @@ class _TournamentFormState extends State<TournamentForm> {
                 children: [
                   Text(AppLocalizations.of(context)!.registerTournament,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge),
+                      style: Theme.of(context).textTheme.headlineLarge),
                   const SizedBox(height: 24),
                   _buildNameTextFormField(),
                   const SizedBox(height: 16),
@@ -113,7 +113,7 @@ class _TournamentFormState extends State<TournamentForm> {
                               _buildSnackBarFeedback(
                                   AppLocalizations.of(context)!
                                       .tournamentRegisteredSuccessfully,
-                                  Theme.of(context).colorScheme.scrim));
+                                  Colors.greenAccent));
                         } else if (state is TournamentFormFailureState) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(_buildSnackBarError(state.message));
@@ -125,6 +125,7 @@ class _TournamentFormState extends State<TournamentForm> {
                       }
                     },
                     text: AppLocalizations.of(context)!.registerTournament,
+                    buttonTextStyle: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
                 ],
@@ -156,6 +157,7 @@ class _TournamentFormState extends State<TournamentForm> {
 
   _buildStartedAtTextFormField() {
     return CustomTextFormField(
+      textStyle: Theme.of(context).textTheme.bodyMedium,
       readonly: true,
       onTap: () => _buildSelectDate(),
       controller: dateController,

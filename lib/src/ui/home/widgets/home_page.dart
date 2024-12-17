@@ -29,8 +29,10 @@ class _HomePageState extends State<HomePage> {
       floatingWidgetHeight: 64,
       floatingWidgetWidth: 64,
       floatingWidget: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         child: CustomImageView(
+          color: Colors.white,
           imagePath: ImageConstants.iconTrophyLight,
           height: 56,
           width: 56,

@@ -2,16 +2,16 @@ import '../../../domain/models/tournament/tournament.dart';
 
 sealed class TournamentState {}
 
-class TournamentIdleState extends TournamentState {}
+class IdleTournamentState extends TournamentState {}
 
-class TournamentLoadingState extends TournamentState {}
+class LoadingTournamentState extends TournamentState {}
 
-class TournamentSuccessState extends TournamentState {
+class SuccessTournamentState extends TournamentState {
   final Tournament tournament;
-  TournamentSuccessState(this.tournament);
+  SuccessTournamentState(this.tournament);
 }
 
-class TournamentFailureState extends TournamentState {
+class FailureTournamentState extends TournamentState {
   final String message;
-  TournamentFailureState(this.message);
+  FailureTournamentState(this.message);
 }

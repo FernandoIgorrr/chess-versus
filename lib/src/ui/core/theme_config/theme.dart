@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/ui/core/theme_config/colors_material_theme_builder.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/card.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/dialog.dart';
 import 'package:chess_versus/src/ui/core/theme_config/widget_themes/elevated_button.dart';
@@ -26,11 +27,13 @@ class ThemeHelper {
 
   ThemeData _getTheme(String theme) {
     ColorScheme colorScheme =
-        _supportedColors[theme] ?? AppColors.lightCodeScheme;
+        _supportedColors[theme] ?? MaterialTheme.lightScheme();
     return ThemeData(
+      useMaterial3: true,
+      //colorSchemeSeed: Color(0xff4d5c92),
+      colorScheme: _supportedColors[theme],
       iconTheme: iconTheme(colorScheme),
       dialogTheme: dialogTheme(colorScheme),
-      colorScheme: _supportedColors[theme],
       textTheme: TextThemes.textTheme(colorScheme),
       appBarTheme: appBarTheme(colorScheme),
       listTileTheme: listTileTheme(colorScheme),

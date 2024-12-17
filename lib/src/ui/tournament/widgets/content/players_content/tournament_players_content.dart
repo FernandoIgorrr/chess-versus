@@ -1,18 +1,17 @@
 import 'package:chess_versus/src/config/assets.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
-import 'package:chess_versus/src/ui/tournament/widgets/content/players_content/view_models/player_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/players/player_view_model.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../domain/models/player/player.dart';
-import '../../../../../core/ui/custom_image_view.dart';
-import '../../../../view_models/tournament_state.dart';
-import '../view_models/player_state_tap.dart';
-import '../view_models/players_state.dart';
-import '../view_models/players_view_model.dart';
+import '../../../../core/ui/custom_image_view.dart';
+import '../../../view_models/tournament_state.dart';
+import '../../../view_models/players/player_state_tap.dart';
+import '../../../view_models/players/players_state.dart';
+import '../../../view_models/players/players_view_model.dart';
 import 'player_form.dart';
 
 // ignore: must_be_immutable
@@ -33,14 +32,6 @@ class TournamentPlayersContent extends StatefulWidget {
 
 class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
   final _log = Logger('TournamentPlayersContent');
-  @override
-  void initState() {
-    super.initState();
-    widget._playersViewModel.getPlayers(
-        (widget._tournamentViewModel.state as TournamentSuccessState)
-            .tournament
-            .getId);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +68,8 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
               children: players.map((player) {
                 Color tileColor =
                     stateTap is PlayerTapped && stateTap.player == player
-                        ? Colors.orange
-                        : Colors.blueGrey;
+                        ? Theme.of(context).colorScheme.tertiary
+                        : Theme.of(context).colorScheme.primaryContainer;
                 return Align(
                   //alignment: Alignment.center,
                   child: Container(
@@ -96,18 +87,22 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
                           imagePath: IconAssets.iconPersonCircleOutline,
                           height: 40,
                           width: 40,
+                          //color: Theme.of(context).colorScheme.primary,
                           color: stateTap is PlayerTapped &&
                                   stateTap.player == player
-                              ? Colors.white
-                              : Colors.grey.shade400,
+                              ? Theme.of(context).colorScheme.surface
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer,
                         ),
                         Flexible(
                           child: Text(
                             player.getName.toString(),
+                            //style: Theme.of(context).textTheme.displaySmall,
                             style: stateTap is PlayerTapped &&
                                     stateTap.player == player
-                                ? Theme.of(context).textTheme.titleSmall
-                                : Theme.of(context).textTheme.labelLarge,
+                                ? Theme.of(context).textTheme.labelSmall
+                                : Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
                       ]),
@@ -123,15 +118,17 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
           );
         }
         return FloatingDraggableWidget(
-          floatingWidgetHeight: 64,
-          floatingWidgetWidth: 64,
+          floatingWidgetHeight: 60,
+          floatingWidgetWidth: 60,
           floatingWidget: FloatingActionButton(
+            backgroundColor: Theme.of(context).colorScheme.primary,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: CustomImageView(
+              color: Colors.white,
               imagePath: IconAssets.iconUserAddFill,
-              height: 48,
-              width: 48,
+              height: 40,
+              width: 40,
             ),
             onPressed: () async {
               await _buildRegisterPlayerDialog(context);

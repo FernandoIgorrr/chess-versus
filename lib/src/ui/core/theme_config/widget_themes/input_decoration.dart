@@ -8,7 +8,7 @@ InputDecorationTheme inputDecorationTheme(ColorScheme colorScheme) =>
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
           color: colorScheme.onPrimary,
-          width: 22,
+          width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(

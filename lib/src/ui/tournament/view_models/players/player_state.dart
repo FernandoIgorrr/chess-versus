@@ -1,4 +1,4 @@
-import '../../../../../../domain/models/player/player.dart';
+import '../../../../domain/models/player/player.dart';
 
 sealed class PlayerState {}
 
