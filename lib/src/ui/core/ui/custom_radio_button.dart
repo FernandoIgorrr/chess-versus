@@ -53,7 +53,7 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
               showCheckmark: true,
               selected: selectedValue == item,
               selectedColor: Theme.of(context).colorScheme.primary,
-              //checkmarkColor: Theme.of(context).colorScheme.secondary,
+              checkmarkColor: Theme.of(context).colorScheme.onPrimary,
               //backgroundColor: Colors.amber,
               side: BorderSide(color: Theme.of(context).colorScheme.secondary),
               labelStyle: selectedValue == item

@@ -34,7 +34,7 @@ class TextThemes {
         fontSize: 18,
       ),
       displayMedium: TextStyle(
-        color: colorScheme.surface,
+        color: colorScheme.onPrimary,
         fontFamily: 'Scaatliches',
         fontSize: 18,
         // fontFamily: 'Scaatliches',
