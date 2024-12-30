@@ -1,6 +1,6 @@
 import 'package:chess_versus/src/routing/routes.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
-import 'package:chess_versus/src/ui/tournament/view_models/page_view_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/tournament_page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/players/players_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/tournament_page.dart';
@@ -27,14 +27,16 @@ GoRouter router() =>
               final tournamentViewModel = TournamentViewModel(
                 tournamentRepository: context.read(),
                 playerRepository: context.read(),
+                roundRepository: context.read(),
+                matchRepository: context.read(),
               );
               final playersViewModel =
                   PlayersViewModel(playerRepository: context.read());
               final pageViewViewModel =
-                  PageViewViewModel(PageController(initialPage: 3));
+                  TournamentPageViewViewModel(PageController(initialPage: 3));
               return TournamentPage(
                 tournamentViewModel: tournamentViewModel,
-                pageViewViewModel: pageViewViewModel,
+                tournamentPageViewViewModel: pageViewViewModel,
                 playersViewModel: playersViewModel,
               );
             },
@@ -45,16 +47,18 @@ GoRouter router() =>
                   final id = state.pathParameters['id']!;
                   final tournamentViewModel = TournamentViewModel(
                       tournamentRepository: context.read(),
-                      playerRepository: context.read());
+                      playerRepository: context.read(),
+                      roundRepository: context.read(),
+                      matchRepository: context.read());
 
-                  final pageViewViewModel =
-                      PageViewViewModel(PageController(initialPage: 3));
+                  final pageViewViewModel = TournamentPageViewViewModel(
+                      PageController(initialPage: 3));
                   final playersViewModel =
                       PlayersViewModel(playerRepository: context.read());
                   tournamentViewModel.getTournament(id);
                   return TournamentPage(
                     tournamentViewModel: tournamentViewModel,
-                    pageViewViewModel: pageViewViewModel,
+                    tournamentPageViewViewModel: pageViewViewModel,
                     playersViewModel: playersViewModel,
                   );
                 },

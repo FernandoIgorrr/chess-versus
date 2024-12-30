@@ -3,6 +3,7 @@ import 'package:uuid/uuid.dart';
 import '../../value_objects/name.dart';
 import '../../value_objects/score.dart';
 import '../player/player.dart';
+import '../round/round.dart';
 import 'tournament_type.dart';
 
 class Tournament {
@@ -24,8 +25,11 @@ class Tournament {
   ///list of players from the tournament
   List<Player> _players;
 
-  /// Maximum number of rounds
+  /// Total number of rounds
   int? _totalNumberOfRounds; // number of rounds
+
+  /// List of rounds from the tournament
+  List<Round> _rounds;
 
   /// Tournament status. Represents the progress of the tournament.
   /// if it's executing or if it's finished, if can add more players...
@@ -39,36 +43,39 @@ class Tournament {
   ///If the tournament was arquived
   bool _arquived;
 
-  Tournament(
-      {String? id,
-      required String name,
-      String? description,
-      required DateTime startedAt,
-      required TournamentType type,
-      List<Player>? players})
-      : _id = id ?? const Uuid().v4(),
+  Tournament({
+    String? id,
+    required String name,
+    String? description,
+    required DateTime startedAt,
+    required TournamentType type,
+    List<Player>? players,
+    List<Round>? rounds,
+  })  : _id = id ?? const Uuid().v4(),
         _name = Name(name),
         _description = description,
         _startedAt = startedAt,
         _type = type,
         _status = TournamentStatus.created,
         _players = players ?? <Player>[],
+        _rounds = rounds ?? <Round>[],
         _arquived = false;
 
   ///Get methods of the properties of the tournament
-  String get getId => _id;
-  Name get getName => _name;
-  String? get getDescription => _description;
-  DateTime get getStartedAt => _startedAt;
-  TournamentType get getType => _type;
-  String get getTypeName => _type.toString();
-  TournamentStatus get getStatus => _status;
-  List<Player> get getPlayers => _players;
-  int? get getTotalNumberOfRounds => _totalNumberOfRounds;
-  bool? get getHaveBye => _haveBye;
-  Score? get getByeScore => _type is Swiss ? _type.getByeScore : null;
+  String get id => _id;
+  Name get name => _name;
+  String? get description => _description;
+  DateTime get startedAt => _startedAt;
+  TournamentType get type => _type;
+  String get typeName => _type.toString();
+  TournamentStatus get status => _status;
+  List<Player> get players => _players;
+  int? get totalNumberOfRounds => _totalNumberOfRounds;
+  List<Round> get rounds => _rounds;
+  bool? get haveBye => _haveBye;
+  Score? get byeScore => _type is Swiss ? _type.getByeScore : null;
 
-  int get getNumberOfPlayers => _players.length;
+  int get numberOfPlayers => _players.length;
 
   ///Set methods of the properties of the tournament
   setName(String name) => _name = Name(name);
@@ -78,6 +85,7 @@ class Tournament {
   setPlayers(List<Player> players) => _players = players;
   setTotalNumberOfRounds(int totalNumberOfRounds) =>
       _totalNumberOfRounds = totalNumberOfRounds;
+  setRounds(List<Round> rounds) => _rounds = rounds;
   setHaveBye(bool haveBye) => _haveBye = haveBye;
   setArquived(bool arquived) => _arquived = arquived;
   setByScore(Score score) => Swiss.new;

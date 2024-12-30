@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/ui/custom_image_view.dart';
-import '../../../view_models/tournament_state.dart';
+import '../../../view_models/tournament_get_state.dart';
 import '../../../view_models/players/player_state_tap.dart';
 import '../../../view_models/players/players_state.dart';
 import '../../../view_models/players/players_view_model.dart';
@@ -97,7 +97,7 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
                         ),
                         Flexible(
                           child: Text(
-                            player.getName.toString(),
+                            player.name.toString(),
                             //style: Theme.of(context).textTheme.displaySmall,
                             style: stateTap is PlayerTapped &&
                                     stateTap.player == player

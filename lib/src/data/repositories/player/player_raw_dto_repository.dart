@@ -2,13 +2,12 @@ import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/models/player/player.dart';
 import '../../../domain/models/player/player_raw_dto.dart';
-import '../../../exceptions/player_fetch_exception.dart';
 import '../repository.dart';
 
 abstract class PlayerRawDtoRepository implements Repository<PlayerRawDto> {
   /// Creates a new [Player].
   @override
-  AsyncResult<void, Exception> create(PlayerRawDto player);
+  AsyncResult<void, Exception> create(PlayerRawDto playerRawDto);
 
   /// Returns the list of [Players] for the application.
   @override

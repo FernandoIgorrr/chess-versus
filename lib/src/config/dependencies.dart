@@ -1,17 +1,25 @@
-import 'package:chess_versus/src/config/local_storage.dart';
-import 'package:chess_versus/src/data/repositories/player/player_raw_dto_repository_local.dart';
-import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
-import 'package:chess_versus/src/data/repositories/theme/theme_repository.dart';
-import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
-import 'package:chess_versus/src/data/services/theme_service.dart';
-import 'package:chess_versus/src/domain/use_cases/tournament/player_create_use_case.dart';
-import 'package:chess_versus/src/domain/use_cases/tournament/tournament_create_use_case.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:provider/provider.dart';
 
+import '../data/repositories/match/match_raw_dto_repository.dart';
+import '../data/repositories/match/match_raw_dto_repository_local.dart';
+import '../data/repositories/match/match_repository.dart';
+import '../data/repositories/match/match_repository_local.dart';
 import '../data/repositories/player/player_raw_dto_repository.dart';
+import '../data/repositories/player/player_raw_dto_repository_local.dart';
+import '../data/repositories/player/player_repository.dart';
 import '../data/repositories/player/player_repository_local.dart';
+import '../data/repositories/round/round_raw_dto_repository.dart';
+import '../data/repositories/round/round_raw_dto_repository_local.dart';
+import '../data/repositories/round/round_repository.dart';
+import '../data/repositories/round/round_repository_local.dart';
+import '../data/repositories/theme/theme_repository.dart';
+import '../data/repositories/tournament/tournament_repository.dart';
 import '../data/repositories/tournament/tournament_repository_local.dart';
+import '../data/services/theme_service.dart';
+import '../domain/use_cases/tournament/player_create_use_case.dart';
+import '../domain/use_cases/tournament/tournament_create_use_case.dart';
+import 'local_storage.dart';
 
 /// Shared providers for all configurations.
 List<SingleChildWidget> _sharedProviders = [
@@ -45,6 +53,20 @@ List<SingleChildWidget> get providersLocal {
     Provider(
       create: (context) =>
           PlayerRepositoryLocal(context.read()) as PlayerRepository,
+    ),
+    Provider(
+        create: (_) => RoundRawDtoRepositoryLocal(LocalStorageKeys.kRounds)
+            as RoundRawDtoRepository),
+    Provider(
+        create: (context) =>
+            RoundRepositoryLocal(context.read()) as RoundRepository),
+    Provider(
+      create: (_) => MatchRawDtoRepositoryLocal(LocalStorageKeys.kMatches)
+          as MatchRawDtoRepository,
+    ),
+    Provider(
+      create: (context) =>
+          MatchRepositoryLocal(context.read()) as MatchRepository,
     ),
     ..._sharedProviders,
   ];

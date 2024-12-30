@@ -44,15 +44,15 @@ class PlayerRepositoryLocal extends PlayerRepository {
   @override
   AsyncResult<List<Player>, PlayerFetchException> findAll() async {
     try {
-      // final response = await getItems();
-      // if (response.isEmpty) {
-      //   return const Success(<Player>[]);
-      // }
-      // final list = response
-      //     .map(jsonDecode)
-      //     .map(PlayerRawDto.fromJson)
-      //     .map(PlayerRawDto.toPlayer)
-      //     .toList();
+      /* final response = await getItems();
+       if (response.isEmpty) {
+         return const Success(<Player>[]);
+       }
+       final list = response
+           .map(jsonDecode)
+           .map(PlayerRawDto.fromJson)
+           .map(PlayerRawDto.toPlayer)
+           .toList();*/
       final list = (await _repository.findAll()).getOrThrow();
 
       return Success(list.map(PlayerRawDto.toPlayer).toList());

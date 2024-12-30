@@ -86,7 +86,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   child: ListTile(
                                       onTap: () => context.push(
                                           Routes.tournamentWithId(
-                                              tournament.getId)),
+                                              tournament.id)),
                                       leading: SizedBox(
                                         height: 48,
                                         width: 48,
@@ -104,7 +104,7 @@ class _HomeBodyState extends State<HomeBody> {
                                           .paddingScreenVertical,
                                       // tileColor: Theme.of(context).colorScheme.secondary,
                                       title: Text(
-                                        tournament.getName.toString(),
+                                        tournament.name.toString(),
                                       ),
                                       subtitle: Column(
                                           crossAxisAlignment:
@@ -116,16 +116,16 @@ class _HomeBodyState extends State<HomeBody> {
                                                   .onPrimaryContainer,
                                             ),
                                             Text(
-                                              tournament.getDescription ??
+                                              tournament.description ??
                                                   AppLocalizations.of(context)!
                                                       .tournamentNullDescription,
                                             ),
                                             Text(
-                                              tournament.getTypeName.toString(),
+                                              tournament.typeName.toString(),
                                             ),
                                             Text(
-                                              DateFormat('dd/MM/yyyy').format(
-                                                  tournament.getStartedAt),
+                                              DateFormat('dd/MM/yyyy')
+                                                  .format(tournament.startedAt),
                                             )
                                           ])),
                                 ),

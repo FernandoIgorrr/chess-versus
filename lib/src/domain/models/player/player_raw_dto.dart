@@ -38,10 +38,10 @@ class PlayerRawDto {
         _score = Score(0),
         _bucholz = Score(0);
 
-  String get getId => _id;
-  Name get getName => _name;
-  Score get getScore => _score;
-  Score get getBuchholz => _bucholz;
+  String get id => _id;
+  Name get name => _name;
+  Score get score => _score;
+  Score get buchholz => _bucholz;
 
   void setName(String name) => _name = Name(name);
   void setScore(double score) => _score = Score(score);
@@ -68,17 +68,17 @@ class PlayerRawDto {
   }
 
   static Player toPlayer(PlayerRawDto dto) => Player(
-      id: dto.getId,
-      name: dto.getName.toString(),
-      score: dto.getScore.toDouble,
-      bucholz: dto.getBuchholz.toDouble);
+      id: dto.id,
+      name: dto.name.toString(),
+      score: dto.score.toDouble,
+      bucholz: dto.buchholz.toDouble);
 
   static PlayerRawDto fromPlayer(Player player, String tournamentId) =>
       PlayerRawDto(
         tournamentId: tournamentId,
-        id: player.getId,
-        name: player.getName.toString(),
+        id: player.id,
+        name: player.name.toString(),
       )
-        .._score = Score(player.getScore.toDouble)
-        .._bucholz = Score(player.getBuchholz.toDouble);
+        .._score = Score(player.score.toDouble)
+        .._bucholz = Score(player.buchholz.toDouble);
 }

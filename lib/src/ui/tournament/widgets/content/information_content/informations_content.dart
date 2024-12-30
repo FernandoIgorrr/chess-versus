@@ -7,7 +7,7 @@ import '../../../../../domain/models/tournament/tournament.dart';
 import '../../../../core/ui/card_error.dart';
 import '../../../view_models/players/players_state.dart';
 import '../../../view_models/players/players_view_model.dart';
-import '../../../view_models/tournament_state.dart';
+import '../../../view_models/tournament_get_state.dart';
 import '../../../view_models/tournament_view_model.dart';
 
 // ignore: must_be_immutable
@@ -33,18 +33,18 @@ class _TournamentInformationsContentState
 
   @override
   Widget build(BuildContext context) {
-    var state = widget._tournamentViewModel.state;
+    var state = widget._tournamentViewModel.stateGet;
     Widget body = Container();
 
-    if (state is IdleTournamentState) {
+    if (state is IdleTournamentGetState) {
       _log.fine('IdleTournamentState');
       body = const Center(child: Text('Nenhum torneio selecionado'));
-    } else if (state is LoadingTournamentState) {
+    } else if (state is LoadingTournamentGetState) {
       _log.fine('LoadingTournamentState');
       body = const Center(child: CircularProgressIndicator());
-    } else if (state is FailureTournamentState) {
+    } else if (state is FailureTournamentGetState) {
       body = Center(child: CardError(message: state.message));
-    } else if (state is SuccessTournamentState) {
+    } else if (state is SuccessTournamentGetState) {
       final tournament = state.tournament;
       String numberOfPlayers = '-1';
 
@@ -64,29 +64,29 @@ class _TournamentInformationsContentState
             }
 
             Map<String, String> data = {
-              'Nome': tournament.getName.toString(),
-              'Tipo': tournament.getType.toString(),
-              'Data': DateFormat('dd/MM/yyyy').format(tournament.getStartedAt),
-              'Status': tournament.getStatus == TournamentStatus.created
+              'Nome': tournament.name.toString(),
+              'Tipo': tournament.type.toString(),
+              'Data': DateFormat('dd/MM/yyyy').format(tournament.startedAt),
+              'Status': tournament.status == TournamentStatus.created
                   ? 'Criado'
-                  : (tournament.getStatus == TournamentStatus.executing
+                  : (tournament.status == TournamentStatus.executing
                       ? 'Em andamento'
                       : 'Finalizado'),
               'Jogadores ativos': numberOfPlayers,
               /* 'inactive_players':
             tournament.getNumberOfDesqualifiedPlayers.toString(),*/
-              'Nº de rodadas': tournament.getTotalNumberOfRounds == null
+              'Nº de rodadas': tournament.totalNumberOfRounds == null
                   ? 'Nao informado'
-                  : tournament.getTotalNumberOfRounds.toString(),
+                  : tournament.totalNumberOfRounds.toString(),
               /*'current_round': tournament.rounds.isEmpty
             ? 'Torneio não iniciado'
             : tournament.rounds.length.toString(),*/
-              'Pontos por Bye': tournament.getByeScore == null
+              'Pontos por Bye': tournament.byeScore == null
                   ? 'Bye inativo'
-                  : tournament.getByeScore.toString(),
-              'Bye': tournament.getHaveBye == null
+                  : tournament.byeScore.toString(),
+              'Bye': tournament.haveBye == null
                   ? 'Inativo'
-                  : (tournament.getHaveBye! ? 'Ativo' : 'Inativo'),
+                  : (tournament.haveBye! ? 'Ativo' : 'Inativo'),
             };
 
             return Container(

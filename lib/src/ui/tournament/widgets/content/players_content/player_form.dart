@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/ui/custom_elevated_button.dart';
 import '../../../../core/ui/custom_text_form_field.dart';
-import '../../../view_models/tournament_state.dart';
+import '../../../view_models/tournament_get_state.dart';
 import '../../../view_models/players/players_view_model.dart';
 
 class PlayerForm extends StatefulWidget {
@@ -46,9 +46,9 @@ class _PlayerFormState extends State<PlayerForm> {
         child: CustomTextFormField(
           //value: widget._playerViewModel.player.getName.toString(),
           controller: TextEditingController(
-              text: widget._playerViewModel.player.getName.toString()),
+              text: widget._playerViewModel.player.name.toString()),
           hintText: AppLocalizations.of(context)!.playerNmae,
-          validator: (v) => widget._playerViewModel.player.getName.validator(),
+          validator: (v) => widget._playerViewModel.player.name.validator(),
           onChange: widget._playerViewModel.player.setName,
         ),
       ),
@@ -64,9 +64,10 @@ class _PlayerFormState extends State<PlayerForm> {
             if (form.validate()) {
               await widget._playerViewModel.create(
                   widget._playerViewModel.player,
-                  (widget._tournamentViewModel.state as SuccessTournamentState)
+                  (widget._tournamentViewModel.stateGet
+                          as SuccessTournamentGetState)
                       .tournament
-                      .getId);
+                      .id);
               final state = widget._playerViewModel.state;
 
               if (state is SuccessPlayerState) {
@@ -75,10 +76,10 @@ class _PlayerFormState extends State<PlayerForm> {
                         AppLocalizations.of(context)!.playerAddeddSuccessfully,
                         Theme.of(context).colorScheme.scrim));
 
-                widget._playersViewModel.getPlayers((widget
-                        ._tournamentViewModel.state as SuccessTournamentState)
+                widget._playersViewModel.getPlayers((widget._tournamentViewModel
+                        .stateGet as SuccessTournamentGetState)
                     .tournament
-                    .getId);
+                    .id);
                 setState(() {
                   widget._playerViewModel.player.setName('');
                 });

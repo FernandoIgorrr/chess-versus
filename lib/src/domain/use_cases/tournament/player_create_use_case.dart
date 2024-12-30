@@ -20,9 +20,9 @@ class PlayerCreateUseCase {
 
   AsyncResult<Player, Exception> createFrom(
       String tournamentId, Player player) async {
-    if (player.getName.toString().isEmpty) {
+    if (player.name.toString().isEmpty) {
       throw PlayerImpossibleNameException('Player\'s name is empty');
-    } else if (player.getName.toString().toLowerCase() == 'bye') {
+    } else if (player.name.toString().toLowerCase() == 'bye') {
       throw PlayerImpossibleNameException('the player\'s name cannot be bye');
     }
     try {

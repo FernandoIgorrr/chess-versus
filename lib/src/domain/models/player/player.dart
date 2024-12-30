@@ -31,33 +31,16 @@ class Player {
         _score = Score(0),
         _buchholz = Score(0);
 
-  String get getId => _id;
-  Name get getName => _name;
-  Score get getScore => _score;
-  Score get getBuchholz => _buchholz;
+  String get id => _id;
+  Name get name => _name;
+  Score get score => _score;
+  Score get buchholz => _buchholz;
 
   void setName(String name) => _name = Name(name);
   void setScore(double score) => _score = Score(score);
   void setBuchholz(double bucholz) => _buchholz = Score(bucholz);
 
   @override
-  static Player fromJson(dynamic data) => Player(
-        id: data['id'],
-        name: data['name'],
-      )
-        .._score = Score((data['score'] as num).toDouble())
-        .._buchholz = Score((data['buchholz'] as num).toDouble());
-
-  @override
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': _id,
-      'name': _name.toString(),
-      'score': _score,
-      'buchholz': _buchholz
-    };
-  }
-
-  @override
-  String toString() => toJson().toString();
+  String toString() =>
+      'Player{id: $_id, name: $_name, score: $_score, bucholz: $_buchholz}';
 }

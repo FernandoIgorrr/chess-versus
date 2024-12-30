@@ -28,13 +28,13 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   }
 
   @override
-  AsyncResult<void, Exception> create(PlayerRawDto player) async {
+  AsyncResult<void, Exception> create(PlayerRawDto playerRawDto) async {
     //_log.fine('create');
     try {
       await findAll().fold((success) {
         //_log.fine('findalAll() success');
         var list = [...success];
-        list.add(player);
+        list.add(playerRawDto);
         //_log.fine('list.add success');
         final listMapStringDynamic =
             list.map((player) => player.toJson()).toList();
@@ -84,7 +84,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
     try {
       final response = await getItems();
 
-      if (response == null) {
+      if (response.isEmpty) {
         return const Success(<PlayerRawDto>[]);
       }
 

@@ -7,7 +7,7 @@ import '../../../../../config/assets.dart';
 import '../../../../core/ui/custom_image_view.dart';
 import '../../../view_models/players/player_state_tap.dart';
 import '../../../view_models/players/players_state.dart';
-import '../../../view_models/tournament_state.dart';
+import '../../../view_models/tournament_get_state.dart';
 import '../../../view_models/tournament_view_model.dart';
 
 class TournamentClassificationContent extends StatefulWidget {
@@ -60,8 +60,8 @@ class _TournamentClassificationContentState
             var players = state.players;
 
             // ordenar por pontuação
-            players.sort(
-                (a, b) => b.getScore.toDouble.compareTo(a.getScore.toDouble));
+            players
+                .sort((a, b) => b.score.toDouble.compareTo(a.score.toDouble));
             body = Container(
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: ListView(
@@ -90,7 +90,7 @@ class _TournamentClassificationContentState
                               Flexible(
                                   flex: 3,
                                   child: Text(
-                                    player.getName.toString(),
+                                    player.name.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .displaySmall,
@@ -98,7 +98,7 @@ class _TournamentClassificationContentState
                               Flexible(
                                   flex: 1,
                                   child: Text(
-                                    player.getScore.toString(),
+                                    player.score.toString(),
                                     textAlign: TextAlign.right,
                                     style: const TextStyle(
                                       color: Colors.green,
@@ -119,7 +119,7 @@ class _TournamentClassificationContentState
                                         Theme.of(context).textTheme.bodySmall,
                                   ),
                                   Text(
-                                    '${player.getBuchholz}',
+                                    '${player.buchholz}',
                                     style:
                                         Theme.of(context).textTheme.bodySmall,
                                   ),

@@ -1,31 +1,41 @@
-import 'package:chess_versus/src/data/repositories/player/player_raw_dto_repository.dart';
-import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
-import 'package:chess_versus/src/ui/tournament/view_models/tournament_state.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
+import '../../../data/repositories/match/match_repository.dart';
+import '../../../data/repositories/player/player_repository.dart';
+import '../../../data/repositories/round/round_repository.dart';
+import '../../../data/repositories/tournament/tournament_repository.dart';
 import '../../../domain/models/tournament/tournament.dart';
+import 'tournament_get_state.dart';
+import 'tournament_state.dart';
 
 class TournamentViewModel extends ChangeNotifier {
-  final TournamentRepository _repository;
-  final PlayerRawDtoRepository _playerRepository;
+  final TournamentRepository _tournamentRepository;
+  final PlayerRepository _playerRepository;
+  final RoundRepository _roundRepository;
+  final MatchRepository _matchRepository;
 
   TournamentState _state = IdleTournamentState();
+  TournamentGetState _stateGet = IdleTournamentGetState();
 
   final _log = Logger('TourmanetViewModel');
 
   TournamentViewModel(
       {required TournamentRepository tournamentRepository,
-      required PlayerRawDtoRepository playerRepository})
-      : _playerRepository = playerRepository,
-        _repository = tournamentRepository;
+      required PlayerRepository playerRepository,
+      required RoundRepository roundRepository,
+      required MatchRepository matchRepository})
+      : _tournamentRepository = tournamentRepository,
+        _playerRepository = playerRepository,
+        _roundRepository = roundRepository,
+        _matchRepository = matchRepository;
 
-  TournamentState get state => _state;
+  TournamentGetState get stateGet => _stateGet;
 
-  emit(TournamentState state) {
-    _state = state;
+  emit(TournamentGetState state) {
+    _stateGet = state;
     //  _log.fine('Notifying listeners: $state');
-    if (state is FailureTournamentState) {
+    if (state is FailureTournamentGetState) {
       // _log.warning('erro: ${state.message}');
     }
     notifyListeners();
@@ -33,10 +43,19 @@ class TournamentViewModel extends ChangeNotifier {
 
   Future<void> getTournament(String id) async {
     // _log.fine('getTournament');
-    (await _repository.findById(id))
-        .map(SuccessTournamentState.new)
+    await (await _tournamentRepository.findById(id))
+        .map(SuccessTournamentGetState.new)
         .mapError((failure) => failure.toString())
-        .mapError(FailureTournamentState.new)
+        .mapError(FailureTournamentGetState.new)
         .fold(emit, emit);
+
+    assemblyTournament(id);
+  }
+
+  assemblyTournament(String id) async {
+    if (_stateGet is SuccessTournamentGetState) {
+      Tournament tournament =
+          (_stateGet as SuccessTournamentGetState).tournament;
+    }
   }
 }
