@@ -29,10 +29,58 @@
     "@tournamentType": {
         "description": "Label/hint para o tipo de torneio"
     },
+    "tournamentStartDate":"Data",
+    "@tournamentStartDate": {
+        "description": "Label/hint para a data de inicio do torneio"
+    },
+    "created":"Criado",
+    "@created": {
+        "description": "Label/hint para criado"
+    },
+    "inProgress":"Em progresso",
+    "@inProgress": {
+        "description": "Label/hint para em progresso"
+    },
+    "finished":"Finalizado",
+    "@finished": {
+        "description": "Label/hint para finalizado"
+    },
+    "numberOfRounds":"Nº de rodadas",
+    "@numberOfRounds": {
+        "description": "Label/hint para o nº de rodadas"
+    },
     "scorePerBye":"Pontuação por bye",
     "@scorePerBye": {
         "description": "Label/hint para a pontuação por bye"
-    }, 
+    },
+    "notDefined":"Nao definido",
+    "@notDefined": {
+        "description": "Label/hint para nao definido"
+    },
+    "notInformed":"Não informado",
+    "@notInformed": {
+        "description": "Label/hint para não informado"
+    },
+    "activePlayers":"Jogadores ativos",
+    "@activePlayers": {
+        "description": "Label/hint para os jogadores ativos"
+    },
+    "active" : "Ativo",
+    "@active": {
+        "description": "Label/hint para ativo"
+    } ,
+    "inactive" : "Inativo",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "Bye inativo",
+    "@byeInactive": {
+        "description": "Label/hint para Bye inativo"
+    },
+    "tournamentHasntStartedYet" :"O Torneio ainda nao iniciou",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint para o torneio ainda nao iniciou"
+    },
     "tournamentRegisteredSuccessfully":"Torneio cadastrado com sucesso!",
     "@tournamentRegisteredSuccessfully": {
         "description": "Mensagem de sucesso para quando um torneio for cadastrado."
@@ -81,6 +129,10 @@
     "@players": {
         "description": "Título para jogadores"
     }, 
+    "thereAreNoRegisteredPlayers":"Não há jogadores cadastrados",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Mensagem para quando não há jogadores cadastrados."
+    },
     "playerAddeddSuccessfully":"Jogador adicionado com sucesso!",
     "@playerAddeddSuccessfully": {
         "description": "Mensagem de sucesso para quando um jogador for adicionado."

@@ -59,79 +59,87 @@ class _TournamentClassificationContentState
             _log.fine('SuccessPlayersState');
             var players = state.players;
 
-            // ordenar por pontuação
-            players
-                .sort((a, b) => b.score.toDouble.compareTo(a.score.toDouble));
-            body = Container(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: ListView(
-                shrinkWrap: true,
-                children: players.map((player) {
-                  Color tileColor =
-                      stateTap is PlayerTapped && stateTap.player == player
-                          ? Theme.of(context).colorScheme.tertiary
-                          : Theme.of(context).colorScheme.primaryContainer;
-                  return Align(
-                    //alignment: Alignment.center,
-                    child: Container(
-                      //  width: 352.h,
-                      margin: EdgeInsets.only(
-                          top: 8, bottom: players.last == player ? 8 : 0),
-                      child: ExpansionTile(
-                        backgroundColor: tileColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              _buildFirstSecondAndThirdPlace(
-                                  players.indexOf(player)),
-                              Flexible(
-                                  flex: 3,
-                                  child: Text(
-                                    player.name.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall,
-                                  )),
-                              Flexible(
-                                  flex: 1,
-                                  child: Text(
-                                    player.score.toString(),
-                                    textAlign: TextAlign.right,
-                                    style: const TextStyle(
-                                      color: Colors.green,
-                                    ),
-                                  )),
-                            ]),
-                        children: <Widget>[
-                          Container(
-                            color: Theme.of(context).colorScheme.primary,
-                            padding: const EdgeInsets.only(top: 4, bottom: 4),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Buchholz: ',
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  ),
-                                  Text(
-                                    '${player.buchholz}',
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  ),
-                                ]), //
+            if (players.isEmpty) {
+              body = Center(
+                child: Text(
+                  AppLocalizations.of(context)!.thereAreNoRegisteredPlayers,
+                ),
+              );
+            } else {
+              // ordenar por pontuação
+              players
+                  .sort((a, b) => b.score.toDouble.compareTo(a.score.toDouble));
+              body = Container(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: players.map((player) {
+                    Color tileColor =
+                        stateTap is PlayerTapped && stateTap.player == player
+                            ? Theme.of(context).colorScheme.tertiary
+                            : Theme.of(context).colorScheme.primaryContainer;
+                    return Align(
+                      //alignment: Alignment.center,
+                      child: Container(
+                        //  width: 352.h,
+                        margin: EdgeInsets.only(
+                            top: 8, bottom: players.last == player ? 8 : 0),
+                        child: ExpansionTile(
+                          backgroundColor: tileColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                        ],
+                          title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                _buildFirstSecondAndThirdPlace(
+                                    players.indexOf(player)),
+                                Flexible(
+                                    flex: 3,
+                                    child: Text(
+                                      player.name.toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall,
+                                    )),
+                                Flexible(
+                                    flex: 1,
+                                    child: Text(
+                                      player.score.toString(),
+                                      textAlign: TextAlign.right,
+                                      style: const TextStyle(
+                                        color: Colors.green,
+                                      ),
+                                    )),
+                              ]),
+                          children: <Widget>[
+                            Container(
+                              color: Theme.of(context).colorScheme.primary,
+                              padding: const EdgeInsets.only(top: 4, bottom: 4),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      'Buchholz: ',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                    Text(
+                                      '${player.buchholz}',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ]), //
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            );
+                    );
+                  }).toList(),
+                ),
+              );
+            }
           }
           return body;
         });

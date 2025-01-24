@@ -64,29 +64,37 @@ class _TournamentInformationsContentState
             }
 
             Map<String, String> data = {
-              'Nome': tournament.name.toString(),
-              'Tipo': tournament.type.toString(),
-              'Data': DateFormat('dd/MM/yyyy').format(tournament.startedAt),
+              AppLocalizations.of(context)!.name: tournament.name.toString(),
+              AppLocalizations.of(context)!.tournamentDescription:
+                  tournament.description.toString(),
+              AppLocalizations.of(context)!.tournamentType:
+                  tournament.type.toString(),
+              AppLocalizations.of(context)!.tournamentStartDate:
+                  DateFormat('dd/MM/yyyy').format(tournament.startedAt),
               'Status': tournament.status == TournamentStatus.created
-                  ? 'Criado'
+                  ? AppLocalizations.of(context)!.created
                   : (tournament.status == TournamentStatus.executing
-                      ? 'Em andamento'
-                      : 'Finalizado'),
-              'Jogadores ativos': numberOfPlayers,
+                      ? AppLocalizations.of(context)!.inProgress
+                      : AppLocalizations.of(context)!.finished),
+              AppLocalizations.of(context)!.activePlayers: numberOfPlayers,
               /* 'inactive_players':
             tournament.getNumberOfDesqualifiedPlayers.toString(),*/
-              'Nº de rodadas': tournament.totalNumberOfRounds == null
-                  ? 'Nao informado'
-                  : tournament.totalNumberOfRounds.toString(),
+              AppLocalizations.of(context)!.numberOfRounds:
+                  tournament.totalNumberOfRounds == null
+                      ? AppLocalizations.of(context)!.notDefined
+                      : tournament.totalNumberOfRounds.toString(),
               /*'current_round': tournament.rounds.isEmpty
             ? 'Torneio não iniciado'
             : tournament.rounds.length.toString(),*/
-              'Pontos por Bye': tournament.byeScore == null
-                  ? 'Bye inativo'
-                  : tournament.byeScore.toString(),
+              AppLocalizations.of(context)!.scorePerBye:
+                  tournament.byeScore == null
+                      ? AppLocalizations.of(context)!.byeInactive
+                      : tournament.byeScore.toString(),
               'Bye': tournament.haveBye == null
-                  ? 'Inativo'
-                  : (tournament.haveBye! ? 'Ativo' : 'Inativo'),
+                  ? AppLocalizations.of(context)!.inactive
+                  : (tournament.haveBye!
+                      ? AppLocalizations.of(context)!.active
+                      : AppLocalizations.of(context)!.inactive),
             };
 
             return Container(

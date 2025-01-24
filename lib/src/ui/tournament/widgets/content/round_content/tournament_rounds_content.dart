@@ -82,9 +82,9 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
     } else if (state is SuccessTournamentGetState) {
       var tournament = state.tournament;
       body = tournament.rounds.isEmpty
-          ? const Center(
+          ? Center(
               child: Text(
-                'O torneio ainda não começou',
+                AppLocalizations.of(context)!.tournamentHasntStartedYet,
                 textAlign: TextAlign.center,
               ),
             )

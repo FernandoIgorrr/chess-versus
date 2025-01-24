@@ -61,61 +61,69 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
           //tournament.setPlayers = state.players;
           _log.fine('SuccessPlayersState');
           var players = state.players;
-          body = Container(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            child: ListView(
-              shrinkWrap: true,
-              children: players.map((player) {
-                Color tileColor =
-                    stateTap is PlayerTapped && stateTap.player == player
-                        ? Theme.of(context).colorScheme.tertiary
-                        : Theme.of(context).colorScheme.primaryContainer;
-                return Align(
-                  //alignment: Alignment.center,
-                  child: Container(
-                    //  width: 352.h,
-                    margin: EdgeInsets.only(
-                        top: 8, bottom: players.last == player ? 8 : 0),
-                    child: ListTile(
-                      tileColor: tileColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      title: Row(children: <Widget>[
-                        CustomImageView(
-                          margin: const EdgeInsets.only(right: 16),
-                          imagePath: IconAssets.iconPersonCircleOutline,
-                          height: 40,
-                          width: 40,
-                          //color: Theme.of(context).colorScheme.primary,
-                          color: stateTap is PlayerTapped &&
-                                  stateTap.player == player
-                              ? Theme.of(context).colorScheme.surface
-                              : Theme.of(context)
-                                  .colorScheme
-                                  .onPrimaryContainer,
+          if (players.isEmpty) {
+            body = Center(
+              child: Text(
+                AppLocalizations.of(context)!.thereAreNoRegisteredPlayers,
+              ),
+            );
+          } else {
+            body = Container(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: ListView(
+                shrinkWrap: true,
+                children: players.map((player) {
+                  Color tileColor =
+                      stateTap is PlayerTapped && stateTap.player == player
+                          ? Theme.of(context).colorScheme.tertiary
+                          : Theme.of(context).colorScheme.primaryContainer;
+                  return Align(
+                    //alignment: Alignment.center,
+                    child: Container(
+                      //  width: 352.h,
+                      margin: EdgeInsets.only(
+                          top: 8, bottom: players.last == player ? 8 : 0),
+                      child: ListTile(
+                        tileColor: tileColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        Flexible(
-                          child: Text(
-                            player.name.toString(),
-                            //style: Theme.of(context).textTheme.displaySmall,
-                            style: stateTap is PlayerTapped &&
+                        title: Row(children: <Widget>[
+                          CustomImageView(
+                            margin: const EdgeInsets.only(right: 16),
+                            imagePath: IconAssets.iconPersonCircleOutline,
+                            height: 40,
+                            width: 40,
+                            //color: Theme.of(context).colorScheme.primary,
+                            color: stateTap is PlayerTapped &&
                                     stateTap.player == player
-                                ? Theme.of(context).textTheme.labelSmall
-                                : Theme.of(context).textTheme.displaySmall,
+                                ? Theme.of(context).colorScheme.surface
+                                : Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
                           ),
-                        ),
-                      ]),
-                      onTap: () {
-                        widget._playersViewModel.emitPlayerTapped(player);
-                      },
-                      onLongPress: () {},
+                          Flexible(
+                            child: Text(
+                              player.name.toString(),
+                              //style: Theme.of(context).textTheme.displaySmall,
+                              style: stateTap is PlayerTapped &&
+                                      stateTap.player == player
+                                  ? Theme.of(context).textTheme.labelSmall
+                                  : Theme.of(context).textTheme.displaySmall,
+                            ),
+                          ),
+                        ]),
+                        onTap: () {
+                          widget._playersViewModel.emitPlayerTapped(player);
+                        },
+                        onLongPress: () {},
+                      ),
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
-          );
+                  );
+                }).toList(),
+              ),
+            );
+          }
         }
         return FloatingDraggableWidget(
           floatingWidgetHeight: 60,
