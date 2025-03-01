@@ -66,7 +66,7 @@ class _TournamentInformationsContentState
             Map<String, String> data = {
               AppLocalizations.of(context)!.name: tournament.name.toString(),
               AppLocalizations.of(context)!.tournamentDescription:
-                  tournament.description.toString(),
+                  tournament.description ?? '',
               AppLocalizations.of(context)!.tournamentType:
                   tournament.type.toString(),
               AppLocalizations.of(context)!.tournamentStartDate:

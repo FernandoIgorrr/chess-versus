@@ -1,10 +1,10 @@
 import 'package:chess_versus/src/domain/models/tournament/tournament_create_dto.dart';
-import 'package:chess_versus/src/exceptions/tournament_empty_name_exception.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_empty_name_exception.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../data/repositories/tournament/tournament_repository.dart';
-import '../../../exceptions/tournament_create_exception.dart';
+import '../../../data/exceptions/tournament_create_exception.dart';
 import '../../models/tournament/tournament.dart';
 
 class TournamentCreateUseCase {

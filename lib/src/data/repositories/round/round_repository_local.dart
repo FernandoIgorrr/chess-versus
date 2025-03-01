@@ -1,6 +1,6 @@
-import 'package:chess_versus/src/exceptions/round_create_exception.dart';
-import 'package:chess_versus/src/exceptions/rounds_fetch_expetion.dart';
-import 'package:chess_versus/src/exceptions/tournament_fetch_exception.dart';
+import 'package:chess_versus/src/data/exceptions/round_create_exception.dart';
+import 'package:chess_versus/src/data/exceptions/rounds_fetch_expetion.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_fetch_exception.dart';
 import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';

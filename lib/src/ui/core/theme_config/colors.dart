@@ -34,6 +34,7 @@ class AppColors {
     onSecondary: Color(0xffffffff),
     tertiary: Color(0xff75546f),
     onTertiary: Color(0xffffffff),
+    scrim: green,
   );
 
   // Esquema de cores escuro

@@ -4,9 +4,9 @@ import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../domain/models/player/player_raw_dto.dart';
-import '../../../exceptions/player_create_exception.dart';
-import '../../../exceptions/player_fetch_exception.dart';
-import '../../../exceptions/tournament_fetch_exception.dart';
+import '../../exceptions/player_create_exception.dart';
+import '../../exceptions/player_fetch_exception.dart';
+import '../../exceptions/tournament_fetch_exception.dart';
 import 'player_raw_dto_repository.dart';
 
 class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {

@@ -4,8 +4,8 @@ import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../domain/models/match/match_row_dto.dart';
-import '../../../exceptions/match_create_exception.dart';
-import '../../../exceptions/matches_fetch_exception.dart';
+import '../../exceptions/match_create_exception.dart';
+import '../../exceptions/matches_fetch_exception.dart';
 import 'match_raw_dto_repository.dart';
 
 class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {

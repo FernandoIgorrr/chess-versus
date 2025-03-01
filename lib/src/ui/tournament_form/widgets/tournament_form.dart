@@ -242,6 +242,7 @@ class _TournamentFormState extends State<TournamentForm> {
   _buildRadioButtonTournamentType() {
     return RadioButtonChip<TournamentType>(
       items: tournamentTypes,
+      fullWidth: false,
       onChanged: (value) {
         setState(() {
           tournamentCreateDTO.setType(value);

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
-import 'package:chess_versus/src/exceptions/erro_exception.dart';
-import 'package:chess_versus/src/exceptions/tournament_create_exception.dart';
-import 'package:chess_versus/src/exceptions/tournament_fetch_exception.dart';
+import 'package:chess_versus/src/data/exceptions/erro_exception.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_create_exception.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_fetch_exception.dart';
 import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';

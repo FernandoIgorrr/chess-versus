@@ -5,9 +5,9 @@ import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../domain/models/round/round_raw_dto.dart';
-import '../../../exceptions/player_create_exception.dart';
-import '../../../exceptions/round_create_exception.dart';
-import '../../../exceptions/rounds_fetch_expetion.dart';
+import '../../exceptions/player_create_exception.dart';
+import '../../exceptions/round_create_exception.dart';
+import '../../exceptions/rounds_fetch_expetion.dart';
 import 'round_raw_dto_repository.dart';
 
 class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {

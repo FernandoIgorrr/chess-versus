@@ -3,12 +3,12 @@ import 'package:chess_versus/src/data/repositories/player/player_repository.dart
 import 'package:chess_versus/src/domain/models/player/player.dart';
 import 'package:chess_versus/src/domain/models/player/player_raw_dto.dart';
 
-import 'package:chess_versus/src/exceptions/tournament_fetch_exception.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_fetch_exception.dart';
 import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';
 
-import '../../../exceptions/player_fetch_exception.dart';
+import '../../exceptions/player_fetch_exception.dart';
 
 class PlayerRepositoryLocal extends PlayerRepository {
   final PlayerRawDtoRepository _repository;

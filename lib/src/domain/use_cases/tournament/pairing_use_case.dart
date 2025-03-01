@@ -1,5 +1,5 @@
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
-import 'package:chess_versus/src/exceptions/tournament_assembly_exception.dart';
+import 'package:chess_versus/src/data/exceptions/tournament_assembly_exception.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 

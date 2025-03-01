@@ -38,19 +38,26 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       double maxWidth = constraints.maxWidth;
-      double spacing = 8;
+      double spacing = 4;
 
       double? chipWidth = fullWidth
           ? (maxWidth - (spacing * (items.length - 1))) / items.length
           : null;
+
       return Row(
+        //spacing: spacing,
+        //runSpacing: spacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //direction: Axis.horizontal,
+        // alignment: WrapAlignment.start,
         children: widget.items.map((item) {
           return SizedBox(
             width: chipWidth,
+            //width: chipWidth ?? (item.toString().length * 5 + 70),
             // height: 40,
             child: ChoiceChip(
-              showCheckmark: true,
+              //padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+              showCheckmark: false,
               selected: selectedValue == item,
               selectedColor: Theme.of(context).colorScheme.primary,
               checkmarkColor: Theme.of(context).colorScheme.onPrimary,
@@ -63,6 +70,7 @@ class _RadioButtonChipState<T> extends State<RadioButtonChip<T>> {
               label: Container(
                 alignment: AlignmentDirectional.center,
                 //width: chipWidth,
+                // width: chipWidth ?? (item.toString().length * 2 + 10),
                 height: 36,
                 child: Text(
                   labels == null

@@ -42,7 +42,7 @@ class TournamentViewModel extends ChangeNotifier {
   }
 
   Future<void> getTournament(String id) async {
-    // _log.fine('getTournament');
+    _log.fine('getTournament');
     await (await _tournamentRepository.findById(id))
         .map(SuccessTournamentGetState.new)
         .mapError((failure) => failure.toString())

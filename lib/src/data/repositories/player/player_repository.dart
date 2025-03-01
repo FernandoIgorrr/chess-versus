@@ -2,7 +2,7 @@ import 'package:chess_versus/src/data/repositories/nested_repository.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/models/player/player.dart';
-import '../../../exceptions/player_fetch_exception.dart';
+import '../../exceptions/player_fetch_exception.dart';
 
 abstract class PlayerRepository implements NestedRepository<Player, String> {
   /// Creates a new [Player].

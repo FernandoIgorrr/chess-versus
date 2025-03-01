@@ -1,8 +1,8 @@
-import 'package:chess_versus/src/exceptions/round_create_exception.dart';
+import 'package:chess_versus/src/data/exceptions/round_create_exception.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/models/round/round.dart';
-import '../../../exceptions/rounds_fetch_expetion.dart';
+import '../../exceptions/rounds_fetch_expetion.dart';
 import '../nested_repository.dart';
 
 abstract class RoundRepository implements NestedRepository<Round, String> {

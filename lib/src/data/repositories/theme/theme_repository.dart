@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chess_versus/src/exceptions/local_storage_key_not_found_exception.dart';
+import 'package:chess_versus/src/data/exceptions/local_storage_key_not_found_exception.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../services/theme_service.dart';
