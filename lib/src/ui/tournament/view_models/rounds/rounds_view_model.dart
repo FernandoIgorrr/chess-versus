@@ -1,3 +1,6 @@
+import 'package:chess_versus/src/data/repositories/round/round_repository.dart';
+import 'package:chess_versus/src/domain/use_cases/tournament/tournament_load_use_case.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
@@ -35,7 +38,7 @@ class RoundsViewModel extends ChangeNotifier {
     _log.fine('Loaded rounds');
   }
 
-  Future<void> assemblyTournament(String tournamentId) async {
+  /*Future<void> assemblyTournament(String tournamentId) async {
     emit(LoadingRoundsState());
     await _tournamentLoadUseCase
         .assemblyTournament(tournamentId)
@@ -44,5 +47,5 @@ class RoundsViewModel extends ChangeNotifier {
         .mapError(FailureRoundsState.new)
         .fold(emit, emit);
     _log.fine('Loaded rounds');
-  }
+  }*/
 }

@@ -42,3 +42,4 @@ flutter:
       fonts:
         - asset: assets/fonts/InterRegular.ttf
           weight: 400
+generate_synthetic_package: false
