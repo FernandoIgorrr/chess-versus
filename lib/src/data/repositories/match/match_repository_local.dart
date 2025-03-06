@@ -23,7 +23,7 @@ class MatchRepositoryLocal extends MatchRepository {
       _repository.setItems(values);
 
   @override
-  AsyncResult<void, Exception> create(Match match, String superclassId) async {
+  AsyncResult<void> create(Match match, String superclassId) async {
     (await _repository.create(MatchRawDto.fromMatch(match, superclassId)))
         .getOrThrow();
     //_log.fine('crate done');
@@ -31,7 +31,7 @@ class MatchRepositoryLocal extends MatchRepository {
   }
 
   @override
-  AsyncResult<List<Match>, MatchesFetchException> findAll() async {
+  AsyncResult<List<Match>> findAll() async {
     try {
       final list = (await _repository.findAll()).getOrThrow();
 
@@ -44,7 +44,7 @@ class MatchRepositoryLocal extends MatchRepository {
   }
 
   @override
-  AsyncResult<List<Match>, Exception> findBySuperclassId(
+  AsyncResult<List<Match>> findBySuperclassId(
       String superclassId) async {
     try {
       final response =
@@ -59,7 +59,7 @@ class MatchRepositoryLocal extends MatchRepository {
   }
 
   @override
-  AsyncResult<Match, Exception> findById(String id) {
+  AsyncResult<Match> findById(String id) {
     throw UnimplementedError();
   }
 }

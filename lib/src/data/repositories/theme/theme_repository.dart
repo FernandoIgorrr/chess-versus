@@ -15,7 +15,7 @@ class ThemeRepository {
   );
 
   /// Get if dark mode is enabled
-  AsyncResult<bool, Exception> isDarkMode() async {
+  AsyncResult<bool> isDarkMode() async {
     try {
       final value = await _service.isDarkMode();
       return Success(value);
@@ -27,7 +27,7 @@ class ThemeRepository {
   }
 
   /// Set dark mode
-  AsyncResult<void, Exception> setDarkMode(bool value) async {
+  AsyncResult<void> setDarkMode(bool value) async {
     try {
       await _service.setDarkMode(value);
       _darkModeController.add(value);

@@ -5,11 +5,11 @@ abstract interface class NestedRepository<E extends Object, I> {
 
   Future<bool> setItems(List<String> values);
 
-  AsyncResult<void, Exception> create(E entity, I superclassId);
+  AsyncResult<void> create(E entity, I superclassId);
 
-  AsyncResult<E, Exception> findById(String id);
+  AsyncResult<E> findById(String id);
 
-  AsyncResult<List<E>, Exception> findAll();
+  AsyncResult<List<E>> findAll();
 
-  AsyncResult<List<E>, Exception> findBySuperclassId(I superclassId);
+  AsyncResult<List<E>> findBySuperclassId(I superclassId);
 }

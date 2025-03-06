@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.chess" "\0"
             VALUE "FileDescription", "chess_versus" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "chess_versus" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.chess. All rights reserved." "\0"
             VALUE "OriginalFilename", "chess_versus.exe" "\0"
             VALUE "ProductName", "chess_versus" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

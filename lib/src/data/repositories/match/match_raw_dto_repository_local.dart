@@ -27,7 +27,7 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   }
 
   @override
-  AsyncResult<void, Exception> create(MatchRawDto matchRawDto) async {
+  AsyncResult<void> create(MatchRawDto matchRawDto) async {
     try {
       await findAll().fold((success) {
         var list = [...success];
@@ -50,7 +50,7 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<MatchRawDto>, Exception> findAll() async {
+  AsyncResult<List<MatchRawDto>> findAll() async {
     try {
       final response = await getItems();
       // _log.fine('getItems success');
@@ -71,7 +71,7 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<MatchRawDto>, Exception> findByRound(String roundId) async {
+  AsyncResult<List<MatchRawDto>> findByRound(String roundId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
       final response = await getItems();
@@ -92,7 +92,7 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   }
 
   @override
-  AsyncResult<MatchRawDto, Exception> findById(String id) {
+  AsyncResult<MatchRawDto> findById(String id) {
     // TODO: implement findById
     throw UnimplementedError();
   }

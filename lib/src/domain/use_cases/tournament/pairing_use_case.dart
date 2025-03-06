@@ -46,7 +46,7 @@ class PairingUseCase {
     }
   }*/
 
-  AsyncResult<Tournament, Exception> assemblyTournament(
+  AsyncResult<Tournament> assemblyTournament(
       String tournamentId) async {
     try {
       var tournament =

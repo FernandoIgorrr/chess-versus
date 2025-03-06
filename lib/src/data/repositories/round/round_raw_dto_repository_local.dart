@@ -29,7 +29,7 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   }
 
   @override
-  AsyncResult<void, Exception> create(RoundRawDto round) async {
+  AsyncResult<void> create(RoundRawDto round) async {
     try {
       await findAll().fold((success) {
         var list = [...success];
@@ -51,7 +51,7 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<RoundRawDto>, Exception> findAll() async {
+  AsyncResult<List<RoundRawDto>> findAll() async {
     //_log.fine('findAll');
     try {
       final response = await getItems();
@@ -73,7 +73,7 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<RoundRawDto>, Exception> findByTournament(
+  AsyncResult<List<RoundRawDto>> findByTournament(
       String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
@@ -95,7 +95,7 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   }
 
   @override
-  AsyncResult<RoundRawDto, Exception> findById(String id) {
+  AsyncResult<RoundRawDto> findById(String id) {
     throw UnimplementedError();
   }
 }

@@ -7,14 +7,14 @@ import '../repository.dart';
 abstract class PlayerRawDtoRepository implements Repository<PlayerRawDto> {
   /// Creates a new [Player].
   @override
-  AsyncResult<void, Exception> create(PlayerRawDto playerRawDto);
+  AsyncResult<void> create(PlayerRawDto playerRawDto);
 
   /// Returns the list of [Players] for the application.
   @override
-  AsyncResult<List<PlayerRawDto>, Exception> findAll();
+  AsyncResult<List<PlayerRawDto>> findAll();
 
   /// Returns the list of [Players] of a determined tournament
-  AsyncResult<List<PlayerRawDto>, Exception> findByTournament(
+  AsyncResult<List<PlayerRawDto>> findByTournament(
       String tournamentId);
 
   /// Updates the [Player] with the given [id].

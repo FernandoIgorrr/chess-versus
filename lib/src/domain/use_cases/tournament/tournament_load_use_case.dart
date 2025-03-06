@@ -27,7 +27,7 @@ class TournamentLoadUseCase {
         _roundRepository = roundRepository,
         _matchRepository = matchRepository;
 
-  AsyncResult<Tournament, Exception> loadFrom(String id) async {
+  AsyncResult<Tournament> loadFrom(String id) async {
     _log.fine('loadFrom');
 
     try {
@@ -50,7 +50,7 @@ class TournamentLoadUseCase {
     }
   }
 
-  AsyncResult<Tournament, Exception> assemblyTournament(
+  AsyncResult<Tournament> assemblyTournament(
       String tournamentId) async {
     try {
       var tournament =

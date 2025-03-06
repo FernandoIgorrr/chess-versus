@@ -7,15 +7,15 @@ import '../../exceptions/player_fetch_exception.dart';
 abstract class PlayerRepository implements NestedRepository<Player, String> {
   /// Creates a new [Player].
   @override
-  AsyncResult<void, Exception> create(player, tournamentId);
+  AsyncResult<void> create(player, tournamentId);
 
   /// Returns the list of [Players] for the application.
   @override
-  AsyncResult<List<Player>, PlayerFetchException> findAll();
+  AsyncResult<List<Player>> findAll();
 
   /// Returns the list of [Players] of a determined tournament
   @override
-  AsyncResult<List<Player>, Exception> findBySuperclassId(tournamentId);
+  AsyncResult<List<Player>> findBySuperclassId(tournamentId);
 
   /// Updates the [Player] with the given [id].
   // Future<Result<void>> update(Tournament tournament);

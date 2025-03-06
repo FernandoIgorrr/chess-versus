@@ -6,14 +6,14 @@ import '../repository.dart';
 abstract class RoundRawDtoRepository implements Repository<RoundRawDto> {
   /// Creates a new [RoundRawDto].
   @override
-  AsyncResult<void, Exception> create(RoundRawDto round);
+  AsyncResult<void> create(RoundRawDto round);
 
   /// Returns the list of [RoundRawDto] for the application.
   @override
-  AsyncResult<List<RoundRawDto>, Exception> findAll();
+  AsyncResult<List<RoundRawDto>> findAll();
 
   /// Returns the list of [RoundRawDto] of a determined tournament
-  AsyncResult<List<RoundRawDto>, Exception> findByTournament(
+  AsyncResult<List<RoundRawDto>> findByTournament(
       String tournamentId);
 
   /// Updates the [RoundRawDto] with the given [id].

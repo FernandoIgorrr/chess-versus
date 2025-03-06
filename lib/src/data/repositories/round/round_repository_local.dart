@@ -25,7 +25,7 @@ class RoundRepositoryLocal extends RoundRepository {
       _repository.setItems(values);
 
   @override
-  AsyncResult<void, RoundCreateException> create(
+  AsyncResult<void> create(
       Round round, String tournamentId) async {
     (await _repository.create(RoundRawDto.fromRound(round, tournamentId)))
         .getOrThrow();
@@ -33,7 +33,7 @@ class RoundRepositoryLocal extends RoundRepository {
   }
 
   @override
-  AsyncResult<List<Round>, RoundsFetchException> findAll() async {
+  AsyncResult<List<Round>> findAll() async {
     try {
       final list = (await _repository.findAll()).getOrThrow();
 
@@ -46,7 +46,7 @@ class RoundRepositoryLocal extends RoundRepository {
   }
 
   @override
-  AsyncResult<List<Round>, Exception> findBySuperclassId(
+  AsyncResult<List<Round>> findBySuperclassId(
       String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
@@ -62,7 +62,7 @@ class RoundRepositoryLocal extends RoundRepository {
   }
 
   @override
-  AsyncResult<Round, Exception> findById(String id) {
+  AsyncResult<Round> findById(String id) {
     throw UnimplementedError();
   }
 }

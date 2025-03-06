@@ -15,7 +15,7 @@ class TournamentCreateUseCase {
     required TournamentRepository tournamentRepository,
   }) : _repository = tournamentRepository;
 
-  AsyncResult<Tournament, Exception> createFrom(TournamentCreateDTO dto) async {
+  AsyncResult<Tournament> createFrom(TournamentCreateDTO dto) async {
     try {
       if (dto.getName.toString().isEmpty) {
         _log.warning('Tournament name is empty from TournamentCreateDTO');

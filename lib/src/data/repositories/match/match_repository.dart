@@ -10,14 +10,14 @@ abstract class MatchRepository implements NestedRepository<Match, String> {
   //Future<bool> setItems(List<String> values);
 
   @override
-  AsyncResult<void, Exception> create(Match match, String superclassId);
+  AsyncResult<void> create(Match match, String superclassId);
 
   @override
-  AsyncResult<List<Match>, Exception> findAll();
+  AsyncResult<List<Match>> findAll();
 
   @override
-  AsyncResult<Match, Exception> findById(id);
+  AsyncResult<Match> findById(id);
 
   @override
-  AsyncResult<List<Match>, Exception> findBySuperclassId(String superclassId);
+  AsyncResult<List<Match>> findBySuperclassId(String superclassId);
 }

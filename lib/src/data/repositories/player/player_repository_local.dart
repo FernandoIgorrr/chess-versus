@@ -25,7 +25,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
       _repository.setItems(values);
 
   @override
-  AsyncResult<void, Exception> create(
+  AsyncResult<void> create(
       Player player, String tournamentId) async {
     //_log.fine('crate');
     // final _logg = Logger('create');
@@ -42,7 +42,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   }
 
   @override
-  AsyncResult<List<Player>, PlayerFetchException> findAll() async {
+  AsyncResult<List<Player>> findAll() async {
     try {
       /* final response = await getItems();
        if (response.isEmpty) {
@@ -64,7 +64,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   }
 
   @override
-  AsyncResult<List<Player>, Exception> findBySuperclassId(
+  AsyncResult<List<Player>> findBySuperclassId(
       String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
@@ -90,7 +90,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   }
 
   @override
-  AsyncResult<Player, Exception> findById(String id) {
+  AsyncResult<Player> findById(String id) {
     throw UnimplementedError();
   }
 }

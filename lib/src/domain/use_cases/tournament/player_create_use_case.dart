@@ -18,7 +18,7 @@ class PlayerCreateUseCase {
       : _playerRepository = playerRepository,
         _tournamentRepository = tournamentRepository;
 
-  AsyncResult<Player, Exception> createFrom(
+  AsyncResult<Player> createFrom(
       String tournamentId, Player player) async {
     if (player.name.toString().isEmpty) {
       throw PlayerImpossibleNameException('Player\'s name is empty');

@@ -30,7 +30,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
   }
 
   @override
-  AsyncResult<void, Exception> create(Tournament tournament) async {
+  AsyncResult<void> create(Tournament tournament) async {
     //final _log = Logger('create');
     try {
       await findAll().fold((success) {
@@ -42,7 +42,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
             listMapStringDynamic.map((jsonMap) => jsonEncode(jsonMap)).toList();
         setItems(listEncoded);
       }, (failure) {
-        throw TournamentCreateException(failure.message);
+        throw TournamentCreateException(failure.toString());
       });
       return const Success(unit);
     } catch (e) {
@@ -52,7 +52,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
   }
 
   @override
-  AsyncResult<Tournament, Exception> findById(String id) async {
+  AsyncResult<Tournament> findById(String id) async {
     //_log.fine('findById: $id');
     try {
       final response = await getItems();
@@ -73,7 +73,7 @@ class TournamentRepositoryLocal implements TournamentRepository {
   }
 
   @override
-  AsyncResult<List<Tournament>, TournamentFetchExcpetion> findAll() async {
+  AsyncResult<List<Tournament>> findAll() async {
     try {
       final response = await getItems();
 

@@ -26,7 +26,7 @@ class HomeViewModel extends ChangeNotifier {
     await _tournamentRepository
         .findAll() //
         .map(SucessGetTournamentsState.new)
-        .mapError((error) => error.message)
+        .mapError((error) => error.toString())
         .mapError(FailureGetTournamentsState.new)
         .fold(emit, emit);
     _log.fine('Loaded tournaments');

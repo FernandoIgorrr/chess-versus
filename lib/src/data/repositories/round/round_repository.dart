@@ -8,16 +8,16 @@ import '../nested_repository.dart';
 abstract class RoundRepository implements NestedRepository<Round, String> {
   /// Creates a new [Round].
   @override
-  AsyncResult<void, RoundCreateException> create(
+  AsyncResult<void> create(
       Round round, String tournamentId);
 
   /// Returns the list of [Rounds] for the application.
   @override
-  AsyncResult<List<Round>, RoundsFetchException> findAll();
+  AsyncResult<List<Round>> findAll();
 
   /// Returns the list of [Rounds] of a determined tournament
   @override
-  AsyncResult<List<Round>, Exception> findBySuperclassId(String tournamentId);
+  AsyncResult<List<Round>> findBySuperclassId(String tournamentId);
 
   /// Updates the [Round] with the given [id].
   // Future<Result<void>> update(Tournament tournament);

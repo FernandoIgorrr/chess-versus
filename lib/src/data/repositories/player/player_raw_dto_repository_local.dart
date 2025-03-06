@@ -28,7 +28,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   }
 
   @override
-  AsyncResult<void, Exception> create(PlayerRawDto playerRawDto) async {
+  AsyncResult<void> create(PlayerRawDto playerRawDto) async {
     //_log.fine('create');
     try {
       await findAll().fold((success) {
@@ -56,7 +56,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<PlayerRawDto>, Exception> findAll() async {
+  AsyncResult<List<PlayerRawDto>> findAll() async {
     //_log.fine('findAll');
     try {
       final response = await getItems();
@@ -78,7 +78,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<PlayerRawDto>, Exception> findByTournament(
+  AsyncResult<List<PlayerRawDto>> findByTournament(
       String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
@@ -100,7 +100,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   }
 
   @override
-  AsyncResult<PlayerRawDto, Exception> findById(String id) {
+  AsyncResult<PlayerRawDto> findById(String id) {
     throw UnimplementedError();
   }
 }

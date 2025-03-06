@@ -7,11 +7,11 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:result_dart/result_dart.dart';
 
-typedef CommandAction0<T extends Object, F extends Object> = AsyncResult<T, F>
+typedef CommandAction0<T extends Object, F extends Object> = AsyncResult<T>
     Function();
 
 typedef CommandAction1<T extends Object, F extends Object, A>
-    = AsyncResult<T, F> Function(A);
+    = AsyncResult<T> Function(A);
 
 /// Facilitates interaction with a ViewModel.
 ///
@@ -35,7 +35,7 @@ abstract class Command<T extends Object, F extends Object>
   /// True when the action is running.
   bool get running => _running;
 
-  Result<T, Object>? _result;
+  Result<T>? _result;
 
   /// true if action completed with error
   bool get error => _result is Failure;

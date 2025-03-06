@@ -5,9 +5,9 @@ abstract interface class Repository<T extends Object> {
 
   Future<bool> setItems(List<String> values);
 
-  AsyncResult<void, Exception> create(T e);
+  AsyncResult<void> create(T e);
 
-  AsyncResult<T, Exception> findById(String id);
+  AsyncResult<T> findById(String id);
 
-  AsyncResult<List<T>, Exception> findAll();
+  AsyncResult<List<T>> findAll();
 }

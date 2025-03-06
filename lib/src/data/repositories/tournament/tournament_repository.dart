@@ -6,11 +6,11 @@ import 'package:result_dart/result_dart.dart';
 abstract class TournamentRepository implements Repository<Tournament> {
   /// Creates a new [Tournament].
   @override
-  AsyncResult<void, Exception> create(Tournament tournament);
+  AsyncResult<void> create(Tournament tournament);
 
   /// Returns the list of [Tournament] for the application.
   @override
-  AsyncResult<List<Tournament>, TournamentFetchExcpetion> findAll();
+  AsyncResult<List<Tournament>> findAll();
 
   /// Returns the [Tournament] with the given [id].
   //Future<Result<Tournament>> fetchById(String id);
