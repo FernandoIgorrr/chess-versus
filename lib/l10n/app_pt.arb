@@ -5,6 +5,18 @@
     "@tournaments": {
         "description": "Título para page onde se mostram os torneios"
     },
+    "deleteTournament":"Excluir torneio ?",
+    "@deleteTournament": {
+        "description": "Título para alerta de excluir torneio"
+    },
+    "cancel":"Cancelar",
+    "@cancel": {
+        "description": "Título para cancelar"
+    },
+    "delete":"Excluir",
+    "@delete": {
+        "description": "Título para excluir"
+    },
     "registerTournament":"Cadastrar torneio",
     "@registerTournament": {
         "description": "Título para botão/formulário de registrar torneio"
@@ -44,6 +56,10 @@
     "finished":"Finalizado",
     "@finished": {
         "description": "Label/hint para finalizado"
+    },
+    "tournamentHasAlreadyEnded" :"O Torneio já foi finalizado",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint para torneio finalizado"
     },
     "numberOfRounds":"Nº de rodadas",
     "@numberOfRounds": {
@@ -120,6 +136,26 @@
     "round":"Rodada",
     "@round": {
         "description": "Título para rodada"
+    },
+    "tournamentStarted":"Torneio iniciado",
+    "@tournamentStarted": {
+        "description": "Mensagem de sucesso para quando um torneio for iniciado."
+    },
+    "tournamentCantBeStarted":"O torneio nao pode ser iniciado",
+    "@tournamentCantBeStarted": {
+        "description": "Mensagem de erro para quando um torneio nao pode ser iniciado."
+    },
+    "startTournament":" Iniciar  Torneio",
+    "@startTournament": {
+        "description": "TitledBorder para botão de iniciar torneio"
+    },
+    "start":"Iniciar",
+    "@start": {
+        "description": "Titulo para iniciar"
+    },
+      "table":"Mesa",
+    "@table": {
+        "description": "Titulo para Mesa"
     },
     "player":"Jogador",
     "@player": {

@@ -11,7 +11,7 @@ class PlayerViewModel extends ChangeNotifier {
   final _log = Logger('PlayerViewModel');
   Player player = Player.empty();
   PlayerViewModel({required PlayerCreateUseCase playerCreateUseCase})
-      : _playerCreateUseCase = playerCreateUseCase;
+    : _playerCreateUseCase = playerCreateUseCase;
 
   PlayerState get state => _state;
 
@@ -33,7 +33,7 @@ class PlayerViewModel extends ChangeNotifier {
   }
 
   emptyPlayer() {
-    player = Player.empty();
+    player = Player.empty(); // Isso deve criar um novo UUID
     emit(IdlePlayerState());
   }
 }

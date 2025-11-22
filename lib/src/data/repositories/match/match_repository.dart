@@ -20,4 +20,10 @@ abstract class MatchRepository implements NestedRepository<Match, String> {
 
   @override
   AsyncResult<List<Match>> findBySuperclassId(String superclassId);
+
+  @override
+  AsyncResult<void> update(Match entity, String superclassId);
+
+  @override
+  AsyncResult<void> updateAll(List<Match> entity, String superclassId);
 }

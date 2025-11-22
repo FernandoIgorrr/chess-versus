@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chess_versus/src/data/exceptions/round_update_exception.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,19 +32,22 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   @override
   AsyncResult<void> create(RoundRawDto round) async {
     try {
-      await findAll().fold((success) {
-        var list = [...success];
-        list.add(round);
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.add(round);
 
-        final listMapStringDynamic =
-            list.map((round) => round.toJson()).toList();
+          final listMapStringDynamic =
+              list.map((round) => round.toJson()).toList();
 
-        final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
+          final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
 
-        setItems(listEncoded);
-      }, (failure) {
-        throw RoundCreateException(failure.toString());
-      });
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw RoundCreateException(failure.toString());
+        },
+      );
       return const Success(unit);
     } catch (e) {
       return Failure(PlayerCreateException(e.toString()));
@@ -73,8 +77,7 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   }
 
   @override
-  AsyncResult<List<RoundRawDto>> findByTournament(
-      String tournamentId) async {
+  AsyncResult<List<RoundRawDto>> findByTournament(String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
       final response = await getItems();
@@ -83,10 +86,11 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
         return const Success(<RoundRawDto>[]);
       }
 
-      List<dynamic> dynamicRounds = response
-          .map(jsonDecode)
-          .where((d) => d['tournament_id'] == tournamentId)
-          .toList();
+      List<dynamic> dynamicRounds =
+          response
+              .map(jsonDecode)
+              .where((d) => d['tournament_id'] == tournamentId)
+              .toList();
 
       return Success(dynamicRounds.map(RoundRawDto.fromJson).toList());
     } catch (e) {
@@ -97,5 +101,45 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   @override
   AsyncResult<RoundRawDto> findById(String id) {
     throw UnimplementedError();
+  }
+
+  @override
+  AsyncResult<void> update(RoundRawDto round) async {
+    try {
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.removeWhere((r) => r.id == round.id);
+
+          list.add(round);
+          final listMapStringDynamic =
+              list.map((round) => round.toJson()).toList();
+          final listEncoded =
+              listMapStringDynamic
+                  .map((jsonMap) => jsonEncode(jsonMap))
+                  .toList();
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw RoundUpdateException(failure.toString());
+        },
+      );
+      return const Success(unit);
+    } catch (e) {
+      //_log.warning(e.toString());
+      return Failure(RoundUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<RoundRawDto> rounds) async {
+    try {
+      for (final round in rounds) {
+        await update(round);
+      }
+      return const Success(unit);
+    } catch (e) {
+      return Failure(RoundUpdateException(e.toString()));
+    }
   }
 }

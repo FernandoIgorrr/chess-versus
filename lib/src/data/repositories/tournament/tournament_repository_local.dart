@@ -9,6 +9,7 @@ import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../exceptions/tournament_update_exception.dart';
 import 'tournament_repository.dart';
 
 class TournamentRepositoryLocal implements TournamentRepository {
@@ -33,17 +34,22 @@ class TournamentRepositoryLocal implements TournamentRepository {
   AsyncResult<void> create(Tournament tournament) async {
     //final _log = Logger('create');
     try {
-      await findAll().fold((success) {
-        var list = [...success];
-        list.add(tournament);
-        final listMapStringDynamic =
-            list.map((tournament) => tournament.toJson()).toList();
-        final listEncoded =
-            listMapStringDynamic.map((jsonMap) => jsonEncode(jsonMap)).toList();
-        setItems(listEncoded);
-      }, (failure) {
-        throw TournamentCreateException(failure.toString());
-      });
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.add(tournament);
+          final listMapStringDynamic =
+              list.map((tournament) => tournament.toJson()).toList();
+          final listEncoded =
+              listMapStringDynamic
+                  .map((jsonMap) => jsonEncode(jsonMap))
+                  .toList();
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw TournamentCreateException(failure.toString());
+        },
+      );
       return const Success(unit);
     } catch (e) {
       //_log.warning(e.toString());
@@ -61,8 +67,9 @@ class TournamentRepositoryLocal implements TournamentRepository {
         throw TournamentFetchExcpetion('Não há torneios cadastrados');
       }
 
-      dynamic dynamicTournament =
-          response.map(jsonDecode).firstWhere((d) => d['id'] == id);
+      dynamic dynamicTournament = response
+          .map(jsonDecode)
+          .firstWhere((d) => d['id'] == id);
 
       return Success(Tournament.fromJson(dynamicTournament));
     } on StateError catch (e) {
@@ -85,5 +92,48 @@ class TournamentRepositoryLocal implements TournamentRepository {
     } catch (e) {
       return Failure(TournamentFetchExcpetion(e.toString()));
     }
+  }
+
+  @override
+  AsyncResult<void> update(Tournament tournament) async {
+    try {
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.removeWhere((t) => t.id == tournament.id);
+
+          list.add(tournament);
+          final listMapStringDynamic =
+              list.map((tournament) => tournament.toJson()).toList();
+          final listEncoded =
+              listMapStringDynamic
+                  .map((jsonMap) => jsonEncode(jsonMap))
+                  .toList();
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw TournamentUpdateException(failure.toString());
+        },
+      );
+      return const Success(unit);
+    } catch (e) {
+      //_log.warning(e.toString());
+      return Failure(TournamentUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> delete(String id) async {
+    var tournament = await findById(
+      id,
+    ).fold((onSuccess) => onSuccess, (failure) => throw failure);
+    tournament.setArquived(true);
+    return update(tournament);
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<Tournament> e) {
+    // TODO: implement updateAll
+    throw UnimplementedError();
   }
 }

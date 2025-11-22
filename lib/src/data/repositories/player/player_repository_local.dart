@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/data/exceptions/player_update_exception.dart';
 import 'package:chess_versus/src/data/repositories/player/player_raw_dto_repository.dart';
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
 import 'package:chess_versus/src/domain/models/player/player.dart';
@@ -25,8 +26,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
       _repository.setItems(values);
 
   @override
-  AsyncResult<void> create(
-      Player player, String tournamentId) async {
+  AsyncResult<void> create(Player player, String tournamentId) async {
     //_log.fine('crate');
     // final _logg = Logger('create');
     // var reponse = await getItems();
@@ -35,8 +35,9 @@ class PlayerRepositoryLocal extends PlayerRepository {
 
     // setItems(reponse);
 
-    (await _repository.create(PlayerRawDto.fromPlayer(player, tournamentId)))
-        .getOrThrow();
+    (await _repository.create(
+      PlayerRawDto.fromPlayer(player, tournamentId),
+    )).getOrThrow();
     //_log.fine('crate done');
     return const Success(unit);
   }
@@ -64,8 +65,7 @@ class PlayerRepositoryLocal extends PlayerRepository {
   }
 
   @override
-  AsyncResult<List<Player>> findBySuperclassId(
-      String tournamentId) async {
+  AsyncResult<List<Player>> findBySuperclassId(String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
       // final response = await getItems();
@@ -78,10 +78,11 @@ class PlayerRepositoryLocal extends PlayerRepository {
       //     .map(jsonDecode)
       //     .where((d) => d['tournament_id'] == tournamentId)
       //     .toList();
-      final response =
-          await _repository.findByTournament(tournamentId).getOrElse((failure) {
-        throw failure;
-      });
+      final response = await _repository
+          .findByTournament(tournamentId)
+          .getOrElse((failure) {
+            throw failure;
+          });
 
       return Success(response.map(PlayerRawDto.toPlayer).toList());
     } catch (e) {
@@ -92,5 +93,31 @@ class PlayerRepositoryLocal extends PlayerRepository {
   @override
   AsyncResult<Player> findById(String id) {
     throw UnimplementedError();
+  }
+
+  @override
+  AsyncResult<void> update(Player player, String tournamentId) async {
+    try {
+      await _repository.update(PlayerRawDto.fromPlayer(player, tournamentId));
+
+      return Success(unit);
+    } on PlayerUpdateException catch (e) {
+      return Failure(PlayerUpdateException(e.message));
+    } catch (e) {
+      return Failure(PlayerUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<Player> players, String tournamentId) async {
+    try {
+      await _repository.updateAll(
+        players.map((r) => PlayerRawDto.fromPlayer(r, tournamentId)).toList(),
+      );
+
+      return Success(unit);
+    } catch (e) {
+      return Failure(PlayerUpdateException(e.toString()));
+    }
   }
 }

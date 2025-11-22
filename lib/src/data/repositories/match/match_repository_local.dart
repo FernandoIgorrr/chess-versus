@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
 import 'package:chess_versus/src/data/exceptions/matches_fetch_exception.dart';
 import 'package:logging/logging.dart';
 
@@ -24,8 +25,9 @@ class MatchRepositoryLocal extends MatchRepository {
 
   @override
   AsyncResult<void> create(Match match, String superclassId) async {
-    (await _repository.create(MatchRawDto.fromMatch(match, superclassId)))
-        .getOrThrow();
+    (await _repository.create(
+      MatchRawDto.fromMatch(match, superclassId),
+    )).getOrThrow();
     //_log.fine('crate done');
     return const Success(unit);
   }
@@ -44,11 +46,11 @@ class MatchRepositoryLocal extends MatchRepository {
   }
 
   @override
-  AsyncResult<List<Match>> findBySuperclassId(
-      String superclassId) async {
+  AsyncResult<List<Match>> findBySuperclassId(String superclassId) async {
     try {
-      final response =
-          await _repository.findByRound(superclassId).getOrElse((failure) {
+      final response = await _repository.findByRound(superclassId).getOrElse((
+        failure,
+      ) {
         throw failure;
       });
 
@@ -61,5 +63,31 @@ class MatchRepositoryLocal extends MatchRepository {
   @override
   AsyncResult<Match> findById(String id) {
     throw UnimplementedError();
+  }
+
+  @override
+  AsyncResult<void> update(Match match, String roundId) async {
+    try {
+      await _repository.update(MatchRawDto.fromMatch(match, roundId));
+
+      return Success(unit);
+    } on MatchUpdateException catch (e) {
+      return Failure(MatchUpdateException(e.message));
+    } catch (e) {
+      return Failure(MatchUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<Match> matches, String roundId) async {
+    try {
+      await _repository.updateAll(
+        matches.map((r) => MatchRawDto.fromMatch(r, roundId)).toList(),
+      );
+
+      return Success(unit);
+    } catch (e) {
+      return Failure(MatchUpdateException(e.toString()));
+    }
   }
 }

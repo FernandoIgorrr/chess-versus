@@ -1,4 +1,5 @@
 import 'package:chess_versus/src/data/exceptions/round_create_exception.dart';
+import 'package:chess_versus/src/data/exceptions/round_update_exception.dart';
 import 'package:chess_versus/src/data/exceptions/rounds_fetch_expetion.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_fetch_exception.dart';
 import 'package:logging/logging.dart';
@@ -25,10 +26,10 @@ class RoundRepositoryLocal extends RoundRepository {
       _repository.setItems(values);
 
   @override
-  AsyncResult<void> create(
-      Round round, String tournamentId) async {
-    (await _repository.create(RoundRawDto.fromRound(round, tournamentId)))
-        .getOrThrow();
+  AsyncResult<void> create(Round round, String tournamentId) async {
+    (await _repository.create(
+      RoundRawDto.fromRound(round, tournamentId),
+    )).getOrThrow();
     return const Success(unit);
   }
 
@@ -46,14 +47,14 @@ class RoundRepositoryLocal extends RoundRepository {
   }
 
   @override
-  AsyncResult<List<Round>> findBySuperclassId(
-      String tournamentId) async {
+  AsyncResult<List<Round>> findBySuperclassId(String tournamentId) async {
     //_log.fine('findByTournamentId: $tournamentId');
     try {
-      final response =
-          await _repository.findByTournament(tournamentId).getOrElse((failure) {
-        throw failure;
-      });
+      final response = await _repository
+          .findByTournament(tournamentId)
+          .getOrElse((failure) {
+            throw failure;
+          });
 
       return Success(response.map(RoundRawDto.toRound).toList());
     } catch (e) {
@@ -64,5 +65,31 @@ class RoundRepositoryLocal extends RoundRepository {
   @override
   AsyncResult<Round> findById(String id) {
     throw UnimplementedError();
+  }
+
+  @override
+  AsyncResult<void> update(Round round, String tournamentId) async {
+    try {
+      await _repository.update(RoundRawDto.fromRound(round, tournamentId));
+
+      return Success(unit);
+    } on TournamentFetchExcpetion catch (e) {
+      return Failure(RoundsFetchException(e.message));
+    } catch (e) {
+      return Failure(RoundsFetchException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<Round> rounds, String tournamentId) async {
+    try {
+      await _repository.updateAll(
+        rounds.map((r) => RoundRawDto.fromRound(r, tournamentId)).toList(),
+      );
+
+      return Success(unit);
+    } catch (e) {
+      return Failure(RoundsFetchException(e.toString()));
+    }
   }
 }

@@ -29,10 +29,14 @@ class _TournamentFormState extends State<TournamentForm> {
 
   final formKey = GlobalKey<FormState>();
 
+  final ValueNotifier<TournamentType> _selectedTournamentType = ValueNotifier(
+    Swiss(0.0),
+  );
+
   List<TournamentType> tournamentTypes = <TournamentType>[
     Swiss(0.0),
     Elimination(),
-    RoundRobin()
+    RoundRobin(),
   ];
   List<double> byeScores = <double>[0.0, 0.5, 1.0];
   late Tournament tournament;
@@ -44,13 +48,17 @@ class _TournamentFormState extends State<TournamentForm> {
     dateController.text = DateFormat('dd/MM/yyyy').format(DateTime.now());
     tournamentCreateDTO = TournamentCreateDTO.empty();
 
+    // INICIALIZA O DTO COM O VALOR PADRÃO
+    tournamentCreateDTO.setType(_selectedTournamentType.value);
+
     widget.viewModel.addListener(() {
       final state = widget.viewModel.state;
       if (state is TournamentFormSuccessState) {
         Navigator.pop(context);
       } else if (state is TournamentFormFailureState) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(state.message)));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(state.message)));
       }
     });
   }
@@ -69,13 +77,16 @@ class _TournamentFormState extends State<TournamentForm> {
               key: formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: ListView(
-                shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
-                //mainAxisSize: MainAxisSize.min,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
 
+                //mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(AppLocalizations.of(context)!.registerTournament,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineLarge),
+                  Text(
+                    AppLocalizations.of(context)!.registerTournament,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
                   const SizedBox(height: 24),
                   _buildNameTextFormField(),
                   const SizedBox(height: 16),
@@ -86,14 +97,15 @@ class _TournamentFormState extends State<TournamentForm> {
                   _buildTournamentTypeSection(),
                   AnimatedSize(
                     duration: const Duration(milliseconds: 300),
-                    child: tournamentCreateDTO.getType is Swiss
-                        ? Column(children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            _buildByeScoreSection()
-                          ])
-                        : const SizedBox.shrink(),
+                    child:
+                        tournamentCreateDTO.getType is Swiss
+                            ? Column(
+                              children: [
+                                const SizedBox(height: 16),
+                                _buildByeScoreSection(),
+                              ],
+                            )
+                            : const SizedBox.shrink(),
                   ),
                   const SizedBox(height: 16),
                   CustomElevatedButton(
@@ -104,24 +116,31 @@ class _TournamentFormState extends State<TournamentForm> {
                         print(tournamentCreateDTO);
                       }
                       if (form.validate()) {
-                        await widget.viewModel
-                            .createTournament(tournamentCreateDTO);
+                        await widget.viewModel.createTournament(
+                          tournamentCreateDTO,
+                        );
                         final state = widget.viewModel.state;
 
                         if (state is TournamentFormSuccessState) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              _buildSnackBarFeedback(
-                                  AppLocalizations.of(context)!
-                                      .tournamentRegisteredSuccessfully,
-                                  Colors.greenAccent));
+                            _buildSnackBarFeedback(
+                              AppLocalizations.of(
+                                context,
+                              )!.tournamentRegisteredSuccessfully,
+                              Colors.greenAccent,
+                            ),
+                          );
                         } else if (state is TournamentFormFailureState) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(_buildSnackBarError(state.message));
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(_buildSnackBarError(state.message));
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            _buildSnackBarError(
-                                AppLocalizations.of(context)!.invalidData));
+                          _buildSnackBarError(
+                            AppLocalizations.of(context)!.invalidData,
+                          ),
+                        );
                       }
                     },
                     text: AppLocalizations.of(context)!.registerTournament,
@@ -176,19 +195,19 @@ class _TournamentFormState extends State<TournamentForm> {
 
   Future<void> _buildSelectDate() async {
     DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(DateTime.now().month),
-        lastDate: DateTime(DateTime.now().year + 1),
-        builder: (context, child) {
-          return FittedBox(
-            child: Theme(
-                data: ThemeData(
-                  colorScheme: Theme.of(context).colorScheme,
-                ),
-                child: child!),
-          );
-        });
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().month),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (context, child) {
+        return FittedBox(
+          child: Theme(
+            data: ThemeData(colorScheme: Theme.of(context).colorScheme),
+            child: child!,
+          ),
+        );
+      },
+    );
     if (picked != null) {
       setState(() {
         dateController.text = DateFormat('dd/MM/yyyy').format(picked);
@@ -200,20 +219,25 @@ class _TournamentFormState extends State<TournamentForm> {
   _buildTournamentTypeSection() {
     return Column(
       children: [
-        Row(children: <Widget>[
-          Expanded(
-            child: Divider(color: Theme.of(context).colorScheme.secondary),
-          ),
-          Text("  ${AppLocalizations.of(context)!.tournamentType}  ",
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Divider(color: Theme.of(context).colorScheme.secondary),
+            ),
+            Text(
+              "  ${AppLocalizations.of(context)!.tournamentType}  ",
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.secondary)),
-          Expanded(
-            child: Divider(color: Theme.of(context).colorScheme.secondary),
-          ),
-        ]),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            Expanded(
+              child: Divider(color: Theme.of(context).colorScheme.secondary),
+            ),
+          ],
+        ),
         const SizedBox(height: 16),
-        _buildRadioButtonTournamentType()
+        _buildRadioButtonTournamentType(),
       ],
     );
   }
@@ -221,20 +245,25 @@ class _TournamentFormState extends State<TournamentForm> {
   _buildByeScoreSection() {
     return Column(
       children: [
-        Row(children: <Widget>[
-          Expanded(
-            child: Divider(color: Theme.of(context).colorScheme.secondary),
-          ),
-          Text("  ${AppLocalizations.of(context)!.scorePerBye}  ",
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Divider(color: Theme.of(context).colorScheme.secondary),
+            ),
+            Text(
+              "  ${AppLocalizations.of(context)!.scorePerBye}  ",
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.secondary)),
-          Expanded(
-            child: Divider(color: Theme.of(context).colorScheme.secondary),
-          ),
-        ]),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            Expanded(
+              child: Divider(color: Theme.of(context).colorScheme.secondary),
+            ),
+          ],
+        ),
         const SizedBox(height: 16),
-        _buildRadioButtonByeScore()
+        _buildRadioButtonByeScore(),
       ],
     );
   }
@@ -244,9 +273,15 @@ class _TournamentFormState extends State<TournamentForm> {
       items: tournamentTypes,
       fullWidth: false,
       onChanged: (value) {
-        setState(() {
+        // 1. ATUALIZA O VALUE NOTIFIER (gatilho de reconstrução LOCAL)
+        _selectedTournamentType.value = value;
+
+        // 2. ATUALIZA O DTO
+        tournamentCreateDTO.setType(value);
+
+        /* setState(() {
           tournamentCreateDTO.setType(value);
-        });
+        });*/
       },
     );
   }

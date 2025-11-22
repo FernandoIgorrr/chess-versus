@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,19 +30,22 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   @override
   AsyncResult<void> create(MatchRawDto matchRawDto) async {
     try {
-      await findAll().fold((success) {
-        var list = [...success];
-        list.add(matchRawDto);
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.add(matchRawDto);
 
-        final listMapStringDynamic =
-            list.map((match) => match.toJson()).toList();
+          final listMapStringDynamic =
+              list.map((match) => match.toJson()).toList();
 
-        final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
+          final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
 
-        setItems(listEncoded);
-      }, (failure) {
-        throw MatchCreateException(failure.toString());
-      });
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw MatchCreateException(failure.toString());
+        },
+      );
 
       return const Success(unit);
     } catch (e) {
@@ -80,10 +84,11 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
         return const Success(<MatchRawDto>[]);
       }
 
-      List<dynamic> dynamicMatches = response
-          .map(jsonDecode)
-          .where((d) => d['round_id'] == roundId)
-          .toList();
+      List<dynamic> dynamicMatches =
+          response
+              .map(jsonDecode)
+              .where((d) => d['round_id'] == roundId)
+              .toList();
 
       return Success(dynamicMatches.map(MatchRawDto.fromJson).toList());
     } catch (e) {
@@ -95,5 +100,45 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
   AsyncResult<MatchRawDto> findById(String id) {
     // TODO: implement findById
     throw UnimplementedError();
+  }
+
+  @override
+  AsyncResult<void> update(MatchRawDto match) async {
+    try {
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.removeWhere((m) => m.id == match.id);
+
+          list.add(match);
+          final listMapStringDynamic =
+              list.map((round) => round.toJson()).toList();
+          final listEncoded =
+              listMapStringDynamic
+                  .map((jsonMap) => jsonEncode(jsonMap))
+                  .toList();
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw MatchUpdateException(failure.toString());
+        },
+      );
+      return const Success(unit);
+    } catch (e) {
+      //_log.warning(e.toString());
+      return Failure(MatchUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  AsyncResult<void> updateAll(List<MatchRawDto> matches) async {
+    try {
+      for (final matche in matches) {
+        await update(matche);
+      }
+      return const Success(unit);
+    } catch (e) {
+      return Failure(MatchUpdateException(e.toString()));
+    }
   }
 }

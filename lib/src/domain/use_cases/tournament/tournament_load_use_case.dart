@@ -22,25 +22,22 @@ class TournamentLoadUseCase {
     required PlayerRepository playerRepository,
     required RoundRepository roundRepository,
     required MatchRepository matchRepository,
-  })  : _tournamentRepository = tournamentRepository,
-        _playerRepository = playerRepository,
-        _roundRepository = roundRepository,
-        _matchRepository = matchRepository;
+  }) : _tournamentRepository = tournamentRepository,
+       _playerRepository = playerRepository,
+       _roundRepository = roundRepository,
+       _matchRepository = matchRepository;
 
   AsyncResult<Tournament> loadFrom(String id) async {
     _log.fine('loadFrom');
 
     try {
-      Tournament tournament = (await _tournamentRepository.findById(id)).fold(
-        (success) => success,
-        (failure) => throw failure,
-      );
+      Tournament tournament = (await _tournamentRepository.findById(
+        id,
+      )).fold((success) => success, (failure) => throw failure);
 
-      List<Player> players =
-          (await _playerRepository.findBySuperclassId(id)).fold(
-        (success) => success,
-        (failure) => throw failure,
-      );
+      List<Player> players = (await _playerRepository.findBySuperclassId(
+        id,
+      )).fold((success) => success, (failure) => throw failure);
 
       tournament.setPlayers(players);
 
@@ -50,20 +47,30 @@ class TournamentLoadUseCase {
     }
   }
 
-  AsyncResult<Tournament> assemblyTournament(
-      String tournamentId) async {
+  AsyncResult<Tournament> assemblyTournament(String tournamentId) async {
     try {
       var tournament =
           await _tournamentRepository.findById(tournamentId).getOrThrow();
       tournament.setPlayers(
-          (await _playerRepository.findBySuperclassId(tournamentId))
-              .getOrThrow());
+        (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
+      );
       var rounds =
           await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
-      rounds.forEach((r) async => r.setMatches(
-          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow()));
+      rounds.forEach(
+        (r) async => r.setMatches(
+          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow(),
+        ),
+      );
       tournament.setRounds(rounds);
       resolvePlayerReferences(tournament);
+
+      //print(tournament.toString());
+
+      await _tournamentRepository.update(tournament);
+      //await _roundRepository.updateAll(tournament.rounds);
+
+      _log.fine('Loaded tournament');
+
       return Success(tournament);
     } catch (e) {
       return Failure(TournamentAssemblyException(e.toString()));
@@ -82,8 +89,6 @@ class TournamentLoadUseCase {
         game.setBlack = playerById[game.black.id] ?? game.black;
       }
     }
-
-    //for()
   }
 
   Map<String, Player> _mapCompetitorsById(List<Player> players) {

@@ -16,10 +16,22 @@ class Round {
     required int roundNumber,
     Player? notPaired,
     List<Match>? matches,
-  })  : _id = id ?? const Uuid().v4(),
-        _roundNumber = roundNumber,
-        _matches = matches ?? <Match>[],
-        _notPaired = notPaired;
+  }) : _id = id ?? const Uuid().v4(),
+       _roundNumber = roundNumber,
+       _matches = matches ?? <Match>[],
+       _notPaired = notPaired;
+
+  Round copyWith({
+    String? id,
+    int? number,
+    List<Match>? matches,
+    Player? notPaired,
+  }) => Round(
+    id: id ?? id,
+    roundNumber: number ?? roundNumber,
+    matches: matches ?? matches,
+    notPaired: notPaired ?? notPaired,
+  );
 
   String get id => _id;
   int get roundNumber => _roundNumber;

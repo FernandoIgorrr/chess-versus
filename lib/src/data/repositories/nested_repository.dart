@@ -12,4 +12,8 @@ abstract interface class NestedRepository<E extends Object, I> {
   AsyncResult<List<E>> findAll();
 
   AsyncResult<List<E>> findBySuperclassId(I superclassId);
+
+  AsyncResult<void> update(E entity, I superclassId);
+
+  AsyncResult<void> updateAll(List<E> entity, I superclassId);
 }

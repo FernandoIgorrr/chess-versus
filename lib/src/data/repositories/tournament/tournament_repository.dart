@@ -15,9 +15,9 @@ abstract class TournamentRepository implements Repository<Tournament> {
   /// Returns the [Tournament] with the given [id].
   //Future<Result<Tournament>> fetchById(String id);
 
-  /// Updates the [Tournament] with the given [id].
-  // Future<Result<void>> update(Tournament tournament);
+  //Updates the [Tournament] with the given [id].
+  AsyncResult<void> update(Tournament tournament);
 
   /// Returns the [Tournament] with the given [id].
-  // Future<Result<void>> delete(String id);
+  AsyncResult<void> delete(String id);
 }

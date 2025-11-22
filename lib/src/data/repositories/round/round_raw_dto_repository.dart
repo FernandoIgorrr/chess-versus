@@ -13,11 +13,13 @@ abstract class RoundRawDtoRepository implements Repository<RoundRawDto> {
   AsyncResult<List<RoundRawDto>> findAll();
 
   /// Returns the list of [RoundRawDto] of a determined tournament
-  AsyncResult<List<RoundRawDto>> findByTournament(
-      String tournamentId);
+  AsyncResult<List<RoundRawDto>> findByTournament(String tournamentId);
 
   /// Updates the [RoundRawDto] with the given [id].
-  // Future<Result<void>> update(Tournament tournament);
+  AsyncResult<void> update(RoundRawDto round);
+
+  /// Updates the [RoundRawDto] with the given [id].
+  AsyncResult<void> updateAll(List<RoundRawDto> rounds);
 
   /// Returns the [RoundRawDto] with the given [id].
   // Future<Result<void>> delete(String id);

@@ -1,4 +1,6 @@
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_page_view_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_rounds_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
@@ -17,20 +19,26 @@ import '../view_models/tournament_view_model.dart';
 import 'content/classification_content/tournament_classification_content.dart';
 import 'content/information_content/informations_content.dart';
 import 'content/players_content/tournament_players_content.dart';
-import 'content/round_content/tournament_rounds_content.dart';
+import 'content/rounds_content/tournament_rounds_content.dart';
 
 class TournamentPage extends StatefulWidget {
   final TournamentViewModel _tournamentViewModel;
   final TournamentPageViewViewModel _tournamentPageViewViewModel;
+  final RoundsPageViewViewModel _roundsPageViewViewModel;
   final PlayersViewModel _playersViewModel;
-  const TournamentPage(
-      {super.key,
-      required TournamentViewModel tournamentViewModel,
-      required TournamentPageViewViewModel tournamentPageViewViewModel,
-      required PlayersViewModel playersViewModel})
-      : _tournamentViewModel = tournamentViewModel,
-        _tournamentPageViewViewModel = tournamentPageViewViewModel,
-        _playersViewModel = playersViewModel;
+  final RoundsViewModel _roundsViewModel;
+  const TournamentPage({
+    super.key,
+    required TournamentViewModel tournamentViewModel,
+    required TournamentPageViewViewModel tournamentPageViewViewModel,
+    required RoundsPageViewViewModel roundsPageViewViewModel,
+    required PlayersViewModel playersViewModel,
+    required RoundsViewModel roundsViewModel,
+  }) : _tournamentViewModel = tournamentViewModel,
+       _tournamentPageViewViewModel = tournamentPageViewViewModel,
+       _roundsPageViewViewModel = roundsPageViewViewModel,
+       _playersViewModel = playersViewModel,
+       _roundsViewModel = roundsViewModel;
 
   @override
   State<TournamentPage> createState() => _TournamentPageState();
@@ -45,8 +53,9 @@ class _TournamentPageState extends State<TournamentPage> {
   void initState() {
     super.initState();
     //widget._pageViewViewModel.pageController.initialPage = 0;
-    widget._tournamentPageViewViewModel
-        .emit(widget._tournamentPageViewViewModel.pageController.initialPage);
+    widget._tournamentPageViewViewModel.emit(
+      widget._tournamentPageViewViewModel.pageController.initialPage,
+    );
   }
 
   @override
@@ -55,7 +64,7 @@ class _TournamentPageState extends State<TournamentPage> {
       0: AppLocalizations.of(context)!.classification,
       1: AppLocalizations.of(context)!.rounds,
       2: AppLocalizations.of(context)!.players,
-      3: AppLocalizations.of(context)!.informations
+      3: AppLocalizations.of(context)!.informations,
     };
     return PopScope(
       canPop: false,
@@ -63,101 +72,115 @@ class _TournamentPageState extends State<TournamentPage> {
         if (!didPop) context.go(Routes.home);
       },
       child: ListenableBuilder(
-          listenable: widget._tournamentViewModel,
-          builder: (context, child) {
-            var state = widget._tournamentViewModel.stateGet;
-            Widget body = Container();
-            if (state is LoadingTournamentGetState) {
-              body = const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is SuccessTournamentGetState) {
-              _log.fine('state is TournamentSuccessState');
-              widget._playersViewModel.getPlayers(state.tournament.id);
-              body = ListenableBuilder(
-                  listenable: widget._tournamentPageViewViewModel,
-                  builder: (context, child) {
-                    return PageView(
-                      controller:
-                          widget._tournamentPageViewViewModel.pageController,
-                      onPageChanged: widget._tournamentPageViewViewModel.emit,
-                      children: [
-                        TournamentClassificationContent(
-                          tournamentViewModel: widget._tournamentViewModel,
-                          playersViewModel: widget._playersViewModel,
-                        ),
-                        TournamentRoundsContent(
-                          tournamentViewModel: widget._tournamentViewModel,
-                          roundsPageViewViewModel: RoundsPageViewViewModel(
-                            PageController(initialPage: 0),
-                          ),
-                        ),
-                        TournamentPlayersContent(
-                          tournamentViewModel: widget._tournamentViewModel,
-                          playersViewModel: widget._playersViewModel,
-                        ),
-                        TournamentInformationsContent(
-                          tournamentViewModel: widget._tournamentViewModel,
-                          playersViewModel: widget._playersViewModel,
-                        ),
-                      ],
-                    );
-                  });
-            } else if (state is FailureTournamentGetState) {
-              _log.warning('state is TournamentFailureState');
-              body = Center(
-                child: CardError(message: state.message),
-              );
-            }
-
-            return Scaffold(
-              appBar: CustomAppBar(
-                themeViewModel: context.read(),
-                title: AnimatedBuilder(
-                    animation: widget._tournamentPageViewViewModel,
-                    builder: (context, child) {
-                      var page = widget._tournamentPageViewViewModel.page;
-                      return Text(title[page]!);
-                    }),
-              ),
-              body: body,
-              bottomNavigationBar: ListenableBuilder(
-                  listenable: widget._tournamentPageViewViewModel,
-                  builder: (context, child) {
-                    return BottomNavigationBar(
-                      showSelectedLabels: false,
-                      showUnselectedLabels: false,
-                      iconSize: iconSize,
-                      type: BottomNavigationBarType.fixed,
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      // selectedItemColor: Theme.of(context).colorScheme.tertiary,
-                      currentIndex: widget._tournamentPageViewViewModel.page,
-                      items: [
-                        _buildBottomNavigationBarItem(
-                            IconAssets.iconGroupOfMenRunning,
-                            'Classificação',
-                            0),
-                        _buildBottomNavigationBarItem(
-                            IconAssets.iconCharmBinary, 'Rodadas', 1),
-                        _buildBottomNavigationBarItem(
-                            IconAssets.iconElGroup, 'Jogadores', 2),
-                        _buildBottomNavigationBarItem(
-                            IconAssets.iconInfo, 'Info', 3),
-                      ],
-                      onTap: widget._tournamentPageViewViewModel.animateToPage,
-                    );
-                  }),
+        listenable: widget._tournamentViewModel,
+        builder: (context, child) {
+          var state = widget._tournamentViewModel.getState;
+          Widget body = Container();
+          if (state is LoadingTournamentGetState) {
+            body = const Center(child: CircularProgressIndicator());
+          } else if (state is SuccessTournamentGetState) {
+            _log.fine('state is TournamentSuccessState');
+            widget._playersViewModel.getPlayers(state.tournament.id);
+            body = ListenableBuilder(
+              listenable: widget._tournamentPageViewViewModel,
+              builder: (context, child) {
+                return PageView(
+                  controller:
+                      widget._tournamentPageViewViewModel.pageController,
+                  onPageChanged: widget._tournamentPageViewViewModel.emit,
+                  children: [
+                    TournamentClassificationContent(
+                      tournamentViewModel: widget._tournamentViewModel,
+                      playersViewModel: widget._playersViewModel,
+                    ),
+                    /*TournamentRoundsContent(
+                      tournamentId: state.tournament.id,
+                      roundsViewModel: widget._roundsViewModel,
+                    ),*/
+                    TournamentRoundsPage(
+                      pageViewViewModel: widget._roundsPageViewViewModel,
+                      roundsViewModel: widget._roundsViewModel,
+                      tournamentId: state.tournament.id,
+                    ),
+                    TournamentPlayersContent(
+                      tournamentViewModel: widget._tournamentViewModel,
+                      playersViewModel: widget._playersViewModel,
+                    ),
+                    TournamentInformationsContent(
+                      tournamentViewModel: widget._tournamentViewModel,
+                      playersViewModel: widget._playersViewModel,
+                    ),
+                  ],
+                );
+              },
             );
-          }),
+          } else if (state is FailureTournamentGetState) {
+            _log.warning('state is TournamentFailureState');
+            body = Center(child: CardError(message: state.message));
+          }
+
+          return Scaffold(
+            appBar: CustomAppBar(
+              themeViewModel: context.read(),
+              title: AnimatedBuilder(
+                animation: widget._tournamentPageViewViewModel,
+                builder: (context, child) {
+                  var page = widget._tournamentPageViewViewModel.page;
+                  return Text(title[page]!);
+                },
+              ),
+            ),
+            body: body,
+            bottomNavigationBar: ListenableBuilder(
+              listenable: widget._tournamentPageViewViewModel,
+              builder: (context, child) {
+                return BottomNavigationBar(
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  iconSize: iconSize,
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  // selectedItemColor: Theme.of(context).colorScheme.tertiary,
+                  currentIndex: widget._tournamentPageViewViewModel.page,
+                  items: [
+                    _buildBottomNavigationBarItem(
+                      IconAssets.iconGroupOfMenRunning,
+                      'Classificação',
+                      0,
+                    ),
+                    _buildBottomNavigationBarItem(
+                      IconAssets.iconCharmBinary,
+                      'Rodadas',
+                      1,
+                    ),
+                    _buildBottomNavigationBarItem(
+                      IconAssets.iconElGroup,
+                      'Jogadores',
+                      2,
+                    ),
+                    _buildBottomNavigationBarItem(
+                      IconAssets.iconInfo,
+                      'Info',
+                      3,
+                    ),
+                  ],
+                  onTap: widget._tournamentPageViewViewModel.animateToPage,
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 
   _buildBottomNavigationBarItem(String imagePath, String label, int index) {
     return BottomNavigationBarItem(
       icon: CustomImageView(
-        color: index == widget._tournamentPageViewViewModel.page
-            ? Colors.white
-            : Theme.of(context).colorScheme.onPrimaryContainer,
+        color:
+            index == widget._tournamentPageViewViewModel.page
+                ? Colors.white
+                : Theme.of(context).colorScheme.onPrimaryContainer,
         imagePath: imagePath,
         height: iconSize,
         width: iconSize,

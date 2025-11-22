@@ -16,24 +16,24 @@ class TournamentViewModel extends ChangeNotifier {
   final MatchRepository _matchRepository;
 
   TournamentState _state = IdleTournamentState();
-  TournamentGetState _stateGet = IdleTournamentGetState();
+  TournamentGetState _getState = IdleTournamentGetState();
 
   final _log = Logger('TourmanetViewModel');
 
-  TournamentViewModel(
-      {required TournamentRepository tournamentRepository,
-      required PlayerRepository playerRepository,
-      required RoundRepository roundRepository,
-      required MatchRepository matchRepository})
-      : _tournamentRepository = tournamentRepository,
-        _playerRepository = playerRepository,
-        _roundRepository = roundRepository,
-        _matchRepository = matchRepository;
+  TournamentViewModel({
+    required TournamentRepository tournamentRepository,
+    required PlayerRepository playerRepository,
+    required RoundRepository roundRepository,
+    required MatchRepository matchRepository,
+  }) : _tournamentRepository = tournamentRepository,
+       _playerRepository = playerRepository,
+       _roundRepository = roundRepository,
+       _matchRepository = matchRepository;
 
-  TournamentGetState get stateGet => _stateGet;
+  TournamentGetState get getState => _getState;
 
   emit(TournamentGetState state) {
-    _stateGet = state;
+    _getState = state;
     //  _log.fine('Notifying listeners: $state');
     if (state is FailureTournamentGetState) {
       // _log.warning('erro: ${state.message}');
@@ -53,9 +53,9 @@ class TournamentViewModel extends ChangeNotifier {
   }
 
   assemblyTournament(String id) async {
-    if (_stateGet is SuccessTournamentGetState) {
+    if (_getState is SuccessTournamentGetState) {
       Tournament tournament =
-          (_stateGet as SuccessTournamentGetState).tournament;
+          (_getState as SuccessTournamentGetState).tournament;
     }
   }
 }

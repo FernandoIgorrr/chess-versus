@@ -12,7 +12,7 @@ class PlayersViewModel extends ChangeNotifier {
   PlayerTapState _stateTap = PlayerNotTapped();
   final _log = Logger('PlayersViewModel');
   PlayersViewModel({required PlayerRepository playerRepository})
-      : _repository = playerRepository;
+    : _repository = playerRepository;
 
   PlayersState get state => _state;
   PlayerTapState get stateTap => _stateTap;
@@ -20,6 +20,11 @@ class PlayersViewModel extends ChangeNotifier {
   emit(PlayersState state) {
     _log.fine('emit: $state');
     _state = state;
+    notifyListeners();
+  }
+
+  emitPlayerTapped(Player player) {
+    _stateTap = PlayerTapped(player);
     notifyListeners();
   }
 
@@ -34,10 +39,5 @@ class PlayersViewModel extends ChangeNotifier {
         .mapError(FailurePlayersState.new)
         .fold(emit, emit);
     _log.fine('Loaded players');
-  }
-
-  emitPlayerTapped(Player player) {
-    _stateTap = PlayerTapped(player);
-    notifyListeners();
   }
 }

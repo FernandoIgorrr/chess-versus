@@ -1,4 +1,4 @@
-import '../../../../domain/models/round/round.dart';
+import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 
 sealed class RoundsState {}
 
@@ -7,8 +7,8 @@ class IdleRoundsState extends RoundsState {}
 class LoadingRoundsState extends RoundsState {}
 
 class SuccessRoundsState extends RoundsState {
-  final List<Round> rounds;
-  SuccessRoundsState(this.rounds);
+  final Tournament tournament;
+  SuccessRoundsState(this.tournament);
 }
 
 class FailureRoundsState extends RoundsState {

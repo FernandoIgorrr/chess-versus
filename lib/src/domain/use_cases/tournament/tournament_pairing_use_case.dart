@@ -1,5 +1,7 @@
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_assembly_exception.dart';
+import 'package:chess_versus/src/domain/use_cases/tournament/tournament_update_use_case.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
@@ -9,55 +11,78 @@ import '../../../data/repositories/tournament/tournament_repository.dart';
 import '../../models/player/player.dart';
 import '../../models/tournament/tournament.dart';
 
-class PairingUseCase {
+class TournamentPairingUseCase {
   final TournamentRepository _tournamentRepository;
   final PlayerRepository _playerRepository;
   final MatchRepository _matchRepository;
   final RoundRepository _roundRepository;
 
-  final _log = Logger('RoundCreateUseCase');
+  final TournamentUpdateUseCase _tournamentUpdateUseCase;
 
-  PairingUseCase({
+  final _log = Logger('TournamentPairingUseCase');
+
+  TournamentPairingUseCase({
     required TournamentRepository tournamentRepository,
     required PlayerRepository playerRepository,
     required RoundRepository roundRepository,
     required MatchRepository matchRepository,
-  })  : _tournamentRepository = tournamentRepository,
-        _playerRepository = playerRepository,
-        _roundRepository = roundRepository,
-        _matchRepository = matchRepository;
+    required TournamentUpdateUseCase tournamentUpdateUseCase,
+  }) : _tournamentRepository = tournamentRepository,
+       _playerRepository = playerRepository,
+       _roundRepository = roundRepository,
+       _matchRepository = matchRepository,
+       _tournamentUpdateUseCase = tournamentUpdateUseCase;
 
-  /*AsyncResult<void, Exception> pairingFrom(
-      Tournament tournament) async {
+  AsyncResult<Tournament> pairingFrom(String tournamentId) async {
     try {
-      (await _tournamentRepository.findById(tournament.id)).fold(
-        (success) => success,
-        (failure) => throw failure,
+      var tournament = await assemblyTournament(
+        tournamentId,
+      ).fold((success) => success, (failure) => throw failure);
+
+      _log.fine(
+        'LOADING TOURNAMENT************************************************',
       );
 
-      (await _roundRepository.create(round, tournament.id)).fold((onSuccess) {},
-          (onFailure) {
-        throw onFailure;
-      });
+      _log.fine(tournament.toString());
 
-      return Success(round);
+      _log.fine(
+        'LOADED TOURNAMENT************************************************',
+      );
+      if (tournament.rounds.isEmpty) {
+        tournament.initiateTournament();
+      } else {
+        tournament.swissPairing();
+      }
+      _log.fine(
+        'PAIRED TOURNAMENT************************************************',
+      );
+      _log.fine(tournament.toString());
+
+      _log.fine(
+        'PAIRED TOURNAMENT************************************************',
+      );
+      await _tournamentUpdateUseCase.updateFrom(tournament);
+
+      return Success(tournament);
     } on Exception catch (e) {
       return Failure(e);
     }
-  }*/
+  }
 
-  AsyncResult<Tournament> assemblyTournament(
-      String tournamentId) async {
+  AsyncResult<Tournament> assemblyTournament(String tournamentId) async {
     try {
       var tournament =
           await _tournamentRepository.findById(tournamentId).getOrThrow();
       tournament.setPlayers(
-          (await _playerRepository.findBySuperclassId(tournamentId))
-              .getOrThrow());
+        (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
+      );
       var rounds =
           await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
-      rounds.forEach((r) async => r.setMatches(
-          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow()));
+      rounds.forEach(
+        (r) async => r.setMatches(
+          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow(),
+        ),
+      );
       tournament.setRounds(rounds);
       resolvePlayerReferences(tournament);
       return Success(tournament);
@@ -78,8 +103,6 @@ class PairingUseCase {
         game.setBlack = playerById[game.black.id] ?? game.black;
       }
     }
-
-    //for()
   }
 
   Map<String, Player> _mapCompetitorsById(List<Player> players) {

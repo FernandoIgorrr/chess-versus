@@ -10,4 +10,8 @@ abstract interface class Repository<T extends Object> {
   AsyncResult<T> findById(String id);
 
   AsyncResult<List<T>> findAll();
+
+  AsyncResult<void> update(T e);
+
+  AsyncResult<void> updateAll(List<T> e);
 }

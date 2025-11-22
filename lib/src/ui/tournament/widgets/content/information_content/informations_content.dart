@@ -19,8 +19,8 @@ class TournamentInformationsContent extends StatefulWidget {
     super.key,
     required TournamentViewModel tournamentViewModel,
     required PlayersViewModel playersViewModel,
-  })  : _tournamentViewModel = tournamentViewModel,
-        _playersViewModel = playersViewModel;
+  }) : _tournamentViewModel = tournamentViewModel,
+       _playersViewModel = playersViewModel;
 
   @override
   State<TournamentInformationsContent> createState() =>
@@ -33,7 +33,7 @@ class _TournamentInformationsContentState
 
   @override
   Widget build(BuildContext context) {
-    var state = widget._tournamentViewModel.stateGet;
+    var state = widget._tournamentViewModel.getState;
     Widget body = Container();
 
     if (state is IdleTournamentGetState) {
@@ -49,100 +49,109 @@ class _TournamentInformationsContentState
       String numberOfPlayers = '-1';
 
       body = ListenableBuilder(
-          listenable: widget._playersViewModel,
-          builder: (context, child) {
-            var playersState = widget._playersViewModel.state;
-            if (playersState is LoadingPlayersState) {
-              _log.fine('LoadingPlayersState');
-              numberOfPlayers = "Calculating...";
-            } else if (playersState is FailurePlayersState) {
-              _log.fine('FailurePlayersState');
-              numberOfPlayers = playersState.message;
-            } else if (playersState is SuccessPlayersState) {
-              _log.fine('SuccessPlayersState');
-              numberOfPlayers = playersState.players.length.toString();
-            }
+        listenable: widget._playersViewModel,
+        builder: (context, child) {
+          var playersState = widget._playersViewModel.state;
+          if (playersState is LoadingPlayersState) {
+            _log.fine('LoadingPlayersState');
+            numberOfPlayers = "Calculating...";
+          } else if (playersState is FailurePlayersState) {
+            _log.fine('FailurePlayersState');
+            numberOfPlayers = playersState.message;
+          } else if (playersState is SuccessPlayersState) {
+            _log.fine('SuccessPlayersState');
+            numberOfPlayers = playersState.players.length.toString();
+          }
 
-            Map<String, String> data = {
-              AppLocalizations.of(context)!.name: tournament.name.toString(),
-              AppLocalizations.of(context)!.tournamentDescription:
-                  tournament.description ?? '',
-              AppLocalizations.of(context)!.tournamentType:
-                  tournament.type.toString(),
-              AppLocalizations.of(context)!.tournamentStartDate:
-                  DateFormat('dd/MM/yyyy').format(tournament.startedAt),
-              'Status': tournament.status == TournamentStatus.created
-                  ? AppLocalizations.of(context)!.created
-                  : (tournament.status == TournamentStatus.executing
-                      ? AppLocalizations.of(context)!.inProgress
-                      : AppLocalizations.of(context)!.finished),
-              AppLocalizations.of(context)!.activePlayers: numberOfPlayers,
-              /* 'inactive_players':
+          Map<String, String> data = {
+            AppLocalizations.of(context)!.name: tournament.name.toString(),
+            AppLocalizations.of(context)!.tournamentDescription:
+                tournament.description ?? '',
+            AppLocalizations.of(context)!.tournamentType:
+                tournament.type.toString(),
+            AppLocalizations.of(context)!.tournamentStartDate: DateFormat(
+              'dd/MM/yyyy',
+            ).format(tournament.startedAt),
+            'Status':
+                tournament.status == TournamentStatus.created
+                    ? AppLocalizations.of(context)!.created
+                    : (tournament.status == TournamentStatus.executing
+                        ? AppLocalizations.of(context)!.inProgress
+                        : AppLocalizations.of(context)!.finished),
+            AppLocalizations.of(context)!.activePlayers: numberOfPlayers,
+            /* 'inactive_players':
             tournament.getNumberOfDesqualifiedPlayers.toString(),*/
-              AppLocalizations.of(context)!.numberOfRounds:
-                  tournament.totalNumberOfRounds == null
-                      ? AppLocalizations.of(context)!.notDefined
-                      : tournament.totalNumberOfRounds.toString(),
-              /*'current_round': tournament.rounds.isEmpty
+            AppLocalizations.of(context)!.numberOfRounds:
+                tournament.totalNumberOfRounds == null
+                    ? AppLocalizations.of(context)!.notDefined
+                    : tournament.totalNumberOfRounds.toString(),
+            /*'current_round': tournament.rounds.isEmpty
             ? 'Torneio não iniciado'
             : tournament.rounds.length.toString(),*/
-              AppLocalizations.of(context)!.scorePerBye:
-                  tournament.byeScore == null
-                      ? AppLocalizations.of(context)!.byeInactive
-                      : tournament.byeScore.toString(),
-              'Bye': tournament.haveBye == null
-                  ? AppLocalizations.of(context)!.inactive
-                  : (tournament.haveBye!
-                      ? AppLocalizations.of(context)!.active
-                      : AppLocalizations.of(context)!.inactive),
-            };
+            AppLocalizations.of(context)!.scorePerBye:
+                tournament.byeScore == null
+                    ? AppLocalizations.of(context)!.byeInactive
+                    : tournament.byeScore.toString(),
+            'Bye':
+                tournament.haveBye == null
+                    ? AppLocalizations.of(context)!.inactive
+                    : (tournament.haveBye!
+                        ? AppLocalizations.of(context)!.active
+                        : AppLocalizations.of(context)!.inactive),
+          };
 
-            return Container(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: ListView(
-                shrinkWrap: true,
-                children: data.entries.map((entry) {
-                  return Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+          return Container(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: ListView(
+              shrinkWrap: true,
+              children:
+                  data.entries.map((entry) {
+                    return Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        margin: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  entry.key,
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                              ),
+                            ),
+                            ListTile(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
+                                ),
+                              ),
+                              title: Text(
+                                textAlign: TextAlign.center,
+                                entry.value,
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      margin: const EdgeInsets.only(top: 8, bottom: 8),
-                      child: Column(children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(entry.key,
-                                style: Theme.of(context).textTheme.titleSmall),
-                          ),
-                        ),
-                        ListTile(
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
-                          ),
-                          title: Text(
-                            textAlign: TextAlign.center,
-                            entry.value,
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                        ),
-                      ]),
-                    ),
-                  );
-                }).toList(),
-              ),
-            );
-          });
+                    );
+                  }).toList(),
+            ),
+          );
+        },
+      );
     }
 
     return body;

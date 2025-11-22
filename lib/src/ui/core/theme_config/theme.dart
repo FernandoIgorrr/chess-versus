@@ -41,6 +41,7 @@ class ThemeHelper {
       inputDecorationTheme: inputDecorationTheme(colorScheme),
       cardTheme: cardTheme(colorScheme),
       elevatedButtonTheme: elevatedButtonTheme(colorScheme),
+      // floatingActionButtonTheme:
     );
   }
 }

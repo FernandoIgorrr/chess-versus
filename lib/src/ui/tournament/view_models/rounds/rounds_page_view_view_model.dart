@@ -3,12 +3,12 @@ import 'package:logging/logging.dart';
 
 class RoundsPageViewViewModel extends ChangeNotifier {
   late int _page;
-
+  String? selectedRoundId;
   // final int _numberOfPages;
   final PageController _pageController;
   final _log = Logger('RoundsPageViewViewModel');
   RoundsPageViewViewModel(PageController pageController)
-      : _pageController = pageController {
+    : _pageController = pageController {
     _page = _pageController.initialPage;
   }
 
@@ -17,14 +17,22 @@ class RoundsPageViewViewModel extends ChangeNotifier {
 
   animateToPage(int page) {
     // _log.fine('animateToPage $page');
-    _pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 300), curve: Curves.linear);
+    _pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.linear,
+    );
     emit(page);
   }
 
   emit(int page) {
     //_log.fine('emit page $page');
     _page = page;
+    notifyListeners();
+  }
+
+  void selectRound(String roundId) {
+    selectedRoundId = roundId;
     notifyListeners();
   }
 }

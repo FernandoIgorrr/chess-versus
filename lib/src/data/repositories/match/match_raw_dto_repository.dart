@@ -12,4 +12,10 @@ abstract class MatchRawDtoRepository implements Repository<MatchRawDto> {
   AsyncResult<List<MatchRawDto>> findAll();
 
   AsyncResult<List<MatchRawDto>> findByRound(String roundId);
+
+  @override
+  AsyncResult<void> update(MatchRawDto matchRawDto);
+
+  @override
+  AsyncResult<void> updateAll(List<MatchRawDto> matches);
 }

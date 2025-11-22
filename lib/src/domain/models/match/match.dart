@@ -1,7 +1,10 @@
+import 'package:uuid/uuid.dart';
+
 import '../player/player.dart';
 
 class Match {
-  final String _table;
+  final String _id;
+  String _table;
   Player _white;
   Player _black;
   Result? _result;
@@ -9,19 +12,22 @@ class Match {
   bool _immutable = false;
 
   Match({
+    String? id,
     required String table,
     required Player white,
     required Player black,
     Result? result,
     bool? desqualified,
     bool? immutable,
-  })  : _table = table,
-        _white = white,
-        _black = black,
-        _result = result,
-        _desqualified = desqualified ?? false,
-        _immutable = immutable ?? false;
+  }) : _id = id ?? const Uuid().v4(),
+       _table = table,
+       _white = white,
+       _black = black,
+       _result = result,
+       _desqualified = desqualified ?? false,
+       _immutable = immutable ?? false;
 
+  String get id => _id;
   String get table => _table;
   Player get white => _white;
   Player get black => _black;
@@ -29,8 +35,11 @@ class Match {
   bool get desqualified => _desqualified;
   bool get immutable => _immutable;
 
+  //set setId(String id) => _id = id;
   set setWhite(Player player) => _white = player;
   set setBlack(Player player) => _black = player;
+
+  set setTable(String table) => _table = table;
 
   void fillResult(Result result) => _result = result;
 
@@ -90,11 +99,12 @@ class Match {
     return null;
   }
 
-  Player get mostScorePlayer => (_white.score.toDouble != _black.score.toDouble)
-      ? (_white.score.toDouble > _black.score.toDouble)
-          ? _white
-          : _black
-      : (_white.buchholz.toDouble >= _black.buchholz.toDouble)
+  Player get mostScorePlayer =>
+      (_white.score.toDouble != _black.score.toDouble)
+          ? (_white.score.toDouble > _black.score.toDouble)
+              ? _white
+              : _black
+          : (_white.buchholz.toDouble >= _black.buchholz.toDouble)
           ? _white
           : _black;
 

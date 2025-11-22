@@ -3,6 +3,18 @@
     "@tournaments": {
         "description": "Title for page showing tournaments"
     },
+    "deleteTournament":"Delete tournament ?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel":"Cancel",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete":"Delete",
+    "@delete": {
+        "description": "Title for delete"
+    },
     "registerTournament":"Register tournament",
     "@registerTournament": {
         "description": "Title for tournament registration button/form"
@@ -42,6 +54,10 @@
     "finished":"Finished",
     "@finished": {
         "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded" :"The tournament has already ended",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
     },
     "numberOfRounds":"Nº of rounds",
     "@numberOfRounds": {
@@ -118,6 +134,26 @@
     "round":"Round",
     "@round": {
         "description": "Title for round"
+    },
+     "tournamentStarted":"Tournament started",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted":"The tournament can't be started",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "startTournament":"Start  Tournament",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "start":"Start",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table":"Table",
+    "@table": {
+        "description": "Title for table"
     },
     "player":"Player",
     "@player": {
