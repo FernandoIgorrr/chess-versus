@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-CardTheme cardTheme(ColorScheme colorScheme) => CardTheme(
+CardThemeData cardTheme(ColorScheme colorScheme) => CardThemeData(
 
     // color: colorScheme.secondaryContainer,
     elevation: 4,

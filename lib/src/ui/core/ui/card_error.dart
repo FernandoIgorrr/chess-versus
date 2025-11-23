@@ -1,4 +1,4 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

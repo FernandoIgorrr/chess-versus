@@ -2,7 +2,7 @@ import 'package:chess_versus/src/config/dependencies.dart';
 import 'package:chess_versus/src/routing/router.dart';
 import 'package:chess_versus/src/ui/core/theme_config/view_models/theme_switch_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

@@ -3,7 +3,7 @@ import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_page_vi
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_round_num_form.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../../l10n/app_localizations.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 
 import '../../../../../config/assets.dart';

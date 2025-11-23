@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-DialogTheme dialogTheme(ColorScheme colorScheme) => DialogTheme(
+DialogThemeData dialogTheme(ColorScheme colorScheme) => DialogThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       backgroundColor: colorScheme.surface,
       titleTextStyle: TextStyle(

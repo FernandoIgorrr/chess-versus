@@ -1,5 +1,5 @@
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';

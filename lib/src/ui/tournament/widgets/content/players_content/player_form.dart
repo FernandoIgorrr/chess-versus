@@ -1,7 +1,7 @@
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/players/player_state.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/players/player_view_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

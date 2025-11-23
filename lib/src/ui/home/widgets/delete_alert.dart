@@ -1,5 +1,5 @@
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 

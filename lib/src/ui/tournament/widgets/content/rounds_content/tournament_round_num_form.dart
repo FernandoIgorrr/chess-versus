@@ -1,6 +1,6 @@
+import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:chess_versus/src/ui/core/ui/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../domain/models/tournament/tournament.dart';
 import '../../../../core/ui/increment_decrement_field.dart';

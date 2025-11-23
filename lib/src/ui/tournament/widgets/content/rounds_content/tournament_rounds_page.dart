@@ -1,10 +1,8 @@
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_rounds_content.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 import '../../../view_models/rounds/rounds_page_view_view_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'tournament_round_content.dart';
 

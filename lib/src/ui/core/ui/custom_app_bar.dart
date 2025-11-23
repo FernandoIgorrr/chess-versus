@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chess_versus/l10n/app_localizations.dart';
 
 import '../theme_config/view_models/theme_state.dart';
 import '../theme_config/view_models/theme_switch_view_model.dart';
