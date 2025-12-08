@@ -1,6 +1,4 @@
-import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
-import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_rounds_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
@@ -12,6 +10,7 @@ import '../../../routing/routes.dart';
 import '../../core/ui/card_error.dart';
 import '../../core/ui/custom_app_bar.dart';
 import '../../core/ui/custom_image_view.dart';
+import '../view_models/matches/matches_view_model.dart';
 import '../view_models/tournament_page_view_view_model.dart';
 import '../view_models/players/players_view_model.dart';
 import '../view_models/tournament_get_state.dart';
@@ -24,21 +23,22 @@ import 'content/rounds_content/tournament_rounds_content.dart';
 class TournamentPage extends StatefulWidget {
   final TournamentViewModel _tournamentViewModel;
   final TournamentPageViewViewModel _tournamentPageViewViewModel;
-  final RoundsPageViewViewModel _roundsPageViewViewModel;
   final PlayersViewModel _playersViewModel;
   final RoundsViewModel _roundsViewModel;
+  final MatchesViewModel _matchesViewModel;
+
   const TournamentPage({
     super.key,
     required TournamentViewModel tournamentViewModel,
     required TournamentPageViewViewModel tournamentPageViewViewModel,
-    required RoundsPageViewViewModel roundsPageViewViewModel,
     required PlayersViewModel playersViewModel,
     required RoundsViewModel roundsViewModel,
+    required MatchesViewModel matchesViewModel,
   }) : _tournamentViewModel = tournamentViewModel,
        _tournamentPageViewViewModel = tournamentPageViewViewModel,
-       _roundsPageViewViewModel = roundsPageViewViewModel,
        _playersViewModel = playersViewModel,
-       _roundsViewModel = roundsViewModel;
+       _roundsViewModel = roundsViewModel,
+       _matchesViewModel = matchesViewModel;
 
   @override
   State<TournamentPage> createState() => _TournamentPageState();
@@ -93,15 +93,16 @@ class _TournamentPageState extends State<TournamentPage> {
                       tournamentViewModel: widget._tournamentViewModel,
                       playersViewModel: widget._playersViewModel,
                     ),
-                    /*TournamentRoundsContent(
+                    TournamentRoundsContent(
                       tournamentId: state.tournament.id,
                       roundsViewModel: widget._roundsViewModel,
-                    ),*/
-                    TournamentRoundsPage(
-                      pageViewViewModel: widget._roundsPageViewViewModel,
-                      roundsViewModel: widget._roundsViewModel,
-                      tournamentId: state.tournament.id,
+                      matchesViewModel: widget._matchesViewModel,
                     ),
+                    /*TournamentRoundsPage(
+                      roundsPageViewViewModel: widget._roundsPageViewViewModel,
+                      roundsViewModel: widget._roundsViewModel,
+                      tournamentId: state.tournament.id,
+                    ),*/
                     TournamentPlayersContent(
                       tournamentViewModel: widget._tournamentViewModel,
                       playersViewModel: widget._playersViewModel,

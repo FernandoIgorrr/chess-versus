@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
+import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,6 +11,7 @@ import '../../exceptions/matches_fetch_exception.dart';
 import 'match_raw_dto_repository.dart';
 
 class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
+  final _log = Logger('MatchRawDtoRepositoryLocal');
   final String _kMatches;
 
   MatchRawDtoRepositoryLocal(this._kMatches);
@@ -81,9 +83,11 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
       final response = await getItems();
 
       if (response.isEmpty) {
+        // _log.fine('não a matches salvos!!!!');
+
         return const Success(<MatchRawDto>[]);
       }
-
+      //_log.fine('HÁ matches salvos!!!!');
       List<dynamic> dynamicMatches =
           response
               .map(jsonDecode)

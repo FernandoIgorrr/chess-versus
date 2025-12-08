@@ -49,32 +49,56 @@ class TournamentLoadUseCase {
 
   AsyncResult<Tournament> assemblyTournament(String tournamentId) async {
     try {
-      var tournament =
-          await _tournamentRepository.findById(tournamentId).getOrThrow();
-      tournament.setPlayers(
-        (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
-      );
-      var rounds =
-          await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
-      rounds.forEach(
-        (r) async => r.setMatches(
-          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow(),
-        ),
-      );
-      tournament.setRounds(rounds);
+      var tournament = await _assemblyTournament(tournamentId);
+
       resolvePlayerReferences(tournament);
 
-      //print(tournament.toString());
-
-      await _tournamentRepository.update(tournament);
-      //await _roundRepository.updateAll(tournament.rounds);
-
-      _log.fine('Loaded tournament');
+      // print(tournament);
 
       return Success(tournament);
     } catch (e) {
       return Failure(TournamentAssemblyException(e.toString()));
     }
+  }
+
+  Future<Tournament> _assemblyTournament(String tournamentId) async {
+    // try {
+    var tournament =
+        await _tournamentRepository.findById(tournamentId).getOrThrow();
+    tournament.setPlayers(
+      (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
+    );
+    var rounds =
+        await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
+
+    for (var round in rounds) {
+      var matches =
+          await _matchRepository.findBySuperclassId(round.id).getOrThrow();
+      round.setMatches(matches);
+
+      //round.setMatches(matches)
+    }
+
+    tournament.setRounds(rounds);
+
+    //print(tournament);
+
+    /* rounds.forEach(
+      (round) async => round.setMatches(
+        (await _matchRepository.findBySuperclassId(round.id)).getOrThrow(),
+      ),
+    );*/
+
+    tournament.setRounds(rounds);
+    //await _tournamentRepository.update(tournament);
+    //await _roundRepository.updateAll(tournament.rounds);
+
+    _log.fine('Loaded tournament');
+    return tournament;
+    // return Success(tournament);
+    // } catch (e) {
+    // return Failure(TournamentAssemblyException(e.toString()));
+    //}
   }
 
   void resolvePlayerReferences(Tournament tournament) {
@@ -84,9 +108,9 @@ class TournamentLoadUseCase {
       // if (haveBye) {
       round.notPaired = playerById[round.notPaired!.id] ?? round.notPaired;
       // }
-      for (var game in round.matches) {
-        game.setWhite = playerById[game.white.id] ?? game.white;
-        game.setBlack = playerById[game.black.id] ?? game.black;
+      for (var match in round.matches) {
+        match.setWhite = playerById[match.white.id] ?? match.white;
+        match.setBlack = playerById[match.black.id] ?? match.black;
       }
     }
   }

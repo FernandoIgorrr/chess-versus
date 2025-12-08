@@ -1,6 +1,6 @@
 import 'package:chess_versus/src/routing/routes.dart';
 import 'package:chess_versus/src/ui/home/view_models/home_view_model.dart';
-import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_page_view_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/matches/matches_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/tournament_view_model.dart';
@@ -41,21 +41,20 @@ GoRouter router() => GoRouter(
             final pageViewViewModel = TournamentPageViewViewModel(
               PageController(initialPage: 3),
             );
-            final roundsPageViewViewModel = RoundsPageViewViewModel(
-              PageController(initialPage: 0),
-            );
+
             final RoundsViewModel roundsViewModel = RoundsViewModel(
               tournamentLoadUseCase: context.read(),
               tournamentUpdateUseCase: context.read(),
               tournamentPairingUseCase: context.read(),
               roundRepository: context.read(),
             );
+            final matchesViewModel = MatchesViewModel();
             return TournamentPage(
               tournamentViewModel: tournamentViewModel,
               tournamentPageViewViewModel: pageViewViewModel,
-              roundsPageViewViewModel: roundsPageViewViewModel,
               playersViewModel: playersViewModel,
               roundsViewModel: roundsViewModel,
+              matchesViewModel: matchesViewModel,
             );
           },
           routes: [
@@ -73,9 +72,7 @@ GoRouter router() => GoRouter(
                 final pageViewViewModel = TournamentPageViewViewModel(
                   PageController(initialPage: 3),
                 );
-                final roundsPageViewViewModel = RoundsPageViewViewModel(
-                  PageController(initialPage: 0),
-                );
+
                 final playersViewModel = PlayersViewModel(
                   playerRepository: context.read(),
                 );
@@ -86,12 +83,14 @@ GoRouter router() => GoRouter(
                   roundRepository: context.read(),
                 );
                 tournamentViewModel.getTournament(id);
+                final matchesViewModel = MatchesViewModel();
+
                 return TournamentPage(
                   tournamentViewModel: tournamentViewModel,
                   tournamentPageViewViewModel: pageViewViewModel,
-                  roundsPageViewViewModel: roundsPageViewViewModel,
                   playersViewModel: playersViewModel,
                   roundsViewModel: roundsViewModel,
+                  matchesViewModel: matchesViewModel,
                 );
               },
             ),

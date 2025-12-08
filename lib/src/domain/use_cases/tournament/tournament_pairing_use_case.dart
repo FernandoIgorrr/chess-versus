@@ -33,7 +33,34 @@ class TournamentPairingUseCase {
        _matchRepository = matchRepository,
        _tournamentUpdateUseCase = tournamentUpdateUseCase;
 
-  AsyncResult<Tournament> pairingFrom(String tournamentId) async {
+  void pairingFrom(Tournament tournament) {
+    _log.fine(
+      'LOADING TOURNAMENT************************************************',
+    );
+
+    _log.fine(tournament.toString());
+
+    _log.fine(
+      'LOADED TOURNAMENT************************************************',
+    );
+    if (tournament.rounds.isEmpty) {
+      tournament.initiateTournament();
+      //_log.fine("BYE PLAYER  :  ${tournament.rounds.first.notPaired!.name}}");
+    } else {
+      tournament.swissPairing();
+    }
+    _log.fine(
+      'PAIRED TOURNAMENT************************************************',
+    );
+    _log.fine(tournament.toString());
+    //_log.fine(tournament.rounds.first.matches.first.toString());
+
+    _log.fine(
+      'PAIRED TOURNAMENT************************************************',
+    );
+  }
+
+  /*AsyncResult<Tournament> pairingFrom( Tournament tournament) async {
     try {
       var tournament = await assemblyTournament(
         tournamentId,
@@ -57,17 +84,18 @@ class TournamentPairingUseCase {
         'PAIRED TOURNAMENT************************************************',
       );
       _log.fine(tournament.toString());
+      _log.fine(tournament.rounds.first.matches.first.toString());
 
       _log.fine(
         'PAIRED TOURNAMENT************************************************',
       );
-      await _tournamentUpdateUseCase.updateFrom(tournament);
 
+      await _tournamentUpdateUseCase.updateFrom(tournament);
       return Success(tournament);
     } on Exception catch (e) {
       return Failure(e);
     }
-  }
+  }*/
 
   AsyncResult<Tournament> assemblyTournament(String tournamentId) async {
     try {

@@ -1,5 +1,4 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_page_view_view_model.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_round_num_form.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -9,25 +8,24 @@ import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import '../../../../../config/assets.dart';
 import '../../../../../domain/models/tournament/tournament.dart';
 import '../../../../core/ui/custom_image_view.dart';
+import '../../../view_models/matches/matches_view_model.dart';
 import '../../../view_models/rounds/rounds_state.dart';
 import '../../../view_models/rounds/rounds_view_model.dart';
+import 'tournament_round_content.dart';
 
 class TournamentRoundsContent extends StatefulWidget {
   final RoundsViewModel _roundsViewModel;
-  final RoundsPageViewViewModel _roundsPageViewViewModel;
-
+  final MatchesViewModel _matchesViewModel;
   final String _tournamentId;
 
   const TournamentRoundsContent({
     super.key,
-
     required String tournamentId,
     required RoundsViewModel roundsViewModel,
-    required RoundsPageViewViewModel roundsPageViewViewModel,
+    required MatchesViewModel matchesViewModel,
   }) : _tournamentId = tournamentId,
        _roundsViewModel = roundsViewModel,
-       _roundsPageViewViewModel = roundsPageViewViewModel;
-
+       _matchesViewModel = matchesViewModel;
   @override
   State<TournamentRoundsContent> createState() =>
       _TournamentRoundsContentState();
@@ -35,11 +33,22 @@ class TournamentRoundsContent extends StatefulWidget {
 
 class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
   final _log = Logger('TournamentRoundsContent **');
+  int? _expandedRoundIndex;
+  List<Item> generateItems(int numberOfItems) {
+    return List.generate(numberOfItems, (int index) {
+      return Item(
+        headerValue: 'Book $index',
+        expandedValue: 'Details for Book $index goes here',
+      );
+    });
+  }
 
+  late List<Item> _books;
   @override
   void initState() {
     super.initState();
     widget._roundsViewModel.assemblyTournament(widget._tournamentId);
+    _books = generateItems(8);
   }
 
   @override
@@ -69,45 +78,91 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                       textAlign: TextAlign.center,
                     ),
                   )
-                  : Container(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: ListView(
-                      shrinkWrap: true,
-                      children:
-                          state.tournament.rounds.map((round) {
-                            return Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  top: 16,
-                                  bottom:
-                                      state.tournament.rounds.last == round
-                                          ? 16
-                                          : 0,
-                                ),
-                                child: ListTile(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  // tileColor: appTheme.blueGray700,
-                                  trailing: const Icon(Icons.chevron_right),
-                                  title: Align(
-                                    alignment: const Alignment(0.3, -0.5),
-                                    child: Text(
-                                      '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    widget._roundsPageViewViewModel.selectRound(
-                                      round.id,
+                  : SingleChildScrollView(
+                    child: Align(
+                      alignment: Alignment.center,
+
+                      child: Container(
+                        margin: EdgeInsets.only(top: 16),
+                        //padding: EdgeInsetsGeometry.symmetric(horizontal: 8),
+                        child: ExpansionPanelList(
+                          expansionCallback: (int index, bool isExpanded) {
+                            setState(() {
+                              //_books[index].isExpanded = isExpanded;
+
+                              _expandedRoundIndex = isExpanded ? null : index;
+                            });
+                          },
+                          children:
+                              state.tournament.rounds.map<ExpansionPanel>((
+                                round,
+                              ) {
+                                return ExpansionPanel(
+                                  headerBuilder: (
+                                    BuildContext context,
+                                    bool isExpanded,
+                                  ) {
+                                    return Align(
+                                      alignment: Alignment.center,
+
+                                      child: ListTile(
+                                        //contentPadding: EdgeInsets.all(50),
+                                        title: Align(
+                                          alignment: const Alignment(0.3, -0.5),
+
+                                          child: Text(
+                                            '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                                          ),
+                                        ),
+                                      ),
                                     );
-                                    widget._roundsPageViewViewModel
-                                        .animateToPage(1);
                                   },
-                                ),
-                              ),
-                            );
-                          }).toList(),
+                                  body: TournamentRoundContent(
+                                    byeScore:
+                                        state.tournament.byeScore!.toDouble,
+                                    round: round,
+                                    matchesViewModel: widget._matchesViewModel,
+                                  ),
+                                  // body: Column(
+                                  //   children: [
+                                  //     ...round.matches.map((match) {
+                                  //       Widget widget;
+                                  //       round.notPaired == null
+                                  //           ? widget = Row(
+                                  //             mainAxisAlignment:
+                                  //                 MainAxisAlignment.spaceEvenly,
+                                  //             children: [
+                                  //               Text('${match.white.name}'),
+                                  //               Text(' : '),
+                                  //               Text('${match.black.name}'),
+                                  //             ],
+                                  //           )
+                                  //           : widget = Row(
+                                  //             mainAxisAlignment:
+                                  //                 MainAxisAlignment.spaceEvenly,
+                                  //             children: [
+                                  //               Text('${match.white.name}'),
+                                  //               Text(' : '),
+                                  //               Text('${match.black.name}'),
+                                  //             ],
+                                  //           );
+
+                                  //       return widget;
+                                  //     }),
+                                  //   ],
+                                  // ),
+
+                                  // ListTile(
+                                  //   title: Text('qualquer coisa aq'),
+                                  //   subtitle: Text(round.matches.toString()),
+                                  // ),
+                                  isExpanded: true,
+                                  // state.tournament.rounds.indexOf(round) ==
+                                  // _expandedRoundIndex,
+                                );
+                              }).toList(),
+                        ),
+                      ),
                     ),
                   );
 
@@ -120,7 +175,20 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                 borderRadius: BorderRadius.circular(8),
               ),
               onPressed: () async {
-                if (state.tournament.canItBeStarted) {
+                if (state.tournament.cantItBeStarted) {
+                  Flushbar(
+                    messageText: Text(
+                      AppLocalizations.of(context)!.tournamentCantBeStarted,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onError,
+                      ),
+                    ),
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                    duration: const Duration(seconds: 2),
+                    flushbarPosition: FlushbarPosition.TOP,
+                  ).show(context);
+                } else if (state.tournament.canItBeStarted) {
                   _log.fine('Tournmanet can it be started');
                   //  widget._roundsViewModel.assemblyTournament(
                   //    state.tournament.id,
@@ -175,7 +243,7 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
     );
   }
 
-  _buildRoundsNumDialog(BuildContext context, Tournament tournament) async {
+  _buildRoundsNumDialog(BuildContext context, Tournament tournament) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -185,8 +253,10 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
           tournament: tournament,
           onPressed: () {
             //tournament.initiateTournament();
-            widget._roundsViewModel.updateNumberOfRounds(tournament);
-            widget._roundsViewModel.toPair(tournament.id);
+            //await widget._roundsViewModel.updateTournament(tournament);
+            widget._roundsViewModel.toPair(tournament);
+            widget._roundsViewModel.updateTournament(tournament);
+
             Navigator.pop(context);
 
             Flushbar(
@@ -203,4 +273,16 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
       },
     );
   }
+}
+
+class Item {
+  Item({
+    required this.expandedValue,
+    required this.headerValue,
+    this.isExpanded = false,
+  });
+
+  String expandedValue;
+  String headerValue;
+  bool isExpanded;
 }

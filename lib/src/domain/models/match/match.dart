@@ -112,6 +112,11 @@ class Match {
     return (game.white == _white || game.black == _white) &&
         (game.white == _black || game.black == _black);
   }
+
+  @override
+  String toString() {
+    return 'Match(id: $_id, Table: $_table, White: $_white, Black: $_black, Result: $_result  \n )';
+  }
 }
 
 enum Result { white, black, draw, bothLose, woWhite, woBlack }

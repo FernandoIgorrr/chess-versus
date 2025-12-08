@@ -60,19 +60,20 @@ class RoundsViewModel extends ChangeNotifier {
     _log.fine('Loaded rounds');
   }
 
-  Future<void> toPair(String tournamentId) async {
+  void toPair(Tournament tournament) {
     _log.fine('Start Pairing players!!!');
     emit(LoadingRoundsState());
-    await _tournamentPairingUseCase
+    /* await _tournamentPairingUseCase
         .pairingFrom(tournamentId)
         .map(SuccessRoundsState.new)
         .mapError((failure) => failure.toString())
         .mapError(FailureRoundsState.new)
-        .fold(emit, emit);
+        .fold(emit, emit);*/
+    _tournamentPairingUseCase.pairingFrom(tournament);
     _log.fine('Paired players!!!!!');
   }
 
-  Future<void> updateNumberOfRounds(Tournament tournament) async {
+  Future<void> updateTournament(Tournament tournament) async {
     emit(LoadingRoundsState());
     await _tournamentUpdateUseCase.updateFrom(tournament);
   }

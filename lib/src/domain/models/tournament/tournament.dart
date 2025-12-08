@@ -104,11 +104,16 @@ class Tournament {
 
   bool get canItBeStarted => (numberOfPlayers > 2) && rounds.isEmpty;
 
-  bool get cantItBeStarted => (numberOfPlayers < 2) || rounds.isNotEmpty;
+  //bool get cantItBeStarted => (numberOfPlayers < 2) || rounds.isNotEmpty;
 
-  bool get areLastRoundResultsFilled => rounds.last.matches
-      .map((game) => game.result != null ? true : false)
-      .reduce((a, b) => a && b);
+  bool get cantItBeStarted => !canItBeStarted;
+
+  bool get areLastRoundResultsFilled =>
+      rounds.isEmpty
+          ? false
+          : rounds.last.matches
+              .map((game) => game.result != null ? true : false)
+              .reduce((a, b) => a && b);
   int get minRoundsNum => (sqrt(players.length) + 1).round();
   int get maxRoundsNum => players.length - 1;
 
@@ -141,7 +146,6 @@ class Tournament {
     Round round = Round(roundNumber: rounds.length + 1, matches: <Match>[]);
 
     final pairedPlayers = <Player>{};
-    //List<GameModel> gamesAux = <GameModel>[];
 
     if (rounds.isEmpty) {
       players.shuffle();
@@ -150,8 +154,8 @@ class Tournament {
     if (haveBye!) {
       if (rounds.isNotEmpty) {
         sortNextByePlayer();
-        pairedPlayers.add(players.last);
       }
+      pairedPlayers.add(players.last);
       round.notPaired = players.last;
     }
     for (int i = 0; i < players.length - 1; i++) {
@@ -163,7 +167,7 @@ class Tournament {
         final player2 = players[j];
         if (pairedPlayers.contains(player2)) continue;
 
-        // Evita repetição de adversários
+        // Para não permitir repetição de adversários
         if (!alreadyPlayed(player1, player2)) {
           ChessTuple chessTuple = chooseWhoIsBlackOrWhite(player1, player2);
 
@@ -418,7 +422,7 @@ class Tournament {
 
   @override
   String toString() {
-    return 'Tournament(id: $_id, name: $_name, description: $_description, startedAt: $_startedAt, type: $_type, status: $_status, totalNumberOfRounds: $_totalNumberOfRounds, haveBye: $_haveBye) \n Players: ${_players.toString()} \n Rounds: $_rounds';
+    return 'Tournament(id: $_id, name: $_name, description: $_description, startedAt: $_startedAt, type: $_type, status: $_status, totalNumberOfRounds: $_totalNumberOfRounds, haveBye: $_haveBye) \n Players: ${_players.toString()} \n Rounds: ${_rounds.toString()}';
   }
 }
 

@@ -46,9 +46,9 @@ class MatchRepositoryLocal extends MatchRepository {
   }
 
   @override
-  AsyncResult<List<Match>> findBySuperclassId(String superclassId) async {
+  AsyncResult<List<Match>> findBySuperclassId(String roundId) async {
     try {
-      final response = await _repository.findByRound(superclassId).getOrElse((
+      final response = await _repository.findByRound(roundId).getOrElse((
         failure,
       ) {
         throw failure;

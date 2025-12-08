@@ -40,4 +40,9 @@ class Round {
 
   void setMatches(List<Match> matches) => _matches = matches;
   set notPaired(Player? player) => _notPaired = player;
+
+  @override
+  String toString() {
+    return 'Round(id: $_id, Number: $_roundNumber, Not Paired: $_notPaired \n Matches: ${_matches.toString()})';
+  }
 }

@@ -34,7 +34,8 @@ class TournamentUpdateUseCase {
       await _roundRepository.updateAll(tournament.rounds, tournament.id);
       await _playerRepository.updateAll(tournament.players, tournament.id);
       tournament.rounds.forEach(
-        (r) async => await _matchRepository.updateAll(r.matches, tournament.id),
+        (round) async =>
+            await _matchRepository.updateAll(round.matches, round.id),
       );
       return Success(unit);
     } on Exception catch (e) {
