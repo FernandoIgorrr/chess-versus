@@ -128,6 +128,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get table => 'Mesa';
 
   @override
+  String get board => 'Mesa';
+
+  @override
   String get player => 'Jogador';
 
   @override

@@ -129,6 +129,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get table => 'Table';
 
   @override
+  String get board => 'Board';
+
+  @override
   String get player => 'Player';
 
   @override

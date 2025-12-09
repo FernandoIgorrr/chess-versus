@@ -155,6 +155,10 @@
     "@table": {
         "description": "Title for table"
     },
+    "board":"Board",
+    "@board":{
+        "description": "Title for board"
+    },
     "player":"Player",
     "@player": {
         "description": "Title for player"

@@ -35,19 +35,21 @@ class AppColors {
     tertiary: Color(0xff75546f),
     onTertiary: Color(0xffffffff),
     scrim: green,
+    shadow: Color(0xFF007557),
   );
 
   // Esquema de cores escuro
   static const darkCodeScheme = ColorScheme.dark(
     brightness: Brightness.dark,
     surface: drakGray,
-    primary: blueGray700,
+    primary: Color(0xFF2E3B3D),
     primaryContainer: Color(0xff4a6366),
     onPrimaryContainer: lightGray,
     onPrimary: lightGray,
     secondary: lightGray200,
     error: redOrange,
     onError: white,
-    scrim: green,
+    scrim: Color(0xFF00BC8C),
+    shadow: Color(0xFF007557),
   );
 }

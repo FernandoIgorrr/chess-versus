@@ -332,6 +332,12 @@ abstract class AppLocalizations {
   /// **'Table'**
   String get table;
 
+  /// Title for board
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get board;
+
   /// Title for player
   ///
   /// In en, this message translates to:

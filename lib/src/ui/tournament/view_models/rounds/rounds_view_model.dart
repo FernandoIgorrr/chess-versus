@@ -8,11 +8,15 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
+import '../../../../domain/models/round/round.dart';
+import 'round_tap_state.dart';
+
 class RoundsViewModel extends ChangeNotifier {
   final TournamentLoadUseCase _tournamentLoadUseCase;
   final TournamentUpdateUseCase _tournamentUpdateUseCase;
   final TournamentPairingUseCase _tournamentPairingUseCase;
   final RoundRepository _roundRepository;
+  RoundTapState _stateTap = RoundNotTapped();
 
   final _log = Logger('RoundsViewModel');
 
@@ -29,9 +33,15 @@ class RoundsViewModel extends ChangeNotifier {
        _roundRepository = roundRepository;
 
   RoundsState get state => _state;
+  RoundTapState get stateTap => _stateTap;
 
   emit(RoundsState state) {
     _state = state;
+    notifyListeners();
+  }
+
+  emitRoundTapped(Round round) {
+    _stateTap = RoundTapped(round);
     notifyListeners();
   }
 

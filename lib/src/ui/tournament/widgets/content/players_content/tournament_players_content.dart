@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/ui/custom_image_view.dart';
-import '../../../view_models/players/player_state_tap.dart';
+import '../../../view_models/players/player_tap_state.dart';
 import '../../../view_models/players/players_state.dart';
 import '../../../view_models/players/players_view_model.dart';
 import 'player_form.dart';
@@ -79,7 +79,7 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
                         child: Container(
                           //  width: 352.h,
                           margin: EdgeInsets.only(
-                            top: 8,
+                            top: players.first == player ? 16 : 8,
                             bottom: players.last == player ? 8 : 0,
                           ),
                           child: ListTile(

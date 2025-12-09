@@ -9,6 +9,7 @@ import '../../../../../config/assets.dart';
 import '../../../../../domain/models/tournament/tournament.dart';
 import '../../../../core/ui/custom_image_view.dart';
 import '../../../view_models/matches/matches_view_model.dart';
+import '../../../view_models/rounds/round_tap_state.dart';
 import '../../../view_models/rounds/rounds_state.dart';
 import '../../../view_models/rounds/rounds_view_model.dart';
 import 'tournament_round_content.dart';
@@ -33,22 +34,11 @@ class TournamentRoundsContent extends StatefulWidget {
 
 class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
   final _log = Logger('TournamentRoundsContent **');
-  int? _expandedRoundIndex;
-  List<Item> generateItems(int numberOfItems) {
-    return List.generate(numberOfItems, (int index) {
-      return Item(
-        headerValue: 'Book $index',
-        expandedValue: 'Details for Book $index goes here',
-      );
-    });
-  }
 
-  late List<Item> _books;
   @override
   void initState() {
     super.initState();
     widget._roundsViewModel.assemblyTournament(widget._tournamentId);
-    _books = generateItems(8);
   }
 
   @override
@@ -57,8 +47,8 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
       listenable: widget._roundsViewModel,
       builder: (context, child) {
         Widget body = Container();
-
         final state = widget._roundsViewModel.state;
+        final stateTap = widget._roundsViewModel.stateTap;
         if (state is IdleRoundsState) {
           body = Center(child: Text("Idle"));
           _log.fine('IdleRoundsState');
@@ -70,99 +60,72 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
           body = Center(child: Text(state.message));
           _log.fine('FailureRoundsState');
         } else if (state is SuccessRoundsState) {
+          var rounds = state.tournament.rounds;
           Widget content =
-              state.tournament.rounds.isEmpty
+              rounds.isEmpty
                   ? Center(
                     child: Text(
                       AppLocalizations.of(context)!.tournamentHasntStartedYet,
                       textAlign: TextAlign.center,
                     ),
                   )
-                  : SingleChildScrollView(
-                    child: Align(
-                      alignment: Alignment.center,
+                  : Container(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
 
-                      child: Container(
-                        margin: EdgeInsets.only(top: 16),
-                        //padding: EdgeInsetsGeometry.symmetric(horizontal: 8),
-                        child: ExpansionPanelList(
-                          expansionCallback: (int index, bool isExpanded) {
-                            setState(() {
-                              //_books[index].isExpanded = isExpanded;
-
-                              _expandedRoundIndex = isExpanded ? null : index;
-                            });
-                          },
-                          children:
-                              state.tournament.rounds.map<ExpansionPanel>((
-                                round,
-                              ) {
-                                return ExpansionPanel(
-                                  headerBuilder: (
-                                    BuildContext context,
-                                    bool isExpanded,
-                                  ) {
-                                    return Align(
-                                      alignment: Alignment.center,
-
-                                      child: ListTile(
-                                        //contentPadding: EdgeInsets.all(50),
-                                        title: Align(
-                                          alignment: const Alignment(0.3, -0.5),
-
-                                          child: Text(
-                                            '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  body: TournamentRoundContent(
-                                    byeScore:
-                                        state.tournament.byeScore!.toDouble,
-                                    round: round,
-                                    matchesViewModel: widget._matchesViewModel,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children:
+                          state.tournament.rounds.map((round) {
+                            Color tileColor =
+                                stateTap is RoundTapped &&
+                                        stateTap.round == round
+                                    ? Theme.of(context).colorScheme.tertiary
+                                    : Theme.of(
+                                      context,
+                                    ).colorScheme.primaryContainer;
+                            return Align(
+                              //alignment: Alignment.center,
+                              child: Container(
+                                //  width: 352.h,
+                                margin: EdgeInsets.only(
+                                  top: 16,
+                                  bottom: rounds.last == round ? 8 : 0,
+                                ),
+                                child: ExpansionTile(
+                                  backgroundColor: tileColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  // body: Column(
-                                  //   children: [
-                                  //     ...round.matches.map((match) {
-                                  //       Widget widget;
-                                  //       round.notPaired == null
-                                  //           ? widget = Row(
-                                  //             mainAxisAlignment:
-                                  //                 MainAxisAlignment.spaceEvenly,
-                                  //             children: [
-                                  //               Text('${match.white.name}'),
-                                  //               Text(' : '),
-                                  //               Text('${match.black.name}'),
-                                  //             ],
-                                  //           )
-                                  //           : widget = Row(
-                                  //             mainAxisAlignment:
-                                  //                 MainAxisAlignment.spaceEvenly,
-                                  //             children: [
-                                  //               Text('${match.white.name}'),
-                                  //               Text(' : '),
-                                  //               Text('${match.black.name}'),
-                                  //             ],
-                                  //           );
+                                  title: Align(
+                                    alignment: const Alignment(0.15, -0.0),
+                                    child: Text(
+                                      textAlign: TextAlign.center,
 
-                                  //       return widget;
-                                  //     }),
-                                  //   ],
-                                  // ),
-
-                                  // ListTile(
-                                  //   title: Text('qualquer coisa aq'),
-                                  //   subtitle: Text(round.matches.toString()),
-                                  // ),
-                                  isExpanded: true,
-                                  // state.tournament.rounds.indexOf(round) ==
-                                  // _expandedRoundIndex,
-                                );
-                              }).toList(),
-                        ),
-                      ),
+                                      '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                                    ),
+                                  ),
+                                  children: <Widget>[
+                                    Container(
+                                      // height: 60,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      //  padding: const EdgeInsets.only(
+                                      //  top: 4,
+                                      // bottom: 4,
+                                      //),
+                                      child: TournamentRoundContent(
+                                        byeScore:
+                                            state.tournament.byeScore!.toDouble,
+                                        round: round,
+                                        matchesViewModel:
+                                            widget._matchesViewModel,
+                                      ), //
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
                     ),
                   );
 

@@ -157,6 +157,10 @@
     "@table": {
         "description": "Titulo para Mesa"
     },
+     "board":"Mesa",
+    "@board":{
+        "description": "Titulo para Mesa"
+    },
     "player":"Jogador",
     "@player": {
         "description": "Título para jogador"
