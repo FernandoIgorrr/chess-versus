@@ -1,0 +1,240 @@
+{
+    "@@locale": "ar",
+    "@@textDirection": "rtl",
+    "tournaments": "البطولات",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "حذف البطولة؟",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "إلغاء",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "حذف",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "تسجيل بطولة",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "الاسم",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "اسم البطولة",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "وصف البطولة",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "لا يوجد وصف",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "نوع البطولة",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "تاريخ البدء",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "تم الإنشاء",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "قيد التقدم",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "انتهت",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "انتهت البطولة بالفعل",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "عدد الجولات",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "النقاط لكل جولة إعفاء",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "غير محدد",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "غير مُبلّغ عنه",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "اللاعبون النشطون",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "نشط",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "غير نشط",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "الإعفاء غير نشط",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "لم تبدأ البطولة بعد",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "تم تسجيل البطولة بنجاح!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "بيانات غير صالحة",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "لا توجد بطولات مسجلة",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "حدث خطأ أثناء محاولة حذف البطولة",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "تم حذف البطولة بنجاح!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "النتيجة",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "لا يمكن أن تكون النتيجة سالبة!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "التصنيف",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "جولات",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "جولة",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "النتيجة",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "بدأت البطولة",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "لا يمكن بدء البطولة",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "لا يمكن إجراء إقران في البطولة",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "لم يتم ملء نتائج الجولة الأخيرة بالكامل.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "تم إقران جميع الجولات بالفعل.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "بدء البطولة",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "انتهت البطولة",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "بدء",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "جدول",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "لوحة",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "لاعب",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "اللاعبون",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "لا يوجد لاعبون مسجلون",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "لبدء البطولة تحتاج إلى 3 لاعبين على الأقل.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "تمت إضافة اللاعب بنجاح!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "اسم اللاعب",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "إضافة لاعب",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "إضافة",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "معلومات",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "حدث خطأ ما!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "الإعدادات",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "اللغة",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "تبديل المظهر",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "الوضع الداكن",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

@@ -1,0 +1,239 @@
+{
+    "@@locale": "ja",
+    "tournaments": "トーナメント",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "トーナメントを削除しますか？",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "キャンセル",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "削除",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "トーナメントを登録",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "名前",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "トーナメント名",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "トーナメントの説明",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "説明なし",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "トーナメントの種類",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "開始日",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "作成済み",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "進行中",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "終了",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "トーナメントはすでに終了しています",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "ラウンド数",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "不戦勝ごとのスコア",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "未定義",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "未通知",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "アクティブなプレイヤー",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "アクティブ",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "非アクティブ",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "不戦勝は非アクティブ",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "トーナメントはまだ開始されていません",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "トーナメントが正常に登録されました！",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "無効なデータ",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "登録されているトーナメントはありません",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "トーナメントの削除中にエラーが発生しました",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "トーナメントが正常に削除されました！",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "スコア",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "スコアをマイナスにすることはできません！",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "ランキング",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "ラウンド",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "ラウンド",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "結果",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "トーナメントが開始されました",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "トーナメントを開始できません",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "トーナメントをペアリングできません",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "最終ラウンドの結果が完全に記入されていません。",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "すべてのラウンドはすでにペアリングされています。",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "トーナメントを開始",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "トーナメントは終了しました",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "開始",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "テーブル",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "ボード",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "プレイヤー",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "プレイヤー",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "登録されているプレイヤーはいません",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "トーナメントを開始するには、少なくとも3人のプレイヤーが必要です。",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "プレイヤーが正常に追加されました！",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "プレイヤー名",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "プレイヤーを追加",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "追加",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "情報",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "問題が発生しました！",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "設定",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "言語",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "テーマを切り替える",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "ダークモード",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

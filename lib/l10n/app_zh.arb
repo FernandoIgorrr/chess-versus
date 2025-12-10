@@ -1,0 +1,239 @@
+{
+    "@@locale": "zh",
+    "tournaments": "锦标赛",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "删除锦标赛？",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "取消",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "删除",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "注册锦标赛",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "名称",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "锦标赛名称",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "锦标赛描述",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "无描述",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "锦标赛类型",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "开始日期",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "已创建",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "进行中",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "已结束",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "锦标赛已结束",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "轮次",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "轮空得分",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "未定义",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "未告知",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "活跃玩家",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "活跃",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "不活跃",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "轮空不活跃",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "锦标赛尚未开始",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "锦标赛注册成功！",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "无效数据",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "没有注册的锦标赛",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "尝试删除锦标赛时出错",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "锦标赛删除成功！",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "分数",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "分数不能为负！",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "排名",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "轮次",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "回合",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "结果",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "锦标赛已开始",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "锦标赛无法开始",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "锦标赛无法配对",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "最后一轮的结果未完全填写。",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "所有轮次已配对完毕。",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "开始锦标赛",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "锦标赛已结束",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "开始",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "桌子",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "棋盘",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "玩家",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "玩家",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "没有注册的玩家",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "要开始锦标赛，您需要至少3名玩家。",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "玩家添加成功！",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "玩家姓名",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "添加玩家",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "添加",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "信息",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "出错了！",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "设置",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "语言",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "切换主题",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "深色模式",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

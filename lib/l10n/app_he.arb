@@ -1,0 +1,240 @@
+{
+    "@@locale": "he",
+    "@@textDirection": "rtl",
+    "tournaments": "טורנירים",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "למחוק טורניר?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "ביטול",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "מחק",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "רישום טורניר",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "שם",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "שם הטורניר",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "תיאור הטורניר",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "אין תיאור",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "סוג הטורניר",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "תאריך התחלה",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "נוצר",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "בתהליך",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "הסתיים",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "הטורניר כבר הסתיים",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "מספר סיבובים",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "ניקוד לסיבוב חופשי",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "לא מוגדר",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "לא דווח",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "שחקנים פעילים",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "פעיל",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "לא פעיל",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "סיבוב חופשי לא פעיל",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "הטורניר טרם החל",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "הטורניר נרשם בהצלחה!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "נתונים לא חוקיים",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "אין טורנירים רשומים",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "שגיאה בניסיון למחוק את הטורניר",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "הטורניר נמחק בהצלחה!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "ניקוד",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "הניקוד לא יכול להיות שלילי!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "סיווג",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "סיבובים",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "סיבוב",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "תוצאה",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "הטורניר החל",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "לא ניתן להתחיל את הטורניר",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "לא ניתן לבצע זיווג בטורניר",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "תוצאות הסיבוב האחרון לא מולאו במלואן.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "כל הסיבובים כבר זוווגו.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "התחל טורניר",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "הטורניר הסתיים",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "התחל",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "טבלה",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "לוח",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "שחקן",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "שחקנים",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "אין שחקנים רשומים",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "כדי להתחיל את הטורניר אתה צריך לפחות 3 שחקנים.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "השחקן נוסף בהצלחה!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "שם השחקן",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "הוסף שחקן",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "הוסף",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "מידע",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "משהו השתבש!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "הגדרות",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "שפה",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "החלף ערכת נושא",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "מצב כהה",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

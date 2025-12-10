@@ -1,0 +1,239 @@
+{
+    "@@locale": "ru",
+    "tournaments": "Турниры",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "Удалить турнир?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "Отмена",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "Удалить",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "Зарегистрировать турнир",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "Имя",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "Название турнира",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "Описание турнира",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "Без описания",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "Тип турнира",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "Дата начала",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "Создан",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "В процессе",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "Завершён",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "Турнир уже завершён",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "Количество раундов",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "Очки за бай",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "Не определено",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "Не указано",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "Активные игроки",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "Активный",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "Неактивный",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "Бай неактивен",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "Турнир ещё не начался",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "Турнир успешно зарегистрирован!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "Неверные данные",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "Нет зарегистрированных турниров",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "Ошибка при попытке удалить турнир",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "Турнир успешно удалён!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "Счёт",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Счёт не может быть отрицательным!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "Классификация",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "Раунды",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "Раунд",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "Результат",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "Турнир начался",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "Турнир не может быть начат",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "Турнир не может быть спарен",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "Результаты последнего раунда не заполнены полностью.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Все раунды уже спарены.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "Начать турнир",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "Турнир завершён",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "Начать",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "Таблица",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "Доска",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "Игрок",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "Игроки",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "Нет зарегистрированных игроков",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Чтобы начать турнир, вам нужно как минимум 3 игрока.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "Игрок успешно добавлен!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "Имя игрока",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "Добавить игрока",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "Добавить",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "Информация",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "Что-то пошло не так!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "Настройки",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "Язык",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "Сменить тему",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "Тёмный режим",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

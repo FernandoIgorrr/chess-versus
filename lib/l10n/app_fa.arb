@@ -1,0 +1,240 @@
+{
+    "@@locale": "fa",
+    "@@textDirection": "rtl",
+    "tournaments": "مسابقات",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "حذف مسابقه؟",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "لغو",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "حذف",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "ثبت مسابقه",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "نام",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "نام مسابقه",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "توضیحات مسابقه",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "بدون توضیح",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "نوع مسابقه",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "تاریخ شروع",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "ایجاد شده",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "در حال انجام",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "پایان یافته",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "مسابقه قبلاً به پایان رسیده است",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "تعداد دورها",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "امتیاز هر استراحت",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "تعریف نشده",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "اطلاع داده نشده",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "بازیکنان فعال",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "فعال",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "غیر فعال",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "استراحت غیر فعال",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "مسابقه هنوز شروع نشده است",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "مسابقه با موفقیت ثبت شد!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "داده‌های نامعتبر",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "هیچ مسابقه‌ای ثبت نشده است",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "خطا هنگام تلاش برای حذف مسابقه",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "مسابقه با موفقیت حذف شد!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "امتیاز",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "امتیاز نمی‌تواند منفی باشد!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "رده‌بندی",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "دورها",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "دور",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "نتیجه",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "مسابقه شروع شد",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "امکان شروع مسابقه وجود ندارد",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "امکان جفت‌سازی مسابقه وجود ندارد",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "نتایج دور آخر به طور کامل پر نشده است.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "تمام دورها قبلاً جفت‌سازی شده‌اند.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "شروع مسابقه",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "مسابقه به پایان رسیده است",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "شروع",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "جدول",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "صفحه",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "بازیکن",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "بازیکنان",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "بازیکن ثبت شده‌ای وجود ندارد",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "برای شروع مسابقه حداقل به 3 بازیکن نیاز دارید.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "بازیکن با موفقیت اضافه شد!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "نام بازیکن",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "افزودن بازیکن",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "افزودن",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "اطلاعات",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "مشکلی پیش آمد!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "تنظیمات",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "زبان",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "تغییر تم",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "حالت تیره",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

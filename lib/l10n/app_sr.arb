@@ -1,0 +1,239 @@
+{
+    "@@locale": "sr",
+    "tournaments": "Турнири",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "Избрисати турнир?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "Одустани",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "Избриши",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "Региструј турнир",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "Име",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "Назив турнира",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "Опис турнира",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "Без описа",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "Тип турнира",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "Датум почетка",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "Направљено",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "У току",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "Завршено",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "Турнир је већ завршен",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "Број рунди",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "Поени по бај-у",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "Није дефинисано",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "Није обавештено",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "Активни играчи",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "Активан",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "Неактиван",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "Бај неактиван",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "Турнир још није почео",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "Турнир успешно регистрован!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "Неважећи подаци",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "Нема регистрованих турнира",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "Грешка приликом покушаја брисања турнира",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "Турнир успешно избрисан!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "Поени",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Поени не могу бити негативни!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "Класификација",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "Рунде",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "Рунда",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "Резултат",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "Турнир почео",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "Турнир не може бити покренут",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "Турнир не може бити упарен",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "Резултати последње рунде нису у потпуности попуњени.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Све рунде су већ упарене.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "Покрени турнир",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "Турнир је завршен",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "Покрени",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "Табела",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "Табла",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "Играч",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "Играчи",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "Нема регистрованих играча",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Да бисте започели турнир, потребна су вам најмање 3 играча.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "Играч успешно додат!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "Име играча",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "Додај играча",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "Додај",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "Информације",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "Нешто је пошло наопако!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "Подешавања",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "Језик",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "Промени тему",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "Тамни режим",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

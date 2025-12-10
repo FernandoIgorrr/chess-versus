@@ -1,0 +1,239 @@
+{
+  "@@locale": "hi",
+  "tournaments": "टूर्नामेंट",
+  "@tournaments": {
+    "description": "टूर्नामेंट दिखाने वाले पेज का शीर्षक"
+  },
+  "deleteTournament": "टूर्नामेंट हटाएँ?",
+  "@deleteTournament": {
+    "description": "टूर्नामेंट हटाने के अलर्ट का शीर्षक"
+  },
+  "cancel": "रद्द करें",
+  "@cancel": {
+    "description": "रद्द करने का शीर्षक"
+  },
+  "delete": "हटाएँ",
+  "@delete": {
+    "description": "हटाने का शीर्षक"
+  },
+  "registerTournament": "टूर्नामेंट दर्ज करें",
+  "@registerTournament": {
+    "description": "टूर्नामेंट पंजीकरण बटन/फॉर्म का शीर्षक"
+  },
+  "name": "नाम",
+  "@name": {
+    "description": "नाम के लिए लेबल/संकेत"
+  },
+  "tournamentName": "टूर्नामेंट का नाम",
+  "@tournamentName": {
+    "description": "टूर्नामेंट नाम के लिए लेबल/संकेत"
+  },
+  "tournamentDescription": "टूर्नामेंट विवरण",
+  "@tournamentDescription": {
+    "description": "टूर्नामेंट विवरण के लिए लेबल/संकेत"
+  },
+  "tournamentNullDescription": "कोई विवरण नहीं",
+  "@tournamentNullDescription": {
+    "description": "ऐसे टूर्नामेंट के लिए डिफ़ॉल्ट विवरण जिसमें कोई विवरण नहीं है"
+  },
+  "tournamentType": "टूर्नामेंट प्रकार",
+  "@tournamentType": {
+    "description": "टूर्नामेंट प्रकार के लिए लेबल/संकेत"
+  },
+  "tournamentStartDate": "शुरू होने की तारीख",
+  "@tournamentStartDate": {
+    "description": "टूर्नामेंट की शुरुआत की तारीख के लिए लेबल/संकेत"
+  },
+  "created": "बनाया गया",
+  "@created": {
+    "description": "बनाए गए के लिए लेबल/संकेत"
+  },
+  "inProgress": "जारी है",
+  "@inProgress": {
+    "description": "चालू होने के लिए लेबल/संकेत"
+  },
+  "finished": "समाप्त",
+  "@finished": {
+    "description": "समाप्त होने के लिए लेबल/संकेत"
+  },
+  "tournamentHasAlreadyEnded": "टूर्नामेंट पहले ही समाप्त हो चुका है",
+  "@tournamentHasAlreadyEnded": {
+    "description": "टूर्नामेंट समाप्त होने का संकेत"
+  },
+  "numberOfRounds": "राउंड की संख्या",
+  "@numberOfRounds": {
+    "description": "राउंड की संख्या के लिए लेबल/संकेत"
+  },
+  "scorePerBye": "बाय पर स्कोर",
+  "@scorePerBye": {
+    "description": "बाय के स्कोर के लिए लेबल/संकेत"
+  },
+  "notDefined": "परिभाषित नहीं",
+  "@notDefined": {
+    "description": "परिभाषित नहीं के लिए लेबल/संकेत"
+  },
+  "notInformed": "सूचित नहीं",
+  "@notInformed": {
+    "description": "सूचित नहीं के लिए लेबल/संकेत"
+  },
+  "activePlayers": "सक्रिय खिलाड़ी",
+  "@activePlayers": {
+    "description": "सक्रिय खिलाड़ियों के लिए लेबल/संकेत"
+  },
+  "active": "सक्रिय",
+  "@active": {
+    "description": "सक्रिय के लिए लेबल/संकेत"
+  },
+  "inactive": "निष्क्रिय",
+  "@inactive": {
+    "description": "निष्क्रिय के लिए लेबल/संकेत"
+  },
+  "byeInactive": "बाय निष्क्रिय",
+  "@byeInactive": {
+    "description": "बाय निष्क्रिय के लिए लेबल/संकेत"
+  },
+  "tournamentHasntStartedYet": "टूर्नामेंट अभी शुरू नहीं हुआ है",
+  "@tournamentHasntStartedYet": {
+    "description": "टूर्नामेंट शुरू न होने का संकेत"
+  },
+  "tournamentRegisteredSuccessfully": "टूर्नामेंट सफलतापूर्वक पंजीकृत हुआ!",
+  "@tournamentRegisteredSuccessfully": {
+    "description": "टूर्नामेंट पंजीकरण का सफल संदेश"
+  },
+  "invalidData": "अमान्य डेटा",
+  "@invalidData": {
+    "description": "अमान्य डेटा संदेश"
+  },
+  "emptyTournaments": "कोई टूर्नामेंट पंजीकृत नहीं है",
+  "@emptyTournaments": {
+    "description": "जब कोई टूर्नामेंट पंजीकृत नहीं होता तब का संदेश"
+  },
+  "errorWhileDeletingATournament": "टूर्नामेंट हटाने में त्रुटि",
+  "@errorWhileDeletingATournament": {
+    "description": "टूर्नामेंट हटाने में त्रुटि संदेश"
+  },
+  "successWhileDeletingATournament": "टूर्नामेंट सफलतापूर्वक हटाया गया!",
+  "@successWhileDeletingATournament": {
+    "description": "टूर्नामेंट हटाने का सफल संदेश"
+  },
+  "score": "स्कोर",
+  "@score": {
+    "description": "स्कोर/अंक का शीर्षक"
+  },
+  "scoreNegativeException": "स्कोर नकारात्मक नहीं हो सकता!",
+  "@scoreNegativeException": {
+    "description": "जब स्कोर नकारात्मक होता है तब की त्रुटि"
+  },
+  "classification": "वर्गीकरण",
+  "@classification": {
+    "description": "वर्गीकरण का शीर्षक"
+  },
+  "rounds": "राउंड",
+  "@rounds": {
+    "description": "राउंड का शीर्षक"
+  },
+  "round": "राउंड",
+  "@round": {
+    "description": "राउंड का शीर्षक"
+  },
+  "result": "परिणाम",
+  "@result": {
+    "description": "परिणाम का शीर्षक"
+  },
+  "tournamentStarted": "टूर्नामेंट शुरू हो गया है",
+  "@tournamentStarted": {
+    "description": "जब टूर्नामेंट शुरू होता है तब का सफल संदेश"
+  },
+  "tournamentCantBeStarted": "टूर्नामेंट शुरू नहीं किया जा सकता",
+  "@tournamentCantBeStarted": {
+    "description": "टूर्नामेंट शुरू न होने की त्रुटि"
+  },
+  "tournamentCantBePaired": "टूर्नामेंट पेयर नहीं किया जा सकता",
+  "@tournamentCantBePaired": {
+    "description": "टूर्नामेंट पेयर न होने की त्रुटि"
+  },
+  "lastRoundResultsDontFilled": "पिछले राउंड के परिणाम पूरी तरह से भरे नहीं गए हैं।",
+  "@lastRoundResultsDontFilled": {
+    "description": "अधूरे परिणामों की त्रुटि"
+  },
+  "allRoundsHaveAlreadyBeenPaired": "सभी राउंड पहले ही पेयर किए जा चुके हैं।",
+  "@allRoundsHaveAlreadyBeenPaired": {
+    "description": "जब पेयर करने के लिए राउंड नहीं बचते"
+  },
+  "startTournament": "टूर्नामेंट शुरू करें",
+  "@startTournament": {
+    "description": "टूर्नामेंट शुरू करने के बटन/फॉर्म का शीर्षक"
+  },
+  "theTournamentHasFinished": "टूर्नामेंट समाप्त हो गया है",
+  "@theTournamentHasFinished": {
+    "description": "जब टूर्नामेंट समाप्त हो जाता है तब का शीर्षक"
+  },
+  "start": "शुरू करें",
+  "@start": {
+    "description": "शुरू करने का शीर्षक"
+  },
+  "table": "टेबल",
+  "@table": {
+    "description": "टेबल का शीर्षक"
+  },
+  "board": "बोर्ड",
+  "@board": {
+    "description": "बोर्ड का शीर्षक"
+  },
+  "player": "खिलाड़ी",
+  "@player": {
+    "description": "खिलाड़ी का शीर्षक"
+  },
+  "players": "खिलाड़ी",
+  "@players": {
+    "description": "खिलाड़ियों का शीर्षक"
+  },
+  "thereAreNoRegisteredPlayers": "कोई खिलाड़ी पंजीकृत नहीं है",
+  "@thereAreNoRegisteredPlayers": {
+    "description": "जब कोई खिलाड़ी नहीं होता तब का संदेश"
+  },
+  "toStartTheTournamentYouNeedAtLeastThreePlayers": "टूर्नामेंट शुरू करने के लिए कम से कम 3 खिलाड़ी आवश्यक हैं।",
+  "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+    "description": "जब पर्याप्त खिलाड़ी नहीं होते"
+  },
+  "playerAddeddSuccessfully": "खिलाड़ी सफलतापूर्वक जोड़ा गया!",
+  "@playerAddeddSuccessfully": {
+    "description": "खिलाड़ी जोड़ने का सफल संदेश"
+  },
+  "playerNmae": "खिलाड़ी का नाम",
+  "@playerNmae": {
+    "description": "खिलाड़ी नाम के लिए लेबल/संकेत"
+  },
+  "addPlayer": "खिलाड़ी जोड़ें",
+  "@addPlayer": {
+    "description": "खिलाड़ी जोड़ने के बटन/फॉर्म का शीर्षक"
+  },
+  "add": "जोड़ें",
+  "@add": {
+    "description": "जोड़ने का शीर्षक"
+  },
+  "informations": "जानकारी",
+  "@informations": {
+    "description": "जानकारी का शीर्षक"
+  },
+  "somethingWentWrong": "कुछ गलत हो गया!",
+  "@somethingWentWrong": {
+    "description": "सामान्य त्रुटि संदेश"
+  },
+  "settings": "सेटिंग्स",
+  "@settings": {
+    "description": "सेटिंग्स बटन/आइकन का शीर्षक"
+  },
+  "language": "भाषा",
+  "@language": {
+    "description": "भाषा के लिए लेबल/संकेत"
+  },
+  "switchTheme": "थीम बदलें",
+  "@switchTheme": {
+    "description": "थीम बदलें"
+  },
+  "darkMode": "डार्क मोड",
+  "@darkMode": {
+    "description": "डार्क मोड"
+  }
+}

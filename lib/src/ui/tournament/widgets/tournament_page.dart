@@ -126,6 +126,7 @@ class _TournamentPageState extends State<TournamentPage> {
           return Scaffold(
             appBar: CustomAppBar(
               themeViewModel: context.read(),
+              langViewModel: context.read(),
               title: AnimatedBuilder(
                 animation: widget._tournamentPageViewViewModel,
                 builder: (context, child) {

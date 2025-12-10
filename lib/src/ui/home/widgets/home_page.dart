@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
         appBar: CustomAppBar(
           title: Text(AppLocalizations.of(context)!.tournaments),
           themeViewModel: context.read(),
+          langViewModel: context.read(),
         ),
         body: HomeBody(viewModel: widget.viewModel),
       ),

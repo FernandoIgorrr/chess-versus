@@ -1,0 +1,239 @@
+{
+    "@@locale": "ko",
+    "tournaments": "토너먼트",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "토너먼트를 삭제하시겠습니까?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "취소",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "삭제",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "토너먼트 등록",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "이름",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "토너먼트 이름",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "토너먼트 설명",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "설명 없음",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "토너먼트 유형",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "시작일",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "생성됨",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "진행 중",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "종료됨",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "토너먼트가 이미 종료되었습니다",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "라운드 수",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "부전승당 점수",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "정의되지 않음",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "정보 없음",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "활성 플레이어",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "활성",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "비활성",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "부전승 비활성",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "토너먼트가 아직 시작되지 않았습니다",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "토너먼트가 성공적으로 등록되었습니다!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "유효하지 않은 데이터",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "등록된 토너먼트가 없습니다",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "토너먼트 삭제 중 오류 발생",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "토너먼트가 성공적으로 삭제되었습니다!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "점수",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "점수는 음수가 될 수 없습니다!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "순위",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "라운드",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "라운드",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "결과",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "토너먼트 시작됨",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "토너먼트를 시작할 수 없습니다",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "토너먼트를 페어링할 수 없습니다",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "마지막 라운드 결과가 완전히 채워지지 않았습니다.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "모든 라운드가 이미 페어링되었습니다.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "토너먼트 시작",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "토너먼트가 종료되었습니다",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "시작",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "테이블",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "보드",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "플레이어",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "플레이어",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "등록된 플레이어가 없습니다",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "토너먼트를 시작하려면 최소 3명의 플레이어가 필요합니다.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "플레이어가 성공적으로 추가되었습니다!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "플레이어 이름",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "플레이어 추가",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "추가",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "정보",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "문제가 발생했습니다!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "설정",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "언어",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "테마 전환",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "다크 모드",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

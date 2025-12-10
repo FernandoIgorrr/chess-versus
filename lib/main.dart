@@ -1,4 +1,6 @@
+import 'package:chess_versus/src/data/repositories/lang/lang_repository.dart';
 import 'package:chess_versus/src/data/repositories/theme/theme_repository.dart';
+import 'package:chess_versus/src/data/services/lang_service.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'src/app_widget.dart';
@@ -9,5 +11,10 @@ void main() {
   final Logger log = Logger('MyApp');
   log.info('App started');
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(AppWidget(themeRepository: ThemeRepository(ThemeService())));
+  runApp(
+    AppWidget(
+      themeRepository: ThemeRepository(ThemeService()),
+      langRepository: LangRepository(LangService()),
+    ),
+  );
 }

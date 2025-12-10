@@ -1,0 +1,239 @@
+{
+    "@@locale": "sw",
+    "tournaments": "Mashindano",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "Futa mashindano?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "Ghairi",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "Futa",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "Sajili mashindano",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "Jina",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "Jina la mashindano",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "Maelezo ya mashindano",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "Hakuna maelezo",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "Aina ya mashindano",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "Tarehe ya kuanza",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "Imeundwa",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "Inaendelea",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "Imemalizika",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "Mashindano tayari yamekwisha",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "Idadi ya raundi",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "Alama kwa 'bye'",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "Haijafafanuliwa",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "Haijajulikishwa",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "Wachezaji hai",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "Hai",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "Si hai",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "'Bye' si hai",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "Mashindano bado hayajaanza",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "Mashindano yamesajiliwa kwa ufanisi!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "Data batili",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "Hakuna mashindano yaliyosajiliwa",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "Hitilafu ilipotokea kujaribu kufuta mashindano",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "Mashindano yamefutwa kwa ufanisi!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "Alama",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Alama haiwezi kuwa hasi!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "Uainishaji",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "Raundi",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "Raundi",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "Matokeo",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "Mashindano yameanza",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "Mashindano hayawezi kuanzishwa",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "Mashindano hayawezi kuoanishwa",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "Matokeo ya raundi ya mwisho hayajajazwa kikamilifu.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Raundi zote tayari zimepangwa.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "Anzisha Mashindano",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "Mashindano yamemalizika",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "Anza",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "Jedwali",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "Bodi",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "Mchezaji",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "Wachezaji",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "Hakuna wachezaji waliosajiliwa",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Kuanzisha mashindano unahitaji angalau wachezaji 3.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "Mchezaji ameongezwa kwa ufanisi!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "Jina la mchezaji",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "Ongeza mchezaji",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "Ongeza",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "Habari",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "Kuna kitu kilienda vibaya!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "Mipangilio",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "Lugha",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "Badili mandhari",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "Hali ya giza",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

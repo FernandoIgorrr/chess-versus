@@ -1,3 +1,5 @@
+import 'package:chess_versus/src/ui/core/lang_config/view_models/lang_switch_view_model.dart';
+import 'package:chess_versus/src/ui/core/ui/custom_select_lang.dart';
 import 'package:flutter/material.dart';
 import 'package:chess_versus/l10n/app_localizations.dart';
 
@@ -7,7 +9,13 @@ import '../theme_config/view_models/theme_switch_view_model.dart';
 // ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final ThemeSwitchViewModel themeViewModel;
-  CustomAppBar({super.key, this.title, required this.themeViewModel});
+  final LangSwitchViewModel langViewModel;
+  CustomAppBar({
+    super.key,
+    this.title,
+    required this.themeViewModel,
+    required this.langViewModel,
+  });
 
   Widget? title;
   @override
@@ -38,57 +46,55 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   Future<void> _buildSettings(BuildContext context) {
     return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(AppLocalizations.of(context)!.settings,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(
-                        Icons.dark_mode_sharp,
-                        size: 30,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.darkMode,
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                      ListenableBuilder(
-                          listenable: widget.themeViewModel,
-                          builder: (context, child) {
-                            return Switch(
-                                value: widget.themeViewModel.state
-                                    is DarkThemeState,
-                                onChanged: (value) {
-                                  widget.themeViewModel.toggle;
-                                });
-                          }),
-                    ]),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.language,
-                      size: 30,
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.language,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const Icon(Icons.account_box_outlined)
-                  ],
-                )
-              ],
-            ),
-          );
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            AppLocalizations.of(context)!.settings,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(Icons.dark_mode_sharp, size: 30),
+                  Text(
+                    AppLocalizations.of(context)!.darkMode,
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  ListenableBuilder(
+                    listenable: widget.themeViewModel,
+                    builder: (context, child) {
+                      return Switch(
+                        value: widget.themeViewModel.state is DarkThemeState,
+                        onChanged: (value) {
+                          widget.themeViewModel.toggle;
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(Icons.language, size: 30),
+                  Text(
+                    AppLocalizations.of(context)!.language,
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  //const Icon(Icons.account_box_outlined)
+                  LanguageSelector(langSwitchViewModel: widget.langViewModel),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

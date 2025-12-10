@@ -1,0 +1,239 @@
+{
+    "@@locale": "ha",
+    "tournaments": "Gasar Wasanni",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "Cire gasar?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "Soke",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "Cire",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "Yi rijistar gasa",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "Suna",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "Sunan gasa",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "Bayanin gasa",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "Babu bayani",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "Nau'in gasa",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "Ranar farawa",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "An ƙirƙira",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "Ana ci gaba",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "An gama",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "An riga an gama gasar",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "Adadin zagaye",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "Maki ga 'bye'",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "Ba a ayyana ba",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "Ba a sanar ba",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "Yan wasa masu aiki",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "Mai aiki",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "Ba mai aiki ba",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "'Bye' ba mai aiki ba",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "Gasar ba ta fara ba tukuna",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "An yi rijistar gasar da nasara!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "Bayanan da ba daidai ba",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "Babu gasa da aka yi rijista",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "Kuskure yayin kokarin cire gasar",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "An cire gasar da nasara!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "Maki",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Maki ba zai iya zama mara kyau ba!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "Rarraba",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "Zagaye",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "Zagaye",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "Sakamako",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "Gasar ta fara",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "Ba za a iya fara gasar ba",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "Ba za a iya haɗa gasar ba",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "Ba a cika sakamakon zagaye na ƙarshe ba gaba ɗaya.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "An riga an haɗa dukkan zagaye.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "Fara Gasa",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "An gama gasar",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "Fara",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "Tebur",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "Allon",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "Dan wasa",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "Yan wasa",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "Babu yan wasa da aka yi rijista",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Don fara gasar kana buƙatar aƙalla yan wasa 3.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "An ƙara ɗan wasa da nasara!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "Sunan ɗan wasa",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "Ƙara ɗan wasa",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "Ƙara",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "Bayani",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "Wani abu ya faru!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "Saituna",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "Harshe",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "Canza jigo",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "Yanayin duhu",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

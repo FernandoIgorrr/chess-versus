@@ -1,0 +1,239 @@
+{
+    "@@locale": "de",
+    "tournaments": "Turniere",
+    "@tournaments": {
+        "description": "Title for page showing tournaments"
+    },
+    "deleteTournament": "Turnier löschen?",
+    "@deleteTournament": {
+        "description": "Title for delete tournament alert"
+    },
+    "cancel": "Abbrechen",
+    "@cancel": {
+        "description": "Title for cancel"
+    },
+    "delete": "Löschen",
+    "@delete": {
+        "description": "Title for delete"
+    },
+    "registerTournament": "Turnier registrieren",
+    "@registerTournament": {
+        "description": "Title for tournament registration button/form"
+    },
+    "name": "Name",
+    "@name": {
+        "description": "Label/hint for name"
+    },
+    "tournamentName": "Turniername",
+    "@tournamentName": {
+        "description": "Label/hint for tournament name"
+    },
+    "tournamentDescription": "Turnierbeschreibung",
+    "@tournamentDescription": {
+        "description": "Label/hint for tournament description"
+    },
+    "tournamentNullDescription": "Keine Beschreibung",
+    "@tournamentNullDescription": {
+        "description": "Default description of a tournament without description"
+    },
+    "tournamentType": "Turniertyp",
+    "@tournamentType": {
+        "description": "Label/hint for tournament type"
+    },
+    "tournamentStartDate": "Startdatum",
+    "@tournamentStartDate": {
+        "description": "Label/hint for tournament start date"
+    },
+    "created": "Erstellt",
+    "@created": {
+        "description": "Label/hint for created"
+    },
+    "inProgress": "In Bearbeitung",
+    "@inProgress": {
+        "description": "Label/hint for in progress"
+    },
+    "finished": "Abgeschlossen",
+    "@finished": {
+        "description": "Label/hint for finished"
+    },
+    "tournamentHasAlreadyEnded": "Das Turnier ist bereits beendet",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Label/hint for tournament has already ended"
+    },
+    "numberOfRounds": "Anzahl der Runden",
+    "@numberOfRounds": {
+        "description": "Label/hint for rounds number"
+    },
+    "scorePerBye": "Punkte pro Freilos",
+    "@scorePerBye": {
+        "description": "Label/hint for score per bye"
+    },
+    "notDefined": "Nicht definiert",
+    "@notDefined": {
+        "description": "Label/hint for not defined"
+    },
+    "notInformed": "Nicht mitgeteilt",
+    "@notInformed": {
+        "description": "Label/hint for not informed"
+    },
+    "activePlayers": "Aktive Spieler",
+    "@activePlayers": {
+        "description": "Label/hint for active players"
+    },
+    "active": "Aktiv",
+    "@active": {
+        "description": "Label/hint for active"
+    },
+    "inactive": "Inaktiv",
+    "@inactive": {
+        "description": "Label/hint para inativo"
+    },
+    "byeInactive": "Freilos inaktiv",
+    "@byeInactive": {
+        "description": "Label/hint for Bye inactive"
+    },
+    "tournamentHasntStartedYet": "Das Turnier hat noch nicht begonnen",
+    "@tournamentHasntStartedYet": {
+        "description": "Label/hint for the tournament hasn't started yet"
+    },
+    "tournamentRegisteredSuccessfully": "Turnier erfolgreich registriert!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensagem de sucesso para quando um torneio for cadastrado."
+    },
+    "invalidData": "Ungültige Daten",
+    "@invalidData": {
+        "description": "Invalid data message"
+    },
+    "emptyTournaments": "Es sind keine Turniere registriert",
+    "@emptyTournaments": {
+        "description": "Message for when there are no tournaments registered."
+    },
+    "errorWhileDeletingATournament": "Fehler beim Versuch, das Turnier zu löschen",
+    "@errorWhileDeletingATournament": {
+        "description": "Error message when trying to delete a tournament."
+    },
+    "successWhileDeletingATournament": "Turnier erfolgreich gelöscht!",
+    "@successWhileDeletingATournament": {
+        "description": "Success message for deleting a tournament."
+    },
+    "score": "Punktzahl",
+    "@score": {
+        "description": "Title for score/points of something"
+    },
+    "scoreNegativeException": "Punktzahl darf nicht negativ sein!",
+    "@scoreNegativeException": {
+        "description": "Exception message for when score is negative."
+    },
+    "classification": "Klassifizierung",
+    "@classification": {
+        "description": "Title for classification"
+    },
+    "rounds": "Runden",
+    "@rounds": {
+        "description": "Title for rounds"
+    },
+    "round": "Runde",
+    "@round": {
+        "description": "Title for round"
+    },
+    "result": "Ergebnis",
+    "@result": {
+        "description": "Title for result"
+    },
+    "tournamentStarted": "Turnier gestartet",
+    "@tournamentStarted": {
+        "description": "Success message for when a tournament is started."
+    },
+    "tournamentCantBeStarted": "Das Turnier kann nicht gestartet werden",
+    "@tournamentCantBeStarted": {
+        "description": "Error message for when a tournament can't be started."
+    },
+    "tournamentCantBePaired": "Das Turnier kann nicht gepaart werden",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled": "Die Ergebnisse der letzten Runde wurden nicht vollständig ausgefüllt.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Alle Runden wurden bereits gepaart.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Error message for when all rounds have already been paired"
+    },
+    "startTournament": "Turnier starten",
+    "@startTournament": {
+        "description": "Title for start tournament button/form"
+    },
+    "theTournamentHasFinished": "Das Turnier ist beendet",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
+    },
+    "start": "Starten",
+    "@start": {
+        "description": "Title for start button/form"
+    },
+    "table": "Tabelle",
+    "@table": {
+        "description": "Title for table"
+    },
+    "board": "Brett",
+    "@board": {
+        "description": "Title for board"
+    },
+    "player": "Spieler",
+    "@player": {
+        "description": "Title for player"
+    },
+    "players": "Spieler",
+    "@players": {
+        "description": "Title for players"
+    },
+    "thereAreNoRegisteredPlayers": "Es sind keine Spieler registriert",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Message for when there are no players registered."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Um das Turnier zu starten, benötigen Sie mindestens 3 Spieler.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    "playerAddeddSuccessfully": "Spieler erfolgreich hinzugefügt!",
+    "@playerAddeddSuccessfully": {
+        "description": "Success message for when a player is added."
+    },
+    "playerNmae": "Spielername",
+    "@playerNmae": {
+        "description": "Label/hint for player name"
+    },
+    "addPlayer": "Spieler hinzufügen",
+    "@addPlayer": {
+        "description": "Title for add player button/form"
+    },
+    "add": "Hinzufügen",
+    "@add": {
+        "description": "Title for add button/form"
+    },
+    "informations": "Informationen",
+    "@informations": {
+        "description": "Title for informations"
+    },
+    "somethingWentWrong": "Etwas ist schiefgelaufen!",
+    "@somethingWentWrong": {
+        "description": "Title for generic errors."
+    },
+    "settings": "Einstellungen",
+    "@settings": {
+        "description": "Title for settings button/icon"
+    },
+    "language": "Sprache",
+    "@language": {
+        "description": "Label/hint for language"
+    },
+    "switchTheme": "Thema wechseln",
+    "@switchTheme": {
+        "description": "Switch theme"
+    },
+    "darkMode": "Dunkelmodus",
+    "@darkMode": {
+        "description": "Dark mode"
+    }
+}

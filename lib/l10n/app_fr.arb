@@ -1,0 +1,239 @@
+{
+  "@@locale": "fr",
+  "tournaments": "Tournois",
+  "@tournaments": {
+    "description": "Titre de la page affichant les tournois"
+  },
+  "deleteTournament": "Supprimer le tournoi ?",
+  "@deleteTournament": {
+    "description": "Titre de l’alerte de suppression du tournoi"
+  },
+  "cancel": "Annuler",
+  "@cancel": {
+    "description": "Titre pour annuler"
+  },
+  "delete": "Supprimer",
+  "@delete": {
+    "description": "Titre pour supprimer"
+  },
+  "registerTournament": "Enregistrer un tournoi",
+  "@registerTournament": {
+    "description": "Titre pour le bouton/formulaire d’enregistrement d’un tournoi"
+  },
+  "name": "Nom",
+  "@name": {
+    "description": "Label/indice pour nom"
+  },
+  "tournamentName": "Nom du tournoi",
+  "@tournamentName": {
+    "description": "Label/indice pour le nom du tournoi"
+  },
+  "tournamentDescription": "Description du tournoi",
+  "@tournamentDescription": {
+    "description": "Label/indice pour la description du tournoi"
+  },
+  "tournamentNullDescription": "Aucune description",
+  "@tournamentNullDescription": {
+    "description": "Description par défaut d’un tournoi sans description"
+  },
+  "tournamentType": "Type de tournoi",
+  "@tournamentType": {
+    "description": "Label/indice pour le type de tournoi"
+  },
+  "tournamentStartDate": "Date de début",
+  "@tournamentStartDate": {
+    "description": "Label/indice pour la date de début du tournoi"
+  },
+  "created": "Créé",
+  "@created": {
+    "description": "Label/indice pour créé"
+  },
+  "inProgress": "En cours",
+  "@inProgress": {
+    "description": "Label/indice pour en cours"
+  },
+  "finished": "Terminé",
+  "@finished": {
+    "description": "Label/indice pour terminé"
+  },
+  "tournamentHasAlreadyEnded": "Le tournoi est déjà terminé",
+  "@tournamentHasAlreadyEnded": {
+    "description": "Label/indice indiquant que le tournoi est déjà terminé"
+  },
+  "numberOfRounds": "N° de rondes",
+  "@numberOfRounds": {
+    "description": "Label/indice pour le nombre de rondes"
+  },
+  "scorePerBye": "Score par bye",
+  "@scorePerBye": {
+    "description": "Label/indice pour le score attribué au bye"
+  },
+  "notDefined": "Non défini",
+  "@notDefined": {
+    "description": "Label/indice pour non défini"
+  },
+  "notInformed": "Non renseigné",
+  "@notInformed": {
+    "description": "Label/indice pour non renseigné"
+  },
+  "activePlayers": "Joueurs actifs",
+  "@activePlayers": {
+    "description": "Label/indice pour joueurs actifs"
+  },
+  "active": "Actif",
+  "@active": {
+    "description": "Label/indice pour actif"
+  },
+  "inactive": "Inactif",
+  "@inactive": {
+    "description": "Label/indice pour inactif"
+  },
+  "byeInactive": "Bye inactif",
+  "@byeInactive": {
+    "description": "Label/indice pour bye inactif"
+  },
+  "tournamentHasntStartedYet": "Le tournoi n’a pas encore commencé",
+  "@tournamentHasntStartedYet": {
+    "description": "Label/indice indiquant que le tournoi n’a pas encore commencé"
+  },
+  "tournamentRegisteredSuccessfully": "Tournoi enregistré avec succès !",
+  "@tournamentRegisteredSuccessfully": {
+    "description": "Message de succès lorsque le tournoi est enregistré."
+  },
+  "invalidData": "Données invalides",
+  "@invalidData": {
+    "description": "Message pour données invalides"
+  },
+  "emptyTournaments": "Aucun tournoi enregistré",
+  "@emptyTournaments": {
+    "description": "Message lorsqu’aucun tournoi n’est enregistré."
+  },
+  "errorWhileDeletingATournament": "Erreur lors de la suppression du tournoi",
+  "@errorWhileDeletingATournament": {
+    "description": "Message d’erreur lors de la suppression d’un tournoi."
+  },
+  "successWhileDeletingATournament": "Tournoi supprimé avec succès !",
+  "@successWhileDeletingATournament": {
+    "description": "Message de succès lors de la suppression d’un tournoi."
+  },
+  "score": "Score",
+  "@score": {
+    "description": "Titre pour score/points"
+  },
+  "scoreNegativeException": "Le score ne peut pas être négatif !",
+  "@scoreNegativeException": {
+    "description": "Message d’exception lorsque le score est négatif."
+  },
+  "classification": "Classement",
+  "@classification": {
+    "description": "Titre pour classement"
+  },
+  "rounds": "Rondes",
+  "@rounds": {
+    "description": "Titre pour rondes"
+  },
+  "round": "Ronde",
+  "@round": {
+    "description": "Titre pour ronde"
+  },
+  "result": "Résultat",
+  "@result": {
+    "description": "Titre pour résultat"
+  },
+  "tournamentStarted": "Tournoi commencé",
+  "@tournamentStarted": {
+    "description": "Message de succès lorsque le tournoi commence."
+  },
+  "tournamentCantBeStarted": "Le tournoi ne peut pas être commencé",
+  "@tournamentCantBeStarted": {
+    "description": "Message d’erreur lorsqu’un tournoi ne peut pas être commencé."
+  },
+  "tournamentCantBePaired": "Le tournoi ne peut pas être apparié",
+  "@tournamentCantBePaired": {
+    "description": "Message d’erreur lorsqu’un tournoi ne peut pas être apparié."
+  },
+  "lastRoundResultsDontFilled": "Les résultats de la dernière ronde ne sont pas entièrement remplis.",
+  "@lastRoundResultsDontFilled": {
+    "description": "Erreur lorsque les résultats de la dernière ronde ne sont pas tous remplis"
+  },
+  "allRoundsHaveAlreadyBeenPaired": "Toutes les rondes ont déjà été appariées.",
+  "@allRoundsHaveAlreadyBeenPaired": {
+    "description": "Erreur lorsqu’il n’y a plus de rondes à apparier"
+  },
+  "startTournament": "Démarrer le tournoi",
+  "@startTournament": {
+    "description": "Titre pour commencer un tournoi"
+  },
+  "theTournamentHasFinished": "Le tournoi est terminé",
+  "@theTournamentHasFinished": {
+    "description": "Titre lorsque le tournoi est terminé"
+  },
+  "start": "Commencer",
+  "@start": {
+    "description": "Titre pour commencer"
+  },
+  "table": "Table",
+  "@table": {
+    "description": "Titre pour table"
+  },
+  "board": "Échiquier",
+  "@board": {
+    "description": "Titre pour board / échiquier"
+  },
+  "player": "Joueur",
+  "@player": {
+    "description": "Titre pour joueur"
+  },
+  "players": "Joueurs",
+  "@players": {
+    "description": "Titre pour joueurs"
+  },
+  "thereAreNoRegisteredPlayers": "Aucun joueur enregistré",
+  "@thereAreNoRegisteredPlayers": {
+    "description": "Message lorsqu’il n’y a aucun joueur enregistré."
+  },
+  "toStartTheTournamentYouNeedAtLeastThreePlayers": "Pour commencer le tournoi, vous avez besoin d’au moins 3 joueurs.",
+  "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+    "description": "Message lorsqu’il n’y a pas de joueurs suffisants."
+  },
+  "playerAddeddSuccessfully": "Joueur ajouté avec succès !",
+  "@playerAddeddSuccessfully": {
+    "description": "Message de succès lorsqu’un joueur est ajouté."
+  },
+  "playerNmae": "Nom du joueur",
+  "@playerNmae": {
+    "description": "Label/indice pour nom du joueur"
+  },
+  "addPlayer": "Ajouter un joueur",
+  "@addPlayer": {
+    "description": "Titre pour bouton/formulaire d’ajout de joueur"
+  },
+  "add": "Ajouter",
+  "@add": {
+    "description": "Titre pour ajouter"
+  },
+  "informations": "Informations",
+  "@informations": {
+    "description": "Titre pour informations"
+  },
+  "somethingWentWrong": "Une erreur s’est produite !",
+  "@somethingWentWrong": {
+    "description": "Message générique d’erreur."
+  },
+  "settings": "Paramètres",
+  "@settings": {
+    "description": "Titre pour bouton/icône des paramètres"
+  },
+  "language": "Langue",
+  "@language": {
+    "description": "Label/indice pour langue"
+  },
+  "switchTheme": "Changer le thème",
+  "@switchTheme": {
+    "description": "Changer le thème"
+  },
+  "darkMode": "Mode sombre",
+  "@darkMode": {
+    "description": "Mode sombre"
+  }
+}
