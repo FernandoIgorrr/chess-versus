@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 import '../../../../data/repositories/player/player_repository.dart';
 import '../../../../domain/models/player/player.dart';
@@ -10,26 +9,26 @@ class PlayersViewModel extends ChangeNotifier {
   final PlayerRepository _repository;
   PlayersState _state = IdlePlayersState();
   PlayerTapState _stateTap = PlayerNotTapped();
-  final _log = Logger('PlayersViewModel');
+  //final _log = Logger('PlayersViewModel');
   PlayersViewModel({required PlayerRepository playerRepository})
     : _repository = playerRepository;
 
   PlayersState get state => _state;
   PlayerTapState get stateTap => _stateTap;
 
-  emit(PlayersState state) {
-    _log.fine('emit: $state');
+  void emit(PlayersState state) {
+    //_log.fine('emit: $state');
     _state = state;
     notifyListeners();
   }
 
-  emitPlayerTapped(Player player) {
+  void emitPlayerTapped(Player player) {
     _stateTap = PlayerTapped(player);
     notifyListeners();
   }
 
   Future<void> getPlayers(String tournamentId) async {
-    _log.fine('Start load players');
+    //_log.fine('Start load players');
 
     emit(LoadingPlayersState());
 
@@ -38,6 +37,6 @@ class PlayersViewModel extends ChangeNotifier {
         .mapError((failure) => failure.toString())
         .mapError(FailurePlayersState.new)
         .fold(emit, emit);
-    _log.fine('Loaded players');
+    //_log.fine('Loaded players');
   }
 }

@@ -1,7 +1,6 @@
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_assembly_exception.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_update_use_case.dart';
-import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
@@ -17,8 +16,6 @@ class TournamentPairingUseCase {
   final MatchRepository _matchRepository;
   final RoundRepository _roundRepository;
 
-  final TournamentUpdateUseCase _tournamentUpdateUseCase;
-
   final _log = Logger('TournamentPairingUseCase');
 
   TournamentPairingUseCase({
@@ -30,82 +27,34 @@ class TournamentPairingUseCase {
   }) : _tournamentRepository = tournamentRepository,
        _playerRepository = playerRepository,
        _roundRepository = roundRepository,
-       _matchRepository = matchRepository,
-       _tournamentUpdateUseCase = tournamentUpdateUseCase;
+       _matchRepository = matchRepository;
 
   void pairingFrom(Tournament tournament) {
-    _log.fine(
-      'LOADING TOURNAMENT************************************************',
-    );
+    //_log.fine(tournament.toString());
 
-    _log.fine(tournament.toString());
-
-    _log.fine(
-      'LOADED TOURNAMENT************************************************',
-    );
     if (tournament.rounds.isEmpty) {
       tournament.initiateTournament();
       //_log.fine("BYE PLAYER  :  ${tournament.rounds.first.notPaired!.name}}");
     } else {
+      _log.fine(' ******* swiss pairing irá acontecer aqui!');
+      _log.fine(tournament.rounds.length.toString());
       tournament.swissPairing();
     }
-    _log.fine(
-      'PAIRED TOURNAMENT************************************************',
-    );
-    _log.fine(tournament.toString());
+
     //_log.fine(tournament.rounds.first.matches.first.toString());
-
-    _log.fine(
-      'PAIRED TOURNAMENT************************************************',
-    );
   }
-
-  /*AsyncResult<Tournament> pairingFrom( Tournament tournament) async {
-    try {
-      var tournament = await assemblyTournament(
-        tournamentId,
-      ).fold((success) => success, (failure) => throw failure);
-
-      _log.fine(
-        'LOADING TOURNAMENT************************************************',
-      );
-
-      _log.fine(tournament.toString());
-
-      _log.fine(
-        'LOADED TOURNAMENT************************************************',
-      );
-      if (tournament.rounds.isEmpty) {
-        tournament.initiateTournament();
-      } else {
-        tournament.swissPairing();
-      }
-      _log.fine(
-        'PAIRED TOURNAMENT************************************************',
-      );
-      _log.fine(tournament.toString());
-      _log.fine(tournament.rounds.first.matches.first.toString());
-
-      _log.fine(
-        'PAIRED TOURNAMENT************************************************',
-      );
-
-      await _tournamentUpdateUseCase.updateFrom(tournament);
-      return Success(tournament);
-    } on Exception catch (e) {
-      return Failure(e);
-    }
-  }*/
 
   AsyncResult<Tournament> assemblyTournament(String tournamentId) async {
     try {
-      var tournament =
-          await _tournamentRepository.findById(tournamentId).getOrThrow();
+      var tournament = await _tournamentRepository
+          .findById(tournamentId)
+          .getOrThrow();
       tournament.setPlayers(
         (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
       );
-      var rounds =
-          await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
+      var rounds = await _roundRepository
+          .findBySuperclassId(tournamentId)
+          .getOrThrow();
       rounds.forEach(
         (r) async => r.setMatches(
           (await _matchRepository.findBySuperclassId(r.id)).getOrThrow(),

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:chess_versus/src/data/exceptions/round_update_exception.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +12,7 @@ import 'round_raw_dto_repository.dart';
 
 class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
   final String _kRounds;
-  final _log = Logger('RoundRawDtoRepositoryLocal');
+  //final _log = Logger('RoundRawDtoRepositoryLocal');
   RoundRawDtoRepositoryLocal(this._kRounds);
 
   @override
@@ -37,8 +36,9 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
           var list = [...success];
           list.add(round);
 
-          final listMapStringDynamic =
-              list.map((round) => round.toJson()).toList();
+          final listMapStringDynamic = list
+              .map((round) => round.toJson())
+              .toList();
 
           final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
 
@@ -64,8 +64,10 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
       if (response.isEmpty) return const Success(<RoundRawDto>[]);
       // _log.fine('response.isNotEmpty');
 
-      var roundRawDtoList =
-          response.map(jsonDecode).map(RoundRawDto.fromJson).toList();
+      var roundRawDtoList = response
+          .map(jsonDecode)
+          .map(RoundRawDto.fromJson)
+          .toList();
 
       //_log.fine('playerRawDtoList success');
       return Success(roundRawDtoList);
@@ -86,11 +88,10 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
         return const Success(<RoundRawDto>[]);
       }
 
-      List<dynamic> dynamicRounds =
-          response
-              .map(jsonDecode)
-              .where((d) => d['tournament_id'] == tournamentId)
-              .toList();
+      List<dynamic> dynamicRounds = response
+          .map(jsonDecode)
+          .where((d) => d['tournament_id'] == tournamentId)
+          .toList();
 
       return Success(dynamicRounds.map(RoundRawDto.fromJson).toList());
     } catch (e) {
@@ -112,12 +113,12 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
           list.removeWhere((r) => r.id == round.id);
 
           list.add(round);
-          final listMapStringDynamic =
-              list.map((round) => round.toJson()).toList();
-          final listEncoded =
-              listMapStringDynamic
-                  .map((jsonMap) => jsonEncode(jsonMap))
-                  .toList();
+          final listMapStringDynamic = list
+              .map((round) => round.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
           setItems(listEncoded);
         },
         (failure) {

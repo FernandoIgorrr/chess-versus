@@ -1,0 +1,239 @@
+{
+    "@@locale": "es",
+    "tournaments": "Torneos",
+    "@tournaments": {
+        "description": "Título para la página que muestra los torneos"
+    },
+    "deleteTournament": "¿Eliminar torneo?",
+    "@deleteTournament": {
+        "description": "Título para la alerta de eliminación de torneo"
+    },
+    "cancel": "Cancelar",
+    "@cancel": {
+        "description": "Título para cancelar"
+    },
+    "delete": "Eliminar",
+    "@delete": {
+        "description": "Título para eliminar"
+    },
+    "registerTournament": "Registrar torneo",
+    "@registerTournament": {
+        "description": "Título para el botón/formulario de registro de torneo"
+    },
+    "name": "Nombre",
+    "@name": {
+        "description": "Etiqueta/pista para nombre"
+    },
+    "tournamentName": "Nombre del torneo",
+    "@tournamentName": {
+        "description": "Etiqueta/pista para el nombre del torneo"
+    },
+    "tournamentDescription": "Descripción del torneo",
+    "@tournamentDescription": {
+        "description": "Etiqueta/pista para la descripción del torneo"
+    },
+    "tournamentNullDescription": "Sin descripción",
+    "@tournamentNullDescription": {
+        "description": "Descripción predeterminada de un torneo sin descripción"
+    },
+    "tournamentType": "Tipo de torneo",
+    "@tournamentType": {
+        "description": "Etiqueta/pista para el tipo de torneo"
+    },
+    "tournamentStartDate": "Fecha de inicio",
+    "@tournamentStartDate": {
+        "description": "Etiqueta/pista para la fecha de inicio del torneo"
+    },
+    "created": "Creado",
+    "@created": {
+        "description": "Etiqueta/pista para creado"
+    },
+    "inProgress": "En progreso",
+    "@inProgress": {
+        "description": "Etiqueta/pista para en progreso"
+    },
+    "finished": "Finalizado",
+    "@finished": {
+        "description": "Etiqueta/pista para finalizado"
+    },
+    "tournamentHasAlreadyEnded": "El torneo ya ha finalizado",
+    "@tournamentHasAlreadyEnded": {
+        "description": "Etiqueta/pista para torneo ya finalizado"
+    },
+    "numberOfRounds": "Nº de rondas",
+    "@numberOfRounds": {
+        "description": "Etiqueta/pista para número de rondas"
+    },
+    "scorePerBye": "Puntuación por bye",
+    "@scorePerBye": {
+        "description": "Etiqueta/pista para la puntuación por bye"
+    },
+    "notDefined": "No definido",
+    "@notDefined": {
+        "description": "Etiqueta/pista para no definido"
+    },
+    "notInformed": "No informado",
+    "@notInformed": {
+        "description": "Etiqueta/pista para no informado"
+    },
+    "activePlayers": "Jugadores activos",
+    "@activePlayers": {
+        "description": "Etiqueta/pista para jugadores activos"
+    },
+    "active": "Activo",
+    "@active": {
+        "description": "Etiqueta/pista para activo"
+    },
+    "inactive": "Inactivo",
+    "@inactive": {
+        "description": "Etiqueta/pista para inactivo"
+    },
+    "byeInactive": "Bye inactivo",
+    "@byeInactive": {
+        "description": "Etiqueta/pista para bye inactivo"
+    },
+    "tournamentHasntStartedYet": "El torneo aún no ha comenzado",
+    "@tournamentHasntStartedYet": {
+        "description": "Etiqueta/pista para torneo aún no iniciado"
+    },
+    "tournamentRegisteredSuccessfully": "¡Torneo registrado con éxito!",
+    "@tournamentRegisteredSuccessfully": {
+        "description": "Mensaje de éxito al registrar un torneo."
+    },
+    "invalidData": "Datos inválidos",
+    "@invalidData": {
+        "description": "Mensaje de datos inválidos"
+    },
+    "emptyTournaments": "No hay torneos registrados",
+    "@emptyTournaments": {
+        "description": "Mensaje para cuando no hay torneos registrados."
+    },
+    "errorWhileDeletingATournament": "Error al intentar eliminar el torneo",
+    "@errorWhileDeletingATournament": {
+        "description": "Mensaje de error al intentar eliminar un torneo."
+    },
+    "successWhileDeletingATournament": "¡Torneo eliminado con éxito!",
+    "@successWhileDeletingATournament": {
+        "description": "Mensaje de éxito al eliminar un torneo."
+    },
+    "score": "Puntuación",
+    "@score": {
+        "description": "Título para puntuación"
+    },
+    "scoreNegativeException": "¡La puntuación no puede ser negativa!",
+    "@scoreNegativeException": {
+        "description": "Mensaje de excepción para puntuación negativa."
+    },
+    "classification": "Clasificación",
+    "@classification": {
+        "description": "Título para clasificación"
+    },
+    "rounds": "Rondas",
+    "@rounds": {
+        "description": "Título para rondas"
+    },
+    "round": "Ronda",
+    "@round": {
+        "description": "Título para ronda"
+    },
+    "result": "Resultado",
+    "@result": {
+        "description": "Título para resultado"
+    },
+    "tournamentStarted": "Torneo iniciado",
+    "@tournamentStarted": {
+        "description": "Mensaje de éxito para torneo iniciado."
+    },
+    "tournamentCantBeStarted": "El torneo no puede iniciarse",
+    "@tournamentCantBeStarted": {
+        "description": "Mensaje de error para torneo que no puede iniciarse."
+    },
+    "tournamentCantBePaired": "El torneo no puede emparejarse",
+    "@tournamentCantBePaired": {
+        "description": "Mensaje de error para torneo que no puede emparejarse."
+    },
+    "lastRoundResultsDontFilled": "Los resultados de la última ronda no fueron completados completamente.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Mensaje de error para resultados incompletos de la última ronda"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Todas las rondas ya han sido emparejadas.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+        "description": "Mensaje de error para rondas ya emparejadas"
+    },
+    "startTournament": "Iniciar torneo",
+    "@startTournament": {
+        "description": "Título para botón/formulario de iniciar torneo"
+    },
+    "theTournamentHasFinished": "El torneo ha finalizado",
+    "@theTournamentHasFinished": {
+        "description": "Título para cuando el torneo ha finalizado"
+    },
+    "start": "Iniciar",
+    "@start": {
+        "description": "Título para iniciar"
+    },
+    "table": "Mesa",
+    "@table": {
+        "description": "Título para mesa"
+    },
+    "board": "Tablero",
+    "@board": {
+        "description": "Título para tablero"
+    },
+    "player": "Jugador",
+    "@player": {
+        "description": "Título para jugador"
+    },
+    "players": "Jugadores",
+    "@players": {
+        "description": "Título para jugadores"
+    },
+    "thereAreNoRegisteredPlayers": "No hay jugadores registrados",
+    "@thereAreNoRegisteredPlayers": {
+        "description": "Mensaje para cuando no hay jugadores registrados."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "Para iniciar el torneo necesitas al menos 3 jugadores.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Mensaje para jugadores insuficientes."
+    },
+    "playerAddeddSuccessfully": "¡Jugador añadido con éxito!",
+    "@playerAddeddSuccessfully": {
+        "description": "Mensaje de éxito al añadir un jugador."
+    },
+    "playerNmae": "Nombre del jugador",
+    "@playerNmae": {
+        "description": "Etiqueta/pista para nombre del jugador"
+    },
+    "addPlayer": "Añadir jugador",
+    "@addPlayer": {
+        "description": "Título para botón/formulario de añadir jugador"
+    },
+    "add": "Añadir",
+    "@add": {
+        "description": "Título para añadir"
+    },
+    "informations": "Información",
+    "@informations": {
+        "description": "Título para información"
+    },
+    "somethingWentWrong": "¡Algo salió mal!",
+    "@somethingWentWrong": {
+        "description": "Título para errores genéricos."
+    },
+    "settings": "Configuración",
+    "@settings": {
+        "description": "Título para configuración"
+    },
+    "language": "Idioma",
+    "@language": {
+        "description": "Etiqueta/pista para idioma"
+    },
+    "switchTheme": "Cambiar tema",
+    "@switchTheme": {
+        "description": "Cambiar tema"
+    },
+    "darkMode": "Modo oscuro",
+    "@darkMode": {
+        "description": "Modo oscuro"
+    }
+}

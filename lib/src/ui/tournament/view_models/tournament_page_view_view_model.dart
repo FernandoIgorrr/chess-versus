@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 class TournamentPageViewViewModel extends ChangeNotifier {
   late int _page;
 
   // final int _numberOfPages;
   final PageController _pageController;
-  final _log = Logger('PageViewViewModel');
+  // final _log = Logger('PageViewViewModel');
   TournamentPageViewViewModel(PageController pageController)
-      : _pageController = pageController {
+    : _pageController = pageController {
     _page = _pageController.initialPage;
     //emit(_pageController.initialPage);
     //animateToPage(_page);
@@ -17,10 +16,13 @@ class TournamentPageViewViewModel extends ChangeNotifier {
   PageController get pageController => _pageController;
   int get page => _page;
 
-  animateToPage(int page) {
+  void animateToPage(int page) {
     // _log.fine('animateToPage $page');
-    _pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 300), curve: Curves.linear);
+    _pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.linear,
+    );
     emit(page);
   }
 

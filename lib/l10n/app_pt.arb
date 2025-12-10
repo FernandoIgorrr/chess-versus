@@ -137,6 +137,10 @@
     "@round": {
         "description": "Título para rodada"
     },
+    "result":"Resultado",
+    "@result":{
+        "description": "Título para resultado"
+    },
     "tournamentStarted":"Torneio iniciado",
     "@tournamentStarted": {
         "description": "Mensagem de sucesso para quando um torneio for iniciado."
@@ -145,9 +149,25 @@
     "@tournamentCantBeStarted": {
         "description": "Mensagem de erro para quando um torneio nao pode ser iniciado."
     },
-    "startTournament":" Iniciar  Torneio",
+    "tournamentCantBePaired":"O Torneio não pode ser emparceirado",
+    "@tournamentCantBePaired": {
+        "description": "Mensagem de erro para quando um torneio nao pode ser emparceirado."
+    },
+    "startTournament":"Iniciar torneio",
     "@startTournament": {
-        "description": "TitledBorder para botão de iniciar torneio"
+        "description": "Title for start tournament button/form"
+    },
+    "lastRoundResultsDontFilled": "Os resultados do último round não foram totalmente preenchidos.",
+    "@lastRoundResultsDontFilled": {
+    "description": "Mensagem de erro para quando os resultados do último round não foram totalmente preenchidos"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "Todas as rodadas já foram emparceiradas.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+    "description": "Mensagem de erro para quando todos os rounds já foram emparceirados"
+    },
+    "theTournamentHasFinished":"O torneio chegou ao fim",
+    "@theTournamentHasFinished": {
+        "description": "Título para quando o torneio chegou ao fim"
     },
     "start":"Iniciar",
     "@start": {
@@ -172,6 +192,10 @@
     "thereAreNoRegisteredPlayers":"Não há jogadores cadastrados",
     "@thereAreNoRegisteredPlayers": {
         "description": "Mensagem para quando não há jogadores cadastrados."
+    },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers":"Para iniciar o torneio, você precisa de pelo menos 3 jogadores.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
     },
     "playerAddeddSuccessfully":"Jogador adicionado com sucesso!",
     "@playerAddeddSuccessfully": {

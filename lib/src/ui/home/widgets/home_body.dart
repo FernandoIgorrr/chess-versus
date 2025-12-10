@@ -1,10 +1,8 @@
-import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 import 'package:chess_versus/src/ui/home/widgets/delete_alert.dart';
 import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:logging/logging.dart';
 
 import '../../../routing/routes.dart';
 import '../../../utils/image_constants.dart';
@@ -24,7 +22,7 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  final _log = Logger('HomeBody');
+  //final _log = Logger('HomeBody');
   @override
   void initState() {
     super.initState();
@@ -61,124 +59,108 @@ class _HomeBodyState extends State<HomeBody> {
                 );
               } else if (state is SucessGetTournamentsState) {
                 body = Center(
-                  child:
-                      state.tournaments.isEmpty
-                          ? Text(
-                            AppLocalizations.of(context)!.emptyTournaments,
-                            style: const TextStyle(
-                              //color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                            ),
-                          )
-                          : ListView(
-                            children:
-                                state.tournaments.reversed
-                                    .where((t) => t.arquived == false)
-                                    .map((tournament) {
-                                      return GestureDetector(
-                                        onLongPress: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return DeleteAlert(
-                                                tournamentId: tournament.id,
-                                                homeViewModel: widget.viewModel,
-                                              );
-                                            },
-                                          );
-                                        },
-                                        child: Align(
-                                          alignment: Alignment.center,
-                                          child: Container(
-                                            margin: EdgeInsets.only(
-                                              top:
-                                                  tournament ==
-                                                          state.tournaments.last
-                                                      ? 16
-                                                      : 8,
-                                              bottom:
-                                                  tournament ==
-                                                          state
-                                                              .tournaments
-                                                              .first
-                                                      ? 16
-                                                      : 8,
-                                              left: 16,
-                                              right: 16,
-                                            ),
-                                            child: ListTile(
-                                              onTap:
-                                                  () => context.push(
-                                                    Routes.tournamentWithId(
-                                                      tournament.id,
-                                                    ),
-                                                  ),
-                                              leading: SizedBox(
-                                                height: 48,
-                                                width: 48,
-                                                child: CustomImageView(
-                                                  color:
-                                                      Theme.of(context)
-                                                          .colorScheme
-                                                          .onPrimaryContainer,
-                                                  imagePath:
-                                                      ImageConstants
-                                                          .iconTrophyLight,
-                                                ),
-                                              ),
-                                              trailing: const Icon(
-                                                Icons.chevron_right,
-                                              ),
-                                              horizontalTitleGap:
-                                                  Dimens.of(
-                                                    context,
-                                                  ).paddingScreenHorizontal,
-                                              minVerticalPadding:
-                                                  Dimens.of(
-                                                    context,
-                                                  ).paddingScreenVertical,
-                                              // tileColor: Theme.of(context).colorScheme.secondary,
-                                              title: Text(
-                                                tournament.name.toString(),
-                                              ),
-                                              subtitle: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Divider(
-                                                    color:
-                                                        Theme.of(context)
-                                                            .colorScheme
-                                                            .onPrimaryContainer,
-                                                  ),
-                                                  Text(
-                                                    tournament.description ??
-                                                        AppLocalizations.of(
-                                                          context,
-                                                        )!.tournamentNullDescription,
-                                                  ),
-                                                  Text(
-                                                    tournament.typeName
-                                                        .toString(),
-                                                  ),
-
-                                                  Text(
-                                                    DateFormat(
-                                                      'dd/MM/yyyy',
-                                                    ).format(
-                                                      tournament.startedAt,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                  child: state.tournaments.isEmpty
+                      ? Text(
+                          AppLocalizations.of(context)!.emptyTournaments,
+                          style: const TextStyle(
+                            //color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                        )
+                      : ListView(
+                          children: state.tournaments.reversed
+                              .where((t) => t.arquived == false)
+                              .map((tournament) {
+                                return GestureDetector(
+                                  onLongPress: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return DeleteAlert(
+                                          tournamentId: tournament.id,
+                                          homeViewModel: widget.viewModel,
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                        top:
+                                            tournament == state.tournaments.last
+                                            ? 16
+                                            : 8,
+                                        bottom:
+                                            tournament ==
+                                                state.tournaments.first
+                                            ? 16
+                                            : 8,
+                                        left: 16,
+                                        right: 16,
+                                      ),
+                                      child: ListTile(
+                                        onTap: () => context.push(
+                                          Routes.tournamentWithId(
+                                            tournament.id,
                                           ),
                                         ),
-                                      );
-                                    })
-                                    .toList(),
-                          ),
+                                        leading: SizedBox(
+                                          height: 48,
+                                          width: 48,
+                                          child: CustomImageView(
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.onPrimaryContainer,
+                                            imagePath:
+                                                ImageConstants.iconTrophyLight,
+                                          ),
+                                        ),
+                                        trailing: const Icon(
+                                          Icons.chevron_right,
+                                        ),
+                                        horizontalTitleGap: Dimens.of(
+                                          context,
+                                        ).paddingScreenHorizontal,
+                                        minVerticalPadding: Dimens.of(
+                                          context,
+                                        ).paddingScreenVertical,
+                                        // tileColor: Theme.of(context).colorScheme.secondary,
+                                        title: Text(tournament.name.toString()),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Divider(
+                                              color: Theme.of(
+                                                context,
+                                              ).colorScheme.onPrimaryContainer,
+                                            ),
+                                            Text(
+                                              tournament.description ??
+                                                  AppLocalizations.of(
+                                                    context,
+                                                  )!.tournamentNullDescription,
+                                            ),
+                                            Text(
+                                              tournament.typeName.toString(),
+                                            ),
+
+                                            Text(
+                                              DateFormat(
+                                                'dd/MM/yyyy',
+                                              ).format(tournament.startedAt),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              })
+                              .toList(),
+                        ),
                 );
               }
 

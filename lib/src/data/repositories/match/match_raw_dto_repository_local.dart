@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +10,7 @@ import '../../exceptions/matches_fetch_exception.dart';
 import 'match_raw_dto_repository.dart';
 
 class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
-  final _log = Logger('MatchRawDtoRepositoryLocal');
+  //final _log = Logger('MatchRawDtoRepositoryLocal');
   final String _kMatches;
 
   MatchRawDtoRepositoryLocal(this._kMatches);
@@ -37,8 +36,9 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
           var list = [...success];
           list.add(matchRawDto);
 
-          final listMapStringDynamic =
-              list.map((match) => match.toJson()).toList();
+          final listMapStringDynamic = list
+              .map((match) => match.toJson())
+              .toList();
 
           final listEncoded = listMapStringDynamic.map(jsonEncode).toList();
 
@@ -64,8 +64,10 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
       if (response.isEmpty) return const Success(<MatchRawDto>[]);
       // _log.fine('response.isNotEmpty');
 
-      var matchRawDtoList =
-          response.map(jsonDecode).map(MatchRawDto.fromJson).toList();
+      var matchRawDtoList = response
+          .map(jsonDecode)
+          .map(MatchRawDto.fromJson)
+          .toList();
 
       //_log.fine('playerRawDtoList success');
       return Success(matchRawDtoList);
@@ -88,11 +90,10 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
         return const Success(<MatchRawDto>[]);
       }
       //_log.fine('HÁ matches salvos!!!!');
-      List<dynamic> dynamicMatches =
-          response
-              .map(jsonDecode)
-              .where((d) => d['round_id'] == roundId)
-              .toList();
+      List<dynamic> dynamicMatches = response
+          .map(jsonDecode)
+          .where((d) => d['round_id'] == roundId)
+          .toList();
 
       return Success(dynamicMatches.map(MatchRawDto.fromJson).toList());
     } catch (e) {
@@ -115,12 +116,12 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
           list.removeWhere((m) => m.id == match.id);
 
           list.add(match);
-          final listMapStringDynamic =
-              list.map((round) => round.toJson()).toList();
-          final listEncoded =
-              listMapStringDynamic
-                  .map((jsonMap) => jsonEncode(jsonMap))
-                  .toList();
+          final listMapStringDynamic = list
+              .map((round) => round.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
           setItems(listEncoded);
         },
         (failure) {

@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
 import 'app_localizations_pt.dart';
 
 // ignore_for_file: type=lint
@@ -95,6 +96,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
+    Locale('es'),
     Locale('pt'),
   ];
 
@@ -302,6 +304,12 @@ abstract class AppLocalizations {
   /// **'Round'**
   String get round;
 
+  /// Title for result
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get result;
+
   /// Success message for when a tournament is started.
   ///
   /// In en, this message translates to:
@@ -314,11 +322,35 @@ abstract class AppLocalizations {
   /// **'The tournament can\'t be started'**
   String get tournamentCantBeStarted;
 
+  /// Error message for when a tournament can't be paired.
+  ///
+  /// In en, this message translates to:
+  /// **'The tournament can\'t be paired'**
+  String get tournamentCantBePaired;
+
+  /// Error message for when the results of the last round were not fully filled in
+  ///
+  /// In en, this message translates to:
+  /// **'The results of the last round were not fully filled in.'**
+  String get lastRoundResultsDontFilled;
+
+  /// Error message for when all rounds have already been paired
+  ///
+  /// In en, this message translates to:
+  /// **'All rounds have already been paired.'**
+  String get allRoundsHaveAlreadyBeenPaired;
+
   /// Title for start tournament button/form
   ///
   /// In en, this message translates to:
   /// **'Start  Tournament'**
   String get startTournament;
+
+  /// Title for when the tournament has finished
+  ///
+  /// In en, this message translates to:
+  /// **'The tournament has finished'**
+  String get theTournamentHasFinished;
 
   /// Title for start button/form
   ///
@@ -355,6 +387,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'There are no registered players'**
   String get thereAreNoRegisteredPlayers;
+
+  /// Message for when there are not enough players.
+  ///
+  /// In en, this message translates to:
+  /// **'To start the tournament you need at least 3 players.'**
+  String get toStartTheTournamentYouNeedAtLeastThreePlayers;
 
   /// Success message for when a player is added.
   ///
@@ -428,7 +466,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en', 'pt'].contains(locale.languageCode);
+      <String>['en', 'es', 'pt'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -439,6 +477,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
     case 'pt':
       return AppLocalizationsPt();
   }

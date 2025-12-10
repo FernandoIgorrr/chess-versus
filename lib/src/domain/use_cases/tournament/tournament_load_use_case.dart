@@ -1,5 +1,4 @@
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../data/exceptions/tournament_assembly_exception.dart';
@@ -15,7 +14,7 @@ class TournamentLoadUseCase {
   final MatchRepository _matchRepository;
   final RoundRepository _roundRepository;
 
-  final _log = Logger('TournamentLoadUseCase');
+  //final _log = Logger('TournamentLoadUseCase');
 
   TournamentLoadUseCase({
     required TournamentRepository tournamentRepository,
@@ -28,7 +27,7 @@ class TournamentLoadUseCase {
        _matchRepository = matchRepository;
 
   AsyncResult<Tournament> loadFrom(String id) async {
-    _log.fine('loadFrom');
+    //_log.fine('loadFrom');
 
     try {
       Tournament tournament = (await _tournamentRepository.findById(
@@ -63,17 +62,20 @@ class TournamentLoadUseCase {
 
   Future<Tournament> _assemblyTournament(String tournamentId) async {
     // try {
-    var tournament =
-        await _tournamentRepository.findById(tournamentId).getOrThrow();
+    var tournament = await _tournamentRepository
+        .findById(tournamentId)
+        .getOrThrow();
     tournament.setPlayers(
       (await _playerRepository.findBySuperclassId(tournamentId)).getOrThrow(),
     );
-    var rounds =
-        await _roundRepository.findBySuperclassId(tournamentId).getOrThrow();
+    var rounds = await _roundRepository
+        .findBySuperclassId(tournamentId)
+        .getOrThrow();
 
     for (var round in rounds) {
-      var matches =
-          await _matchRepository.findBySuperclassId(round.id).getOrThrow();
+      var matches = await _matchRepository
+          .findBySuperclassId(round.id)
+          .getOrThrow();
       round.setMatches(matches);
 
       //round.setMatches(matches)
@@ -93,7 +95,7 @@ class TournamentLoadUseCase {
     //await _tournamentRepository.update(tournament);
     //await _roundRepository.updateAll(tournament.rounds);
 
-    _log.fine('Loaded tournament');
+    //_log.fine('Loaded tournament');
     return tournament;
     // return Success(tournament);
     // } catch (e) {

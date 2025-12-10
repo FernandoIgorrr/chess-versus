@@ -31,9 +31,7 @@ GoRouter router() => GoRouter(
           builder: (context, state) {
             final tournamentViewModel = TournamentViewModel(
               tournamentRepository: context.read(),
-              playerRepository: context.read(),
-              roundRepository: context.read(),
-              matchRepository: context.read(),
+              tournamentUpdateUseCase: context.read(),
             );
             final playersViewModel = PlayersViewModel(
               playerRepository: context.read(),
@@ -48,7 +46,9 @@ GoRouter router() => GoRouter(
               tournamentPairingUseCase: context.read(),
               roundRepository: context.read(),
             );
-            final matchesViewModel = MatchesViewModel();
+            final matchesViewModel = MatchesViewModel(
+              tournamentMatchResultUpdateUseCase: context.read(),
+            );
             return TournamentPage(
               tournamentViewModel: tournamentViewModel,
               tournamentPageViewViewModel: pageViewViewModel,
@@ -64,9 +64,7 @@ GoRouter router() => GoRouter(
                 final id = state.pathParameters['id']!;
                 final tournamentViewModel = TournamentViewModel(
                   tournamentRepository: context.read(),
-                  playerRepository: context.read(),
-                  roundRepository: context.read(),
-                  matchRepository: context.read(),
+                  tournamentUpdateUseCase: context.read(),
                 );
 
                 final pageViewViewModel = TournamentPageViewViewModel(
@@ -83,7 +81,9 @@ GoRouter router() => GoRouter(
                   roundRepository: context.read(),
                 );
                 tournamentViewModel.getTournament(id);
-                final matchesViewModel = MatchesViewModel();
+                final matchesViewModel = MatchesViewModel(
+                  tournamentMatchResultUpdateUseCase: context.read(),
+                );
 
                 return TournamentPage(
                   tournamentViewModel: tournamentViewModel,

@@ -99,14 +99,17 @@ class Match {
     return null;
   }
 
-  Player get mostScorePlayer =>
-      (_white.score.toDouble != _black.score.toDouble)
-          ? (_white.score.toDouble > _black.score.toDouble)
-              ? _white
-              : _black
-          : (_white.buchholz.toDouble >= _black.buchholz.toDouble)
-          ? _white
-          : _black;
+  /*
+    LEMBRE-SE QUE AQUI A A PRIMEIRA COMPARAÇÃO É O SCORE
+    E A SEGUNDA É O BUCHOLZ!!!
+  */
+  Player get mostScorePlayer => (_white.score.toDouble != _black.score.toDouble)
+      ? (_white.score.toDouble > _black.score.toDouble)
+            ? _white
+            : _black
+      : (_white.buchholz.toDouble >= _black.buchholz.toDouble)
+      ? _white
+      : _black;
 
   bool equals(Match game) {
     return (game.white == _white || game.black == _white) &&

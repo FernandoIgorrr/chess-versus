@@ -14,12 +14,16 @@ abstract class PlayerRawDtoRepository implements Repository<PlayerRawDto> {
   AsyncResult<List<PlayerRawDto>> findAll();
 
   /// Returns the list of [Players] of a determined tournament
-  AsyncResult<List<PlayerRawDto>> findByTournament(
-      String tournamentId);
+  AsyncResult<List<PlayerRawDto>> findByTournament(String tournamentId);
 
   /// Updates the [Player] with the given [id].
-  // Future<Result<void>> update(Tournament tournament);
+  @override
+  Future<Result<void>> update(PlayerRawDto playerRawDto);
 
-  /// Returns the [Player] with the given [id].
+  /// Updates the a list of [Player] with the given list.
+  @override
+  AsyncResult<void> updateAll(List<PlayerRawDto> playersRawDto);
+
+  /// Delete the [Player] with the given [id].
   // Future<Result<void>> delete(String id);
 }

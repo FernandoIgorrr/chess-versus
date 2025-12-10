@@ -27,10 +27,10 @@ class Round {
     List<Match>? matches,
     Player? notPaired,
   }) => Round(
-    id: id ?? id,
-    roundNumber: number ?? roundNumber,
-    matches: matches ?? matches,
-    notPaired: notPaired ?? notPaired,
+    id: id ?? _id,
+    roundNumber: number ?? _roundNumber,
+    matches: matches ?? _matches,
+    notPaired: notPaired ?? _notPaired,
   );
 
   String get id => _id;

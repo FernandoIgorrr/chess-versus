@@ -5,7 +5,6 @@ import 'package:chess_versus/src/domain/use_cases/tournament/tournament_load_use
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_update_use_case.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_state.dart';
 import 'package:flutter/foundation.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../../domain/models/round/round.dart';
@@ -15,10 +14,9 @@ class RoundsViewModel extends ChangeNotifier {
   final TournamentLoadUseCase _tournamentLoadUseCase;
   final TournamentUpdateUseCase _tournamentUpdateUseCase;
   final TournamentPairingUseCase _tournamentPairingUseCase;
-  final RoundRepository _roundRepository;
   RoundTapState _stateTap = RoundNotTapped();
 
-  final _log = Logger('RoundsViewModel');
+  //final _log = Logger('RoundsViewModel');
 
   RoundsState _state = IdleRoundsState();
 
@@ -29,18 +27,17 @@ class RoundsViewModel extends ChangeNotifier {
     required RoundRepository roundRepository,
   }) : _tournamentLoadUseCase = tournamentLoadUseCase,
        _tournamentUpdateUseCase = tournamentUpdateUseCase,
-       _tournamentPairingUseCase = tournamentPairingUseCase,
-       _roundRepository = roundRepository;
+       _tournamentPairingUseCase = tournamentPairingUseCase;
 
   RoundsState get state => _state;
   RoundTapState get stateTap => _stateTap;
 
-  emit(RoundsState state) {
+  void emit(RoundsState state) {
     _state = state;
     notifyListeners();
   }
 
-  emitRoundTapped(Round round) {
+  void emitRoundTapped(Round round) {
     _stateTap = RoundTapped(round);
     notifyListeners();
   }
@@ -59,7 +56,7 @@ class RoundsViewModel extends ChangeNotifier {
   }*/
 
   Future<void> assemblyTournament(String tournamentId) async {
-    _log.fine('Start Assembly tournament!!!');
+    //_log.fine('Start Assembly tournament!!!');
     emit(LoadingRoundsState());
     await _tournamentLoadUseCase
         .assemblyTournament(tournamentId)
@@ -67,24 +64,25 @@ class RoundsViewModel extends ChangeNotifier {
         .mapError((failure) => failure.toString())
         .mapError(FailureRoundsState.new)
         .fold(emit, emit);
-    _log.fine('Loaded rounds');
+    //_log.fine('Loaded rounds');
   }
 
   void toPair(Tournament tournament) {
-    _log.fine('Start Pairing players!!!');
-    emit(LoadingRoundsState());
-    /* await _tournamentPairingUseCase
-        .pairingFrom(tournamentId)
-        .map(SuccessRoundsState.new)
-        .mapError((failure) => failure.toString())
-        .mapError(FailureRoundsState.new)
-        .fold(emit, emit);*/
+    //_log.fine('Start Pairing players!!!');
+    //emit(LoadingRoundsState());
     _tournamentPairingUseCase.pairingFrom(tournament);
-    _log.fine('Paired players!!!!!');
+    // _log.fine('Paired players!!!!!');
   }
 
   Future<void> updateTournament(Tournament tournament) async {
     emit(LoadingRoundsState());
-    await _tournamentUpdateUseCase.updateFrom(tournament);
+    (await _tournamentUpdateUseCase.updateFrom(tournament));
+    await _tournamentLoadUseCase
+        .assemblyTournament(tournament.id)
+        .map(SuccessRoundsState.new)
+        .mapError((failure) => failure.toString())
+        .mapError(FailureRoundsState.new)
+        .fold(emit, emit);
+    //_log.fine('Loaded rounds');
   }
 }

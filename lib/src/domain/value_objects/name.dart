@@ -11,6 +11,8 @@ class Name implements ValueObject {
       return 'Name can\'t be empty';
     } else if (_value.toLowerCase() == 'bye') {
       return 'Name can\'t be bye';
+    } else if (_value.length >= 15) {
+      return 'The name must have fewer than 15 characters';
     }
     return null;
   }

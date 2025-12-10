@@ -17,5 +17,5 @@ abstract class MatchRawDtoRepository implements Repository<MatchRawDto> {
   AsyncResult<void> update(MatchRawDto matchRawDto);
 
   @override
-  AsyncResult<void> updateAll(List<MatchRawDto> matches);
+  AsyncResult<void> updateAll(List<MatchRawDto> matchesRawDto);
 }

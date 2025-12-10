@@ -29,7 +29,7 @@ class MatchRawDto {
        _black = black,
        _result = result,
        _desqualified = desqualified,
-       _immutable = immutable ?? false;
+       _immutable = immutable;
 
   String get id => _id;
   String get table => _table;

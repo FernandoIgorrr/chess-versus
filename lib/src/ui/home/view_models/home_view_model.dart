@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../data/repositories/tournament/tournament_repository.dart';
@@ -17,7 +16,7 @@ class HomeViewModel extends ChangeNotifier {
   HomeState _state = EmptyTournamentsState();
   final TournamentRepository _tournamentRepository;
 
-  final _log = Logger('HomeViewModel');
+  //final _log = Logger('HomeViewModel');
 
   HomeState get state => _state;
 
@@ -34,11 +33,11 @@ class HomeViewModel extends ChangeNotifier {
         .mapError((error) => error.toString())
         .mapError(FailureGetTournamentsState.new)
         .fold(emit, emit);
-    _log.fine('Loaded tournaments');
+    //_log.fine('Loaded tournaments');
   }
 
   Future<void> deleteTournament(String id) async {
     await _tournamentDeleteUseCase.deleteFrom(id);
-    _log.fine('Deleted tournament');
+    //_log.fine('Deleted tournament');
   }
 }

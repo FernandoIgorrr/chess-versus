@@ -1,7 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_round_num_form.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import '../../../../../../l10n/app_localizations.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 
@@ -33,7 +32,7 @@ class TournamentRoundsContent extends StatefulWidget {
 }
 
 class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
-  final _log = Logger('TournamentRoundsContent **');
+  //final _log = Logger('TournamentRoundsContent **');
 
   @override
   void initState() {
@@ -51,83 +50,76 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
         final stateTap = widget._roundsViewModel.stateTap;
         if (state is IdleRoundsState) {
           body = Center(child: Text("Idle"));
-          _log.fine('IdleRoundsState');
+          //_log.fine('IdleRoundsState');
         }
         if (state is LoadingRoundsState) {
           body = const Center(child: CircularProgressIndicator());
-          _log.fine('LoadingRoundsState');
+          //_log.fine('LoadingRoundsState');
         } else if (state is FailureRoundsState) {
           body = Center(child: Text(state.message));
-          _log.fine('FailureRoundsState');
+          // _log.fine('FailureRoundsState');
         } else if (state is SuccessRoundsState) {
-          var rounds = state.tournament.rounds;
-          Widget content =
-              rounds.isEmpty
-                  ? Center(
-                    child: Text(
-                      AppLocalizations.of(context)!.tournamentHasntStartedYet,
-                      textAlign: TextAlign.center,
-                    ),
-                  )
-                  : Container(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
+          var tournament = state.tournament;
+          var rounds = tournament.rounds;
+          Widget content = rounds.isEmpty
+              ? Center(
+                  child: Text(
+                    AppLocalizations.of(context)!.tournamentHasntStartedYet,
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              : Container(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
 
-                    child: ListView(
-                      shrinkWrap: true,
-                      children:
-                          state.tournament.rounds.map((round) {
-                            Color tileColor =
-                                stateTap is RoundTapped &&
-                                        stateTap.round == round
-                                    ? Theme.of(context).colorScheme.tertiary
-                                    : Theme.of(
-                                      context,
-                                    ).colorScheme.primaryContainer;
-                            return Align(
-                              //alignment: Alignment.center,
-                              child: Container(
-                                //  width: 352.h,
-                                margin: EdgeInsets.only(
-                                  top: 16,
-                                  bottom: rounds.last == round ? 8 : 0,
-                                ),
-                                child: ExpansionTile(
-                                  backgroundColor: tileColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  title: Align(
-                                    alignment: const Alignment(0.15, -0.0),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: rounds.map((round) {
+                      Color tileColor =
+                          stateTap is RoundTapped && stateTap.round == round
+                          ? Theme.of(context).colorScheme.tertiary
+                          : Theme.of(context).colorScheme.primaryContainer;
+                      return Align(
+                        //alignment: Alignment.center,
+                        child: Container(
+                          //  width: 352.h,
+                          margin: EdgeInsets.only(
+                            top: 16,
+                            bottom: rounds.last == round ? 8 : 0,
+                          ),
+                          child: ExpansionTile(
+                            backgroundColor: tileColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            title: Align(
+                              alignment: const Alignment(0.15, -0.0),
+                              child: Text(
+                                textAlign: TextAlign.center,
 
-                                      '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
-                                    ),
-                                  ),
-                                  children: <Widget>[
-                                    Container(
-                                      // height: 60,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      //  padding: const EdgeInsets.only(
-                                      //  top: 4,
-                                      // bottom: 4,
-                                      //),
-                                      child: TournamentRoundContent(
-                                        byeScore:
-                                            state.tournament.byeScore!.toDouble,
-                                        round: round,
-                                        matchesViewModel:
-                                            widget._matchesViewModel,
-                                      ), //
-                                    ),
-                                  ],
-                                ),
+                                '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
                               ),
-                            );
-                          }).toList(),
-                    ),
-                  );
+                            ),
+                            children: <Widget>[
+                              Container(
+                                // height: 60,
+                                color: Theme.of(context).colorScheme.primary,
+                                //  padding: const EdgeInsets.only(
+                                //  top: 4,
+                                // bottom: 4,
+                                //),
+                                child: TournamentRoundContent(
+                                  tournament: tournament,
+                                  round: round,
+                                  matchesViewModel: widget._matchesViewModel,
+                                ), //
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                );
 
           body = FloatingDraggableWidget(
             floatingWidgetWidth: 60,
@@ -138,47 +130,54 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                 borderRadius: BorderRadius.circular(8),
               ),
               onPressed: () async {
-                if (state.tournament.cantItBeStarted) {
-                  Flushbar(
-                    messageText: Text(
-                      AppLocalizations.of(context)!.tournamentCantBeStarted,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onError,
-                      ),
-                    ),
-                    backgroundColor: Theme.of(context).colorScheme.error,
-                    duration: const Duration(seconds: 2),
-                    flushbarPosition: FlushbarPosition.TOP,
-                  ).show(context);
-                } else if (state.tournament.canItBeStarted) {
-                  _log.fine('Tournmanet can it be started');
-                  //  widget._roundsViewModel.assemblyTournament(
-                  //    state.tournament.id,
-                  //  );
-                  await _buildRoundsNumDialog(context, state.tournament);
-                  //widget._roundsViewModel.toPair(state.tournament.id);
-                } else if (state.tournament.isExecuting) {
-                  _log.fine('Tournmanet is executing');
+                /// *** FIRST IF STATUS [CREATED] ***
+                if (tournament.status == TournamentStatus.created) {
+                  if (tournament.canItBeStarted) {
+                    await _buildRoundsNumDialog(context, tournament);
+                  } else if (tournament.cantItBeStarted) {
+                    _buildFlushBarErroFeedback(
+                      erroTitle: AppLocalizations.of(
+                        context,
+                      )!.tournamentCantBeStarted,
+                      erroMessage: AppLocalizations.of(
+                        context,
+                      )!.toStartTheTournamentYouNeedAtLeastThreePlayers,
+                    );
+                  }
 
-                  Flushbar(
-                    messageText: Text(
-                      AppLocalizations.of(context)!.tournamentCantBeStarted,
-                      textAlign: TextAlign.center,
-                    ),
-                    backgroundColor: Theme.of(context).colorScheme.surface,
-                    duration: const Duration(seconds: 2),
-                    flushbarPosition: FlushbarPosition.TOP,
-                  ).show(context);
-                } else if (state.tournament.isFinished) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    _buildSnackBarFeedback(
-                      AppLocalizations.of(context)!.tournamentHasAlreadyEnded,
-                      Colors.redAccent,
-                    ),
+                  /// *** SECOND IF STATUS [EXECUTING] ***
+                } else if (tournament.status == TournamentStatus.executing) {
+                  if (tournament.areLastRoundResultsFilled) {
+                    if (tournament.allRoundsPairing) {
+                      _buildFlushBarErroFeedback(
+                        erroTitle: AppLocalizations.of(
+                          context,
+                        )!.allRoundsHaveAlreadyBeenPaired,
+                        erroMessage: '',
+                      );
+                    } else {
+                      widget._roundsViewModel.toPair(tournament);
+                      widget._roundsViewModel.updateTournament(tournament);
+                    }
+                  } else {
+                    _buildFlushBarErroFeedback(
+                      erroTitle: AppLocalizations.of(
+                        context,
+                      )!.tournamentCantBePaired,
+                      erroMessage: AppLocalizations.of(
+                        context,
+                      )!.lastRoundResultsDontFilled,
+                    );
+                  }
+
+                  /// *** SECOND IF STATUS [FINISHED] ***
+                } else if (tournament.status == TournamentStatus.finished) {
+                  _buildFlushBarErroFeedback(
+                    erroTitle: AppLocalizations.of(
+                      context,
+                    )!.tournamentHasAlreadyEnded,
                   );
-                } else if (state.tournament.areLastRoundResultsFilled) {
-                } else {}
+                }
               },
 
               child: CustomImageView(
@@ -191,23 +190,18 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
             mainScreenWidget: content,
           );
 
-          _log.fine('SuccessRoundsState');
+          //_log.fine('SuccessRoundsState');
         }
         return body;
       },
     );
   }
 
-  _buildSnackBarFeedback(String messege, Color color) {
-    return SnackBar(
-      content: Text(messege, textAlign: TextAlign.center),
-      backgroundColor: color,
-      duration: const Duration(seconds: 1),
-    );
-  }
-
-  _buildRoundsNumDialog(BuildContext context, Tournament tournament) {
-    return showDialog(
+  Future<Widget?> _buildRoundsNumDialog(
+    BuildContext context,
+    Tournament tournament,
+  ) {
+    return showDialog<Widget>(
       context: context,
       builder: (BuildContext context) {
         return TournamentRoundNumForm(
@@ -222,30 +216,63 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
 
             Navigator.pop(context);
 
-            Flushbar(
-              messageText: Text(
-                AppLocalizations.of(context)!.tournamentStarted,
-                textAlign: TextAlign.center,
-              ),
-              backgroundColor: Theme.of(context).colorScheme.surface,
-              duration: const Duration(seconds: 2),
-              flushbarPosition: FlushbarPosition.TOP,
-            ).show(context);
+            _buildFlushBarFeedback(
+              message: AppLocalizations.of(context)!.tournamentStarted,
+            );
           },
         );
       },
     );
   }
-}
 
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    this.isExpanded = false,
-  });
+  Future<dynamic> _buildFlushBarFeedback({
+    required String message,
+    FlushbarPosition? flushbarPosition,
+  }) {
+    return Flushbar(
+      messageText: Text(
+        message,
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Theme.of(context).colorScheme.onError),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.scrim,
+      duration: const Duration(seconds: 2),
+      flushbarPosition: flushbarPosition ?? FlushbarPosition.TOP,
+    ).show(context);
+  }
 
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
+  Future<dynamic> _buildFlushBarErroFeedback({
+    String? erroTitle,
+    String? erroMessage,
+    FlushbarPosition? flushbarPosition,
+  }) {
+    return Flushbar(
+      messageText: Column(
+        children: [
+          erroTitle == null
+              ? Container()
+              : Text(
+                  erroTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onError,
+                  ),
+                ),
+          erroMessage == null
+              ? Container()
+              : Text(
+                  erroMessage,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onError,
+                    fontSize: 14,
+                  ),
+                ),
+        ],
+      ),
+      backgroundColor: Theme.of(context).colorScheme.error,
+      duration: const Duration(milliseconds: 2500),
+      flushbarPosition: flushbarPosition ?? FlushbarPosition.TOP,
+    ).show(context);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:chess_versus/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/image_constants.dart';
@@ -21,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final Logger _log = Logger('HomePage');
+  //final Logger _log = Logger('HomePage');
 
   @override
   Widget build(BuildContext context) {
@@ -53,20 +52,20 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _buildRegisterTournamentDialog(BuildContext context) async {
     await showModalBottomSheet(
-        isScrollControlled: true,
-        showDragHandle: true,
-        useSafeArea: true,
-        enableDrag: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-        ),
-        context: context,
-        builder: (_) {
-          return TournamentForm(
-              viewModel: TournamentFormViewModel(
-            context.read(),
-          ));
-        });
+      isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
+      enableDrag: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+      ),
+      context: context,
+      builder: (_) {
+        return TournamentForm(
+          viewModel: TournamentFormViewModel(context.read()),
+        );
+      },
+    );
     widget.viewModel.getTournaments();
   }
 }

@@ -1,4 +1,3 @@
-import 'package:chess_versus/src/data/repositories/tournament/tournament_repository.dart';
 import 'package:chess_versus/src/domain/models/tournament/tournament_create_dto.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_create_use_case.dart';
 import 'package:chess_versus/src/ui/tournament_form/view_models/form_state.dart';
@@ -34,9 +33,7 @@ class TournamentFormViewModel extends ChangeNotifier {
     await _createUseCase
         .createFrom(dto)
         .map(TournamentFormSuccessState.new)
-        .mapError(
-          (error) => error.toString(),
-        )
+        .mapError((error) => error.toString())
         .mapError(TournamentFormFailureState.new)
         .fold(emit, emit);
     _log.fine('Tournament created');

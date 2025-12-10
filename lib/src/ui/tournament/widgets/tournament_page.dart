@@ -1,7 +1,6 @@
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import '../../../../l10n/app_localizations.dart';
 
@@ -45,7 +44,7 @@ class TournamentPage extends StatefulWidget {
 }
 
 class _TournamentPageState extends State<TournamentPage> {
-  final _log = Logger("TournamentPage");
+  // final _log = Logger("TournamentPage");
 
   double iconSize = 32;
 
@@ -79,8 +78,11 @@ class _TournamentPageState extends State<TournamentPage> {
           if (state is LoadingTournamentGetState) {
             body = const Center(child: CircularProgressIndicator());
           } else if (state is SuccessTournamentGetState) {
-            _log.fine('state is TournamentSuccessState');
+            //_log.fine('state is TournamentSuccessState');
             widget._playersViewModel.getPlayers(state.tournament.id);
+            state.tournament.updateScores();
+            state.tournament.updateBuchholzScores();
+            //widget._tournamentViewModel.updateTournament(state.tournament);
             body = ListenableBuilder(
               listenable: widget._tournamentPageViewViewModel,
               builder: (context, child) {
@@ -90,7 +92,7 @@ class _TournamentPageState extends State<TournamentPage> {
                   onPageChanged: widget._tournamentPageViewViewModel.emit,
                   children: [
                     TournamentClassificationContent(
-                      tournamentViewModel: widget._tournamentViewModel,
+                      tournamentId: state.tournament.id,
                       playersViewModel: widget._playersViewModel,
                     ),
                     TournamentRoundsContent(
@@ -106,6 +108,7 @@ class _TournamentPageState extends State<TournamentPage> {
                     TournamentPlayersContent(
                       tournamentViewModel: widget._tournamentViewModel,
                       playersViewModel: widget._playersViewModel,
+                      tournamentStatus: state.tournament.status,
                     ),
                     TournamentInformationsContent(
                       tournamentViewModel: widget._tournamentViewModel,
@@ -116,7 +119,7 @@ class _TournamentPageState extends State<TournamentPage> {
               },
             );
           } else if (state is FailureTournamentGetState) {
-            _log.warning('state is TournamentFailureState');
+            //_log.warning('state is TournamentFailureState');
             body = Center(child: CardError(message: state.message));
           }
 
@@ -178,10 +181,9 @@ class _TournamentPageState extends State<TournamentPage> {
   _buildBottomNavigationBarItem(String imagePath, String label, int index) {
     return BottomNavigationBarItem(
       icon: CustomImageView(
-        color:
-            index == widget._tournamentPageViewViewModel.page
-                ? Colors.white
-                : Theme.of(context).colorScheme.onPrimaryContainer,
+        color: index == widget._tournamentPageViewViewModel.page
+            ? Colors.white
+            : Theme.of(context).colorScheme.onPrimaryContainer,
         imagePath: imagePath,
         height: iconSize,
         width: iconSize,

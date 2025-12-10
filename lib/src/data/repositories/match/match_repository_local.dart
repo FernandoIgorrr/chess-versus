@@ -1,6 +1,5 @@
 import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
 import 'package:chess_versus/src/data/exceptions/matches_fetch_exception.dart';
-import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';
 

@@ -113,13 +113,30 @@ class AppLocalizationsPt extends AppLocalizations {
   String get round => 'Rodada';
 
   @override
+  String get result => 'Resultado';
+
+  @override
   String get tournamentStarted => 'Torneio iniciado';
 
   @override
   String get tournamentCantBeStarted => 'O torneio nao pode ser iniciado';
 
   @override
-  String get startTournament => ' Iniciar  Torneio';
+  String get tournamentCantBePaired => 'O Torneio não pode ser emparceirado';
+
+  @override
+  String get lastRoundResultsDontFilled =>
+      'Os resultados do último round não foram totalmente preenchidos.';
+
+  @override
+  String get allRoundsHaveAlreadyBeenPaired =>
+      'Todas as rodadas já foram emparceiradas.';
+
+  @override
+  String get startTournament => 'Iniciar torneio';
+
+  @override
+  String get theTournamentHasFinished => 'O torneio chegou ao fim';
 
   @override
   String get start => 'Iniciar';
@@ -138,6 +155,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get thereAreNoRegisteredPlayers => 'Não há jogadores cadastrados';
+
+  @override
+  String get toStartTheTournamentYouNeedAtLeastThreePlayers =>
+      'Para iniciar o torneio, você precisa de pelo menos 3 jogadores.';
 
   @override
   String get playerAddeddSuccessfully => 'Jogador adicionado com sucesso!';

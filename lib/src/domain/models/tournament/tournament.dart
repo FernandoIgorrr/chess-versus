@@ -86,17 +86,17 @@ class Tournament {
   int get numberOfPlayers => _players.length;
 
   ///Set methods of the properties of the tournament
-  setName(String name) => _name = Name(name);
-  setDescription(String description) => _description = description;
-  setStartedAt(DateTime startedAt) => _startedAt = startedAt;
-  setStatus(TournamentStatus status) => _status = status;
-  setPlayers(List<Player> players) => _players = players;
-  setTotalNumberOfRounds(int totalNumberOfRounds) =>
+  void setName(String name) => _name = Name(name);
+  void setDescription(String description) => _description = description;
+  void setStartedAt(DateTime startedAt) => _startedAt = startedAt;
+  void setStatus(TournamentStatus status) => _status = status;
+  void setPlayers(List<Player> players) => _players = players;
+  void setTotalNumberOfRounds(int totalNumberOfRounds) =>
       _totalNumberOfRounds = totalNumberOfRounds;
-  setRounds(List<Round> rounds) => _rounds = rounds;
-  setHaveBye(bool haveBye) => _haveBye = haveBye;
-  setArquived(bool arquived) => _arquived = arquived;
-  setByScore(Score score) => Swiss.new;
+  void setRounds(List<Round> rounds) => _rounds = rounds;
+  void setHaveBye(bool haveBye) => _haveBye = haveBye;
+  void setArquived(bool arquived) => _arquived = arquived;
+  void setByScore(Score score) => Swiss.new;
 
   bool get isFinished => status == TournamentStatus.finished;
   bool get isExecuting => status == TournamentStatus.executing;
@@ -108,14 +108,17 @@ class Tournament {
 
   bool get cantItBeStarted => !canItBeStarted;
 
-  bool get areLastRoundResultsFilled =>
-      rounds.isEmpty
-          ? false
-          : rounds.last.matches
-              .map((game) => game.result != null ? true : false)
-              .reduce((a, b) => a && b);
+  bool get areLastRoundResultsFilled => rounds.isEmpty
+      ? false
+      : rounds.last.matches
+            .map((game) => game.result != null ? true : false)
+            .reduce((a, b) => a && b);
   int get minRoundsNum => (sqrt(players.length) + 1).round();
-  int get maxRoundsNum => players.length - 1;
+  int get maxRoundsNum =>
+      players.length.isEven ? players.length : players.length - 1;
+
+  bool get allRoundsPairing =>
+      rounds.last.roundNumber == (_totalNumberOfRounds!);
 
   void initiateTournament() {
     (players.length.isOdd) ? setHaveBye(true) : setHaveBye(false);
@@ -125,10 +128,15 @@ class Tournament {
   }
 
   void swissPairing() {
-    if (rounds.isNotEmpty &&
-        (rounds.last.roundNumber == (_totalNumberOfRounds!))) {
-      _status = TournamentStatus.finished;
-      throw TournamentMaxRoundsExcpetion('Máximo de rodadas chegou no limite');
+    if (rounds.isNotEmpty) {
+      if (rounds.last.roundNumber == (_totalNumberOfRounds!)) {
+        _status = TournamentStatus.finished;
+      }
+      if (rounds.last.roundNumber > (_totalNumberOfRounds!)) {
+        throw TournamentMaxRoundsExcpetion(
+          'Máximo de rodadas chegou no limite',
+        );
+      }
     }
 
     if (rounds.isNotEmpty && !areLastRoundResultsFilled) {
@@ -138,6 +146,7 @@ class Tournament {
     }
 
     if (rounds.isNotEmpty) {
+      updateScores();
       updateBuchholzScores();
     }
 
@@ -158,6 +167,7 @@ class Tournament {
       pairedPlayers.add(players.last);
       round.notPaired = players.last;
     }
+
     for (int i = 0; i < players.length - 1; i++) {
       final player1 = players[i];
 
@@ -190,6 +200,11 @@ class Tournament {
     }
 
     rounds.add(round);
+    updateScores();
+
+    if (rounds.last.roundNumber == (_totalNumberOfRounds!)) {
+      _status = TournamentStatus.finished;
+    }
   }
 
   Round bestShufflePairing() {
@@ -229,6 +244,8 @@ class Tournament {
             }
           }
         }
+        print(" NÃO PAREEI O BYE!!!!");
+
         if (pairedPlayers.length != players.length) {
           pairedPlayers.clear();
           round.matches.clear();
@@ -250,8 +267,10 @@ class Tournament {
               a.mostScorePlayer.score.toDouble,
             ); // Desempate por Buchholz
           });
+
           for (int i = 0; i < round.matches.length; i++) {
             round.matches[i].setTable = (1 + i).toString();
+            // print(round.matches[i].toString());
           }
           scoreRounds.add({
             'score': calculateErro(round.matches),
@@ -261,7 +280,10 @@ class Tournament {
         }
       }
     }
+    print(" NAS ULTIMAS LINHAS DO SHUFFLE PAIRING ");
+    //print(" ${scoreRounds} ");
     scoreRounds.sort((a, b) => a['score'].compareTo(b['score']));
+    print(" ${scoreRounds.first['round']} ");
     return scoreRounds.first['round'];
   }
 
@@ -350,11 +372,10 @@ class Tournament {
     para passar para de Iterable<Game> para List<Game>.
   */
   List<Match> getGamesPlayedByPlayer(Player player) {
-    var matches =
-        rounds
-            .expand((round) => round.matches)
-            .where((game) => game.isOnThisGame(player))
-            .toList();
+    var matches = rounds
+        .expand((round) => round.matches)
+        .where((game) => game.isOnThisGame(player))
+        .toList();
     return matches;
   }
 
@@ -374,12 +395,24 @@ class Tournament {
     todos os adversário jogados contra o dado player no torneio!
     */
   List<Player> getPlayersPlayedAgainst(Player player) {
-    var opponents =
-        getGamesPlayedByPlayer(player)
-            .map((game) => game.getOpponent(player))
-            .map((player) => player!)
-            .toList();
+    var opponents = getGamesPlayedByPlayer(
+      player,
+    ).map((game) => game.getOpponent(player)).map((player) => player!).toList();
     return opponents;
+  }
+
+  void updateScores() {
+    for (var player in players) {
+      var score = getGamesPlayedByPlayer(player).isEmpty
+          ? 0.0
+          : getGamesPlayedByPlayer(player)
+                .map((match) => match.distributeScore(player))
+                .reduce((a, b) => a + b);
+      if (haveBye! && getByePlayers().contains(player)) {
+        score += byeScore!.toDouble;
+      }
+      player.setScore(score);
+    }
   }
 
   void updateBuchholzScores() {

@@ -135,6 +135,10 @@
     "@round": {
         "description": "Title for round"
     },
+    "result":"Result",
+    "@result":{
+        "description": "Title for result"
+    },
      "tournamentStarted":"Tournament started",
     "@tournamentStarted": {
         "description": "Success message for when a tournament is started."
@@ -143,9 +147,25 @@
     "@tournamentCantBeStarted": {
         "description": "Error message for when a tournament can't be started."
     },
+    "tournamentCantBePaired":"The tournament can't be paired",
+    "@tournamentCantBePaired": {
+        "description": "Error message for when a tournament can't be paired."
+    },
+    "lastRoundResultsDontFilled":"The results of the last round were not fully filled in.",
+    "@lastRoundResultsDontFilled": {
+        "description": "Error message for when the results of the last round were not fully filled in"
+    },
+    "allRoundsHaveAlreadyBeenPaired": "All rounds have already been paired.",
+    "@allRoundsHaveAlreadyBeenPaired": {
+    "description": "Error message for when all rounds have already been paired"
+    },
     "startTournament":"Start  Tournament",
     "@startTournament": {
         "description": "Title for start tournament button/form"
+    },
+     "theTournamentHasFinished":"The tournament has finished",
+    "@theTournamentHasFinished": {
+        "description": "Title for when the tournament has finished"
     },
     "start":"Start",
     "@start": {
@@ -171,6 +191,11 @@
     "@thereAreNoRegisteredPlayers": {
         "description": "Message for when there are no players registered."
     },
+    "toStartTheTournamentYouNeedAtLeastThreePlayers":"To start the tournament you need at least 3 players.",
+    "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
+        "description": "Message for when there are not enough players."
+    },
+    
     "playerAddeddSuccessfully":"Player added successfully!",
     "@playerAddeddSuccessfully": {
         "description": "Success message for when a player is added."

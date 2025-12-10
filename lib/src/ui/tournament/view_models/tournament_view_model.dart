@@ -1,38 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
-import '../../../data/repositories/match/match_repository.dart';
-import '../../../data/repositories/player/player_repository.dart';
-import '../../../data/repositories/round/round_repository.dart';
 import '../../../data/repositories/tournament/tournament_repository.dart';
 import '../../../domain/models/tournament/tournament.dart';
+import '../../../domain/use_cases/tournament/tournament_update_use_case.dart';
 import 'tournament_get_state.dart';
-import 'tournament_state.dart';
 
 class TournamentViewModel extends ChangeNotifier {
   final TournamentRepository _tournamentRepository;
-  final PlayerRepository _playerRepository;
-  final RoundRepository _roundRepository;
-  final MatchRepository _matchRepository;
+  final TournamentUpdateUseCase _tournamentUpdateUseCase;
 
-  TournamentState _state = IdleTournamentState();
+  //TournamentState _state = IdleTournamentState();
   TournamentGetState _getState = IdleTournamentGetState();
 
-  final _log = Logger('TourmanetViewModel');
+  //final _log = Logger('TourmanetViewModel');
 
   TournamentViewModel({
     required TournamentRepository tournamentRepository,
-    required PlayerRepository playerRepository,
-    required RoundRepository roundRepository,
-    required MatchRepository matchRepository,
+    required TournamentUpdateUseCase tournamentUpdateUseCase,
   }) : _tournamentRepository = tournamentRepository,
-       _playerRepository = playerRepository,
-       _roundRepository = roundRepository,
-       _matchRepository = matchRepository;
+       _tournamentUpdateUseCase = tournamentUpdateUseCase;
 
   TournamentGetState get getState => _getState;
 
-  emit(TournamentGetState state) {
+  void emit(TournamentGetState state) {
     _getState = state;
     //  _log.fine('Notifying listeners: $state');
     if (state is FailureTournamentGetState) {
@@ -42,20 +32,32 @@ class TournamentViewModel extends ChangeNotifier {
   }
 
   Future<void> getTournament(String id) async {
-    _log.fine('getTournament');
-    await (await _tournamentRepository.findById(id))
+    // _log.fine('getTournament');
+    (await _tournamentRepository.findById(id))
         .map(SuccessTournamentGetState.new)
         .mapError((failure) => failure.toString())
         .mapError(FailureTournamentGetState.new)
         .fold(emit, emit);
 
-    assemblyTournament(id);
+    //assemblyTournament(id);
   }
 
-  assemblyTournament(String id) async {
+  /* void assemblyTournament(String id) async {
     if (_getState is SuccessTournamentGetState) {
       Tournament tournament =
           (_getState as SuccessTournamentGetState).tournament;
     }
+  }*/
+
+  Future<void> updateTournament(Tournament tournament) async {
+    emit(LoadingTournamentGetState());
+    (await _tournamentUpdateUseCase.updateFrom(tournament));
+    /*await _tournamentLoadUseCase
+        .assemblyTournament(tournament.id)
+        .map(SuccessRoundsState.new)
+        .mapError((failure) => failure.toString())
+        .mapError(FailureRoundsState.new)
+        .fold(emit, emit);*/
+    //_log.fine('Loaded rounds');
   }
 }

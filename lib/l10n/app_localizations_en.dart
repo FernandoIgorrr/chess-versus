@@ -114,13 +114,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get round => 'Round';
 
   @override
+  String get result => 'Result';
+
+  @override
   String get tournamentStarted => 'Tournament started';
 
   @override
   String get tournamentCantBeStarted => 'The tournament can\'t be started';
 
   @override
+  String get tournamentCantBePaired => 'The tournament can\'t be paired';
+
+  @override
+  String get lastRoundResultsDontFilled =>
+      'The results of the last round were not fully filled in.';
+
+  @override
+  String get allRoundsHaveAlreadyBeenPaired =>
+      'All rounds have already been paired.';
+
+  @override
   String get startTournament => 'Start  Tournament';
+
+  @override
+  String get theTournamentHasFinished => 'The tournament has finished';
 
   @override
   String get start => 'Start';
@@ -139,6 +156,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get thereAreNoRegisteredPlayers => 'There are no registered players';
+
+  @override
+  String get toStartTheTournamentYouNeedAtLeastThreePlayers =>
+      'To start the tournament you need at least 3 players.';
 
   @override
   String get playerAddeddSuccessfully => 'Player added successfully!';

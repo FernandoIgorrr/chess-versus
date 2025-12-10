@@ -4,7 +4,6 @@ import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 import 'package:chess_versus/src/data/exceptions/erro_exception.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_create_exception.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_fetch_exception.dart';
-import 'package:logging/logging.dart';
 
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,12 +37,12 @@ class TournamentRepositoryLocal implements TournamentRepository {
         (success) {
           var list = [...success];
           list.add(tournament);
-          final listMapStringDynamic =
-              list.map((tournament) => tournament.toJson()).toList();
-          final listEncoded =
-              listMapStringDynamic
-                  .map((jsonMap) => jsonEncode(jsonMap))
-                  .toList();
+          final listMapStringDynamic = list
+              .map((tournament) => tournament.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
           setItems(listEncoded);
         },
         (failure) {
@@ -103,12 +102,12 @@ class TournamentRepositoryLocal implements TournamentRepository {
           list.removeWhere((t) => t.id == tournament.id);
 
           list.add(tournament);
-          final listMapStringDynamic =
-              list.map((tournament) => tournament.toJson()).toList();
-          final listEncoded =
-              listMapStringDynamic
-                  .map((jsonMap) => jsonEncode(jsonMap))
-                  .toList();
+          final listMapStringDynamic = list
+              .map((tournament) => tournament.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
           setItems(listEncoded);
         },
         (failure) {

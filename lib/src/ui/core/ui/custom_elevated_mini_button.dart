@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'base_button.dart';
 
-class CustomElevatedButton extends BaseButton {
-  const CustomElevatedButton({
+class CustomElevatedMiniButton extends BaseButton {
+  const CustomElevatedMiniButton({
     super.key,
     this.decoration,
     this.leftIcon,
@@ -13,9 +13,10 @@ class CustomElevatedButton extends BaseButton {
     super.alignment,
     super.buttonTextStyle,
     super.isDisabled,
-    super.height,
+    //super.height,
     super.width,
     required super.text,
+    this.height,
   });
 
   final BoxDecoration? decoration;
@@ -23,6 +24,10 @@ class CustomElevatedButton extends BaseButton {
   final Widget? leftIcon;
 
   final Widget? rightIcon;
+
+  @override
+  // ignore: overridden_fields
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +42,17 @@ class CustomElevatedButton extends BaseButton {
   Widget buildElevatedButtonWidget(BuildContext context) => Container(
     // height: height ?? 40,
     width: width ?? double.maxFinite,
+    height: height,
     margin: margin,
     decoration: decoration,
+
     child: ElevatedButton(
       style: buttonStyle,
       onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          leftIcon ?? const SizedBox.shrink(),
-          Text(
-            text,
-            //style:
-            // buttonTextStyle ?? Theme.of(context).textTheme.titleLarge,
-          ),
-          rightIcon ?? const SizedBox.shrink(),
-        ],
+
+      child: Text(
+        text,
+        style: buttonTextStyle ?? Theme.of(context).textTheme.bodySmall,
       ),
     ),
   );

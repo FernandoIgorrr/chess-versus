@@ -35,8 +35,8 @@ class _TournamentFormState extends State<TournamentForm> {
 
   List<TournamentType> tournamentTypes = <TournamentType>[
     Swiss(0.0),
-    Elimination(),
-    RoundRobin(),
+    // Elimination(),
+    // RoundRobin(),
   ];
   List<double> byeScores = <double>[0.0, 0.5, 1.0];
   late Tournament tournament;
@@ -97,15 +97,14 @@ class _TournamentFormState extends State<TournamentForm> {
                   _buildTournamentTypeSection(),
                   AnimatedSize(
                     duration: const Duration(milliseconds: 300),
-                    child:
-                        tournamentCreateDTO.getType is Swiss
-                            ? Column(
-                              children: [
-                                const SizedBox(height: 16),
-                                _buildByeScoreSection(),
-                              ],
-                            )
-                            : const SizedBox.shrink(),
+                    child: tournamentCreateDTO.getType is Swiss
+                        ? Column(
+                            children: [
+                              const SizedBox(height: 16),
+                              _buildByeScoreSection(),
+                            ],
+                          )
+                        : const SizedBox.shrink(),
                   ),
                   const SizedBox(height: 16),
                   CustomElevatedButton(
@@ -156,7 +155,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildNameTextFormField() {
+  CustomTextFormField _buildNameTextFormField() {
     return CustomTextFormField(
       //label: Text(AppLocalizations.of(context)!.tournamentName),
       hintText: AppLocalizations.of(context)!.tournamentName,
@@ -166,7 +165,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildDescriptionTextFormField() {
+  CustomTextFormField _buildDescriptionTextFormField() {
     return CustomTextFormField(
       hintText: AppLocalizations.of(context)!.tournamentDescription,
       maxLines: 3,
@@ -174,7 +173,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildStartedAtTextFormField() {
+  CustomTextFormField _buildStartedAtTextFormField() {
     return CustomTextFormField(
       textStyle: Theme.of(context).textTheme.bodyMedium,
       readonly: true,
@@ -216,7 +215,7 @@ class _TournamentFormState extends State<TournamentForm> {
     }
   }
 
-  _buildTournamentTypeSection() {
+  Column _buildTournamentTypeSection() {
     return Column(
       children: [
         Row(
@@ -242,7 +241,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildByeScoreSection() {
+  Column _buildByeScoreSection() {
     return Column(
       children: [
         Row(
@@ -268,7 +267,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildRadioButtonTournamentType() {
+  RadioButtonChip<TournamentType> _buildRadioButtonTournamentType() {
     return RadioButtonChip<TournamentType>(
       items: tournamentTypes,
       fullWidth: false,
@@ -286,7 +285,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildRadioButtonByeScore() {
+  RadioButtonChip<double> _buildRadioButtonByeScore() {
     return RadioButtonChip<double>(
       fullWidth: true,
       items: byeScores,
@@ -294,7 +293,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildSnackBarFeedback(String messege, Color color) {
+  SnackBar _buildSnackBarFeedback(String messege, Color color) {
     return SnackBar(
       content: Text(messege, textAlign: TextAlign.center),
       backgroundColor: color,
@@ -302,7 +301,7 @@ class _TournamentFormState extends State<TournamentForm> {
     );
   }
 
-  _buildSnackBarError(String messege) {
+  SnackBar _buildSnackBarError(String messege) {
     return _buildSnackBarFeedback(messege, Theme.of(context).colorScheme.error);
   }
 }

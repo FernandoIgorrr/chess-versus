@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:chess_versus/src/data/exceptions/player_update_exception.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +12,7 @@ import 'player_raw_dto_repository.dart';
 
 class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
   final String _kPlayers;
-  final _log = Logger('PlayerRawDtoRepositoryLocal');
+  //final _log = Logger('PlayerRawDtoRepositoryLocal');
   PlayerRawDtoRepositoryLocal(this._kPlayers);
 
   @override
@@ -39,8 +38,9 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
           var list = [...success];
           list.add(playerRawDto);
           //_log.fine(playerRawDto.toString());
-          final listMapStringDynamic =
-              list.map((player) => player.toJson()).toList();
+          final listMapStringDynamic = list
+              .map((player) => player.toJson())
+              .toList();
 
           //_log.fine('listMapStringDynamic success');
           // _log.fine(listMapStringDynamic.toString());
@@ -70,8 +70,10 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
       if (response.isEmpty) return const Success(<PlayerRawDto>[]);
       // _log.fine('response.isNotEmpty');
 
-      var playerRawDtoList =
-          response.map(jsonDecode).map(PlayerRawDto.fromJson).toList();
+      var playerRawDtoList = response
+          .map(jsonDecode)
+          .map(PlayerRawDto.fromJson)
+          .toList();
 
       //_log.fine('playerRawDtoList success');
       return Success(playerRawDtoList);
@@ -92,11 +94,10 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
         return const Success(<PlayerRawDto>[]);
       }
 
-      List<dynamic> dynamicPlayers =
-          response
-              .map(jsonDecode)
-              .where((d) => d['tournament_id'] == tournamentId)
-              .toList();
+      List<dynamic> dynamicPlayers = response
+          .map(jsonDecode)
+          .where((d) => d['tournament_id'] == tournamentId)
+          .toList();
 
       return Success(dynamicPlayers.map(PlayerRawDto.fromJson).toList());
     } catch (e) {
@@ -118,12 +119,12 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
           list.removeWhere((p) => p.id == player.id);
 
           list.add(player);
-          final listMapStringDynamic =
-              list.map((round) => round.toJson()).toList();
-          final listEncoded =
-              listMapStringDynamic
-                  .map((jsonMap) => jsonEncode(jsonMap))
-                  .toList();
+          final listMapStringDynamic = list
+              .map((round) => round.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
           setItems(listEncoded);
         },
         (failure) {
