@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Suggerimento",
+    "@tip": {
+        "description": "parola usata prima di un testo di suggerimento"
+    },
+    "addResultTip": "Tocca e tieni premuto sulla partita per aggiungere il risultato.",
+    "@addResultTip": {
+        "description": "un suggerimento specifico"
+    },
     "language": "Lingua",
     "@language": {
         "description": "Label/hint for language"

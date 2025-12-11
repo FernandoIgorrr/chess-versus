@@ -225,6 +225,14 @@
     "@settings": {
         "description": "Título para botão/ícone de configurações"
     },
+    "tip":"Dica",
+    "@tip":{
+        "description": "palavra dica para colocar antes de um texto de dica"
+    },
+    "addResultTip" :"Toque e mantenha pressionado sobre a partida para adicionar o resultado.",
+    "@addResultTip" :{
+        "description": "uma dica específica"
+    },
     "language":"Idioma",
     "@language": {
         "description": "Label/hint para idioma"

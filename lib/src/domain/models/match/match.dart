@@ -4,7 +4,7 @@ import '../player/player.dart';
 
 class Match {
   final String _id;
-  String _table;
+  int _table;
   Player _white;
   Player _black;
   Result? _result;
@@ -13,7 +13,7 @@ class Match {
 
   Match({
     String? id,
-    required String table,
+    required int table,
     required Player white,
     required Player black,
     Result? result,
@@ -28,7 +28,7 @@ class Match {
        _immutable = immutable ?? false;
 
   String get id => _id;
-  String get table => _table;
+  int get table => _table;
   Player get white => _white;
   Player get black => _black;
   Result? get result => _result;
@@ -39,7 +39,7 @@ class Match {
   set setWhite(Player player) => _white = player;
   set setBlack(Player player) => _black = player;
 
-  set setTable(String table) => _table = table;
+  set setTable(int table) => _table = table;
 
   void fillResult(Result result) => _result = result;
 

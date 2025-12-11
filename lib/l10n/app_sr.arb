@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Савет",
+    "@tip": {
+        "description": "реч 'савет' која се ставља пре текста савета"
+    },
+    "addResultTip": "Додирните и задржите утакмицу да бисте додали резултат.",
+    "@addResultTip": {
+        "description": "одређени савет"
+    },
     "language": "Језик",
     "@language": {
         "description": "Label/hint for language"

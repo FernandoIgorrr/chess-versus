@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Подсказка",
+    "@tip": {
+        "description": "слово «подсказка», чтобы ставить перед текстом подсказки"
+    },
+    "addResultTip": "Нажмите и удерживайте матч, чтобы добавить результат.",
+    "@addResultTip": {
+        "description": "конкретная подсказка"
+    },
     "language": "Язык",
     "@language": {
         "description": "Label/hint for language"

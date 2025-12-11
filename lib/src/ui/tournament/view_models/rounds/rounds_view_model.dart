@@ -76,13 +76,7 @@ class RoundsViewModel extends ChangeNotifier {
 
   Future<void> updateTournament(Tournament tournament) async {
     emit(LoadingRoundsState());
-    (await _tournamentUpdateUseCase.updateFrom(tournament));
-    await _tournamentLoadUseCase
-        .assemblyTournament(tournament.id)
-        .map(SuccessRoundsState.new)
-        .mapError((failure) => failure.toString())
-        .mapError(FailureRoundsState.new)
-        .fold(emit, emit);
+    (await _tournamentUpdateUseCase.updateFrom(tournament)).getOrThrow();
     //_log.fine('Loaded rounds');
   }
 }

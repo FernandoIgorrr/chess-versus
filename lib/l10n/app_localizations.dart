@@ -468,6 +468,18 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
+  /// word 'tip' to place before a tip text
+  ///
+  /// In en, this message translates to:
+  /// **'Tip'**
+  String get tip;
+
+  /// a specific tip
+  ///
+  /// In en, this message translates to:
+  /// **'Tap and hold the match to add the result.'**
+  String get addResultTip;
+
   /// Label/hint for language
   ///
   /// In en, this message translates to:

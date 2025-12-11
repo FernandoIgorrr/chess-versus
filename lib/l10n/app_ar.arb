@@ -225,6 +225,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "تلميح",
+    "@tip": {
+        "description": "كلمة 'تلميح' لوضعها قبل نص التلميح"
+    },
+    "addResultTip": "اضغط مطولاً على المباراة لإضافة النتيجة.",
+    "@addResultTip": {
+        "description": "تلميح محدد"
+    },
     "language": "اللغة",
     "@language": {
         "description": "Label/hint for language"

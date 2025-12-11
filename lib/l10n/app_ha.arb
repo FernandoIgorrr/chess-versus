@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Shawara",
+    "@tip": {
+        "description": "kalma da ake amfani da ita kafin rubutun shawara"
+    },
+    "addResultTip": "Danna ka riƙe kan wasan don ƙara sakamakon.",
+    "@addResultTip": {
+        "description": "shawara ta musamman"
+    },
     "language": "Harshe",
     "@language": {
         "description": "Label/hint for language"

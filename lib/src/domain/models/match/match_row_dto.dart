@@ -6,7 +6,7 @@ import '../player/player.dart';
 class MatchRawDto {
   final String _roundId;
   final String _id;
-  String _table;
+  int _table;
   String _white;
   String _black;
   Result? _result;
@@ -16,7 +16,7 @@ class MatchRawDto {
   MatchRawDto({
     required String roundId,
     required String? id,
-    required String table,
+    required int table,
     required String white,
     required String black,
     required bool desqualified,
@@ -32,7 +32,7 @@ class MatchRawDto {
        _immutable = immutable;
 
   String get id => _id;
-  String get table => _table;
+  int get table => _table;
   Result? get notPaired => _result;
 
   static MatchRawDto fromJson(dynamic data) => MatchRawDto(

@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Kidokezo",
+    "@tip": {
+        "description": "neno 'kidokezo' la kuwekwa kabla ya maandishi ya kidokezo"
+    },
+    "addResultTip": "Gusa na ushikilie mechi ili kuongeza matokeo.",
+    "@addResultTip": {
+        "description": "kidokezo mahususi"
+    },
     "language": "Lugha",
     "@language": {
         "description": "Label/hint for language"

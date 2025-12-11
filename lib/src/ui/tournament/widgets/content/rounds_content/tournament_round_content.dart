@@ -31,11 +31,12 @@ class _TournamentRoundContentState extends State<TournamentRoundContent> {
   int? _byeTapped;
   @override
   Widget build(BuildContext context) {
+    var viewModel = widget._matchesViewModel;
     return ListenableBuilder(
-      listenable: widget._matchesViewModel,
+      listenable: viewModel,
       builder: (context, child) {
         final matches = widget._round.matches;
-        final stateTap = widget._matchesViewModel.stateTap;
+        final stateTap = viewModel.stateTap;
         matches.sort((a, b) => a.table.compareTo(b.table));
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,13 +67,19 @@ class _TournamentRoundContentState extends State<TournamentRoundContent> {
 
     return GestureDetector(
       onTap: () {
-        widget._matchesViewModel.emitMatchTapped(match);
+        var stateTap = widget._matchesViewModel.stateTap;
+        if (stateTap is MatchTapped && stateTap.match == match) {
+          widget._matchesViewModel.emitNoMatchTapped();
+        } else {
+          widget._matchesViewModel.emitMatchTapped(match);
+        }
         setState(() {
           _byeTapped = null;
         });
       },
       onLongPress: () async {
         await _buildShowDialogResult(match);
+        widget._matchesViewModel.emitMatchTapped(match);
       },
       child: Column(
         children: [
@@ -131,10 +138,17 @@ class _TournamentRoundContentState extends State<TournamentRoundContent> {
   Widget _buildByeMatch(Player notPaired, BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget._matchesViewModel.emitByeMatchTapped();
-        setState(() {
-          _byeTapped = widget._round.matches.length;
-        });
+        if (_byeTapped == widget._round.matches.length) {
+          setState(() {
+            _byeTapped = null;
+          });
+          widget._matchesViewModel.emitNoMatchTapped();
+        } else {
+          widget._matchesViewModel.emitByeMatchTapped();
+          setState(() {
+            _byeTapped = widget._round.matches.length;
+          });
+        }
       },
       child: Column(
         children: [

@@ -180,6 +180,13 @@ class AppLocalizationsSr extends AppLocalizations {
   String get settings => 'Подешавања';
 
   @override
+  String get tip => 'Савет';
+
+  @override
+  String get addResultTip =>
+      'Додирните и задржите утакмицу да бисте додали резултат.';
+
+  @override
   String get language => 'Језик';
 
   @override

@@ -183,6 +183,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settings => 'Paramètres';
 
   @override
+  String get tip => 'Astuce';
+
+  @override
+  String get addResultTip =>
+      'Touchez et maintenez appuyé sur le match pour ajouter le résultat.';
+
+  @override
   String get language => 'Langue';
 
   @override

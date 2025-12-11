@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Título para configuración"
     },
+    "tip": "Consejo",
+    "@tip": {
+        "description": "palabra 'consejo' para colocar antes de un texto de consejo"
+    },
+    "addResultTip": "Toca y mantén presionada la partida para agregar el resultado.",
+    "@addResultTip": {
+        "description": "un consejo específico"
+    },
     "language": "Idioma",
     "@language": {
         "description": "Etiqueta/pista para idioma"

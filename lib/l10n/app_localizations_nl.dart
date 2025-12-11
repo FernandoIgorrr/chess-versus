@@ -183,6 +183,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings => 'Instellingen';
 
   @override
+  String get tip => 'Tip';
+
+  @override
+  String get addResultTip =>
+      'Tik en houd ingedrukt op de wedstrijd om het resultaat toe te voegen.';
+
+  @override
   String get language => 'Taal';
 
   @override

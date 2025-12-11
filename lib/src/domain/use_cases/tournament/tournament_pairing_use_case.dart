@@ -1,7 +1,6 @@
 import 'package:chess_versus/src/data/repositories/player/player_repository.dart';
 import 'package:chess_versus/src/data/exceptions/tournament_assembly_exception.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_update_use_case.dart';
-import 'package:logging/logging.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../data/repositories/match/match_repository.dart';
@@ -16,7 +15,7 @@ class TournamentPairingUseCase {
   final MatchRepository _matchRepository;
   final RoundRepository _roundRepository;
 
-  final _log = Logger('TournamentPairingUseCase');
+  //final _log = Logger('TournamentPairingUseCase');
 
   TournamentPairingUseCase({
     required TournamentRepository tournamentRepository,
@@ -36,8 +35,8 @@ class TournamentPairingUseCase {
       tournament.initiateTournament();
       //_log.fine("BYE PLAYER  :  ${tournament.rounds.first.notPaired!.name}}");
     } else {
-      _log.fine(' ******* swiss pairing irá acontecer aqui!');
-      _log.fine(tournament.rounds.length.toString());
+      //_log.fine(' ******* swiss pairing irá acontecer aqui!');
+      //_log.fine(tournament.rounds.length.toString());
       tournament.swissPairing();
     }
 
@@ -55,11 +54,14 @@ class TournamentPairingUseCase {
       var rounds = await _roundRepository
           .findBySuperclassId(tournamentId)
           .getOrThrow();
-      rounds.forEach(
-        (r) async => r.setMatches(
-          (await _matchRepository.findBySuperclassId(r.id)).getOrThrow(),
-        ),
-      );
+
+      for (var round in rounds) {
+        var matches = (await _matchRepository.findBySuperclassId(
+          round.id,
+        )).getOrThrow();
+        round.setMatches(matches);
+      }
+
       tournament.setRounds(rounds);
       resolvePlayerReferences(tournament);
       return Success(tournament);

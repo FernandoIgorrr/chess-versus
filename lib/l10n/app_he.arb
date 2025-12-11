@@ -225,6 +225,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "טיפ",
+    "@tip": {
+        "description": "מילה להצבה לפני טקסט של טיפ"
+    },
+    "addResultTip": "החזק לחוץ על המשחק כדי להוסיף את התוצאה.",
+    "@addResultTip": {
+        "description": "טיפ ספציפי"
+    },
     "language": "שפה",
     "@language": {
         "description": "Label/hint for language"

@@ -183,6 +183,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get settings => 'सेटिंग्स';
 
   @override
+  String get tip => 'सुझाव';
+
+  @override
+  String get addResultTip => 'परिणाम जोड़ने के लिए मैच पर लंबा दबाएँ।';
+
+  @override
   String get language => 'भाषा';
 
   @override

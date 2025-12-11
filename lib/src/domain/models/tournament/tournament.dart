@@ -5,8 +5,8 @@ import 'package:chess_versus/src/data/exceptions/tournament_max_rounds_excpetion
 import 'package:chess_versus/src/ui/core/chess_tuple.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../value_objects/name.dart';
 import '../../value_objects/score.dart';
+import '../../value_objects/tournament_name.dart';
 import '../player/player.dart';
 import '../round/round.dart';
 // ignore: library_prefixes
@@ -18,7 +18,7 @@ class Tournament {
   final String _id;
 
   /// Tournament name to display
-  Name _name;
+  TournamentName _name;
 
   /// Tournament description to display
   String? _description;
@@ -59,7 +59,7 @@ class Tournament {
     List<Player>? players,
     List<Round>? rounds,
   }) : _id = id ?? const Uuid().v4(),
-       _name = Name(name),
+       _name = TournamentName(name),
        _description = description,
        _startedAt = startedAt,
        _type = type,
@@ -70,7 +70,7 @@ class Tournament {
 
   ///Get methods of the properties of the tournament
   String get id => _id;
-  Name get name => _name;
+  TournamentName get name => _name;
   String? get description => _description;
   DateTime get startedAt => _startedAt;
   TournamentType get type => _type;
@@ -86,7 +86,7 @@ class Tournament {
   int get numberOfPlayers => _players.length;
 
   ///Set methods of the properties of the tournament
-  void setName(String name) => _name = Name(name);
+  void setName(String name) => _name = TournamentName(name);
   void setDescription(String description) => _description = description;
   void setStartedAt(DateTime startedAt) => _startedAt = startedAt;
   void setStatus(TournamentStatus status) => _status = status;
@@ -115,13 +115,13 @@ class Tournament {
             .reduce((a, b) => a && b);
   int get minRoundsNum => (sqrt(players.length) + 1).round();
   int get maxRoundsNum =>
-      players.length.isEven ? players.length : players.length - 1;
+      players.length.isOdd ? players.length : players.length - 1;
 
   bool get allRoundsPairing =>
       rounds.last.roundNumber == (_totalNumberOfRounds!);
 
   void initiateTournament() {
-    (players.length.isOdd) ? setHaveBye(true) : setHaveBye(false);
+    //(players.length.isOdd) ? setHaveBye(true) : setHaveBye(false);
 
     swissPairing();
     setStatus(TournamentStatus.executing);
@@ -144,7 +144,7 @@ class Tournament {
         'Todos os resultados da última rodada ainda não foram preenchidos completamente!',
       );
     }
-
+    (players.length.isOdd) ? setHaveBye(true) : setHaveBye(false);
     if (rounds.isNotEmpty) {
       updateScores();
       updateBuchholzScores();
@@ -183,7 +183,7 @@ class Tournament {
 
           round.matches.add(
             Match(
-              table: (round.matches.length + 1).toString(),
+              table: (round.matches.length + 1),
               white: chessTuple.white,
               black: chessTuple.black,
             ),
@@ -214,7 +214,13 @@ class Tournament {
     Round round = Round(roundNumber: rounds.length + 1, matches: <Match>[]);
     bool notPaired;
     int count = 0;
-    while (count < 100) {
+    int n =
+        (List.generate(
+          players.length ~/ 2,
+          (i) => i * 2 + 1,
+        ).reduce((a, b) => a + b)) *
+        10;
+    while (count < n) {
       notPaired = true;
       while (notPaired) {
         for (int i = 0; i < players.length - 1; i++) {
@@ -232,7 +238,7 @@ class Tournament {
 
               round.matches.add(
                 Match(
-                  table: (round.matches.length + 1).toString(),
+                  table: (round.matches.length + 1),
                   white: chessTuple.white,
                   black: chessTuple.black,
                 ),
@@ -244,7 +250,6 @@ class Tournament {
             }
           }
         }
-        print(" NÃO PAREEI O BYE!!!!");
 
         if (pairedPlayers.length != players.length) {
           pairedPlayers.clear();
@@ -269,7 +274,7 @@ class Tournament {
           });
 
           for (int i = 0; i < round.matches.length; i++) {
-            round.matches[i].setTable = (1 + i).toString();
+            round.matches[i].setTable = (1 + i);
             // print(round.matches[i].toString());
           }
           scoreRounds.add({
@@ -280,10 +285,7 @@ class Tournament {
         }
       }
     }
-    print(" NAS ULTIMAS LINHAS DO SHUFFLE PAIRING ");
-    //print(" ${scoreRounds} ");
     scoreRounds.sort((a, b) => a['score'].compareTo(b['score']));
-    print(" ${scoreRounds.first['round']} ");
     return scoreRounds.first['round'];
   }
 

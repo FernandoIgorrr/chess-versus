@@ -18,6 +18,11 @@ class MatchesViewModel extends ChangeNotifier {
 
   MatchTapState get stateTap => _stateTap;
 
+  void emitNoMatchTapped() {
+    _stateTap = MatchNotTapped();
+    notifyListeners();
+  }
+
   void emitMatchTapped(Match match) {
     _stateTap = MatchTapped(match);
     notifyListeners();

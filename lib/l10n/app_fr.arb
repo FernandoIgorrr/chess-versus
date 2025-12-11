@@ -224,6 +224,14 @@
   "@settings": {
     "description": "Titre pour bouton/icône des paramètres"
   },
+  "tip": "Astuce",
+  "@tip": {
+    "description": "mot utilisé avant un texte de conseil"
+  },
+  "addResultTip": "Touchez et maintenez appuyé sur le match pour ajouter le résultat.",
+  "@addResultTip": {
+    "description": "un conseil spécifique"
+  },
   "language": "Langue",
   "@language": {
     "description": "Label/indice pour langue"

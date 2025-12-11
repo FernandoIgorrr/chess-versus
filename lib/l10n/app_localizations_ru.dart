@@ -181,6 +181,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
+  String get tip => 'Подсказка';
+
+  @override
+  String get addResultTip =>
+      'Нажмите и удерживайте матч, чтобы добавить результат.';
+
+  @override
   String get language => 'Язык';
 
   @override

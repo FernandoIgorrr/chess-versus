@@ -225,6 +225,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "نکته",
+    "@tip": {
+        "description": "کلمه‌ای برای قرار دادن قبل از یک متن راهنما"
+    },
+    "addResultTip": "برای افزودن نتیجه، روی مسابقه لمس کرده و نگه دارید.",
+    "@addResultTip": {
+        "description": "یک نکتهٔ خاص"
+    },
     "language": "زبان",
     "@language": {
         "description": "Label/hint for language"

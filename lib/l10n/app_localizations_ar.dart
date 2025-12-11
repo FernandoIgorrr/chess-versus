@@ -180,6 +180,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settings => 'الإعدادات';
 
   @override
+  String get tip => 'تلميح';
+
+  @override
+  String get addResultTip => 'اضغط مطولاً على المباراة لإضافة النتيجة.';
+
+  @override
   String get language => 'اللغة';
 
   @override

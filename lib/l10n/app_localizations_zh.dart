@@ -178,6 +178,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings => '设置';
 
   @override
+  String get tip => '提示';
+
+  @override
+  String get addResultTip => '长按比赛以添加结果。';
+
+  @override
   String get language => '语言';
 
   @override

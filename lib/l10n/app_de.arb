@@ -223,7 +223,15 @@
     "settings": "Einstellungen",
     "@settings": {
         "description": "Title for settings button/icon"
-    },
+    },"tip": "Hinweis",
+"@tip": {
+  "description": "Wort 'Hinweis', das vor einem Hinweistext steht"
+},
+"addResultTip": "Tippe und halte das Spiel gedrückt, um das Ergebnis hinzuzufügen.",
+"@addResultTip": {
+  "description": "ein spezifischer Hinweis"
+}
+,
     "language": "Sprache",
     "@language": {
         "description": "Label/hint for language"

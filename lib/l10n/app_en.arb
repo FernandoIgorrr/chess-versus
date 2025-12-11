@@ -1,121 +1,122 @@
-{   "@@locale": "en",
+{
+    "@@locale": "en",
     "tournaments": "Tournaments",
     "@tournaments": {
         "description": "Title for page showing tournaments"
     },
-    "deleteTournament":"Delete tournament ?",
+    "deleteTournament": "Delete tournament ?",
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
-    "cancel":"Cancel",
+    "cancel": "Cancel",
     "@cancel": {
         "description": "Title for cancel"
     },
-    "delete":"Delete",
+    "delete": "Delete",
     "@delete": {
         "description": "Title for delete"
     },
-    "registerTournament":"Register tournament",
+    "registerTournament": "Register tournament",
     "@registerTournament": {
         "description": "Title for tournament registration button/form"
     },
-    "name":"Name",
+    "name": "Name",
     "@name": {
         "description": "Label/hint for name"
-    }, 
-    "tournamentName":"Tournament name",
+    },
+    "tournamentName": "Tournament name",
     "@tournamentName": {
         "description": "Label/hint for tournament name"
     },
-    "tournamentDescription":"Tournament description",
+    "tournamentDescription": "Tournament description",
     "@tournamentDescription": {
         "description": "Label/hint for tournament description"
     },
-     "tournamentNullDescription":"No description",
+    "tournamentNullDescription": "No description",
     "@tournamentNullDescription": {
         "description": "Default description of a tournament without description"
-    },  
-     "tournamentType":"Tournament type",
+    },
+    "tournamentType": "Tournament type",
     "@tournamentType": {
         "description": "Label/hint for tournament type"
     },
-    "tournamentStartDate":"Start date",
+    "tournamentStartDate": "Start date",
     "@tournamentStartDate": {
         "description": "Label/hint for tournament start date"
     },
-    "created":"Created",
+    "created": "Created",
     "@created": {
         "description": "Label/hint for created"
     },
-    "inProgress":"In progress",
+    "inProgress": "In progress",
     "@inProgress": {
         "description": "Label/hint for in progress"
     },
-    "finished":"Finished",
+    "finished": "Finished",
     "@finished": {
         "description": "Label/hint for finished"
     },
-    "tournamentHasAlreadyEnded" :"The tournament has already ended",
+    "tournamentHasAlreadyEnded": "The tournament has already ended",
     "@tournamentHasAlreadyEnded": {
         "description": "Label/hint for tournament has already ended"
     },
-    "numberOfRounds":"Nº of rounds",
+    "numberOfRounds": "Nº of rounds",
     "@numberOfRounds": {
         "description": "Label/hint for rounds number"
     },
-    "scorePerBye":"Score per bye",
+    "scorePerBye": "Score per bye",
     "@scorePerBye": {
         "description": "Label/hint for score per bye"
-    },  
-    "notDefined":"Not defined",
+    },
+    "notDefined": "Not defined",
     "@notDefined": {
         "description": "Label/hint for not defined"
     },
-    "notInformed":"Not informed",
+    "notInformed": "Not informed",
     "@notInformed": {
         "description": "Label/hint for not informed"
     },
-    "activePlayers":"Active players",
+    "activePlayers": "Active players",
     "@activePlayers": {
         "description": "Label/hint for active players"
     },
-    "active" : "Active",
+    "active": "Active",
     "@active": {
         "description": "Label/hint for active"
-    } ,
-    "inactive" : "Inactive",
+    },
+    "inactive": "Inactive",
     "@inactive": {
         "description": "Label/hint para inativo"
-    }, 
+    },
     "byeInactive": "Bye inactive",
     "@byeInactive": {
         "description": "Label/hint for Bye inactive"
     },
-    "tournamentHasntStartedYet" :"The tournament hasn't started yet",
+    "tournamentHasntStartedYet": "The tournament hasn't started yet",
     "@tournamentHasntStartedYet": {
         "description": "Label/hint for the tournament hasn't started yet"
     },
-    "tournamentRegisteredSuccessfully":"Tournament registered successfully!",
+    "tournamentRegisteredSuccessfully": "Tournament registered successfully!",
     "@tournamentRegisteredSuccessfully": {
         "description": "Mensagem de sucesso para quando um torneio for cadastrado."
     },
-    "invalidData":"Invalid data",
+    "invalidData": "Invalid data",
     "@invalidData": {
         "description": "Invalid data message"
     },
-    "emptyTournaments":"There are no registered tournaments",
+    "emptyTournaments": "There are no registered tournaments",
     "@emptyTournaments": {
         "description": "Message for when there are no tournaments registered."
     },
-    "errorWhileDeletingATournament":"Error when trying to delete the tournament",
+    "errorWhileDeletingATournament": "Error when trying to delete the tournament",
     "@errorWhileDeletingATournament": {
         "description": "Error message when trying to delete a tournament."
     },
-    "successWhileDeletingATournament":"Tournament deleted successfully!",
+    "successWhileDeletingATournament": "Tournament deleted successfully!",
     "@successWhileDeletingATournament": {
         "description": "Success message for deleting a tournament."
     },
-    "score":"Score",
+    "score": "Score",
     "@score": {
         "description": "Title for score/points of something"
     },
@@ -123,108 +124,115 @@
     "@scoreNegativeException": {
         "description": "Exception message for when score is negative."
     },
-    "classification":"Classification",
+    "classification": "Classification",
     "@classification": {
         "description": "Title for classification"
     },
-    "rounds":"Rounds",
-    "@rounds":{
+    "rounds": "Rounds",
+    "@rounds": {
         "description": "Title for rounds"
     },
-    "round":"Round",
+    "round": "Round",
     "@round": {
         "description": "Title for round"
     },
-    "result":"Result",
-    "@result":{
+    "result": "Result",
+    "@result": {
         "description": "Title for result"
     },
-     "tournamentStarted":"Tournament started",
+    "tournamentStarted": "Tournament started",
     "@tournamentStarted": {
         "description": "Success message for when a tournament is started."
     },
-    "tournamentCantBeStarted":"The tournament can't be started",
+    "tournamentCantBeStarted": "The tournament can't be started",
     "@tournamentCantBeStarted": {
         "description": "Error message for when a tournament can't be started."
     },
-    "tournamentCantBePaired":"The tournament can't be paired",
+    "tournamentCantBePaired": "The tournament can't be paired",
     "@tournamentCantBePaired": {
         "description": "Error message for when a tournament can't be paired."
     },
-    "lastRoundResultsDontFilled":"The results of the last round were not fully filled in.",
+    "lastRoundResultsDontFilled": "The results of the last round were not fully filled in.",
     "@lastRoundResultsDontFilled": {
         "description": "Error message for when the results of the last round were not fully filled in"
     },
     "allRoundsHaveAlreadyBeenPaired": "All rounds have already been paired.",
     "@allRoundsHaveAlreadyBeenPaired": {
-    "description": "Error message for when all rounds have already been paired"
+        "description": "Error message for when all rounds have already been paired"
     },
-    "startTournament":"Start  Tournament",
+    "startTournament": "Start  Tournament",
     "@startTournament": {
         "description": "Title for start tournament button/form"
     },
-     "theTournamentHasFinished":"The tournament has finished",
+    "theTournamentHasFinished": "The tournament has finished",
     "@theTournamentHasFinished": {
         "description": "Title for when the tournament has finished"
     },
-    "start":"Start",
+    "start": "Start",
     "@start": {
         "description": "Title for start button/form"
     },
-    "table":"Table",
+    "table": "Table",
     "@table": {
         "description": "Title for table"
     },
-    "board":"Board",
-    "@board":{
+    "board": "Board",
+    "@board": {
         "description": "Title for board"
     },
-    "player":"Player",
+    "player": "Player",
     "@player": {
         "description": "Title for player"
     },
-    "players":"Players",
+    "players": "Players",
     "@players": {
         "description": "Title for players"
     },
-    "thereAreNoRegisteredPlayers":"There are no registered players",
+    "thereAreNoRegisteredPlayers": "There are no registered players",
     "@thereAreNoRegisteredPlayers": {
         "description": "Message for when there are no players registered."
     },
-    "toStartTheTournamentYouNeedAtLeastThreePlayers":"To start the tournament you need at least 3 players.",
+    "toStartTheTournamentYouNeedAtLeastThreePlayers": "To start the tournament you need at least 3 players.",
     "@toStartTheTournamentYouNeedAtLeastThreePlayers": {
         "description": "Message for when there are not enough players."
     },
-    
-    "playerAddeddSuccessfully":"Player added successfully!",
+    "playerAddeddSuccessfully": "Player added successfully!",
     "@playerAddeddSuccessfully": {
         "description": "Success message for when a player is added."
     },
-    "playerNmae":"Player name",
+    "playerNmae": "Player name",
     "@playerNmae": {
         "description": "Label/hint for player name"
     },
-    "addPlayer":"Add player",
+    "addPlayer": "Add player",
     "@addPlayer": {
         "description": "Title for add player button/form"
     },
-    "add":"Add",
+    "add": "Add",
     "@add": {
         "description": "Title for add button/form"
     },
-    "informations":"Informations",
+    "informations": "Informations",
     "@informations": {
         "description": "Title for informations"
     },
     "somethingWentWrong": "Something went wrong!",
     "@somethingWentWrong": {
         "description": "Title for generic errors."
-    }, 
-    "settings" : "Settings",
+    },
+    "settings": "Settings",
     "@settings": {
         "description": "Title for settings button/icon"
     },
-    "language":"Language",
+    "tip": "Tip",
+    "@tip": {
+        "description": "word 'tip' to place before a tip text"
+    },
+    "addResultTip": "Tap and hold the match to add the result.",
+    "@addResultTip": {
+        "description": "a specific tip"
+    },
+    "language": "Language",
     "@language": {
         "description": "Label/hint for language"
     },

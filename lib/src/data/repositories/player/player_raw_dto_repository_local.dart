@@ -17,7 +17,7 @@ class PlayerRawDtoRepositoryLocal implements PlayerRawDtoRepository {
 
   @override
   Future<List<String>> getItems() async {
-    await Future.delayed(const Duration(milliseconds: 100));
+    //await Future.delayed(const Duration(milliseconds: 100));
     final prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(_kPlayers) ?? <String>[];
   }

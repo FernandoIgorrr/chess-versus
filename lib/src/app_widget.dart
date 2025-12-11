@@ -69,18 +69,7 @@ class _AppWidgetState extends State<AppWidget> {
             title: 'Chess Versus',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            // localeResolutionCallback: (locale, supportedLocales) {
-            // return _viewModel.locale;
-            /*if (locale == null) return const Locale('en');
-              for (var supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode == locale.languageCode) {
-                  return supportedLocale;
-                }
-              }*/
-            //return const Locale('en');
-            // },
             locale: _viewModel.locale,
-
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: _viewModel.state.themeMode,

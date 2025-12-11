@@ -183,6 +183,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String get tip => 'Tip';
+
+  @override
+  String get addResultTip => 'Tap and hold the match to add the result.';
+
+  @override
   String get language => 'Language';
 
   @override

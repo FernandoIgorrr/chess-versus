@@ -180,6 +180,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get settings => 'تنظیمات';
 
   @override
+  String get tip => 'نکته';
+
+  @override
+  String get addResultTip =>
+      'برای افزودن نتیجه، روی مسابقه لمس کرده و نگه دارید.';
+
+  @override
   String get language => 'زبان';
 
   @override

@@ -181,6 +181,12 @@ class AppLocalizationsHa extends AppLocalizations {
   String get settings => 'Saituna';
 
   @override
+  String get tip => 'Shawara';
+
+  @override
+  String get addResultTip => 'Danna ka riƙe kan wasan don ƙara sakamakon.';
+
+  @override
   String get language => 'Harshe';
 
   @override

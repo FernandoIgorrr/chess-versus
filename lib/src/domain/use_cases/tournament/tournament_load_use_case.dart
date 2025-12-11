@@ -72,28 +72,21 @@ class TournamentLoadUseCase {
         .findBySuperclassId(tournamentId)
         .getOrThrow();
 
-    for (var round in rounds) {
+    /*for (var round in rounds) {
       var matches = await _matchRepository
           .findBySuperclassId(round.id)
           .getOrThrow();
       round.setMatches(matches);
+    }*/
 
-      //round.setMatches(matches)
+    for (var round in rounds) {
+      var matches = (await _matchRepository.findBySuperclassId(
+        round.id,
+      )).getOrThrow();
+      round.setMatches(matches);
     }
 
     tournament.setRounds(rounds);
-
-    //print(tournament);
-
-    /* rounds.forEach(
-      (round) async => round.setMatches(
-        (await _matchRepository.findBySuperclassId(round.id)).getOrThrow(),
-      ),
-    );*/
-
-    tournament.setRounds(rounds);
-    //await _tournamentRepository.update(tournament);
-    //await _roundRepository.updateAll(tournament.rounds);
 
     //_log.fine('Loaded tournament');
     return tournament;
@@ -108,7 +101,7 @@ class TournamentLoadUseCase {
     // final desqualifiedPlayersById = _mapCompetitorsById(desqualifiedPlayers);
     for (var round in tournament.rounds) {
       // if (haveBye) {
-      round.notPaired = playerById[round.notPaired!.id] ?? round.notPaired;
+      round.notPaired = playerById[round.notPaired?.id] ?? round.notPaired;
       // }
       for (var match in round.matches) {
         match.setWhite = playerById[match.white.id] ?? match.white;

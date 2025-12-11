@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Wskazówka",
+    "@tip": {
+        "description": "słowo 'wskazówka', aby umieścić przed tekstem wskazówki"
+    },
+    "addResultTip": "Dotknij i przytrzymaj mecz, aby dodać wynik.",
+    "@addResultTip": {
+        "description": "konkretna wskazówka"
+    },
     "language": "Język",
     "@language": {
         "description": "Label/hint for language"

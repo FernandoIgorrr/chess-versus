@@ -182,6 +182,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settings => 'Configuración';
 
   @override
+  String get tip => 'Consejo';
+
+  @override
+  String get addResultTip =>
+      'Toca y mantén presionada la partida para agregar el resultado.';
+
+  @override
   String get language => 'Idioma';
 
   @override

@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "ヒント",
+    "@tip": {
+        "description": "ヒントテキストの前に置く言葉"
+    },
+    "addResultTip": "結果を追加するには、試合を長押ししてください。",
+    "@addResultTip": {
+        "description": "特定のヒント"
+    },
     "language": "言語",
     "@language": {
         "description": "Label/hint for language"

@@ -1,18 +1,16 @@
 import 'value_object.dart';
 
-class Name implements ValueObject {
+class TournamentName implements ValueObject {
   final String _value;
 
-  Name(this._value);
+  TournamentName(this._value);
 
   @override
   String? validator([Object? obj]) {
     if (_value.isEmpty) {
       return 'Name can\'t be empty';
-    } else if (_value.toLowerCase() == 'bye') {
-      return 'Name can\'t be bye';
-    } else if (_value.length >= 23) {
-      return 'The name must have fewer than 23 characters';
+    } else if (_value.length >= 35) {
+      return 'The name must have fewer than 35 characters';
     }
     return null;
   }

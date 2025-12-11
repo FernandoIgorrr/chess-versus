@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "Tip",
+    "@tip": {
+        "description": "woord 'tip' om vóór een tiptekst te plaatsen"
+    },
+    "addResultTip": "Tik en houd ingedrukt op de wedstrijd om het resultaat toe te voegen.",
+    "@addResultTip": {
+        "description": "een specifieke tip"
+    },
     "language": "Taal",
     "@language": {
         "description": "Label/hint for language"

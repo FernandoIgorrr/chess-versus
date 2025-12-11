@@ -178,6 +178,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settings => '設定';
 
   @override
+  String get tip => 'ヒント';
+
+  @override
+  String get addResultTip => '結果を追加するには、試合を長押ししてください。';
+
+  @override
   String get language => '言語';
 
   @override

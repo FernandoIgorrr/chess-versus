@@ -224,6 +224,14 @@
   "@settings": {
     "description": "सेटिंग्स बटन/आइकन का शीर्षक"
   },
+  "tip": "सुझाव",
+  "@tip": {
+    "description": "सुझाव पाठ से पहले रखने के लिए एक शब्द"
+  },
+  "addResultTip": "परिणाम जोड़ने के लिए मैच पर लंबा दबाएँ।",
+  "@addResultTip": {
+    "description": "एक विशेष सुझाव"
+  },
   "language": "भाषा",
   "@language": {
     "description": "भाषा के लिए लेबल/संकेत"

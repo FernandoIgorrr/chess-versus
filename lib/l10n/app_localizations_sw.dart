@@ -182,6 +182,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get settings => 'Mipangilio';
 
   @override
+  String get tip => 'Kidokezo';
+
+  @override
+  String get addResultTip => 'Gusa na ushikilie mechi ili kuongeza matokeo.';
+
+  @override
   String get language => 'Lugha';
 
   @override

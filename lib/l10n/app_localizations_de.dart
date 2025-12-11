@@ -183,6 +183,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings => 'Einstellungen';
 
   @override
+  String get tip => 'Hinweis';
+
+  @override
+  String get addResultTip =>
+      'Tippe und halte das Spiel gedrückt, um das Ergebnis hinzuzufügen.';
+
+  @override
   String get language => 'Sprache';
 
   @override

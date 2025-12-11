@@ -178,6 +178,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settings => '설정';
 
   @override
+  String get tip => '팁';
+
+  @override
+  String get addResultTip => '결과를 추가하려면 경기를 길게 누르세요.';
+
+  @override
   String get language => '언어';
 
   @override

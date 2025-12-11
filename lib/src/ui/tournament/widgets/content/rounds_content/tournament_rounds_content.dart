@@ -42,12 +42,13 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
 
   @override
   Widget build(BuildContext context) {
+    var viewModel = widget._roundsViewModel;
     return ListenableBuilder(
-      listenable: widget._roundsViewModel,
+      listenable: viewModel,
       builder: (context, child) {
         Widget body = Container();
-        final state = widget._roundsViewModel.state;
-        final stateTap = widget._roundsViewModel.stateTap;
+        final state = viewModel.state;
+        final stateTap = viewModel.stateTap;
         if (state is IdleRoundsState) {
           body = Center(child: Text("Idle"));
           //_log.fine('IdleRoundsState');
@@ -71,53 +72,83 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
               : Container(
                   padding: const EdgeInsets.only(left: 16, right: 16),
 
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: rounds.map((round) {
-                      Color tileColor =
-                          stateTap is RoundTapped && stateTap.round == round
-                          ? Theme.of(context).colorScheme.tertiary
-                          : Theme.of(context).colorScheme.primaryContainer;
-                      return Align(
-                        //alignment: Alignment.center,
-                        child: Container(
-                          //  width: 352.h,
-                          margin: EdgeInsets.only(
-                            top: 16,
-                            bottom: rounds.last == round ? 8 : 0,
-                          ),
-                          child: ExpansionTile(
-                            backgroundColor: tileColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            title: Align(
-                              alignment: const Alignment(0.15, -0.0),
-                              child: Text(
-                                textAlign: TextAlign.center,
-
-                                '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Row(
+                            children: [
+                              Text(
+                                '${AppLocalizations.of(context)!.tip}:',
+                                style: Theme.of(context).textTheme.displaySmall,
                               ),
-                            ),
-                            children: <Widget>[
-                              Container(
-                                // height: 60,
-                                color: Theme.of(context).colorScheme.primary,
-                                //  padding: const EdgeInsets.only(
-                                //  top: 4,
-                                // bottom: 4,
-                                //),
-                                child: TournamentRoundContent(
-                                  tournament: tournament,
-                                  round: round,
-                                  matchesViewModel: widget._matchesViewModel,
-                                ), //
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context)!.addResultTip,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.labelMedium,
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      );
-                    }).toList(),
+                        ListView(
+                          shrinkWrap: true,
+                          children: rounds.map((round) {
+                            Color tileColor =
+                                stateTap is RoundTapped &&
+                                    stateTap.round == round
+                                ? Theme.of(context).colorScheme.tertiary
+                                : Theme.of(
+                                    context,
+                                  ).colorScheme.primaryContainer;
+                            return Align(
+                              //alignment: Alignment.center,
+                              child: Container(
+                                //  width: 352.h,
+                                margin: EdgeInsets.only(
+                                  top: 16,
+                                  bottom: rounds.last == round ? 8 : 0,
+                                ),
+                                child: ExpansionTile(
+                                  backgroundColor: tileColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  title: Align(
+                                    alignment: const Alignment(0.15, -0.0),
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+
+                                      '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                                    ),
+                                  ),
+                                  children: <Widget>[
+                                    Container(
+                                      // height: 60,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                      //  padding: const EdgeInsets.only(
+                                      //  top: 4,
+                                      // bottom: 4,
+                                      //),
+                                      child: TournamentRoundContent(
+                                        tournament: tournament,
+                                        round: round,
+                                        matchesViewModel:
+                                            widget._matchesViewModel,
+                                      ), //
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
                   ),
                 );
 
@@ -134,6 +165,8 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                 if (tournament.status == TournamentStatus.created) {
                   if (tournament.canItBeStarted) {
                     await _buildRoundsNumDialog(context, tournament);
+                    await viewModel.updateTournament(tournament);
+                    await viewModel.assemblyTournament(tournament.id);
                   } else if (tournament.cantItBeStarted) {
                     _buildFlushBarErroFeedback(
                       erroTitle: AppLocalizations.of(
@@ -156,8 +189,9 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                         erroMessage: '',
                       );
                     } else {
-                      widget._roundsViewModel.toPair(tournament);
-                      widget._roundsViewModel.updateTournament(tournament);
+                      viewModel.toPair(tournament);
+                      await viewModel.updateTournament(tournament);
+                      await viewModel.assemblyTournament(tournament.id);
                     }
                   } else {
                     _buildFlushBarErroFeedback(
@@ -212,13 +246,14 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
             //tournament.initiateTournament();
             //await widget._roundsViewModel.updateTournament(tournament);
             widget._roundsViewModel.toPair(tournament);
-            widget._roundsViewModel.updateTournament(tournament);
 
             Navigator.pop(context);
 
-            _buildFlushBarFeedback(
-              message: AppLocalizations.of(context)!.tournamentStarted,
-            );
+            if (mounted) {
+              _buildFlushBarFeedback(
+                message: AppLocalizations.of(context)!.tournamentStarted,
+              );
+            }
           },
         );
       },

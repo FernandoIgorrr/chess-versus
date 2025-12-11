@@ -179,6 +179,12 @@ class AppLocalizationsHe extends AppLocalizations {
   String get settings => 'הגדרות';
 
   @override
+  String get tip => 'טיפ';
+
+  @override
+  String get addResultTip => 'החזק לחוץ על המשחק כדי להוסיף את התוצאה.';
+
+  @override
   String get language => 'שפה';
 
   @override

@@ -224,6 +224,14 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },
+    "tip": "提示",
+    "@tip": {
+        "description": "在提示文本前放置的“提示”一词"
+    },
+    "addResultTip": "长按比赛以添加结果。",
+    "@addResultTip": {
+        "description": "一个特定的提示"
+    },
     "language": "语言",
     "@language": {
         "description": "Label/hint for language"

@@ -182,6 +182,12 @@ class AppLocalizationsPl extends AppLocalizations {
   String get settings => 'Ustawienia';
 
   @override
+  String get tip => 'Wskazówka';
+
+  @override
+  String get addResultTip => 'Dotknij i przytrzymaj mecz, aby dodać wynik.';
+
+  @override
   String get language => 'Język';
 
   @override

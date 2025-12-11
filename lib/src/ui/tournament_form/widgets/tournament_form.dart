@@ -93,8 +93,8 @@ class _TournamentFormState extends State<TournamentForm> {
                   _buildDescriptionTextFormField(),
                   const SizedBox(height: 16),
                   _buildStartedAtTextFormField(),
-                  const SizedBox(height: 16),
-                  _buildTournamentTypeSection(),
+                  //const SizedBox(height: 16),
+                  //_buildTournamentTypeSection(),
                   AnimatedSize(
                     duration: const Duration(milliseconds: 300),
                     child: tournamentCreateDTO.getType is Swiss
@@ -111,9 +111,6 @@ class _TournamentFormState extends State<TournamentForm> {
                     onPressed: () async {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-                      if (kDebugMode) {
-                        print(tournamentCreateDTO);
-                      }
                       if (form.validate()) {
                         await widget.viewModel.createTournament(
                           tournamentCreateDTO,
