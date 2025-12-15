@@ -2,6 +2,7 @@ import 'package:chess_versus/src/ui/core/ui/custom_elevated_mini_button.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/matches/matches_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:chess_versus/l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../../domain/models/player/player.dart';
 import '../../../../../domain/models/round/round.dart';
@@ -78,6 +79,7 @@ class _TournamentRoundContentState extends State<TournamentRoundContent> {
         });
       },
       onLongPress: () async {
+        HapticFeedback.vibrate();
         await _buildShowDialogResult(match);
         widget._matchesViewModel.emitMatchTapped(match);
       },

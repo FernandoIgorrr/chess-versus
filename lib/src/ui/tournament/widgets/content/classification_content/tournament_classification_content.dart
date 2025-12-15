@@ -168,7 +168,6 @@ class _TournamentClassificationContentState
                               ...tournament.getGamesPlayedByPlayer(player).map((
                                 match,
                               ) {
-                                //_log.fine("QUALQUER COISA AE");
                                 var opponent = match.getOpponent(player);
                                 var result = match.playerResult(player);
                                 return Container(
@@ -181,11 +180,12 @@ class _TournamentClassificationContentState
                                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
+                                        flex: 8,
                                         child: Text(
                                           '${opponent?.name.toString()}  (${opponent?.score.toString()})',
                                           style: Theme.of(
                                             context,
-                                          ).textTheme.bodySmall,
+                                          ).textTheme.bodyLarge,
                                         ),
                                       ),
                                       SizedBox(
@@ -201,11 +201,12 @@ class _TournamentClassificationContentState
                                         ),
                                       ),
                                       Expanded(
+                                        flex: 2,
                                         child: Text(
                                           result,
                                           style: Theme.of(
                                             context,
-                                          ).textTheme.bodySmall,
+                                          ).textTheme.bodyLarge,
                                         ),
                                       ),
                                     ],

@@ -72,60 +72,60 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
               : Container(
                   padding: const EdgeInsets.only(left: 16, right: 16),
 
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        ListView(
-                          shrinkWrap: true,
-                          children: rounds.map((round) {
-                            Color tileColor =
-                                stateTap is RoundTapped &&
-                                    stateTap.round == round
-                                ? Theme.of(context).colorScheme.tertiary
-                                : Theme.of(
-                                    context,
-                                  ).colorScheme.primaryContainer;
-                            return Align(
-                              //alignment: Alignment.center,
-                              child: Container(
-                                //  width: 352.h,
-                                margin: EdgeInsets.only(
-                                  top: 16,
-                                  bottom: rounds.last == round ? 8 : 0,
-                                ),
-                                child: ExpansionTile(
-                                  backgroundColor: tileColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  title: Align(
-                                    alignment: const Alignment(0.15, -0.0),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      _buildHint(context),
 
-                                      '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
-                                    ),
-                                  ),
-                                  children: <Widget>[
-                                    Container(
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.primary,
-                                      child: TournamentRoundContent(
-                                        tournament: tournament,
-                                        round: round,
-                                        matchesViewModel:
-                                            widget._matchesViewModel,
-                                      ), //
-                                    ),
-                                  ],
+                      ...rounds.map((round) {
+                        Color tileColor =
+                            stateTap is RoundTapped && stateTap.round == round
+                            ? Theme.of(context).colorScheme.tertiary
+                            : Theme.of(context).colorScheme.primaryContainer;
+                        return Align(
+                          //alignment: Alignment.center,
+                          child: Container(
+                            //  width: 352.h,
+                            margin: EdgeInsets.only(
+                              top: 16,
+                              bottom: rounds.last == round ? 8 : 0,
+                            ),
+                            child: ExpansionTile(
+                              backgroundColor: tileColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              title: Align(
+                                alignment: const Alignment(0.15, -0.0),
+                                child: Text(
+                                  textAlign: TextAlign.center,
+
+                                  '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onPrimaryContainer,
+                                      ),
                                 ),
                               ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
-                    ),
+                              children: <Widget>[
+                                Container(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  child: TournamentRoundContent(
+                                    tournament: tournament,
+                                    round: round,
+                                    matchesViewModel: widget._matchesViewModel,
+                                  ), //
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
                   ),
                 );
 
@@ -288,4 +288,27 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
       flushbarPosition: flushbarPosition ?? FlushbarPosition.TOP,
     ).show(context);
   }
+}
+
+Widget _buildHint(BuildContext context) {
+  return Container(
+    margin: const EdgeInsets.only(top: 16, bottom: 0),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.secondaryContainer,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: Row(
+      children: [
+        Icon(Icons.touch_app, color: Colors.white),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            AppLocalizations.of(context)!.addResultTip,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+      ],
+    ),
+  );
 }
