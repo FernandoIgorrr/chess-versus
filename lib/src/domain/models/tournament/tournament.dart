@@ -414,7 +414,7 @@ class Tournament {
           : getGamesPlayedByPlayer(player)
                 .map((match) => match.distributeScore(player))
                 .reduce((a, b) => a + b);
-      if (haveBye! && getByePlayers().contains(player)) {
+      if (getByePlayers().contains(player)) {
         score += byeScore!.toDouble;
       }
       player.setScore(score);
