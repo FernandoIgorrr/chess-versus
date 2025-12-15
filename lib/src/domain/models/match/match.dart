@@ -86,6 +86,34 @@ class Match {
     return 0.0;
   }
 
+  String playerResult(Player player) {
+    if (player == _white) {
+      if (_result == Result.white) {
+        return '1.0';
+      } else if (_result == Result.woWhite) {
+        return '+';
+      } else if (_result == Result.woBlack) {
+        return '-';
+      } else if (_result == null) {
+        return '~';
+      }
+    } else if (player == _black) {
+      if (_result == Result.black) {
+        return '1.0';
+      } else if (_result == Result.woBlack) {
+        return '+';
+      } else if (_result == Result.woWhite) {
+        return '-';
+      } else if (_result == null) {
+        return '~';
+      }
+    } else if ((player == _white || player == _black) &&
+        _result == Result.draw) {
+      return '0.5';
+    }
+    return '0.0';
+  }
+
   bool isOnThisGame(Player player) {
     return player == _white || player == _black;
   }

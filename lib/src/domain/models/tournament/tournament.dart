@@ -110,6 +110,8 @@ class Tournament {
 
   bool get areLastRoundResultsFilled => rounds.isEmpty
       ? false
+      : rounds.last.matches.isEmpty
+      ? false
       : rounds.last.matches
             .map((game) => game.result != null ? true : false)
             .reduce((a, b) => a && b);
@@ -268,8 +270,8 @@ class Tournament {
                 a.mostScorePlayer.score.toDouble,
               ); // Ordem decrescente por pontuação
             }
-            return b.mostScorePlayer.score.toDouble.compareTo(
-              a.mostScorePlayer.score.toDouble,
+            return b.mostScorePlayer.buchholz.toDouble.compareTo(
+              a.mostScorePlayer.buchholz.toDouble,
             ); // Desempate por Buchholz
           });
 
@@ -378,6 +380,8 @@ class Tournament {
         .expand((round) => round.matches)
         .where((game) => game.isOnThisGame(player))
         .toList();
+    //print(matches.toString());
+
     return matches;
   }
 

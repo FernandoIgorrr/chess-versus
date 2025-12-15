@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_round_num_form.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import '../../../../../../l10n/app_localizations.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 
@@ -32,8 +33,7 @@ class TournamentRoundsContent extends StatefulWidget {
 }
 
 class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
-  //final _log = Logger('TournamentRoundsContent **');
-
+  final _log = Logger('TournamentRoundsContent **');
   @override
   void initState() {
     super.initState();
@@ -75,24 +75,6 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                '${AppLocalizations.of(context)!.tip}:',
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  AppLocalizations.of(context)!.addResultTip,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.labelMedium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                         ListView(
                           shrinkWrap: true,
                           children: rounds.map((round) {
@@ -126,14 +108,9 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                                   ),
                                   children: <Widget>[
                                     Container(
-                                      // height: 60,
                                       color: Theme.of(
                                         context,
                                       ).colorScheme.primary,
-                                      //  padding: const EdgeInsets.only(
-                                      //  top: 4,
-                                      // bottom: 4,
-                                      //),
                                       child: TournamentRoundContent(
                                         tournament: tournament,
                                         round: round,
@@ -162,6 +139,7 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
               ),
               onPressed: () async {
                 /// *** FIRST IF STATUS [CREATED] ***
+                //_log.fine(tournament.rounds.toString());
                 if (tournament.status == TournamentStatus.created) {
                   if (tournament.canItBeStarted) {
                     await _buildRoundsNumDialog(context, tournament);

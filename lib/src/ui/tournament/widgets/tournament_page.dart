@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/domain/models/tournament/tournament.dart';
 import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -80,9 +81,11 @@ class _TournamentPageState extends State<TournamentPage> {
           } else if (state is SuccessTournamentGetState) {
             //_log.fine('state is TournamentSuccessState');
             widget._playersViewModel.getPlayers(state.tournament.id);
-            state.tournament.updateScores();
-            state.tournament.updateBuchholzScores();
-            //widget._tournamentViewModel.updateTournament(state.tournament);
+            if (state.tournament.status == TournamentStatus.executing ||
+                state.tournament.status == TournamentStatus.finished) {
+              state.tournament.updateScores();
+              state.tournament.updateBuchholzScores();
+            } //widget._tournamentViewModel.updateTournament(state.tournament);
             body = ListenableBuilder(
               listenable: widget._tournamentPageViewViewModel,
               builder: (context, child) {
@@ -94,6 +97,7 @@ class _TournamentPageState extends State<TournamentPage> {
                     TournamentClassificationContent(
                       tournamentId: state.tournament.id,
                       playersViewModel: widget._playersViewModel,
+                      roundsViewModel: widget._roundsViewModel,
                     ),
                     TournamentRoundsContent(
                       tournamentId: state.tournament.id,

@@ -1,8 +1,11 @@
 import 'package:chess_versus/src/ui/tournament/view_models/players/players_view_model.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_state.dart';
+import 'package:chess_versus/src/ui/tournament/view_models/rounds/rounds_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:chess_versus/l10n/app_localizations.dart';
 
 import '../../../../../config/assets.dart';
+import '../../../../core/ui/compact_expansion_tile.dart';
 import '../../../../core/ui/custom_image_view.dart';
 import '../../../view_models/players/player_tap_state.dart';
 import '../../../view_models/players/players_state.dart';
@@ -10,13 +13,16 @@ import '../../../view_models/players/players_state.dart';
 class TournamentClassificationContent extends StatefulWidget {
   final String _tournamentId;
   final PlayersViewModel _playersViewModel;
+  final RoundsViewModel _roundsViewModel;
 
   const TournamentClassificationContent({
     super.key,
     required String tournamentId,
     required PlayersViewModel playersViewModel,
+    required RoundsViewModel roundsViewModel,
   }) : _tournamentId = tournamentId,
-       _playersViewModel = playersViewModel;
+       _playersViewModel = playersViewModel,
+       _roundsViewModel = roundsViewModel;
 
   @override
   State<TournamentClassificationContent> createState() =>
@@ -25,12 +31,13 @@ class TournamentClassificationContent extends StatefulWidget {
 
 class _TournamentClassificationContentState
     extends State<TournamentClassificationContent> {
-  //final _log = Logger('TournamentClassificationContent');
+  // final _log = Logger('TournamentClassificationContent');
 
   @override
   void initState() {
     super.initState();
     widget._playersViewModel.getPlayers(widget._tournamentId);
+    //widget._tournamentViewModel.assemblyTournament(widget._tournamentId);
   }
 
   @override
@@ -41,7 +48,7 @@ class _TournamentClassificationContentState
         Widget body = Container();
         final state = widget._playersViewModel.state;
         final stateTap = widget._playersViewModel.stateTap;
-
+        final stateTournament = widget._roundsViewModel.state;
         if (state is LoadingPlayersState) {
           body = const Center(child: CircularProgressIndicator());
         } else if (state is FailurePlayersState) {
@@ -54,11 +61,13 @@ class _TournamentClassificationContentState
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           );
-        } else if (state is SuccessPlayersState) {
+        } else if ((state is SuccessPlayersState) &&
+            (stateTournament is SuccessRoundsState)) {
           //tournament.setPlayers = state.players;
           //_log.fine('SuccessPlayersState');
-          var players = state.players;
-
+          var players = stateTournament.tournament.players;
+          var tournament = stateTournament.tournament;
+          //print(tournament.toString());
           if (players.isEmpty) {
             body = Center(
               child: Text(
@@ -67,14 +76,24 @@ class _TournamentClassificationContentState
             );
           } else {
             // Ordena por pontuação
-            players.sort(
-              (a, b) => b.score.toDouble.compareTo(a.score.toDouble),
-            );
+            players.sort((a, b) {
+              if (a.score.toDouble != b.score.toDouble) {
+                return b.score.toDouble.compareTo(
+                  a.score.toDouble,
+                ); // Ordem decrescente por pontuação
+              }
+              return b.buchholz.toDouble.compareTo(
+                a.buchholz.toDouble,
+              ); // Desempate por Buchholz
+            });
             body = Container(
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: ListView(
                 shrinkWrap: true,
                 children: players.map((player) {
+                  //var matchesss = tournament.getGamesPlayedByPlayer(player);
+                  //_log.fine("   ***   ${player.name.toString()}   ***");
+                  //_log.fine(matchesss.toString);
                   Color tileColor =
                       stateTap is PlayerTapped && stateTap.player == player
                       ? Theme.of(context).colorScheme.tertiary
@@ -123,7 +142,7 @@ class _TournamentClassificationContentState
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  'Buchholz: ',
+                                  'Buchholz',
                                   style: Theme.of(context).textTheme.bodySmall,
                                 ),
                                 Text(
@@ -132,6 +151,68 @@ class _TournamentClassificationContentState
                                 ),
                               ],
                             ), //
+                          ),
+                          CompactExpansionTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            //visualDensity: VisualDensity.compact,
+                            title: Align(
+                              alignment: const Alignment(0.15, -0.0),
+                              child: Text(
+                                AppLocalizations.of(context)!.rounds,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            children: [
+                              ...tournament.getGamesPlayedByPlayer(player).map((
+                                match,
+                              ) {
+                                //_log.fine("QUALQUER COISA AE");
+                                var opponent = match.getOpponent(player);
+                                var result = match.playerResult(player);
+                                return Container(
+                                  padding: const EdgeInsets.only(
+                                    top: 4,
+                                    bottom: 4,
+                                    left: 8,
+                                  ),
+                                  child: Row(
+                                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          '${opponent?.name.toString()}  (${opponent?.score.toString()})',
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.bodySmall,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 40, // espaço reservado na Row
+                                        child: Center(
+                                          child: Container(
+                                            height: 12,
+                                            width: 12,
+                                            color: match.isWhite(player)
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          result,
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.bodySmall,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+                            ],
                           ),
                         ],
                       ),
