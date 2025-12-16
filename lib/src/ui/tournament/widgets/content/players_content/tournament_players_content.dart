@@ -132,8 +132,8 @@ class _TournamentPlayersContentState extends State<TournamentPlayersContent> {
           }
         }
         return FloatingDraggableWidget(
-          floatingWidgetHeight: 60,
-          floatingWidgetWidth: 60,
+          floatingWidgetHeight: 72,
+          floatingWidgetWidth: 72,
           floatingWidget: FloatingActionButton(
             backgroundColor: Theme.of(context).colorScheme.primary,
             shape: RoundedRectangleBorder(

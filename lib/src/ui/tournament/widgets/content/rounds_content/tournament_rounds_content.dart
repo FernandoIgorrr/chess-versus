@@ -130,8 +130,8 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                 );
 
           body = FloatingDraggableWidget(
-            floatingWidgetWidth: 60,
-            floatingWidgetHeight: 60,
+            floatingWidgetWidth: 72,
+            floatingWidgetHeight: 72,
             floatingWidget: FloatingActionButton(
               backgroundColor: Theme.of(context).colorScheme.primary,
               shape: RoundedRectangleBorder(
