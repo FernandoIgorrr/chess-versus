@@ -25,5 +25,5 @@ abstract class RoundRepository implements NestedRepository<Round, String> {
   Future<Result<void>> updateAll(List<Round> rounds, String tournamentId);
 
   /// Returns the [Round] with the given [id].
-  // Future<Result<void>> delete(String id);
+  Future<Result<void>> delete(String id);
 }

@@ -1,7 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:chess_versus/src/ui/tournament/widgets/content/rounds_content/tournament_round_num_form.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import '../../../../../../l10n/app_localizations.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 
@@ -9,9 +8,9 @@ import '../../../../../config/assets.dart';
 import '../../../../../domain/models/tournament/tournament.dart';
 import '../../../../core/ui/custom_image_view.dart';
 import '../../../view_models/matches/matches_view_model.dart';
-import '../../../view_models/rounds/round_tap_state.dart';
 import '../../../view_models/rounds/rounds_state.dart';
 import '../../../view_models/rounds/rounds_view_model.dart';
+import 'round_delete_alert.dart';
 import 'tournament_round_content.dart';
 
 class TournamentRoundsContent extends StatefulWidget {
@@ -33,7 +32,7 @@ class TournamentRoundsContent extends StatefulWidget {
 }
 
 class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
-  final _log = Logger('TournamentRoundsContent **');
+  //final _log = Logger('TournamentRoundsContent **');
   @override
   void initState() {
     super.initState();
@@ -48,7 +47,6 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
       builder: (context, child) {
         Widget body = Container();
         final state = viewModel.state;
-        final stateTap = viewModel.stateTap;
         if (state is IdleRoundsState) {
           body = Center(child: Text("Idle"));
           //_log.fine('IdleRoundsState');
@@ -70,18 +68,32 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                   ),
                 )
               : Container(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
 
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      _buildHint(context),
+                      ExpansionTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        title: Align(
+                          alignment: const Alignment(0.15, -0.0),
+                          child: Text(AppLocalizations.of(context)!.tip),
+                        ),
+                        children: [
+                          _buildHint(
+                            context,
+                            AppLocalizations.of(context)!.addResultTip,
+                          ),
+                          _buildHint(
+                            context,
+                            AppLocalizations.of(context)!.deleteRoundTip,
+                          ),
+                        ],
+                      ),
 
                       ...rounds.map((round) {
-                        Color tileColor =
-                            stateTap is RoundTapped && stateTap.round == round
-                            ? Theme.of(context).colorScheme.tertiary
-                            : Theme.of(context).colorScheme.primaryContainer;
                         return Align(
                           //alignment: Alignment.center,
                           child: Container(
@@ -90,37 +102,56 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
                               top: 16,
                               bottom: rounds.last == round ? 8 : 0,
                             ),
-                            child: ExpansionTile(
-                              backgroundColor: tileColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              title: Align(
-                                alignment: const Alignment(0.15, -0.0),
-                                child: Text(
-                                  textAlign: TextAlign.center,
+                            child: GestureDetector(
+                              onLongPress: () async {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return RoundDeleteAlert(
+                                      tournamentId: widget._tournamentId,
+                                      roundId: round.id,
+                                      roundsViewModel: widget._roundsViewModel,
+                                    );
+                                  },
+                                );
+                              },
+                              child: ExpansionTile(
+                                backgroundColor: Theme.of(
+                                  context,
+                                ).colorScheme.primaryContainer,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                title: Align(
+                                  alignment: const Alignment(0.15, -0.0),
+                                  child: Text(
+                                    textAlign: TextAlign.center,
 
-                                  '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.onPrimaryContainer,
-                                      ),
+                                    '${round.roundNumber}º  ${AppLocalizations.of(context)!.round}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.onPrimaryContainer,
+                                        ),
+                                  ),
                                 ),
+                                children: <Widget>[
+                                  Container(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                    child: TournamentRoundContent(
+                                      tournament: tournament,
+                                      round: round,
+                                      matchesViewModel:
+                                          widget._matchesViewModel,
+                                    ), //
+                                  ),
+                                ],
                               ),
-                              children: <Widget>[
-                                Container(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  child: TournamentRoundContent(
-                                    tournament: tournament,
-                                    round: round,
-                                    matchesViewModel: widget._matchesViewModel,
-                                  ), //
-                                ),
-                              ],
                             ),
                           ),
                         );
@@ -290,7 +321,7 @@ class _TournamentRoundsContentState extends State<TournamentRoundsContent> {
   }
 }
 
-Widget _buildHint(BuildContext context) {
+Widget _buildHint(BuildContext context, String tip) {
   return Container(
     margin: const EdgeInsets.only(top: 16, bottom: 0),
     padding: const EdgeInsets.all(12),
@@ -304,7 +335,8 @@ Widget _buildHint(BuildContext context) {
         const SizedBox(width: 8),
         Expanded(
           child: Text(
-            AppLocalizations.of(context)!.addResultTip,
+            tip,
+            //AppLocalizations.of(context)!.addResultTip,
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),

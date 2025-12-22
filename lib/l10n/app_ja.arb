@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "ラウンドを削除しますか？",
+    "@deleteRound": {
+        "description": "ラウンド削除の警告タイトルのタイトル"
+    },
     "cancel": "キャンセル",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "結果を追加するには、試合を長押ししてください。",
     "@addResultTip": {
         "description": "特定のヒント"
+    },
+    "deleteRoundTip": "ラウンドを削除するには、長押ししてください。",
+    "@deleteRoundTip": {
+        "description": "ラウンドを削除するための特定のヒント"
     },
     "language": "言語",
     "@language": {

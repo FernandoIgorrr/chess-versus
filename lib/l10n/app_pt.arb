@@ -9,6 +9,10 @@
     "@deleteTournament": {
         "description": "Título para alerta de excluir torneio"
     },
+    "deleteRound":"Excluir rodada ?",
+    "@deleteRound": {
+        "description": "Título para alerta de excluir rodada"
+    },
     "cancel":"Cancelar",
     "@cancel": {
         "description": "Título para cancelar"
@@ -157,13 +161,13 @@
     "@startTournament": {
         "description": "Title for start tournament button/form"
     },
-    "lastRoundResultsDontFilled": "Os resultados do último round não foram totalmente preenchidos.",
+    "lastRoundResultsDontFilled": "Os resultados da última rodada não foram totalmente preenchidos.",
     "@lastRoundResultsDontFilled": {
-    "description": "Mensagem de erro para quando os resultados do último round não foram totalmente preenchidos"
+    "description": "Mensagem de erro para quando os resultados da última rodada não foram totalmente preenchidos"
     },
     "allRoundsHaveAlreadyBeenPaired": "Todas as rodadas já foram emparceiradas.",
     "@allRoundsHaveAlreadyBeenPaired": {
-    "description": "Mensagem de erro para quando todos os rounds já foram emparceirados"
+    "description": "Mensagem de erro para quando todas as rodadas já foram emparceiradas"
     },
     "theTournamentHasFinished":"O torneio chegou ao fim",
     "@theTournamentHasFinished": {
@@ -232,6 +236,10 @@
     "addResultTip" :"Toque e mantenha pressionado sobre a partida para adicionar o resultado.",
     "@addResultTip" :{
         "description": "uma dica específica"
+    },
+    "deleteRoundTip" :"Toque e mantenha pressionado sobre a rodada para excluí-la.",
+    "@deleteRoundTip" :{
+        "description": "uma dica específica para deletar rodadas"
     },
     "language":"Idioma",
     "@language": {

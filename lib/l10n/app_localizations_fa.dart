@@ -15,6 +15,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get deleteTournament => 'حذف مسابقه؟';
 
   @override
+  String get deleteRound => 'حذف دور؟';
+
+  @override
   String get cancel => 'لغو';
 
   @override
@@ -185,6 +188,9 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get addResultTip =>
       'برای افزودن نتیجه، روی مسابقه لمس کرده و نگه دارید.';
+
+  @override
+  String get deleteRoundTip => 'برای حذف دور، روی دور لمس کرده و نگه دارید.';
 
   @override
   String get language => 'زبان';

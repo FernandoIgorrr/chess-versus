@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "라운드를 삭제하시겠습니까?",
+    "@deleteRound": {
+        "description": "라운드 삭제 알림의 제목"
+    },
     "cancel": "취소",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "결과를 추가하려면 경기를 길게 누르세요.",
     "@addResultTip": {
         "description": "특정한 팁"
+    },
+    "deleteRoundTip": "라운드를 삭제하려면 길게 누르세요.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "언어",
     "@language": {

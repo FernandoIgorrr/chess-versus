@@ -15,6 +15,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get deleteTournament => 'Excluir torneio ?';
 
   @override
+  String get deleteRound => 'Excluir rodada ?';
+
+  @override
   String get cancel => 'Cancelar';
 
   @override
@@ -126,7 +129,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get lastRoundResultsDontFilled =>
-      'Os resultados do último round não foram totalmente preenchidos.';
+      'Os resultados da última rodada não foram totalmente preenchidos.';
 
   @override
   String get allRoundsHaveAlreadyBeenPaired =>
@@ -187,6 +190,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get addResultTip =>
       'Toque e mantenha pressionado sobre a partida para adicionar o resultado.';
+
+  @override
+  String get deleteRoundTip =>
+      'Toque e mantenha pressionado sobre a rodada para excluí-la.';
 
   @override
   String get language => 'Idioma';

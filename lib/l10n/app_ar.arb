@@ -9,6 +9,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "حذف الجولة؟",
+    "@deleteRound": {
+        "description": "عنوان تحذير حذف الجولة"
+    },
     "cancel": "إلغاء",
     "@cancel": {
         "description": "Title for cancel"
@@ -232,6 +236,10 @@
     "addResultTip": "اضغط مطولاً على المباراة لإضافة النتيجة.",
     "@addResultTip": {
         "description": "تلميح محدد"
+    },
+    "deleteRoundTip": "اضغط مطولاً على الجولة لإزالتها.",
+    "@deleteRoundTip": {
+        "description": "تلميح محدد لحذف الجولة"
     },
     "language": "اللغة",
     "@language": {

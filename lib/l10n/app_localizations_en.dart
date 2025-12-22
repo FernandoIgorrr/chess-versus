@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteTournament => 'Delete tournament ?';
 
   @override
+  String get deleteRound => 'Delete round?';
+
+  @override
   String get cancel => 'Cancel';
 
   @override
@@ -187,6 +190,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addResultTip => 'Tap and hold the match to add the result.';
+
+  @override
+  String get deleteRoundTip => 'Tap and hold the round to delete it.';
 
   @override
   String get language => 'Language';

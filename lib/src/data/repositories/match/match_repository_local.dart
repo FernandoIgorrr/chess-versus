@@ -1,10 +1,11 @@
+import 'package:chess_versus/src/data/exceptions/match_delete_exception.dart';
 import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
 import 'package:chess_versus/src/data/exceptions/matches_fetch_exception.dart';
 
 import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/models/match/match_row_dto.dart';
-import '../../../domain/models/match/match.dart';
+import '../../../domain/models/match/match.dart' hide Result;
 import 'match_raw_dto_repository.dart';
 import 'match_repository.dart';
 
@@ -87,6 +88,16 @@ class MatchRepositoryLocal extends MatchRepository {
       return Success(unit);
     } catch (e) {
       return Failure(MatchUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Result<void>> delete(String id) async {
+    try {
+      await _repository.delete(id);
+      return const Success(unit);
+    } catch (e) {
+      return Failure(MatchDeleteException(e.toString()));
     }
   }
 }

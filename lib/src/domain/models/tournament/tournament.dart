@@ -153,8 +153,14 @@ class Tournament {
     }
 
     sortPlayersByScoreAndBuchholz();
+    Round round;
 
-    Round round = Round(roundNumber: rounds.length + 1, matches: <Match>[]);
+    if (rounds.isEmpty) {
+      round = Round(roundNumber: rounds.length + 1, matches: <Match>[]);
+    } else {
+      var lastRoundNumber = rounds.last.roundNumber;
+      round = Round(roundNumber: lastRoundNumber + 1, matches: <Match>[]);
+    }
 
     final pairedPlayers = <Player>{};
 
@@ -213,7 +219,8 @@ class Tournament {
     final pairedPlayers = <Player>{};
     final List<Map<String, dynamic>> scoreRounds = <Map<String, dynamic>>[];
 
-    Round round = Round(roundNumber: rounds.length + 1, matches: <Match>[]);
+    var lastRoundNumber = rounds.last.roundNumber;
+    Round round = Round(roundNumber: lastRoundNumber + 1, matches: <Match>[]);
     bool notPaired;
     int count = 0;
     int n =

@@ -15,6 +15,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get deleteTournament => '토너먼트를 삭제하시겠습니까?';
 
   @override
+  String get deleteRound => '라운드를 삭제하시겠습니까?';
+
+  @override
   String get cancel => '취소';
 
   @override
@@ -182,6 +185,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get addResultTip => '결과를 추가하려면 경기를 길게 누르세요.';
+
+  @override
+  String get deleteRoundTip => '라운드를 삭제하려면 길게 누르세요.';
 
   @override
   String get language => '언어';

@@ -22,5 +22,5 @@ abstract class RoundRawDtoRepository implements Repository<RoundRawDto> {
   AsyncResult<void> updateAll(List<RoundRawDto> rounds);
 
   /// Returns the [RoundRawDto] with the given [id].
-  // Future<Result<void>> delete(String id);
+  Future<Result<void>> delete(String id);
 }

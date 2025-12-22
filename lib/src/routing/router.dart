@@ -45,6 +45,7 @@ GoRouter router() => GoRouter(
               tournamentLoadUseCase: context.read(),
               tournamentUpdateUseCase: context.read(),
               tournamentPairingUseCase: context.read(),
+              roundDeleteUseCase: context.read(),
               roundRepository: context.read(),
             );
             final matchesViewModel = MatchesViewModel(
@@ -80,6 +81,7 @@ GoRouter router() => GoRouter(
                   tournamentLoadUseCase: context.read(),
                   tournamentUpdateUseCase: context.read(),
                   tournamentPairingUseCase: context.read(),
+                  roundDeleteUseCase: context.read(),
                   roundRepository: context.read(),
                 );
                 tournamentViewModel.assemblyTournament(id);

@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "删除轮次？",
+    "@deleteRound": {
+        "description": "删除轮次警报的标题"
+    },
     "cancel": "取消",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "长按比赛以添加结果。",
     "@addResultTip": {
         "description": "一个特定的提示"
+    },
+    "deleteRoundTip": "长按回合以将其删除。",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "语言",
     "@language": {

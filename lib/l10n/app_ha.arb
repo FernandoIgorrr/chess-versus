@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "Goge zagayen?",
+    "@deleteRound": {
+        "description": "Taken sanarwar goge zagaye"
+    },
     "cancel": "Soke",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "Danna ka riƙe kan wasan don ƙara sakamakon.",
     "@addResultTip": {
         "description": "shawara ta musamman"
+    },
+    "deleteRoundTip": "Danna ka riƙe zagaye don goge shi.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "Harshe",
     "@language": {

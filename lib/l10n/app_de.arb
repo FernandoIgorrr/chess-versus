@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "Runde löschen?",
+    "@deleteRound": {
+        "description": "Titel für die Warnung zum Löschen der Runde"
+    },
     "cancel": "Abbrechen",
     "@cancel": {
         "description": "Title for cancel"
@@ -224,14 +228,17 @@
     "@settings": {
         "description": "Title for settings button/icon"
     },"tip": "Hinweis",
-"@tip": {
+    "@tip": {
   "description": "Wort 'Hinweis', das vor einem Hinweistext steht"
-},
-"addResultTip": "Tippe und halte das Spiel gedrückt, um das Ergebnis hinzuzufügen.",
-"@addResultTip": {
-  "description": "ein spezifischer Hinweis"
-}
-,
+    },
+    "addResultTip": "Tippe und halte das Spiel gedrückt, um das Ergebnis hinzuzufügen.",
+    "@addResultTip": {
+        "description": "ein spezifischer Hinweis"
+    },
+    "deleteRoundTip": "Tippen und halten Sie die Runde, um sie zu löschen.",
+    "@deleteRoundTip": {
+        "description": "Ein spezifischer Tipp zum Löschen von Runden"
+    },
     "language": "Sprache",
     "@language": {
         "description": "Label/hint for language"

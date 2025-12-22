@@ -15,6 +15,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deleteTournament => 'حذف البطولة؟';
 
   @override
+  String get deleteRound => 'حذف الجولة؟';
+
+  @override
   String get cancel => 'إلغاء';
 
   @override
@@ -184,6 +187,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get addResultTip => 'اضغط مطولاً على المباراة لإضافة النتيجة.';
+
+  @override
+  String get deleteRoundTip => 'اضغط مطولاً على الجولة لإزالتها.';
 
   @override
   String get language => 'اللغة';

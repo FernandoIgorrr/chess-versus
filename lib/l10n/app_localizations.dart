@@ -144,6 +144,12 @@ abstract class AppLocalizations {
   /// **'Delete tournament ?'**
   String get deleteTournament;
 
+  /// Title for delete round alert
+  ///
+  /// In en, this message translates to:
+  /// **'Delete round?'**
+  String get deleteRound;
+
   /// Title for cancel
   ///
   /// In en, this message translates to:
@@ -479,6 +485,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap and hold the match to add the result.'**
   String get addResultTip;
+
+  /// A specific tip to delete rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Tap and hold the round to delete it.'**
+  String get deleteRoundTip;
 
   /// Label/hint for language
   ///

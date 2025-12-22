@@ -9,6 +9,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "حذف دور؟",
+    "@deleteRound": {
+        "description": "عنوان هشدار حذف دور"
+    },
     "cancel": "لغو",
     "@cancel": {
         "description": "Title for cancel"
@@ -232,6 +236,10 @@
     "addResultTip": "برای افزودن نتیجه، روی مسابقه لمس کرده و نگه دارید.",
     "@addResultTip": {
         "description": "یک نکتهٔ خاص"
+    },
+    "deleteRoundTip": "برای حذف دور، روی دور لمس کرده و نگه دارید.",
+    "@deleteRoundTip": {
+        "description": "یک نکتهٔ خاص برای حذف دورها"
     },
     "language": "زبان",
     "@language": {

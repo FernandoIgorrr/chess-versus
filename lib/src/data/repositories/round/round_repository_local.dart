@@ -89,4 +89,14 @@ class RoundRepositoryLocal extends RoundRepository {
       return Failure(RoundsFetchException(e.toString()));
     }
   }
+
+  @override
+  Future<Result<void>> delete(String id) async {
+    try {
+      await _repository.delete(id);
+      return const Success(unit);
+    } catch (e) {
+      return Failure(RoundsFetchException(e.toString()));
+    }
+  }
 }

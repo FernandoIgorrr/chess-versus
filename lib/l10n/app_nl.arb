@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "Ronde verwijderen?",
+    "@deleteRound": {
+        "description": "Titel voor de waarschuwing bij het verwijderen van een ronde"
+    },
     "cancel": "Annuleren",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "Tik en houd ingedrukt op de wedstrijd om het resultaat toe te voegen.",
     "@addResultTip": {
         "description": "een specifieke tip"
+    },
+    "deleteRoundTip": "Tik en houd ingedrukt op de ronde om deze te verwijderen.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "Taal",
     "@language": {

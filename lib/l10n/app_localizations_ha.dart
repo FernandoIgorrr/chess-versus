@@ -15,6 +15,9 @@ class AppLocalizationsHa extends AppLocalizations {
   String get deleteTournament => 'Cire gasar?';
 
   @override
+  String get deleteRound => 'Goge zagayen?';
+
+  @override
   String get cancel => 'Soke';
 
   @override
@@ -185,6 +188,9 @@ class AppLocalizationsHa extends AppLocalizations {
 
   @override
   String get addResultTip => 'Danna ka riƙe kan wasan don ƙara sakamakon.';
+
+  @override
+  String get deleteRoundTip => 'Danna ka riƙe zagaye don goge shi.';
 
   @override
   String get language => 'Harshe';

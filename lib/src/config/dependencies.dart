@@ -1,3 +1,4 @@
+import 'package:chess_versus/src/domain/use_cases/tournament/round_delete_use_case.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_match_result_update_use_case.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_pairing_use_case.dart';
 import 'package:chess_versus/src/domain/use_cases/tournament/tournament_delete_use_case.dart';
@@ -74,6 +75,13 @@ List<SingleChildWidget> _sharedProviders = [
     create: (context) => TournamentMatchResultUpdateUseCase(
       matchRepository: context.read(),
       playerRepository: context.read(),
+    ),
+  ),
+  Provider(
+    lazy: true,
+    create: (context) => RoundDeleteUseCase(
+      roundRepository: context.read(),
+      matchRepository: context.read(),
     ),
   ),
   Provider(

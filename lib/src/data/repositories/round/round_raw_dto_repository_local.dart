@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chess_versus/src/data/exceptions/round_delete_exception.dart';
 import 'package:chess_versus/src/data/exceptions/round_update_exception.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -141,6 +142,32 @@ class RoundRawDtoRepositoryLocal implements RoundRawDtoRepository {
       return const Success(unit);
     } catch (e) {
       return Failure(RoundUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Result<void>> delete(String id) async {
+    try {
+      await findAll().fold(
+        (success) async {
+          var list = [...success];
+          list.removeWhere((r) => r.id == id);
+
+          final listMapStringDynamic = list
+              .map((round) => round.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
+          await setItems(listEncoded);
+        },
+        (failure) {
+          throw RoundDeleteException(failure.toString());
+        },
+      );
+      return const Success(unit);
+    } catch (e) {
+      return Failure(RoundDeleteException(e.toString()));
     }
   }
 }

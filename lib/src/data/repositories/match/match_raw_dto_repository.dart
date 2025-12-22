@@ -18,4 +18,7 @@ abstract class MatchRawDtoRepository implements Repository<MatchRawDto> {
 
   @override
   AsyncResult<void> updateAll(List<MatchRawDto> matchesRawDto);
+
+  @override
+  Future<Result<void>> delete(String id);
 }

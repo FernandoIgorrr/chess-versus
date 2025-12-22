@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "Futa raundi?",
+    "@deleteRound": {
+        "description": "Kichwa cha tahadhari ya kufuta raundi"
+    },
     "cancel": "Ghairi",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "Gusa na ushikilie mechi ili kuongeza matokeo.",
     "@addResultTip": {
         "description": "kidokezo mahususi"
+    },
+    "deleteRoundTip": "Gusa na ushikilie raundi ili kuyafuta.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "Lugha",
     "@language": {

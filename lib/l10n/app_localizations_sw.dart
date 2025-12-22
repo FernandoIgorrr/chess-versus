@@ -15,6 +15,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get deleteTournament => 'Futa mashindano?';
 
   @override
+  String get deleteRound => 'Futa raundi?';
+
+  @override
   String get cancel => 'Ghairi';
 
   @override
@@ -186,6 +189,9 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get addResultTip => 'Gusa na ushikilie mechi ili kuongeza matokeo.';
+
+  @override
+  String get deleteRoundTip => 'Gusa na ushikilie raundi ili kuyafuta.';
 
   @override
   String get language => 'Lugha';

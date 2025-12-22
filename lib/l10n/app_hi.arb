@@ -8,6 +8,10 @@
   "@deleteTournament": {
     "description": "टूर्नामेंट हटाने के अलर्ट का शीर्षक"
   },
+  "deleteRound": "राउंड हटाएं?",
+    "@deleteRound": {
+        "description": "राउंड हटाने की चेतावनी का शीर्षक"
+    },
   "cancel": "रद्द करें",
   "@cancel": {
     "description": "रद्द करने का शीर्षक"
@@ -231,6 +235,10 @@
   "addResultTip": "परिणाम जोड़ने के लिए मैच पर लंबा दबाएँ।",
   "@addResultTip": {
     "description": "एक विशेष सुझाव"
+  },
+  "deleteRoundTip": "राउंड को हटाने के लिए लंबा दबाएँ।",
+  "@deleteRoundTip": {
+    "description": "राउंड हटाने के लिए एक विशेष सुझाव"
   },
   "language": "भाषा",
   "@language": {

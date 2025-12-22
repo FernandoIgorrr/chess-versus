@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chess_versus/src/data/exceptions/match_delete_exception.dart';
 import 'package:chess_versus/src/data/exceptions/match_update_Exception.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -144,6 +145,32 @@ class MatchRawDtoRepositoryLocal extends MatchRawDtoRepository {
       return const Success(unit);
     } catch (e) {
       return Failure(MatchUpdateException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Result<void>> delete(String id) async {
+    try {
+      await findAll().fold(
+        (success) {
+          var list = [...success];
+          list.removeWhere((m) => m.id == id);
+
+          final listMapStringDynamic = list
+              .map((match) => match.toJson())
+              .toList();
+          final listEncoded = listMapStringDynamic
+              .map((jsonMap) => jsonEncode(jsonMap))
+              .toList();
+          setItems(listEncoded);
+        },
+        (failure) {
+          throw MatchDeleteException(failure.toString());
+        },
+      );
+      return const Success(unit);
+    } catch (e) {
+      return Failure(MatchDeleteException(e.toString()));
     }
   }
 }

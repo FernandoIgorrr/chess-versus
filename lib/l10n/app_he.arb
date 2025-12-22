@@ -9,6 +9,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "למחוק את הסבב?",
+    "@deleteRound": {
+        "description": "כותרת להתרעת מחיקת סבב"
+    },
     "cancel": "ביטול",
     "@cancel": {
         "description": "Title for cancel"
@@ -232,6 +236,10 @@
     "addResultTip": "החזק לחוץ על המשחק כדי להוסיף את התוצאה.",
     "@addResultTip": {
         "description": "טיפ ספציפי"
+    },
+    "deleteRoundTip": "החזק לחוץ על הסבב כדי למחוק אותו.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "שפה",
     "@language": {

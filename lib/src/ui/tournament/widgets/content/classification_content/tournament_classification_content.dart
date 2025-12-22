@@ -67,6 +67,8 @@ class _TournamentClassificationContentState
           //_log.fine('SuccessPlayersState');
           var players = stateTournament.tournament.players;
           var tournament = stateTournament.tournament;
+          tournament.updateScores();
+          tournament.updateBuchholzScores();
           //print(tournament.toString());
           if (players.isEmpty) {
             body = Center(

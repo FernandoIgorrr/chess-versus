@@ -8,6 +8,10 @@
     "@deleteTournament": {
         "description": "Title for delete tournament alert"
     },
+    "deleteRound": "Obriši rundu?",
+    "@deleteRound": {
+        "description": "Naslov upozorenja za brisanje runde"
+    },
     "cancel": "Одустани",
     "@cancel": {
         "description": "Title for cancel"
@@ -231,6 +235,10 @@
     "addResultTip": "Додирните и задржите утакмицу да бисте додали резултат.",
     "@addResultTip": {
         "description": "одређени савет"
+    },
+    "deleteRoundTip": "Додирните и задржите рунду да бисте је избрисали.",
+    "@deleteRoundTip": {
+        "description": "A specific tip to delete rounds"
     },
     "language": "Језик",
     "@language": {

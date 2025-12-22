@@ -15,6 +15,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteTournament => '删除锦标赛？';
 
   @override
+  String get deleteRound => '删除轮次？';
+
+  @override
   String get cancel => '取消';
 
   @override
@@ -182,6 +185,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get addResultTip => '长按比赛以添加结果。';
+
+  @override
+  String get deleteRoundTip => '长按回合以将其删除。';
 
   @override
   String get language => '语言';

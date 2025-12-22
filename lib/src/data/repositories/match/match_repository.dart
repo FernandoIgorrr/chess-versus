@@ -1,6 +1,6 @@
 import 'package:chess_versus/src/data/repositories/nested_repository.dart';
 import 'package:result_dart/result_dart.dart';
-import '../../../domain/models/match/match.dart';
+import '../../../domain/models/match/match.dart' hide Result;
 
 abstract class MatchRepository implements NestedRepository<Match, String> {
   //@override
@@ -26,4 +26,7 @@ abstract class MatchRepository implements NestedRepository<Match, String> {
 
   @override
   AsyncResult<void> updateAll(List<Match> entities, String superclassId);
+
+  @override
+  Future<Result<void>> delete(String id);
 }
